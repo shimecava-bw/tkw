@@ -3,191 +3,579 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TKW会議　議事録一覧</title>
+    <title>TKW会議：2026年6月2日</title>
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
-            background-color: #f9fafb;
+            background-color: #ffffff;
             color: #1f2937;
             line-height: 1.8;
-            min-height: 100vh;
+            font-size: 15px;
         }
 
-        .site-header {
-            background: #ffffff;
-            border-bottom: 1px solid #e5e7eb;
-            padding: 2rem 3rem;
-        }
-        .site-header .badge {
-            display: inline-block;
-            padding: 0.2rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.72rem;
-            font-weight: 700;
-            background: #ecfdf5;
-            color: #065f46;
-            letter-spacing: 0.06em;
-            margin-bottom: 0.6rem;
-        }
-        .site-header h1 { font-size: 1.8rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; }
-        .site-header p { color: #6b7280; font-size: 0.88rem; margin-top: 0.3rem; }
+        /* ── Layout ── */
+        .layout { display: flex; min-height: 100vh; }
 
-        .container { max-width: 860px; margin: 0 auto; padding: 2.5rem 2rem 5rem 2rem; }
-
-        .year-label {
-            font-size: 0.72rem;
+        /* ── Sidebar ── */
+        .sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            background-color: #f9fafb;
+            border-right: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem 0 3rem 0;
+        }
+        .sidebar-label {
+            font-size: 0.7rem;
             font-weight: 700;
             color: #9ca3af;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.08em;
+            padding: 0 1.5rem;
             margin-bottom: 1rem;
-            padding-left: 0.25rem;
         }
+        .sidebar-link {
+            display: block;
+            padding: 0.45rem 1.5rem;
+            font-size: 0.8rem;
+            color: #6b7280;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            margin: 0.1rem 0.5rem;
+            transition: background 0.18s, color 0.18s;
+        }
+        .sidebar-link:hover { background-color: #e5e7eb; color: #111827; }
+        .sidebar-link.active-green { background-color: #ecfdf5; color: #065f46; font-weight: 700; }
+        .sidebar-link.active-red { background-color: #fef2f2; color: #991b1b; font-weight: 700; }
 
-        .minutes-list { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2.5rem; }
-
-        .minutes-card {
-            display: flex;
-            align-items: center;
+        .sidebar-card {
+            margin: 1.5rem 1rem 0 1rem;
             background: #ffffff;
             border: 1px solid #e5e7eb;
-            border-radius: 0.875rem;
-            padding: 1.25rem 1.5rem;
-            text-decoration: none;
-            color: inherit;
-            transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s;
-            gap: 1.25rem;
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            font-size: 0.75rem;
+            color: #6b7280;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
         }
-        .minutes-card:hover { box-shadow: 0 8px 20px -4px rgba(0,0,0,0.1); border-color: #10b981; transform: translateY(-1px); }
-        .minutes-card.latest { border: 2px solid #10b981; background: #ecfdf5; }
+        .sidebar-card-title { font-weight: 700; color: #1f2937; font-size: 0.85rem; margin-bottom: 0.6rem; }
+        .sidebar-card-row { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
+        .sidebar-card-row span:last-child { font-weight: 700; color: #1f2937; }
+        .sidebar-card-row .status { color: #065f46; }
 
-        .card-date { flex-shrink: 0; width: 3.5rem; text-align: center; }
-        .card-date .month { font-size: 0.7rem; font-weight: 700; color: #10b981; text-transform: uppercase; }
-        .card-date .day { font-size: 1.75rem; font-weight: 800; color: #111827; line-height: 1; }
+        /* ── Main content ── */
+        .main {
+            flex: 1;
+            padding: 0 4rem 4rem 4rem;
+            background: #ffffff;
+            min-width: 0;
+        }
 
-        .card-divider { width: 1px; height: 2.5rem; background: #e5e7eb; flex-shrink: 0; }
-
-        .card-body { flex: 1; min-width: 0; }
-        .card-title { font-size: 0.95rem; font-weight: 700; color: #111827; }
-        .card-meta { font-size: 0.78rem; color: #6b7280; margin-top: 0.2rem; }
-        .card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
-        .tag { font-size: 0.68rem; font-weight: 600; padding: 0.15rem 0.55rem; border-radius: 9999px; background: #f3f4f6; color: #4b5563; }
-        .tag.red { background: #fef2f2; color: #991b1b; }
-        .tag.green { background: #ecfdf5; color: #065f46; }
-        .tag.blue { background: #eff6ff; color: #1d4ed8; }
-
-        .card-arrow { flex-shrink: 0; color: #d1d5db; font-size: 1.1rem; transition: color 0.2s; }
-        .minutes-card:hover .card-arrow { color: #10b981; }
-
-        .latest-badge {
-            flex-shrink: 0;
-            font-size: 0.68rem;
-            font-weight: 700;
-            background: #10b981;
-            color: #ffffff;
-            padding: 0.2rem 0.6rem;
+        /* ── Header ── */
+        .page-header {
+            padding: 3.5rem 0 2.5rem 0;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.75rem;
             border-radius: 9999px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            background: #f3f4f6;
+            color: #4b5563;
+            margin-bottom: 1rem;
             letter-spacing: 0.04em;
         }
-
-        .empty-card {
-            background: #ffffff;
-            border: 1px dashed #d1d5db;
-            border-radius: 0.875rem;
-            padding: 1.75rem 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1.25rem;
-            color: #9ca3af;
+        .page-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #111827;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
         }
-        .empty-card .empty-date { flex-shrink: 0; width: 3.5rem; text-align: center; }
-        .empty-card .empty-day { font-size: 1.75rem; font-weight: 800; color: #d1d5db; line-height: 1; }
-        .empty-card .empty-month { font-size: 0.7rem; font-weight: 700; color: #d1d5db; }
-        .empty-card .empty-text { font-size: 0.85rem; }
+        .page-subtitle { color: #6b7280; font-size: 1rem; font-weight: 500; }
+        .page-desc { margin-top: 1.25rem; color: #6b7280; font-size: 0.88rem; line-height: 1.7; }
 
-        footer { text-align: center; font-size: 0.72rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; padding: 2rem 0; border-top: 1px solid #e5e7eb; margin-top: 2rem; }
+        /* ── Section card ── */
+        .section-card {
+            background: #ffffff;
+            border-radius: 1rem;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            padding: 2.5rem;
+            transition: box-shadow 0.25s, border-color 0.25s;
+        }
+        .section-card:hover { box-shadow: 0 10px 20px -3px rgba(0,0,0,0.09); border-color: #10b981; }
+        .section-card.green-card { background-color: #ecfdf5; border: 2px solid #10b981; }
+        .section-card.red-card { background-color: #fff5f5; border: 1px solid #fecaca; }
 
-        @media (max-width: 600px) {
-            .site-header { padding: 1.5rem 1.25rem; }
-            .site-header h1 { font-size: 1.3rem; }
-            .container { padding: 1.5rem 1rem 4rem 1rem; }
-            .minutes-card { padding: 1rem 1.1rem; gap: 0.9rem; }
-            .card-date .day { font-size: 1.4rem; }
+        /* ── Section heading ── */
+        .section-head { display: flex; align-items: center; margin-bottom: 1.75rem; }
+        .section-bar { width: 6px; height: 2rem; border-radius: 9999px; margin-right: 1rem; flex-shrink: 0; }
+        .bar-green { background: #059669; }
+        .bar-red { background: #dc2626; }
+        .section-title { font-size: 1.35rem; font-weight: 700; color: #111827; }
+        .section-title.red { color: #dc2626; }
+
+        .section-intro { color: #6b7280; margin-bottom: 1.5rem; line-height: 1.8; }
+
+        /* ── Sub heading ── */
+        .sub-heading { font-size: 1rem; font-weight: 700; color: #1f2937; margin: 1.75rem 0 0.75rem 0; }
+
+        /* ── Lists ── */
+        ul.dot-list { list-style: disc; padding-left: 1.5rem; color: #4b5563; }
+        ul.dot-list li { margin-bottom: 0.6rem; line-height: 1.75; }
+        ul.dot-list li::marker { color: #10b981; }
+        ul.dot-list.red-markers li::marker { color: #ef4444; }
+        ul.dot-list li strong { color: #111827; }
+
+        /* ── Highlight boxes ── */
+        .box-green {
+            border-left: 4px solid #10b981;
+            background: #f9fafb;
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        .box-green .box-label { font-size: 0.8rem; font-weight: 700; color: #065f46; margin-bottom: 0.5rem; }
+
+        .box-red {
+            border-left: 4px solid #ef4444;
+            background: #fef2f2;
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        .box-red .box-label { font-size: 0.8rem; font-weight: 700; color: #991b1b; margin-bottom: 0.5rem; }
+        .box-red ul.dot-list li::marker { color: #ef4444; }
+
+        /* ── TODO table ── */
+        .todo-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+        .todo-table thead th {
+            background: #f9fafb;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 700;
+            color: #374151;
+            border-bottom: 1px solid #e5e7eb;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+        .todo-table tbody td { padding: 0.75rem 1rem; border-bottom: 1px solid #f3f4f6; color: #4b5563; }
+        .todo-table tbody tr:hover { background: #f9fafb; }
+        .todo-table tbody tr.urgent { background: #fff5f5; }
+        .todo-table tbody tr.urgent td { color: #991b1b; }
+        .todo-table .tag { font-weight: 600; white-space: nowrap; }
+        .todo-table .deadline { white-space: nowrap; }
+        .todo-table .deadline.red { color: #dc2626; font-weight: 700; }
+
+        /* ── Footer ── */
+        .page-footer {
+            margin-top: 4rem;
+            padding: 2.5rem 0;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* ── Mobile ── */
+        @media (max-width: 768px) {
+            .layout { flex-direction: column; }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid #e5e7eb;
+                padding: 1.25rem 0 1rem 0;
+            }
+            .sidebar-card { display: none; }
+            .main { padding: 0 1.25rem 3rem 1.25rem; }
+            .page-header { padding: 2rem 0 1.5rem 0; }
+            .page-title { font-size: 1.5rem; }
+            .section-card { padding: 1.5rem; }
+            .sidebar-links { display: flex; flex-wrap: wrap; gap: 0.25rem; padding: 0 0.75rem; }
+            .sidebar-link { margin: 0; padding: 0.3rem 0.7rem; font-size: 0.72rem; }
+            .sidebar-label { padding: 0 1rem; }
         }
     </style>
 </head>
 <body>
+<div class="layout">
 
-<header class="site-header">
-    <span class="badge">MEETING MINUTES</span>
-    <h1>TKW会議　議事録一覧</h1>
-    <p>毎週の定例会議の記録です。タイトルをクリックして各議事録を開いてください。</p>
-</header>
-
-<div class="container">
-
-    <p class="year-label">2026年</p>
-
-    <div class="minutes-list">
-
-        <!-- 最新：6月9日 -->
-        <a href="./0609/" class="minutes-card latest">
-            <div class="card-date">
-                <div class="month">Jun</div>
-                <div class="day">09</div>
-            </div>
-            <div class="card-divider"></div>
-            <div class="card-body">
-                <div class="card-title">TKW会議：2026年6月9日</div>
-                <div class="card-meta">MIDプレゼン / ボーネルンド / LINE広告新環境移行 / 瑞鳳BIツール / 全社戦略</div>
-                <div class="card-tags">
-                    <span class="tag red">請求書不備</span>
-                    <span class="tag green">LINE広告 前週比56%増</span>
-                    <span class="tag blue">瑞鳳 Metabase検討</span>
-                </div>
-            </div>
-            <span class="latest-badge">LATEST</span>
-            <span class="card-arrow">›</span>
-        </a>
-
-        <!-- 6月2日 -->
-        <a href="./0602/" class="minutes-card">
-            <div class="card-date">
-                <div class="month">Jun</div>
-                <div class="day">02</div>
-            </div>
-            <div class="card-divider"></div>
-            <div class="card-body">
-                <div class="card-title">TKW会議：2026年6月2日</div>
-                <div class="card-meta">MD・モビ関連 / スマレジ価格交渉 / LINE広告 / AI機能検討 / セキュリティ事案 / 新商品企画</div>
-                <div class="card-tags">
-                    <span class="tag red">セキュリティ緊急対応</span>
-                    <span class="tag green">LINE広告 過去最高</span>
-                    <span class="tag">AI機能検討</span>
-                </div>
-            </div>
-            <span class="card-arrow">›</span>
-        </a>
-
-        <!-- 次回予告 -->
-        <div class="empty-card">
-            <div class="empty-date">
-                <div class="empty-month">Jun</div>
-                <div class="empty-day">16</div>
-            </div>
-            <div class="card-divider" style="background:#f3f4f6;"></div>
-            <div class="empty-text">次回会議の議事録がここに追加されます</div>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <p class="sidebar-label">INDEX / 目次</p>
+        <div class="sidebar-links">
+            <a href="#s1" class="sidebar-link">1. MD・モビ関連　進捗報告</a>
+            <a href="#s2" class="sidebar-link">2. スマレジ連携　価格交渉指導</a>
+            <a href="#s3" class="sidebar-link">3. LINE広告関連</a>
+            <a href="#s4" class="sidebar-link">4. イエローフィン AI機能検討</a>
+            <a href="#s5" class="sidebar-link">5. 発注システム遅延　警告</a>
+            <a href="#s6" class="sidebar-link">6. 新商品企画と戦略的展開</a>
+            <a href="#s7" class="sidebar-link">7. セキュリティ事案　緊急対応</a>
+            <a href="#s8" class="sidebar-link">8. 総括と今後の姿勢</a>
+            <a href="#s9" class="sidebar-link">9. アクションアイテム（TODO）</a>
         </div>
 
-    </div>
+        <div class="sidebar-card">
+            <p class="sidebar-card-title">会議情報</p>
+            <div class="sidebar-card-row"><span>会議名:</span><span>TKW会議</span></div>
+            <div class="sidebar-card-row"><span>日時:</span><span>2026年6月2日</span></div>
+            <div class="sidebar-card-row"><span>形式:</span><span>原文保存版</span></div>
+            <div class="sidebar-card-row"><span>状態:</span><span class="status">チェック完了</span></div>
+        </div>
+    </aside>
 
+    <!-- Main -->
+    <div class="main">
+        <header class="page-header">
+            <span class="badge">MEETING MINUTES</span>
+            <h1 class="page-title">TKW会議：2026年6月2日</h1>
+            <p class="page-subtitle">MD・モビ関連 / LINE広告 / AI機能 / セキュリティ事案 / 新商品企画　詳細記録</p>
+            <p class="page-desc">発言のニュアンスや背景、具体的な数字や生々しいやり取りを含めて「一言一句情報を減らさない」方針で作成した議事録です。</p>
+        </header>
+
+        <!-- 1 -->
+        <section id="s1" class="section-card green-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">第1章　MD（モバイルダイレクト）・モビ関連　進捗報告</h2>
+            </div>
+            <p class="section-intro">MD関連の資料作成状況とモビ（浜名湖集計）の現状、および防運運動（防レド）案件の進捗について報告されました。</p>
+
+            <p class="sub-heading">1-1. 資料作成の状況</p>
+            <ul class="dot-list">
+                <li>現在、先方への資料修正を控えており、高田氏に最終レビューを依頼している。今週中に送付予定。</li>
+                <li>修正案は「シンプル化」を基本方針とし、従来の複数ツール比較（Lステップ・シナジー・リニーの3社並列）から「Lステップへの移行」にフォーカスした内容に変更された。シナジーのメリットが不明確になったため、フォーカスの変更が判断された。</li>
+                <li>資料にはデータの可視化や定例サポート機能についてのまとめも含まれている。</li>
+            </ul>
+
+            <p class="sub-heading">1-2. モビ（浜名湖集計）</p>
+            <ul class="dot-list">
+                <li>無料入場者の自動集計方法について、先方に提案済み。</li>
+                <li>現在、具体的な反応待機中。一度受領の返信は得ている。</li>
+            </ul>
+
+            <p class="sub-heading">1-3. 防運運動（防レド）・事前パス案件</p>
+            <ul class="dot-list">
+                <li>発注済みで、ベンダーが着手している。</li>
+                <li>6月18日リリース、今月請求の予定。</li>
+            </ul>
+        </section>
+
+        <!-- 2 -->
+        <section id="s2" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">第2章　スマレジ連携機能　価格交渉に関する指導</h2>
+            </div>
+            <p class="section-intro">スマレジ連携集計機能の見積もりに対する顧客反応と、それに対する営業姿勢について上司から厳しい指導がなされた。</p>
+
+            <p class="sub-heading">2-1. 現状</p>
+            <ul class="dot-list">
+                <li>スマレジ連携集計機能の見積もりに対し、顧客（早川氏）から「思ったより高そう」との反応があった。</li>
+                <li>担当の任（にお）氏は一旦先方の検討を待つ姿勢だったが、上司から「高いと言われたからペンディングになった」という報告だけでは営業として不十分であると厳しく指摘された。</li>
+            </ul>
+
+            <p class="sub-heading">2-2. 上司からの指摘と方針</p>
+            <div class="box-red">
+                <p class="box-label">【上司からの指摘】</p>
+                <ul class="dot-list">
+                    <li>営業として、単に「高いと言われた」で終わらせず、その場で「いくらなら可能か」「どうやって売上を作るか」という交渉をすべきである。</li>
+                    <li>顧客の反応を予測し、事前に社内で値下げのボーダーライン（保険）を確認しておくことが「フロント」としての役目。</li>
+                    <li>見積もり作成時に上司が確認を求めるのは、金額を「もっと上げた方がいいのか、下げるべきか」という営業担当者の意思を確認するため。反応がないまま提示し、後から「顧客の感覚と違った」となることを避ける必要がある。</li>
+                    <li>値下げを行う際は、単に安くするのではなく、「自分が社内で戦って（ベンダーや上司と交渉して）安くした」というストーリーを顧客に示すことで、担当者としての信頼に繋げるべきという考え方が示された。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">2-3. 今後の対応方針</p>
+            <ul class="dot-list">
+                <li>今回の機能はレジ締め作業に不可欠であり、必要性が極めて高いことを前提に交渉を進める。</li>
+                <li>必要に応じてベンダー側に値下げ交渉を行い、社内的にどこまでの金額なら許容できるかの「ボーダーライン」を明確にする。</li>
+                <li>顧客からの「高い」という反応に対し、持ち帰って次の会議で話すのではなく、その場で次の手を打てるようなフロントとしての判断力を磨くことが求められている。</li>
+            </ul>
+        </section>
+
+        <!-- 3 -->
+        <section id="s3" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">第3章　LINE広告関連</h2>
+            </div>
+            <p class="section-intro">新プラットフォームへの移行作業、広告識別拡張レベルの設定、ビーコン管理、および実績報告が共有された。</p>
+
+            <p class="sub-heading">3-1. プラットフォーム移行</p>
+            <ul class="dot-list">
+                <li>来週、新プラットフォームへのアカウント再登録作業を実施する。</li>
+                <li>これに伴い、運営会社一覧（企業番号、店舗名、本部名など）の急ぎの共有が必要となっている。</li>
+            </ul>
+
+            <p class="sub-heading">3-2. 拡張レベルの設定</p>
+            <ul class="dot-list">
+                <li>新プラットフォームでの広告識別拡張レベルは1〜10まで選択可能。</li>
+                <li>予算規模（10万円以下）を考慮し、有効なユーザーにリーチできるレベル1〜2が適切と判断された。</li>
+            </ul>
+
+            <p class="sub-heading">3-3. ビーコン管理</p>
+            <ul class="dot-list">
+                <li>ブログウォッチャーのテスト環境提供が遅れているが、月中を目安に明確化し、事前作業を進行する。</li>
+            </ul>
+
+            <p class="sub-heading">3-4. 実績報告</p>
+            <div class="box-green">
+                <p class="box-label">【好調な実績】</p>
+                <ul class="dot-list">
+                    <li>5月の売上は予測通り500万円を超え、過去最高の件数となった。</li>
+                    <li>6月も滑り出しは好調で、リピート案件やGPS案件が安定して入っている。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 4 -->
+        <section id="s4" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">第4章　イエローフィン　AI機能活用検討（随法案件）</h2>
+            </div>
+            <p class="section-intro">イエローフィンの新機能「Tell Me About My Data」を中心に、コスト構造・技術的課題・戦略的方針について議論された。</p>
+
+            <p class="sub-heading">4-1. 新機能「Tell Me About My Data」の概要</p>
+            <ul class="dot-list">
+                <li>表やグラフを選択すると、AIがその変化要因・傾向・異常値などを分析し、追加の説明文やグラフを自動生成する機能。</li>
+                <li>「前月はどうだったのか」といった、文脈を維持した追加の質問（対話型分析）も可能。</li>
+                <li>採用モデルは通常の分析精度としてはChat GPT-4o（ソース内では4.oと表記）で十分と推測されており、より複雑な分析には上位モデルの検討もなされている。なお、クロードやアジュール（Azure）はコスト面から現在は候補から外されている。</li>
+            </ul>
+
+            <p class="sub-heading">4-2. コスト構造と提案方針</p>
+            <ul class="dot-list">
+                <li>課金体系はバルク買い（一括購入）はできず、従量課金制となる。</li>
+                <li>月間500回の質問を想定した場合、安いモデルで月額1万円程度、高いケースで7万円程度と試算されている。</li>
+                <li>利用回数に制限を設けて金額を定額化するような、顧客に提案しやすいパッケージ構成が検討されている。</li>
+            </ul>
+
+            <p class="sub-heading">4-3. 技術的課題</p>
+            <div class="box-green">
+                <p class="box-label">【実装に必要な2つの前提条件】</p>
+                <ul class="dot-list">
+                    <li><strong>ナレッジベースの設定：</strong>AIが適切な回答を生成するためには、指標が「上がると良いのか悪いのか」といった判断材料や項目の定義を、イエローフィン側に事前にルールとして設定しておく必要がある。回答の精度はこのナレッジの設定次第となる。</li>
+                    <li><strong>分析層（レイヤー）の構築：</strong>データベース側にAIが読み取りやすい「分析層」を設ける必要がある。現在の複雑なテーブル設計のままではAI機能や既存のインサイト機能に限界があるため、この分析層の構築が機能開通の鍵となっている。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">4-4. 戦略的方針と議論</p>
+            <ul class="dot-list">
+                <li>上司からは、イエローフィンの中だけでAIを完結させるのではなく、会社全体として「AIエージェントの導入」という大きな枠組みで設計し直すべきではないかという指摘があった。これにより、予算の確保や、将来的な「継ぎはぎ」状態の回避、他システムとのベース共有が可能になる。</li>
+                <li>担当の任（にお）氏は、まずは今週中に「分析層」を構築し、イエローフィンのインサイト機能およびAIエージェント機能を稼働させることを優先したいと考えている。</li>
+                <li>最終的な安定稼働の期限として<strong>6月27日</strong>が設定されており、それまでに先方への確認を含め、落ち着いた状態にすることが求められている。</li>
+                <li>現在は、AI活用の全体構想については一旦脇に置き、イエローフィン上でのAI機能の実装と分析層の構築に集中するという方針で進められている。</li>
+            </ul>
+        </section>
+
+        <!-- 5 -->
+        <section id="s5" class="section-card red-card">
+            <div class="section-head">
+                <div class="section-bar bar-red"></div>
+                <h2 class="section-title red">第5章　発注システム遅延に対する警告</h2>
+            </div>
+            <div class="box-red">
+                <p class="box-label">【上司からの強い叱責】</p>
+                <ul class="dot-list">
+                    <li>入金から1ヶ月以上経過している発注システムとマニュアル作成が、高田氏のところで止まっている点について、上司から強い叱責があった。</li>
+                    <li>高田氏は、配信条件の変更に伴う調整が必要だったと説明し、明後日までに対応することを約束した。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 6 -->
+        <section id="s6" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">第6章　新商品企画と戦略的展開</h2>
+            </div>
+            <p class="section-intro">アイデアが具体的な商品に落とし込めていない現状に対して、上司から厳しい指摘と具体的な指示がなされた。</p>
+
+            <p class="sub-heading">6-1. 現状の課題</p>
+            <ul class="dot-list">
+                <li>新しい商品のアイデアは出るものの、それが実際の形（商品）にならない現状に対して、上司から厳しい指摘がなされている。</li>
+                <li>「これがいい、あれがいい」と口頭で話す段階に留まっており、会社としての戦略として具体的な商品に落とし込めていない点が問題視されている。</li>
+                <li>現状のルーチンワークをこなすだけでは来期以降の売上向上は見込めず、来年に向けて新しいサービスを提供したいという会社側（経営層）の強い意向がある。</li>
+            </ul>
+
+            <p class="sub-heading">6-2. 検討されている具体的な新商品・サービスの方向性</p>
+            <ul class="dot-list">
+                <li><strong>【競合店分析】</strong>以前から議論されているが、具体的な商品内容が確定していない。これを「言葉だけでなく、こういう商品を作るんだという1枚の資料」にすることが求められている。</li>
+                <li><strong>【サミネ（取引先）案件の再活性化】</strong>以前サミネがやろうとしていた店舗向けサービス（ダッシュボードやビーコンの活用）を復活させる案が出ている。自社でダッシュボードを作成し、サーバー代などの最小限のコストで提供する仕組みを検討している。また、サービス自体を安価（または無料）で提供することで、結果的に本業の広告が売れるようなモデルも視野に入れている。</li>
+                <li><strong>【大阪・丸ハン（マルハン）案件】</strong>大阪の難波にオープンしたチームラボのような施設（ミラクルワールド）に関して、マッチングアプリ「ゴージャス」への広告配信案件（予算100万〜150万円規模）が来ており、これを足がかりにした展開が期待されている。</li>
+                <li><strong>【GMトレーニング案件】</strong>ホームページ関連の話が来ており、スポット案件ではあるものの、将来的なナレッジ蓄積に繋げようとしている。</li>
+            </ul>
+
+            <p class="sub-heading">6-3. 戦略的指示：商品化へのステップ</p>
+            <div class="box-green">
+                <p class="box-label">【上司からの指示】</p>
+                <ul class="dot-list">
+                    <li>みんなの頭の中にある共通認識を、最後は「1枚の紙（資料）」としてアウトプットし、「これでやろう」と決断できる状態にすること。</li>
+                    <li>資料には、単なるアイデアだけでなく、「お金のもらい方（料金体系）」や「営業上のトーク、提携先への話し方」まで含める必要がある。</li>
+                    <li>今期中にどれだけ新しい商品の「種まき」ができるかが重要であり、1日でも早く動ける環境を作ることが各担当者に求められている。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 7 -->
+        <section id="s7" class="section-card red-card">
+            <div class="section-head">
+                <div class="section-bar bar-red"></div>
+                <h2 class="section-title red">第7章　セキュリティ事案への緊急対応（高田氏　WhatsApp乗っ取り疑い）</h2>
+            </div>
+            <p class="section-intro">高田氏のWhatsAppで発生した不審なメッセージ送受信について、サイバー攻撃の疑いとして公的機関を巻き込んだ厳格な対応が指示された。</p>
+
+            <p class="sub-heading">7-1. 事案の概要と現状</p>
+            <ul class="dot-list red-markers">
+                <li>高田氏のWhatsAppアカウントまたはPCが、いわゆる「マン・イン・ザ・ミドル（中間者攻撃）」的なサイバー攻撃を受けた可能性が指摘されている。</li>
+                <li>具体的には、取引先のユカ氏とのやり取りにおいて、Meta側の記録には存在しないメッセージが送信されたり、メッセージが不自然に消去されたりする事象が発生している。</li>
+                <li>Meta（インドネシア）の見解では「そのようなログは存在せず、あり得ない」とされているが、事実に相違があるため、会社として法的・技術的な証明が必要な状況である。</li>
+            </ul>
+
+            <p class="sub-heading">7-2. 具体的な対応策（上司指示）</p>
+            <div class="box-red">
+                <p class="box-label">【今日中に実施すべきアクション】</p>
+                <ul class="dot-list">
+                    <li><strong>【警察への相談と「相談番号」の取得】</strong>今日中に警察のサイバー犯罪対策課へ行き、事案を報告することが強く求められている。被害届の受理に至らなくとも、「相談整理番号」を取得し、公的に相談した事実を記録に残すことが、取引先への証明として極めて重要。</li>
+                    <li><strong>【公的機関（IPA）への報告】</strong>経済産業省所管のIPA（情報処理推進機構）のサイバーセキュリティ窓口へ報告し、公的なアドバイスを受けるよう指示が出ている。</li>
+                    <li><strong>【プラットフォーム側への働きかけ】</strong>MetaのカスタマーサポートおよびWhatsAppのアプリ内サポートから、ログデータと共にアクセス権の乗っ取り疑惑について報告を行う。</li>
+                    <li><strong>【全履歴の保全と調査】</strong>調査対象はWhatsAppのみに留まらない。PC全体の履歴（メール等を含む）を明らかにし、どこに侵入の痕跡があるかを特定するための証拠を保全する必要がある。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">7-3. 取引先（ユカ氏）へのコミュニケーション</p>
+            <ul class="dot-list">
+                <li>警察への相談番号やIPAへの報告事実をユカ氏に伝え、会社として「サイバー攻撃に対する正当な防御・調査」を行っていることを示す。</li>
+                <li>Metaが一度「あり得ない」と回答している点についても、現在の事実（実際にメッセージが存在した等）を基に再度ニュアンスを込めて伝える必要がある。</li>
+            </ul>
+
+            <p class="sub-heading">7-4. 組織としての姿勢と注意点</p>
+            <ul class="dot-list">
+                <li>自分が「法務部」であるという意識を持ち、自分を守るために有利な情報を自ら収集・整理することが求められている。</li>
+                <li>何らかのリンクをクリックした、あるいはグリッチ（不具合）が発生したなど、必ず「トリガー」となる原因があるはずであり、それを特定することが再発防止に不可欠。</li>
+                <li>本件は単なるシステムの不具合ではなく、「法的に争う可能性のある事案」として、公的機関を巻き込んだ厳格な対応が進められている。</li>
+            </ul>
+        </section>
+
+        <!-- 8 -->
+        <section id="s8" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">第8章　総括と今後の姿勢</h2>
+            </div>
+            <ul class="dot-list">
+                <li><strong>【予測行動（先手）の徹底】</strong>問題が起きてから動く「リアクションの仕事」ではなく、常に先を予測し、保険を打っておくことが強調された。</li>
+                <li><strong>【リハビリとしての会議】</strong>この会議は思考を活性化させる「リハビリ」の場でもあり、今後は社内の他メンバーの傍聴を受け入れる可能性も示唆された。</li>
+                <li><strong>【目標】</strong>今期中にどれだけ新しい「種」をまき、事故のない迅速な進行環境を作れるかが鍵となる。</li>
+            </ul>
+        </section>
+
+        <!-- 9 TODO -->
+        <section id="s9" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">第9章　アクションアイテム（TODO）</h2>
+            </div>
+            <div style="overflow-x:auto;">
+                <table class="todo-table">
+                    <thead>
+                        <tr>
+                            <th>担当</th>
+                            <th>タスク内容</th>
+                            <th>期限 / 目安</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="urgent">
+                            <td class="tag">高田氏</td>
+                            <td>警察サイバー犯罪対策課へ行き「相談整理番号」を取得する</td>
+                            <td class="deadline red">本日中</td>
+                        </tr>
+                        <tr class="urgent">
+                            <td class="tag">高田氏</td>
+                            <td>IPA（情報処理推進機構）へサイバー攻撃疑惑を報告する</td>
+                            <td class="deadline red">本日中</td>
+                        </tr>
+                        <tr class="urgent">
+                            <td class="tag">高田氏</td>
+                            <td>発注システム・マニュアル作成の対応完了</td>
+                            <td class="deadline red">明後日まで</td>
+                        </tr>
+                        <tr>
+                            <td class="tag">高田氏</td>
+                            <td>MD関連資料の最終レビュー・先方への送付</td>
+                            <td class="deadline">今週中</td>
+                        </tr>
+                        <tr>
+                            <td class="tag">任（にお）氏</td>
+                            <td>イエローフィン「分析層（レイヤー）」の構築、インサイト機能・AIエージェント機能の稼働</td>
+                            <td class="deadline">6月27日</td>
+                        </tr>
+                        <tr>
+                            <td class="tag">任（にお）氏</td>
+                            <td>スマレジ連携機能の価格交渉（ボーダーライン確認・顧客への再提案）</td>
+                            <td class="deadline">次回MTGまで</td>
+                        </tr>
+                        <tr>
+                            <td class="tag">広告チーム</td>
+                            <td>新プラットフォームへのアカウント再登録作業・運営会社一覧の共有</td>
+                            <td class="deadline">来週</td>
+                        </tr>
+                        <tr>
+                            <td class="tag">全担当</td>
+                            <td>新商品（競合店分析・サミネ案件等）を「1枚の資料」として具体化・アウトプット</td>
+                            <td class="deadline">今期中に種まき</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer class="page-footer">
+            <p>&copy; 2026 TKW Project Team. All Rights Reserved.</p>
+        </footer>
+    </div>
 </div>
 
-<footer>
-    &copy; 2026 TKW Project Team. All Rights Reserved.
-</footer>
+<script>
+    const links = document.querySelectorAll('.sidebar-link');
+    const sections = document.querySelectorAll('section[id]');
+    const redSections = ['s5','s7'];
 
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                links.forEach(link => {
+                    link.classList.remove('active-green','active-red');
+                    if (link.getAttribute('href') === '#' + id) {
+                        link.classList.add(redSections.includes(id) ? 'active-red' : 'active-green');
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.2 });
+
+    sections.forEach(s => observer.observe(s));
+</script>
 </body>
 </html>
