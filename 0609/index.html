@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKW会議：2026年6月9日</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+            background-color: #ffffff;
+            color: #1f2937;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .layout { display: flex; min-height: 100vh; }
+
+        /* ── Sidebar ── */
+        .sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            background-color: #f9fafb;
+            border-right: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem 0 3rem 0;
+        }
+        .sidebar-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .sidebar-links { display: flex; flex-direction: column; }
+        .sidebar-link {
+            display: block;
+            padding: 0.45rem 1.5rem;
+            font-size: 0.8rem;
+            color: #6b7280;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            margin: 0.1rem 0.5rem;
+            transition: background 0.18s, color 0.18s;
+        }
+        .sidebar-link:hover { background-color: #e5e7eb; color: #111827; }
+        .sidebar-link.active-green { background-color: #ecfdf5; color: #065f46; font-weight: 700; }
+        .sidebar-link.active-red { background-color: #fef2f2; color: #991b1b; font-weight: 700; }
+
+        .sidebar-card {
+            margin: 1.5rem 1rem 0 1rem;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            font-size: 0.75rem;
+            color: #6b7280;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+        .sidebar-card-title { font-weight: 700; color: #1f2937; font-size: 0.85rem; margin-bottom: 0.6rem; }
+        .sidebar-card-row { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
+        .sidebar-card-row span:last-child { font-weight: 700; color: #1f2937; }
+        .sidebar-card-row .status { color: #065f46; }
+
+        /* ── Main ── */
+        .main {
+            flex: 1;
+            padding: 0 4rem 4rem 4rem;
+            background: #ffffff;
+            min-width: 0;
+        }
+
+        /* ── Header ── */
+        .page-header {
+            padding: 3.5rem 0 2.5rem 0;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            background: #f3f4f6;
+            color: #4b5563;
+            margin-bottom: 1rem;
+            letter-spacing: 0.04em;
+        }
+        .page-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #111827;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+        .page-subtitle { color: #6b7280; font-size: 1rem; font-weight: 500; }
+        .page-desc { margin-top: 1.25rem; color: #6b7280; font-size: 0.88rem; line-height: 1.7; }
+
+        /* ── Section card ── */
+        .section-card {
+            background: #ffffff;
+            border-radius: 1rem;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            padding: 2.5rem;
+            transition: box-shadow 0.25s, border-color 0.25s;
+        }
+        .section-card:hover { box-shadow: 0 10px 20px -3px rgba(0,0,0,0.09); border-color: #10b981; }
+        .section-card.green-card { background-color: #ecfdf5; border: 2px solid #10b981; }
+        .section-card.red-card { background-color: #fff5f5; border: 1px solid #fecaca; }
+
+        /* ── Section heading ── */
+        .section-head { display: flex; align-items: center; margin-bottom: 1.75rem; }
+        .section-bar { width: 6px; height: 2rem; border-radius: 9999px; margin-right: 1rem; flex-shrink: 0; }
+        .bar-green { background: #059669; }
+        .bar-red { background: #dc2626; }
+        .bar-blue { background: #2563eb; }
+        .section-title { font-size: 1.35rem; font-weight: 700; color: #111827; }
+        .section-title.red { color: #dc2626; }
+        .section-title.blue { color: #1d4ed8; }
+
+        .section-intro { color: #6b7280; margin-bottom: 1.5rem; line-height: 1.8; }
+
+        .sub-heading { font-size: 1rem; font-weight: 700; color: #1f2937; margin: 1.75rem 0 0.75rem 0; }
+
+        /* ── Lists ── */
+        ul.dot-list { list-style: disc; padding-left: 1.5rem; color: #4b5563; }
+        ul.dot-list li { margin-bottom: 0.6rem; line-height: 1.75; }
+        ul.dot-list li::marker { color: #10b981; }
+        ul.dot-list.red-markers li::marker { color: #ef4444; }
+        ul.dot-list li strong { color: #111827; }
+
+        /* ── Boxes ── */
+        .box-green {
+            border-left: 4px solid #10b981;
+            background: #f9fafb;
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        .box-green .box-label { font-size: 0.8rem; font-weight: 700; color: #065f46; margin-bottom: 0.5rem; }
+
+        .box-red {
+            border-left: 4px solid #ef4444;
+            background: #fef2f2;
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        .box-red .box-label { font-size: 0.8rem; font-weight: 700; color: #991b1b; margin-bottom: 0.5rem; }
+        .box-red ul.dot-list li::marker { color: #ef4444; }
+
+        .box-blue {
+            border-left: 4px solid #2563eb;
+            background: #eff6ff;
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        .box-blue .box-label { font-size: 0.8rem; font-weight: 700; color: #1d4ed8; margin-bottom: 0.5rem; }
+        .box-blue ul.dot-list li::marker { color: #2563eb; }
+
+        /* ── 前回比較 ── */
+        .compare-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.25rem 0;
+        }
+        .compare-prev, .compare-now {
+            padding: 1rem 1.25rem;
+            border-radius: 0.5rem;
+            font-size: 0.88rem;
+        }
+        .compare-prev {
+            background: #f3f4f6;
+            border: 1px solid #e5e7eb;
+        }
+        .compare-now {
+            background: #ecfdf5;
+            border: 1px solid #10b981;
+        }
+        .compare-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+        .compare-prev .compare-label { color: #6b7280; }
+        .compare-now .compare-label { color: #065f46; }
+        .compare-value { font-size: 1.5rem; font-weight: 800; color: #111827; }
+        .compare-detail { font-size: 0.8rem; color: #6b7280; margin-top: 0.25rem; }
+        .compare-now .compare-value { color: #059669; }
+
+        /* ── TODO table ── */
+        .todo-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+        .todo-table thead th {
+            background: #f9fafb;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 700;
+            color: #374151;
+            border-bottom: 1px solid #e5e7eb;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+        .todo-table tbody td { padding: 0.75rem 1rem; border-bottom: 1px solid #f3f4f6; color: #4b5563; }
+        .todo-table tbody tr:hover { background: #f9fafb; }
+        .todo-table tbody tr.urgent { background: #fff5f5; }
+        .todo-table tbody tr.urgent td { color: #991b1b; }
+        .todo-table .deadline { white-space: nowrap; }
+        .todo-table .deadline.red { color: #dc2626; font-weight: 700; }
+
+        /* ── Footer ── */
+        .page-footer {
+            margin-top: 4rem;
+            padding: 2.5rem 0;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* ── Mobile ── */
+        @media (max-width: 768px) {
+            .layout { flex-direction: column; }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid #e5e7eb;
+                padding: 1.25rem 0 1rem 0;
+            }
+            .sidebar-card { display: none; }
+            .main { padding: 0 1.25rem 3rem 1.25rem; }
+            .page-header { padding: 2rem 0 1.5rem 0; }
+            .page-title { font-size: 1.5rem; }
+            .section-card { padding: 1.5rem; }
+            .sidebar-links { flex-direction: row; flex-wrap: wrap; padding: 0 0.75rem; gap: 0.25rem; }
+            .sidebar-link { margin: 0; padding: 0.3rem 0.7rem; font-size: 0.72rem; }
+            .sidebar-label { padding: 0 1rem; }
+            .compare-box { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <p class="sidebar-label">INDEX / 目次</p>
+        <div class="sidebar-links">
+            <a href="#s1" class="sidebar-link">1. MIDプレゼン　最終調整</a>
+            <a href="#s2" class="sidebar-link">2. OB関連　請求書不備と対応</a>
+            <a href="#s3" class="sidebar-link">3. ボーネルンド　オービック集計不整合</a>
+            <a href="#s4" class="sidebar-link">4. ボーネルンド　スマレジ店舗連携</a>
+            <a href="#s5" class="sidebar-link">5. LINE広告　新環境移行と商品開発</a>
+            <a href="#s6" class="sidebar-link">6. 瑞鳳　BIツール戦略</a>
+            <a href="#s7" class="sidebar-link">7. 全社戦略と来期の展望</a>
+            <a href="#s8" class="sidebar-link">8. アクションアイテム（TODO）</a>
+        </div>
+
+        <div class="sidebar-card">
+            <p class="sidebar-card-title">会議情報</p>
+            <div class="sidebar-card-row"><span>会議名:</span><span>TKW会議</span></div>
+            <div class="sidebar-card-row"><span>日時:</span><span>2026年6月9日</span></div>
+            <div class="sidebar-card-row"><span>形式:</span><span>原文保存版</span></div>
+            <div class="sidebar-card-row"><span>状態:</span><span class="status">チェック完了</span></div>
+        </div>
+    </aside>
+
+    <!-- Main -->
+    <div class="main">
+        <header class="page-header">
+            <span class="badge">MEETING MINUTES</span>
+            <h1 class="page-title">TKW会議：2026年6月9日</h1>
+            <p class="page-subtitle">MIDプレゼン / ボーネルンド / LINE広告新環境移行 / 瑞鳳BIツール / 全社戦略　詳細記録</p>
+            <p class="page-desc">発言のニュアンスや背景、具体的な数字や生々しいやり取りを含めて「一言一句情報を減らさない」方針で作成した議事録です。</p>
+        </header>
+
+        <!-- 1 MIDプレゼン -->
+        <section id="s1" class="section-card green-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">第1章　MIDプレゼンに向けた最終調整</h2>
+            </div>
+            <p class="section-intro">今月中旬のプレゼン実施に向け、資料の最終チェックが完了し、先方への送付も済んでいる状況が報告された。</p>
+
+            <p class="sub-heading">1-1. 現状とスケジュール</p>
+            <ul class="dot-list">
+                <li>高氏による最終チェックが完了し、資料の提供も済んでいる。</li>
+                <li>最終的な打ち合わせの日程調整が進められており、<strong>今月中旬（6月半ば）</strong>に最終的なプレゼンを行う予定。</li>
+                <li>資料は既に送付済みで、現時点では<strong>三浦氏</strong>に対して単独で送られている。先方からは「内容を確認して連絡する」との回答を得ている。</li>
+            </ul>
+
+            <p class="sub-heading">1-2. プレゼンの主な内容</p>
+            <p style="color:#6b7280; font-size:0.88rem; margin-bottom:0.75rem;">以前に承認を得た内容をさらにシンプル化した構成となっており、以下の項目が提案の柱となっている。</p>
+            <ul class="dot-list">
+                <li><strong>クライアントの課題指摘：</strong>現状の課題点を明確に提示する。</li>
+                <li><strong>配信ツールの選定：</strong>ツールを<strong>「Liny（リニー）」と「レセップ」</strong>のどちらにするかについての協議を行う。</li>
+                <li><strong>データ可視化オプション：</strong>現在、データはあるものの活用できておらず、取得や分析に多大な時間を要しているという課題に対し、<strong>環境構築による自動化</strong>を改めて提案する。</li>
+                <li><strong>サポートプランのオプション：</strong>定例会の実施、分析ダッシュボードの改築、および運用相談などをまとめた継続的なサポート体制を提案する。</li>
+            </ul>
+
+            <div class="box-green">
+                <p class="box-label">【今回のプレゼンの特徴】</p>
+                <ul class="dot-list">
+                    <li>単なるツール導入だけでなく、<strong>データの自動化や運用サポートまで含めた包括的な提案</strong>となっているのが特徴。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2 OB請求書 -->
+        <section id="s2" class="section-card red-card">
+            <div class="section-head">
+                <div class="section-bar bar-red"></div>
+                <h2 class="section-title red">第2章　OB関連　請求書不備と対応</h2>
+            </div>
+            <p class="section-intro">戸田ボートレース企業団への5月度請求書に不備があった件について、現状と対応策が報告された。</p>
+
+            <p class="sub-heading">2-1. 請求書不備の具体的内容</p>
+            <div class="box-red">
+                <p class="box-label">【不備の詳細】</p>
+                <ul class="dot-list">
+                    <li>今回のミスは計算違いではなく、単純な<strong>数値の打ち間違い（入力ミス）</strong>によるものだった。</li>
+                    <li>具体的には「3」を「9」と打ち間違えるといった、<strong>初歩的な桁のミス</strong>が発生した。</li>
+                    <li>請求書の提出自体は通常より早いタイミングで行われていたが、最終的な<strong>確認作業が不十分（おろそか）であったこと</strong>が原因とされている。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">2-2. 現在の対応状況と支払への影響</p>
+            <ul class="dot-list">
+                <li>すでに<strong>経理側へ請求書の再発行を依頼済み</strong>。</li>
+                <li>この不備により先方での支払い処理が遅れるため、<strong>月末の支払いが遅延する</strong>との連絡を先方から受けている。</li>
+                <li>具体的な支払い日程については、再発行された請求書が先方に届き次第、明確にする予定。</li>
+            </ul>
+
+            <p class="sub-heading">2-3. 今後の改善に向けた姿勢</p>
+            <ul class="dot-list">
+                <li>担当者は「流れ作業でやったつもりはなかった」としつつも、チェック体制の甘さを真摯に受け止めている。</li>
+                <li>単純なミスであっても先方の担当者に多大な迷惑（やり直し作業など）をかけることを再認識し、<strong>今月の業務において徹底した確認を行い、信頼回復に努める</strong>としている。</li>
+            </ul>
+        </section>
+
+        <!-- 3 ボーネルンド オービック -->
+        <section id="s3" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">第3章　ボーネルンド　オービック用データの集計不整合</h2>
+            </div>
+            <p class="section-intro">有明店でのオービック連携機能の集計検証において、実数とシステム上の数値が一致しないケースが発生しており、開発ベンダーへの調査依頼が行われた。</p>
+
+            <p class="sub-heading">3-1. 不整合の現状</p>
+            <ul class="dot-list">
+                <li>現在、<strong>有明店</strong>にてオービック連携機能の集計検証を行っている。</li>
+                <li>実際の店舗での集計数（レジおよび予約システムから手動で集計した数）と、システムが自動生成したオービック用エクセルシートの<strong>「商品の数」が一致しない</strong>ケースが発生している。</li>
+                <li>金額ではなく<strong>個数の不一致</strong>であり、1個だけのズレもあれば、数行分明らかに数値が異なっているケースもある。全体的に、実数よりもシステム上の数字が多くなる<strong>「プラス側」に振れる傾向</strong>が見られる。</li>
+            </ul>
+
+            <p class="sub-heading">3-2. 具体的な事例と分析</p>
+            <div class="box-red">
+                <p class="box-label">【具体的なズレの事例】</p>
+                <ul class="dot-list">
+                    <li><strong>「当日パス」の例：</strong>店舗側の手動集計では「10件」であったのに対し、システムによる自動集計では「15件」と表示された。</li>
+                    <li>予約管理システム上で同じ条件（店舗・日・商品）で絞り込みを行うと正しく「10件」と表示されるため、<strong>「集計のロジック」そのものに問題がある可能性</strong>が高いと考えられている。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">推測される原因</p>
+            <ul class="dot-list">
+                <li>集計時に以前のデータや不要な数値を引きずっている（ゴミを拾っている）可能性。</li>
+                <li>スタッフが現場でアドリブ対応を行うような特殊な予約商品における、定義上の集計ミス。</li>
+            </ul>
+
+            <p class="sub-heading">3-3. 現在の対応状況</p>
+            <ul class="dot-list">
+                <li>一致していない箇所と、管理システム側で確認した数値の乖離をまとめ、開発ベンダー（リプロト）に調査を依頼した。</li>
+                <li>ベンダーからの回答待ちの状態であり、<strong>整合性が取れ次第、他の店舗（タテ）にもリリース</strong>し、本番環境での利用を開始する予定。</li>
+                <li>この不整合の解消が、システムの本番稼働に向けた最優先課題となっている。</li>
+            </ul>
+        </section>
+
+        <!-- 4 ボーネルンド スマレジ -->
+        <section id="s4" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">第4章　ボーネルンド　スマレジ店舗連携（フェーズ2）</h2>
+            </div>
+            <p class="section-intro">フェーズ2の導入に向けた仕様の確定や、多店舗展開時の運用フローについて具体的な協議が行われた。</p>
+
+            <p class="sub-heading">4-1. 仕様の訂正と進捗管理</p>
+            <ul class="dot-list">
+                <li>フェーズ2の仕様についてベンダー側（リプロト）に誤解があり、当初はフェーズ1と同様にバーコードを複数回読み取るフローが想定されていた。今回の打ち合わせで、<strong>「1つのバーコードで一括登録できる」</strong>仕様に正しく訂正された。</li>
+                <li>今後は要件の漏れや進捗を確認するため、担当者とエンジニアを含めた<strong>週1ペースの定例会議</strong>を実施する。</li>
+            </ul>
+
+            <p class="sub-heading">4-2. 店舗追加時のタスクとフロー</p>
+            <ul class="dot-list">
+                <li>リリース後の複数店舗追加タスクについて、基本的には<strong>クライアント側で完結できる</strong>状態となることが確認された。</li>
+                <li>スマレジで店舗を追加した際に発行される「店舗番号（店舗ID）」を、クライアントが<strong>予約システム側に入力・登録するだけ</strong>で連携が可能になる。</li>
+                <li>店舗が追加された際の自動通知機能はないため、システムで確認するか、クライアントからの連絡を待つ必要がある。</li>
+            </ul>
+
+            <p class="sub-heading">4-3. 費用と請求の管理</p>
+            <ul class="dot-list">
+                <li>システムとスマレジを連携させることで、<strong>1店舗あたり月額5,000円</strong>の追加費用が発生する。</li>
+                <li>店舗が追加された際に確実に請求を行うため、クライアント側の導入スケジュールを把握し、請求タイミングを管理することが重要視されている。</li>
+            </ul>
+
+            <p class="sub-heading">4-4. 入退場デバイスと運用の自動化（セミセルフ化）</p>
+            <ul class="dot-list">
+                <li>入退場処理を行うiPad等のデバイスについて、既存店舗で使っているスペックを推奨とすることが確認された。</li>
+                <li>1店舗につきデバイスをもう1台追加するかどうかが議論されている。スタッフが介在すれば1台でアプリを切り替えながらの運用も可能だが、<strong>「セミセルフ（顧客自身によるQR読み取り）」</strong>を実現し、スタッフの工数を削減するためには、入場専用のデバイスを設置する「2台体制」が望ましいとされている。</li>
+                <li>予算の問題はあるものの、長期的には「人手を介さない（無人化に近い）」状態を作ることでキャッシュポイントを増やすことが、今回のスマレジ導入の大きな目的の一つである。</li>
+            </ul>
+
+            <p class="sub-heading">4-5. 今後の展望</p>
+            <div class="box-green">
+                <p class="box-label">【将来構想】</p>
+                <ul class="dot-list">
+                    <li>今後は遊び場だけでなく、<strong>物販（ショップ）側のスマレジ連携</strong>も視野に入れ、売上データや分析の一元化を目指すストーリーを構築していく予定。これにより、クライアントのビジネス全体を把握し、より深いサポートを提供できる体制を整える。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 5 LINE広告 -->
+        <section id="s5" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">第5章　LINE広告　新環境移行と商品開発</h2>
+            </div>
+            <p class="section-intro">LINE Yahooプラットフォームへの移行が本格化し、自社の競争優位性を活かした案件獲得戦略が共有された。</p>
+
+            <!-- 前回比較 -->
+            <p class="sub-heading">売上実績　前回比較（5月実績）</p>
+            <div class="compare-box">
+                <div class="compare-prev">
+                    <p class="compare-label">前回報告　6月2日時点</p>
+                    <p class="compare-value">500万円超</p>
+                    <p class="compare-detail">過去最高件数・6月も好調スタートと報告</p>
+                </div>
+                <div class="compare-now">
+                    <p class="compare-label">今回報告　6月9日時点</p>
+                    <p class="compare-value">約500万円</p>
+                    <p class="compare-detail">6月は新規案件が好調。前週比56%増の勢いで推移中</p>
+                </div>
+            </div>
+
+            <p class="sub-heading">5-1. 移行の背景と現状</p>
+            <ul class="dot-list">
+                <li>現在、LINE Yahooプラットフォームへの新環境移行が進められており、すでに校舎（代理店側）を訪問して説明が実施された。</li>
+                <li>新環境では、これまで有効だった<strong>「LINEの友達ターゲティング」が利用できなくなる</strong>ことが大きな変更点として挙げられている。この理由や背景についても、クライアントの目的別に提案できるよう資料を整理し、理解を得ている状況。</li>
+            </ul>
+
+            <p class="sub-heading">5-2. 競争優位性と案件獲得の戦略</p>
+            <div class="box-green">
+                <p class="box-label">【自社の強み】</p>
+                <ul class="dot-list">
+                    <li>他の代理店が友達ターゲティングに依存している中で、自社は<strong>「広告識別子」を用いた配信</strong>を継続できる点が大きな強みとなる。</li>
+                    <li>友達ターゲティングが使えなくなることで、自社運用や他代理店でメリットが薄くなった案件（特にパチンコ店など）に対し、独自の優位性を説明することで<strong>案件を引き剥がし、獲得していく</strong>ポジティブな流れができている。</li>
+                </ul>
+            </div>
+
+            <ul class="dot-list">
+                <li>新環境への移行に伴い、<strong>「GPSによる競合店配信」「ビーコン配信」「休眠ユーザー再来店向け商品」</strong>の3つを柱とした商品整理が進められている。</li>
+                <li><strong>休眠ユーザー再来店商品：</strong>3ヶ月前の来店者リストと直近のリストの差分を抽出し、配信対象とするスキームを検討中。</li>
+            </ul>
+
+            <p class="sub-heading">5-3. 社内の移行作業スケジュール</p>
+            <ul class="dot-list">
+                <li>移行先のアカウント登録に必要な「運営会社リスト」を本日受領する予定となっており、<strong>明日から実作業に着手</strong>する計画。</li>
+                <li>今後の確認作業をスムーズにするため、これまでの担当（金子氏）から<strong>戸田氏に協力を仰ぎ、移行作業の段階から関与してもらう</strong>ことが検討されている。</li>
+                <li>中システムとの関連もあるため、時期を明確にした上で全社的なスケジュールを立てて移行を進める方針。</li>
+            </ul>
+
+            <p class="sub-heading">5-4. 関連システムの自動連携</p>
+            <ul class="dot-list">
+                <li><strong>BEACON自動連携システム：</strong>ビーコンの自動連携システムについては、現在<strong>仮構築が完了</strong>している。</li>
+                <li>共有された仕様書の矛盾点についてベンダーへ質問中であり、回答が得られ次第、<strong>今週中には稼働できる見込み</strong>。また、登録作業を簡略化するための環境構築も並行して行われている。</li>
+            </ul>
+        </section>
+
+        <!-- 6 瑞鳳 BIツール -->
+        <section id="s6" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-blue"></div>
+                <h2 class="section-title blue">第6章　瑞鳳　分析プラットフォーム（BIツール）戦略</h2>
+            </div>
+            <p class="section-intro">前回会議（6月2日）で検討されていたイエローフィンのAI機能活用が進化し、今回はオープンソースBIツール「Metabase」への移行という新たな方向性が浮上した。</p>
+
+            <p class="sub-heading">6-1. 現状の課題</p>
+            <ul class="dot-list">
+                <li>現在のYellowfinでは「インサイト機能（AI連携）」の活用が難しく、データベースの再整理が必要であることが判明した。</li>
+            </ul>
+
+            <p class="sub-heading">6-2. 新提案：Metabase移行</p>
+            <div class="box-blue">
+                <p class="box-label">【Metabase移行案の概要】</p>
+                <ul class="dot-list">
+                    <li>オープンソースの「<strong>Metabase</strong>」への移行を検討。</li>
+                    <li>AnthropicのAIを活用した<strong>従量課金制</strong>（想定単価：1問約2.48円）での構築を視野に入れる。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">6-3. 今後の判断軸と方針</p>
+            <ul class="dot-list">
+                <li>自由度が高いAI（Metabase）か、設計されたナレッジベース（Yellowfin）か、クライアントにとっての「必要十分」を見極めることが判断の軸となる。</li>
+                <li><strong>9月の更新期限</strong>、補助金の兼ね合いも考慮しつつ、まずは現状のインサイト機能を<strong>夏までに動かすことを最優先</strong>とする。</li>
+            </ul>
+        </section>
+
+        <!-- 7 全社戦略 -->
+        <section id="s7" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">第7章　全社戦略と来期の展望</h2>
+            </div>
+            <p class="section-intro">事業ドメインの3領域整理と、パートナー企業の新規開拓・深耕戦略について方針が共有された。</p>
+
+            <p class="sub-heading">7-1. 事業ドメインの整理</p>
+            <p style="color:#6b7280; font-size:0.88rem; margin-bottom:0.75rem;">以下の3領域で一気通貫のDX支援を定義する。</p>
+            <div class="box-green">
+                <p class="box-label">【3つの事業領域】</p>
+                <ul class="dot-list">
+                    <li><strong>広告事業：</strong>位置情報（ビーコン等）を強みにした集客支援（パチンコホール拡大）。</li>
+                    <li><strong>DX事業：</strong>会員管理・データ分析を通じた運営支援（ボーネルンド等の実績活用）。</li>
+                    <li><strong>SaaS事業：</strong>AIエージェント（SNS管理ツール等）による業務効率化。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">7-2. パートナー戦略</p>
+            <ul class="dot-list">
+                <li>特定の代理店への依存を減らし、自社商品を扱うパートナー企業（I-Co、スマイルタンク等）の新規開拓・深耕を強化する。</li>
+                <li><strong>年間2億円規模</strong>の取り扱いを目指す。</li>
+            </ul>
+
+            <p class="sub-heading">7-3. その他</p>
+            <ul class="dot-list">
+                <li><strong>トラブル対応：</strong>渋谷警察署への届出を実施済み。今週中に内容をまとめ、報告予定。</li>
+            </ul>
+        </section>
+
+        <!-- 8 TODO -->
+        <section id="s8" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">第8章　アクションアイテム（TODO）</h2>
+            </div>
+            <div style="overflow-x:auto;">
+                <table class="todo-table">
+                    <thead>
+                        <tr>
+                            <th>担当</th>
+                            <th>タスク内容</th>
+                            <th>期限 / 目安</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="urgent">
+                            <td>広告チーム</td>
+                            <td>LINE新環境移行：運営会社リスト受領後、アカウント登録作業着手</td>
+                            <td class="deadline red">明日から</td>
+                        </tr>
+                        <tr class="urgent">
+                            <td>担当者</td>
+                            <td>渋谷警察署届出の内容まとめ・報告</td>
+                            <td class="deadline red">今週中</td>
+                        </tr>
+                        <tr>
+                            <td>担当者</td>
+                            <td>BEACONビーコン自動連携システム：ベンダー回答後に本番稼働</td>
+                            <td class="deadline">今週中</td>
+                        </tr>
+                        <tr>
+                            <td>担当者</td>
+                            <td>オービック集計不整合：リプロトからの回答確認・他店舗リリース判断</td>
+                            <td class="deadline">回答次第</td>
+                        </tr>
+                        <tr>
+                            <td>担当者</td>
+                            <td>スマレジ フェーズ2：週1定例会議の開始・仕様確定</td>
+                            <td class="deadline">次回MTGから</td>
+                        </tr>
+                        <tr>
+                            <td>高氏</td>
+                            <td>MIDプレゼン：最終日程調整・今月中旬実施</td>
+                            <td class="deadline">6月中旬</td>
+                        </tr>
+                        <tr>
+                            <td>担当者</td>
+                            <td>瑞鳳BIツール：Yellowfinインサイト機能を夏までに稼働・Metabase移行判断</td>
+                            <td class="deadline">夏まで／9月更新期限</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="box-green" style="margin-top:1.5rem;">
+                <p class="box-label">【次回確認事項】</p>
+                <ul class="dot-list">
+                    <li>オービック集計不整合の原因回答（リプロト）</li>
+                    <li>LINE新環境移行の作業進捗</li>
+                    <li>BIツール移行の具体的な工数とスケジュールの再提示</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="page-footer">
+            <p>&copy; 2026 TKW Project Team. All Rights Reserved.</p>
+        </footer>
+    </div>
+</div>
+
+<script>
+    const links = document.querySelectorAll('.sidebar-link');
+    const sections = document.querySelectorAll('section[id]');
+    const redSections = ['s2'];
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                links.forEach(link => {
+                    link.classList.remove('active-green','active-red');
+                    if (link.getAttribute('href') === '#' + id) {
+                        link.classList.add(redSections.includes(id) ? 'active-red' : 'active-green');
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.2 });
+
+    sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
