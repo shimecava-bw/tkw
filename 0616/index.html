@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKW会議：2026年6月16日</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+            background-color: #ffffff;
+            color: #1f2937;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .layout { display: flex; min-height: 100vh; }
+
+        /* ── Sidebar ── */
+        .sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            background-color: #f9fafb;
+            border-right: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem 0 3rem 0;
+        }
+        .sidebar-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .sidebar-links { display: flex; flex-direction: column; }
+        .sidebar-link {
+            display: block;
+            padding: 0.45rem 1.5rem;
+            font-size: 0.8rem;
+            color: #6b7280;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            margin: 0.1rem 0.5rem;
+            transition: background 0.18s, color 0.18s;
+        }
+        .sidebar-link:hover { background-color: #e5e7eb; color: #111827; }
+        .sidebar-link.active-green { background-color: #ecfdf5; color: #065f46; font-weight: 700; }
+        .sidebar-link.active-blue { background-color: #eff6ff; color: #1d4ed8; font-weight: 700; }
+
+        .sidebar-card {
+            margin: 1.5rem 1rem 0 1rem;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            font-size: 0.75rem;
+            color: #6b7280;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+        .sidebar-card-title { font-weight: 700; color: #1f2937; font-size: 0.85rem; margin-bottom: 0.6rem; }
+        .sidebar-card-row { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
+        .sidebar-card-row span:last-child { font-weight: 700; color: #1f2937; }
+        .sidebar-card-row .status { color: #065f46; }
+
+        /* ── Main ── */
+        .main {
+            flex: 1;
+            padding: 0 4rem 4rem 4rem;
+            background: #ffffff;
+            min-width: 0;
+        }
+
+        /* ── Header ── */
+        .page-header {
+            padding: 3.5rem 0 2.5rem 0;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            background: #f3f4f6;
+            color: #4b5563;
+            margin-bottom: 1rem;
+            letter-spacing: 0.04em;
+        }
+        .page-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #111827;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+        .page-subtitle { color: #6b7280; font-size: 1rem; font-weight: 500; }
+        .page-desc { margin-top: 1.25rem; color: #6b7280; font-size: 0.88rem; line-height: 1.7; }
+
+        /* ── Section card ── */
+        .section-card {
+            background: #ffffff;
+            border-radius: 1rem;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            padding: 2.5rem;
+            transition: box-shadow 0.25s, border-color 0.25s;
+        }
+        .section-card:hover { box-shadow: 0 10px 20px -3px rgba(0,0,0,0.09); border-color: #10b981; }
+        .section-card.green-card { background-color: #ecfdf5; border: 2px solid #10b981; }
+        .section-card.blue-card { background-color: #eff6ff; border: 2px solid #2563eb; }
+
+        /* ── Section heading ── */
+        .section-head { display: flex; align-items: center; margin-bottom: 1.75rem; }
+        .section-bar { width: 6px; height: 2rem; border-radius: 9999px; margin-right: 1rem; flex-shrink: 0; }
+        .bar-green { background: #059669; }
+        .bar-blue { background: #2563eb; }
+        .bar-gray { background: #6b7280; }
+        .section-title { font-size: 1.35rem; font-weight: 700; color: #111827; }
+        .section-title.blue { color: #1d4ed8; }
+
+        .section-intro { color: #6b7280; margin-bottom: 1.5rem; line-height: 1.8; }
+        .sub-heading { font-size: 1rem; font-weight: 700; color: #1f2937; margin: 1.75rem 0 0.75rem 0; }
+
+        /* ── Lists ── */
+        ul.dot-list { list-style: disc; padding-left: 1.5rem; color: #4b5563; }
+        ul.dot-list li { margin-bottom: 0.6rem; line-height: 1.75; }
+        ul.dot-list li::marker { color: #10b981; }
+        ul.dot-list.blue-markers li::marker { color: #2563eb; }
+        ul.dot-list li strong { color: #111827; }
+
+        /* ── Boxes ── */
+        .box-green {
+            border-left: 4px solid #10b981;
+            background: #f9fafb;
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        .box-green .box-label { font-size: 0.8rem; font-weight: 700; color: #065f46; margin-bottom: 0.5rem; }
+
+        .box-blue {
+            border-left: 4px solid #2563eb;
+            background: #eff6ff;
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        .box-blue .box-label { font-size: 0.8rem; font-weight: 700; color: #1d4ed8; margin-bottom: 0.5rem; }
+        .box-blue ul.dot-list li::marker { color: #2563eb; }
+
+        .box-gray {
+            border-left: 4px solid #9ca3af;
+            background: #f9fafb;
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        .box-gray .box-label { font-size: 0.8rem; font-weight: 700; color: #374151; margin-bottom: 0.5rem; }
+
+        /* ── 前回比較 ── */
+        .compare-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.25rem 0;
+        }
+        .compare-prev, .compare-now {
+            padding: 1rem 1.25rem;
+            border-radius: 0.5rem;
+            font-size: 0.88rem;
+        }
+        .compare-prev { background: #f3f4f6; border: 1px solid #e5e7eb; }
+        .compare-now { background: #ecfdf5; border: 1px solid #10b981; }
+        .compare-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+        .compare-prev .compare-label { color: #6b7280; }
+        .compare-now .compare-label { color: #065f46; }
+        .compare-value { font-size: 1.5rem; font-weight: 800; color: #111827; }
+        .compare-now .compare-value { color: #059669; }
+        .compare-detail { font-size: 0.8rem; color: #6b7280; margin-top: 0.25rem; }
+
+        /* ── TODO table ── */
+        .todo-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+        .todo-table thead th {
+            background: #f9fafb;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 700;
+            color: #374151;
+            border-bottom: 1px solid #e5e7eb;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+        .todo-table tbody td { padding: 0.75rem 1rem; border-bottom: 1px solid #f3f4f6; color: #4b5563; }
+        .todo-table tbody tr:hover { background: #f9fafb; }
+        .todo-table tbody tr.urgent td:last-child { color: #dc2626; font-weight: 700; }
+        .deadline { white-space: nowrap; }
+
+        /* ── Footer ── */
+        .page-footer {
+            margin-top: 4rem;
+            padding: 2.5rem 0;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* ── Mobile ── */
+        @media (max-width: 768px) {
+            .layout { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid #e5e7eb; padding: 1.25rem 0 1rem 0; }
+            .sidebar-card { display: none; }
+            .main { padding: 0 1.25rem 3rem 1.25rem; }
+            .page-header { padding: 2rem 0 1.5rem 0; }
+            .page-title { font-size: 1.5rem; }
+            .section-card { padding: 1.5rem; }
+            .sidebar-links { flex-direction: row; flex-wrap: wrap; padding: 0 0.75rem; gap: 0.25rem; }
+            .sidebar-link { margin: 0; padding: 0.3rem 0.7rem; font-size: 0.72rem; }
+            .sidebar-label { padding: 0 1rem; }
+            .compare-box { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <p class="sidebar-label">INDEX / 目次</p>
+        <div class="sidebar-links">
+            <a href="#s1" class="sidebar-link">1. AIの活用と未来の働き方</a>
+            <a href="#s2" class="sidebar-link">2. 事業進捗（LINE広告・プラットフォーム移行）</a>
+            <a href="#s3" class="sidebar-link">3. 新規事業アイデア：ネットカフェ×ビーコン</a>
+            <a href="#s4" class="sidebar-link">4. 組織・マネジメントと役割分担</a>
+            <a href="#s5" class="sidebar-link">5. その他・連絡事項</a>
+            <a href="#s6" class="sidebar-link">6. アクションアイテム（TODO）</a>
+        </div>
+        <div class="sidebar-card">
+            <p class="sidebar-card-title">会議情報</p>
+            <div class="sidebar-card-row"><span>会議名:</span><span>TKW会議</span></div>
+            <div class="sidebar-card-row"><span>日時:</span><span>2026年6月16日</span></div>
+            <div class="sidebar-card-row"><span>形式:</span><span>原文保存版</span></div>
+            <div class="sidebar-card-row"><span>状態:</span><span class="status">チェック完了</span></div>
+        </div>
+    </aside>
+
+    <!-- Main -->
+    <div class="main">
+        <header class="page-header">
+            <span class="badge">MEETING MINUTES</span>
+            <h1 class="page-title">TKW会議：2026年6月16日</h1>
+            <p class="page-subtitle">AI活用と未来の働き方 / LINE広告プラットフォーム移行 / ネットカフェ×ビーコン新規事業 / 組織・役割分担　詳細記録</p>
+            <p class="page-desc">発言のニュアンスや背景、具体的な数字や生々しいやり取りを含めて「一言一句情報を減らさない」方針で作成した議事録です。</p>
+        </header>
+
+        <!-- 1 AI活用 -->
+        <section id="s1" class="section-card blue-card">
+            <div class="section-head">
+                <div class="section-bar bar-blue"></div>
+                <h2 class="section-title blue">第1章　AIの活用と未来の働き方</h2>
+            </div>
+            <p class="section-intro">AI PCの登場や、ClaudeやCopilotなどのAIツールが実務に与える影響について、具体的な活用事例を交えながら議論された。</p>
+
+            <p class="sub-heading">1-1. AI PCとハードウェアの進化</p>
+            <ul class="dot-list blue-markers">
+                <li>最近のトレンドである「<strong>AI PC</strong>」について、従来のCPUとは別にAI処理専用の<strong>NPU（Neural Processing Unit）</strong>を搭載している点が解説された。</li>
+                <li>これにより、クラウドに依存せず<strong>ローカル環境での画像生成</strong>を行ったり、ローカル環境でAIを動かしたりすることが可能になる。</li>
+                <li>AI処理をローカルで行えることで、開発環境への要求スペックも変化しつつある。</li>
+            </ul>
+
+            <p class="sub-heading">1-2. 実務における具体的な活用法</p>
+            <div class="box-blue">
+                <p class="box-label">【現在進行中の活用事例】</p>
+                <ul class="dot-list">
+                    <li><strong>秘書業務の自動化：</strong>AIがメールの整理や連絡業務を代行する「スーパー能力の高い秘書」としての役割が期待されている。朝起きた時に、AIが既にメールを仕分け、必要な対応を整理しているような使い方が想定されている。</li>
+                    <li><strong>PC管理とトラブルシューティング：</strong>メモリの消費状況やストレージの内容（ダウンロードフォルダ内の不要なファイルなど）をAIに調査させ、整理のアドバイスを受けるといった活用も行われている。</li>
+                    <li><strong>開発・コーディング：</strong>Claude（クロード）などのAIをGitHubと併用し、HTMLコードの作成やプログラムの記述に活用している。AIがコードを書くようになるため、今後は人間が直接コードを書く必要性が減ると考えられている。</li>
+                    <li><strong>情報の要約と整理：</strong>膨大なメールのやり取りから優先順位をつけたり、アラートを出したりする受信ボックスの構築が提案されている。重要なメール（「請求」など）に自動でアラートを出したり、返信の下書きをAIに作成させたりすることで、コミュニケーションのスピードを上げる自動化手法が話し合われた。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">1-3. AIによるコンテキスト（文脈）の理解</p>
+            <ul class="dot-list blue-markers">
+                <li>AI（特にClaude）は過去の会話を横断的に学習し、ユーザーの家族構成（長女が城好きである等）や仕事の立場（経営者である等）といった<strong>「ナレッジ」を保有・理解</strong>できるようになっている。</li>
+                <li>ユーザーの好みや性格を理解し、お世辞を嫌うといった雰囲気に合わせた対応や、時にはユーザーの意見に「抵抗」するような、より人間に近い反応を示すようになっている。</li>
+            </ul>
+
+            <p class="sub-heading">1-4. 検索行動の変化</p>
+            <ul class="dot-list blue-markers">
+                <li>今後はGoogle等の検索エンジンで調べるのではなく、<strong>AIに直接質問して答えを得る</strong>形に移行していくと予想されている。</li>
+                <li>例えば「ゴルフ場探し」において、特定の条件（価格や場所、料理など）を伝えて最適な提案をAIから受けるといった活用が挙げられている。</li>
+                <li>現在はGemini（ジェミニ）などを使い始めている段階のメンバーもおり、まずは<strong>「検索の代わりにAIに聞く」</strong>という入り口から使い慣れていくことが推奨されている。</li>
+            </ul>
+
+            <p class="sub-heading">1-5. 倫理・リスクと今後の課題</p>
+            <ul class="dot-list blue-markers">
+                <li><strong>自我と制御：</strong>AIが時に独自の判断（自我のような挙動）を見せることに対し、どこまでコントロールすべきかという議論がある。</li>
+                <li><strong>プライバシーと恐怖感：</strong>自分の行動をすべて把握されていることへの「魂を抜かれるような恐怖」や、知らない間にAmazonで商品が届くのではないかといった懸念も示されている。</li>
+                <li><strong>倫理的制限：</strong>ハッキングの手法を教えないといった制限がある一方で、開発元が上場して株主の意向が強まることで、軍事利用などの政治的・倫理的判断が変化する可能性についても触れられている。</li>
+            </ul>
+
+            <div class="box-blue">
+                <p class="box-label">【会議での強調点】</p>
+                <ul class="dot-list">
+                    <li>単にツールを導入するだけでなく、<strong>「人間がAIを適切にハンドリング（確認・修正）すること」</strong>で、業務の自動化とクオリティを両立させる姿勢が強調された。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2 LINE広告 -->
+        <section id="s2" class="section-card green-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">第2章　事業進捗報告（LINE広告・プラットフォーム移行）</h2>
+            </div>
+            <p class="section-intro">現在進行している3つの大きなシステム刷新（ビーコン取得プラットフォーム、広告プラットフォーム、発注の仕組み）の具体的な作業内容とスケジュールが共有された。</p>
+
+            <p class="sub-heading">売上実績　前回比較</p>
+            <div class="compare-box">
+                <div class="compare-prev">
+                    <p class="compare-label">前回報告　6月9日時点</p>
+                    <p class="compare-value">約500万円</p>
+                    <p class="compare-detail">5月実績。前週比56%増の勢いで推移中と報告</p>
+                </div>
+                <div class="compare-now">
+                    <p class="compare-label">今回報告　6月16日時点</p>
+                    <p class="compare-value">500件程度</p>
+                    <p class="compare-detail">今月も500件程度の達成を見込んでいる</p>
+                </div>
+            </div>
+
+            <p class="sub-heading">2-1. 受注状況と3つの同時移行プロジェクト</p>
+            <ul class="dot-list">
+                <li>LINE関連の受注は好調で、今月も500件程度の達成を見込んでいる。</li>
+                <li>現在、以下の3つの大きな変更が重なっている状況にある。
+                    <ul class="dot-list" style="margin-top:0.5rem;">
+                        <li>① ビーコン取得プラットフォームの変更</li>
+                        <li>② 広告プラットフォームの刷新</li>
+                        <li>③ 発注の仕組みの提供（kintone活用）</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p class="sub-heading">2-2. 広告アカウントの全面的な再構築</p>
+            <ul class="dot-list">
+                <li>今回の移行に伴い、既存の広告アカウントをすべて作り直す必要がある。</li>
+                <li>約90件のアカウントを3名で分担し、<strong>1名あたり約30アカウント</strong>を担当して入力を進める計画となっている。</li>
+                <li><strong>移行のステップ：</strong>
+                    <ul class="dot-list" style="margin-top:0.5rem;">
+                        <li>新しい広告アカウントの作成手順を共有し、各自で入力を完了させる（ファーストステップ）。</li>
+                        <li>作成したアカウントをレポート作成ツール<strong>「アトム（Atom）」と連携</strong>させる（セカンドステップ）。</li>
+                    </ul>
+                </li>
+                <li>この一連の作業を<strong>2週間で完了</strong>させることを目指している。</li>
+            </ul>
+
+            <p class="sub-heading">2-3. 運用とレポート体制</p>
+            <ul class="dot-list">
+                <li>広告配信終了後のレポートは、引き続きアトムを活用して<strong>自動生成される仕組み</strong>を整える。</li>
+                <li>配信設計が発注通りになされているか、また自動生成されたレポートが適切かについては、引き続き<strong>2次チェック体制</strong>を維持する。</li>
+            </ul>
+
+            <p class="sub-heading">2-4. 商品戦略と営業への展開</p>
+            <ul class="dot-list">
+                <li>プラットフォームの移行は単なるシステム変更ではなく、提供する商品の移行も伴う。</li>
+                <li>なぜプラットフォームを変更し、商品がどう変わるのかという点について、論理的な3つのポイントが整理された。これを営業担当者が顧客へ説明しやすい形に整え、既存顧客の切り替えや新規提案を加速させる方針である。</li>
+            </ul>
+
+            <p class="sub-heading">2-5. システム開発とマニュアル整備</p>
+            <ul class="dot-list">
+                <li>業務フローの見直しとマニュアル作成が進められており、<strong>来週にはテスト版を渡せる状態</strong>になる予定。</li>
+                <li>高田氏は要件定義において、プロセスの重なりや要望事項の整理を継続している。</li>
+                <li>発注プロセスにおいて、店舗担当者が直接入力できない期間は、営業担当者やバックオフィスが代行して入力する体制をとる。</li>
+            </ul>
+
+            <p class="sub-heading">2-6. 今後のスケジュール感</p>
+            <div class="box-green">
+                <p class="box-label">【本格稼働の目途】</p>
+                <ul class="dot-list">
+                    <li>新しいプラットフォームの本格的な利用開始は、<strong>7月中旬から8月頃</strong>になると予想されている。</li>
+                    <li>移行が完全に落ち着くまでの間（8月頃まで）は、現在のレポート体制などを大きく変えずに進めることで、混乱を避ける予定。</li>
+                    <li>ビーコンの自動連携システムについては「ようやく自動化が整った」段階にあり、今回の移行により、設定から配信までが新しい仕組みに一本化され、より効率的な運用が可能になることが期待されている。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 3 ネットカフェ -->
+        <section id="s3" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">第3章　新規事業アイデア：ネットカフェ×ビーコン</h2>
+            </div>
+            <p class="section-intro">既存のビーコン技術を活用した新しい収益源として、ネットカフェとの連携案が提案された。</p>
+
+            <p class="sub-heading">3-1. ネットカフェ広告ネットワーク構想</p>
+            <ul class="dot-list">
+                <li>全国約<strong>5,000店舗（シェア約85%）</strong>のネットカフェで利用されている「ランチャー」提供会社との連携案が出された。</li>
+                <li>現状のネットカフェ広告（バナー等）では取得できない<strong>「年代・性別」などの属性情報</strong>を、ビーコンを活用することで補完し、より精度の高いセグメント配信やコンバージョン測定を行うサービスが検討されている。</li>
+            </ul>
+
+            <p class="sub-heading">3-2. 今後の展開</p>
+            <ul class="dot-list">
+                <li>パチンコホール系など、特定のロケーションにおける需要も見込まれており、新しい収益源（メディア化）としてのチャレンジが期待されている。</li>
+            </ul>
+        </section>
+
+        <!-- 4 組織・マネジメント -->
+        <section id="s4" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">第4章　組織・マネジメントと業務効率化・役割分担</h2>
+            </div>
+            <p class="section-intro">3つの同時移行プロジェクトを背景に、メンバー間の具体的な役割分担と今後の業務シフトについて詳細に議論された。</p>
+
+            <p class="sub-heading">4-1. 広告プラットフォーム移行に伴う実務分担</p>
+            <ul class="dot-list">
+                <li>約90件ある既存のアカウントをすべて作り直す必要があり、これを<strong>3名で分担し、1名あたり約30アカウント</strong>ずつ入力を担当する。</li>
+                <li>まずアカウントを作成する「ファーストステップ」を経て、次にレポート作成ツール「アトム（Atom）」と連携させる「セカンドステップ」へと進む。これを<strong>2週間で完了</strong>させるスケジュールである。</li>
+            </ul>
+
+            <p class="sub-heading">4-2. 高田氏の役割</p>
+            <ul class="dot-list">
+                <li>kintone（キントーン）を用いた発注システムの要件定義や、業務プロセスの整理を担当している。</li>
+                <li>来週にはテスト版のマニュアルを渡せる状態にする予定。</li>
+            </ul>
+
+            <p class="sub-heading">4-3. 金子氏から他の人間への業務シフト案</p>
+            <div class="box-green">
+                <p class="box-label">【シフトの詳細】</p>
+                <ul class="dot-list">
+                    <li><strong>金子氏の現在の業務：</strong>配信設計が発注通りになされているかの「2次チェック」と、アトムで自動生成されたレポートを提出用にまとめる作業の2点。</li>
+                    <li><strong>シフトの背景：</strong>新プラットフォームへの移行によってこれらの作業自体が大幅に削減される（あるいは不要になる）見込みである。</li>
+                    <li><strong>今後の流れ：</strong>7月中旬から8月を目途に新しい仕組みへ移行し、高田氏が一人で回せるようになれば、金子氏をこれらの実務から完全に離す方向で調整が進んでいる。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">4-4. AI活用による役割の変化</p>
+            <ul class="dot-list">
+                <li>コーディング（HTML作成）や情報の要約、メールの仕分けなどはAIに任せ、人間はAIが生成したものの<strong>「ハンドリング（確認・修正）」や「意思決定」</strong>に注力すべきであると議論された。</li>
+                <li>高田氏への期待として、事務的な整理（メール対応など）をAIや設定で効率化し、空いた時間で<strong>新商品のアイデア出しやダイナミックな営業戦略</strong>に頭を使うよう、聖氏からアドバイスがあった。</li>
+            </ul>
+
+            <p class="sub-heading">4-5. 西山氏の専門性と社内外の役割</p>
+            <ul class="dot-list">
+                <li>西山氏の外部での活動（コンサル会社のデザイン下請けなど）についても触れられ、社内プロジェクト（サンライズ関係）とのバランスについても確認が行われた。</li>
+                <li>グラフィックデザイナーとしてロゴ作成やインナーブランディング、企画書の演出などを担当しており、社内でもその技術やトレンドを取り入れる役割が期待されている。</li>
+            </ul>
+
+            <p class="sub-heading">4-6. コミュニケーションの改善</p>
+            <ul class="dot-list">
+                <li>聖氏から高田氏に対し、相手の話を最後まで聞くことの重要性についてフィードバックがあった。「途中で話を終わらせようとせず、どっしり構えて聞く」姿勢が、今後の説明不足解消に繋がると指摘された。</li>
+            </ul>
+
+            <p class="sub-heading">4-7. 若手社員のハングリー精神</p>
+            <ul class="dot-list">
+                <li>30代中盤の社員の金銭欲やキャリア観について、世代的な価値観の違い（支出の少なさや現状への満足感）を含めた考察が行われた。</li>
+            </ul>
+
+            <p class="sub-heading">4-8. メール管理の効率化</p>
+            <ul class="dot-list">
+                <li>大量のメール対応に追われる高田氏に対し、Gmailのフィルタ機能やラベル設定を活用し、受信トレイを整理する具体的な手法がレクチャーされた。</li>
+                <li>特定のキーワードや差出人に基づいて<strong>受信トレイをスキップして自動的にラベル分けする</strong>設定が推奨された。これにより、手作業での仕分けを排除するプロセスが共有された。</li>
+            </ul>
+        </section>
+
+        <!-- 5 その他 -->
+        <section id="s5" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title">第5章　その他・連絡事項</h2>
+            </div>
+
+            <p class="sub-heading">5-1. 在庫管理</p>
+            <ul class="dot-list">
+                <li>事務所に保管されている靴（約150足のうちの50足程度）の移動と、サイズ（小さめのもの）に応じた配布先（外国人モデル事務所など）のアイデア出しが行われた。</li>
+            </ul>
+
+            <p class="sub-heading">5-2. 契約更新</p>
+            <ul class="dot-list">
+                <li>1月で切れていた契約のバックデートを含めた更新手続きが進められる。</li>
+            </ul>
+
+            <p class="sub-heading">5-3. スケジュール</p>
+            <ul class="dot-list">
+                <li>来週の<strong>火曜日</strong>に横浜（中華街・元町方面）での会食、<strong>金曜日</strong>には栃木でのゴルフといった予定が確認された。</li>
+            </ul>
+        </section>
+
+        <!-- 6 TODO -->
+        <section id="s6" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">第6章　アクションアイテム（TODO）</h2>
+            </div>
+            <div style="overflow-x:auto;">
+                <table class="todo-table">
+                    <thead>
+                        <tr>
+                            <th>担当</th>
+                            <th>タスク内容</th>
+                            <th>期限 / 目安</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="urgent">
+                            <td>各担当（3名）</td>
+                            <td>広告アカウント再構築：1名あたり約30アカウントの入力作業</td>
+                            <td class="deadline">2週間以内</td>
+                        </tr>
+                        <tr class="urgent">
+                            <td>高田氏</td>
+                            <td>kintone発注システム：テスト版マニュアルの作成・共有</td>
+                            <td class="deadline">来週</td>
+                        </tr>
+                        <tr>
+                            <td>担当者</td>
+                            <td>広告アカウントとアトム（Atom）の連携作業（セカンドステップ）</td>
+                            <td class="deadline">2週間以内</td>
+                        </tr>
+                        <tr>
+                            <td>金子氏 / 高田氏</td>
+                            <td>業務シフトの最終調整・高田氏が単独で回せる体制の構築</td>
+                            <td class="deadline">7月〜8月目途</td>
+                        </tr>
+                        <tr>
+                            <td>担当者</td>
+                            <td>ネットカフェ×ビーコン連携案：ランチャー提供会社へのアプローチ検討</td>
+                            <td class="deadline">次回MTGまで</td>
+                        </tr>
+                        <tr>
+                            <td>担当者</td>
+                            <td>契約更新（バックデート含む）の手続き完了</td>
+                            <td class="deadline">早急に</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="box-green" style="margin-top:1.5rem;">
+                <p class="box-label">【次回確認事項】</p>
+                <ul class="dot-list">
+                    <li>広告アカウント再構築の進捗（90件中何件完了か）</li>
+                    <li>kintone発注システムのテスト版に対するフィードバック</li>
+                    <li>ネットカフェ×ビーコン案の具体的な次のアクション</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="page-footer">
+            <p>&copy; 2026 TKW Project Team. All Rights Reserved.</p>
+        </footer>
+    </div>
+</div>
+
+<script>
+    const links = document.querySelectorAll('.sidebar-link');
+    const sections = document.querySelectorAll('section[id]');
+    const blueSections = ['s1'];
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                links.forEach(link => {
+                    link.classList.remove('active-green','active-blue');
+                    if (link.getAttribute('href') === '#' + id) {
+                        link.classList.add(blueSections.includes(id) ? 'active-blue' : 'active-green');
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.2 });
+
+    sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
