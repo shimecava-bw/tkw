@@ -1,124 +1,114 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>和カフェ 栞　プロジェクト資料</title>
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #f9fafb; font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif; }
-.header { background: #fff; padding: 40px 48px 36px; border-bottom: 0.5px solid #ddd; }
-.header h1 { font-size: 36px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; }
-.header p { font-size: 15px; color: #888; }
-.container { max-width: 860px; margin: 0 auto; padding: 48px 48px 80px; }
-.section-block { background: #fff; border-radius: 12px; padding: 28px 28px 32px; margin-bottom: 32px; }
-.section-head { font-size: 22px; font-weight: 700; color: #1a1a1a; padding-bottom: 10px; border-bottom: 3px solid #1D9E75; margin-bottom: 20px; display: inline-block; }
-.link-row { display: flex; gap: 12px; }
-.link-card { background: #fff; border: 0.5px solid #ddd; border-radius: 10px; padding: 16px 18px; flex: 1; text-decoration: none; display: block; }
-.link-card:hover { border-color: #aaa; }
-.link-card-label { display: inline-block; background: #1D9E75; color: #fff; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 99px; margin-bottom: 8px; letter-spacing: 0.05em; }
-.link-card-title { font-size: 16px; font-weight: 700; color: #1a1a1a; }
-.year-label { font-size: 14px; color: #aaa; margin-bottom: 14px; }
-.card { background: #fff; border: 0.5px solid #ddd; border-radius: 12px; padding: 22px 24px; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 24px; text-decoration: none; }
-.card:hover { border-color: #aaa; }
-.card.latest { background: #f0faf5; border: 2px solid #1D9E75; }
-.date-block { text-align: center; min-width: 52px; flex-shrink: 0; }
-.date-mon { font-size: 13px; font-weight: 700; color: #1D9E75; letter-spacing: 0.1em; }
-.date-day { font-size: 36px; font-weight: 700; color: #1D9E75; line-height: 1.1; }
-.card-body { flex: 1; }
-.card-title { font-size: 20px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px; }
-.card-desc { font-size: 14px; color: #888; margin-bottom: 12px; line-height: 1.6; }
-.tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.tag { font-size: 12px; padding: 3px 10px; border-radius: 99px; }
-.tag-g { background: #E1F5EE; color: #085041; }
-.tag-b { background: #E6F1FB; color: #0C447C; }
-.badge { font-size: 13px; font-weight: 700; background: #1D9E75; color: #fff; padding: 4px 14px; border-radius: 99px; flex-shrink: 0; align-self: center; }
-.arrow { color: #ccc; align-self: center; flex-shrink: 0; font-size: 20px; }
-footer { font-size: 12px; color: #bbb; letter-spacing: 0.08em; margin-top: 56px; }
-
-@media (max-width: 600px) {
-  .header { padding: 24px 20px 20px; }
-  .header h1 { font-size: 24px; }
-  .header p { font-size: 13px; }
-  .container { padding: 24px 16px 48px; }
-  .section-block { padding: 20px 16px 24px; }
-  .section-head { font-size: 18px; }
-  .link-row { flex-direction: column; gap: 8px; }
-  .link-card-title { font-size: 14px; }
-  .card { padding: 16px; gap: 14px; }
-  .card-title { font-size: 16px; }
-  .card-desc { font-size: 13px; }
-  .date-day { font-size: 28px; }
-  .date-mon { font-size: 11px; }
-  .badge { font-size: 11px; padding: 3px 10px; }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKW会議　議事録一覧</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif; background-color: #f9fafb; color: #1f2937; line-height: 1.8; min-height: 100vh; }
+        .site-header { background: #ffffff; border-bottom: 1px solid #e5e7eb; padding: 2rem 3rem; }
+        .site-header .badge { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 9999px; font-size: 0.72rem; font-weight: 700; background: #ecfdf5; color: #065f46; letter-spacing: 0.06em; margin-bottom: 0.6rem; }
+        .site-header h1 { font-size: 1.8rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; }
+        .site-header p { color: #6b7280; font-size: 0.88rem; margin-top: 0.3rem; }
+        .container { max-width: 860px; margin: 0 auto; padding: 2.5rem 2rem 5rem 2rem; }
+        .year-label { font-size: 0.72rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; padding-left: 0.25rem; }
+        .minutes-list { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2.5rem; }
+        .minutes-card { display: flex; align-items: center; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.875rem; padding: 1.25rem 1.5rem; text-decoration: none; color: inherit; transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s; gap: 1.25rem; }
+        .minutes-card:hover { box-shadow: 0 8px 20px -4px rgba(0,0,0,0.1); border-color: #10b981; transform: translateY(-1px); }
+        .minutes-card.latest { border: 2px solid #10b981; background: #ecfdf5; }
+        .card-date { flex-shrink: 0; width: 3.5rem; text-align: center; }
+        .card-date .month { font-size: 0.7rem; font-weight: 700; color: #10b981; text-transform: uppercase; }
+        .card-date .day { font-size: 1.75rem; font-weight: 800; color: #111827; line-height: 1; }
+        .card-divider { width: 1px; height: 2.5rem; background: #e5e7eb; flex-shrink: 0; }
+        .card-body { flex: 1; min-width: 0; }
+        .card-title { font-size: 0.95rem; font-weight: 700; color: #111827; }
+        .card-meta { font-size: 0.78rem; color: #6b7280; margin-top: 0.2rem; }
+        .card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+        .tag { font-size: 0.68rem; font-weight: 600; padding: 0.15rem 0.55rem; border-radius: 9999px; background: #f3f4f6; color: #4b5563; }
+        .tag.red { background: #fef2f2; color: #991b1b; }
+        .tag.green { background: #ecfdf5; color: #065f46; }
+        .tag.blue { background: #eff6ff; color: #1d4ed8; }
+        .card-arrow { flex-shrink: 0; color: #d1d5db; font-size: 1.1rem; transition: color 0.2s; }
+        .minutes-card:hover .card-arrow { color: #10b981; }
+        .latest-badge { flex-shrink: 0; font-size: 0.68rem; font-weight: 700; background: #10b981; color: #ffffff; padding: 0.2rem 0.6rem; border-radius: 9999px; letter-spacing: 0.04em; }
+        .empty-card { background: #ffffff; border: 1px dashed #d1d5db; border-radius: 0.875rem; padding: 1.75rem 1.5rem; display: flex; align-items: center; gap: 1.25rem; color: #9ca3af; }
+        .empty-card .empty-date { flex-shrink: 0; width: 3.5rem; text-align: center; }
+        .empty-card .empty-day { font-size: 1.75rem; font-weight: 800; color: #d1d5db; line-height: 1; }
+        .empty-card .empty-month { font-size: 0.7rem; font-weight: 700; color: #d1d5db; }
+        .empty-card .empty-text { font-size: 0.85rem; }
+        footer { text-align: center; font-size: 0.72rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; padding: 2rem 0; border-top: 1px solid #e5e7eb; margin-top: 2rem; }
+        @media (max-width: 600px) { .site-header { padding: 1.5rem 1.25rem; } .site-header h1 { font-size: 1.3rem; } .container { padding: 1.5rem 1rem 4rem 1rem; } .minutes-card { padding: 1rem 1.1rem; gap: 0.9rem; } .card-date .day { font-size: 1.4rem; } }
+    </style>
 </head>
 <body>
-
-<div class="header">
-  <h1>和カフェ 栞　プロジェクト資料</h1>
-  <p>資料タイトルをクリックして開いてください。</p>
-</div>
-
+<header class="site-header">
+    <span class="badge">MEETING MINUTES</span>
+    <h1>TKW会議　議事録一覧</h1>
+    <p>毎週の定例会議の記録です。タイトルをクリックして各議事録を開いてください。</p>
+</header>
 <div class="container">
-
-  <div class="section-block">
-    <p class="section-head">企画資料</p>
-    <div class="link-row">
-      <a href="design_concept/concept.html" class="link-card" target="_blank" rel="noopener">
-        <p class="link-card-label">CONCEPT</p>
-        <p class="link-card-title">デザインコンセプト →</p>
-      </a>
-      <a href="design_concept/image.html" class="link-card" target="_blank" rel="noopener">
-        <p class="link-card-label">FACADE</p>
-        <p class="link-card-title">ファサード →</p>
-      </a>
-      <a href="https://drive.google.com/drive/folders/1WshqfyOfcenWq-4DaDoeHfSPswjeYZ5K?usp=drive_link" class="link-card" target="_blank" rel="noopener">
-        <p class="link-card-label">DRIVE ↗</p>
-        <p class="link-card-title">その他資料</p>
-      </a>
-    </div>
-  </div>
-
-  <div class="section-block">
-    <p class="section-head">会議録</p>
     <p class="year-label">2026年</p>
+    <div class="minutes-list">
 
-    <a href="kaigi/0619.html" class="card latest" target="_blank" rel="noopener">
-      <div class="date-block"><p class="date-mon">JUN</p><p class="date-day">19</p></div>
-      <div class="card-body">
-        <p class="card-title">ロゴ・ファサード確認会議</p>
-        <p class="card-desc">ロゴ最終確認 / ファサード仕様</p>
-        <div class="tags"><span class="tag tag-g">ロゴ確定</span><span class="tag tag-b">ファサード</span></div>
-      </div>
-      <span class="badge">LATEST</span>
-    </a>
+        <!-- 最新：6月16日 -->
+        <a href="./0616/" class="minutes-card latest">
+            <div class="card-date"><div class="month">Jun</div><div class="day">16</div></div>
+            <div class="card-divider"></div>
+            <div class="card-body">
+                <div class="card-title">TKW会議：2026年6月16日</div>
+                <div class="card-meta">AI活用と未来の働き方 / LINE広告プラットフォーム移行 / ネットカフェ×ビーコン新規事業 / 組織・役割分担</div>
+                <div class="card-tags">
+                    <span class="tag blue">AI PC・NPU解説</span>
+                    <span class="tag green">LINE広告 500件見込み</span>
+                    <span class="tag">新規事業アイデア</span>
+                </div>
+            </div>
+            <span class="latest-badge">LATEST</span>
+            <span class="card-arrow">›</span>
+        </a>
 
-    <a href="kaigi/0608.html" class="card" target="_blank" rel="noopener">
-      <div class="date-block"><p class="date-mon">JUN</p><p class="date-day">08</p></div>
-      <div class="card-body">
-        <p class="card-title">店舗コンセプトの刷新について</p>
-        <p class="card-desc">コンセプト方向性 / ターゲット設定</p>
-        <div class="tags"><span class="tag tag-b">コンセプト</span></div>
-      </div>
-      <span class="arrow">›</span>
-    </a>
+        <!-- 6月9日 -->
+        <a href="./0609/" class="minutes-card">
+            <div class="card-date"><div class="month">Jun</div><div class="day">09</div></div>
+            <div class="card-divider"></div>
+            <div class="card-body">
+                <div class="card-title">TKW会議：2026年6月9日</div>
+                <div class="card-meta">MIDプレゼン / ボーネルンド / LINE広告新環境移行 / 瑞鳳BIツール / 全社戦略</div>
+                <div class="card-tags">
+                    <span class="tag red">請求書不備</span>
+                    <span class="tag green">LINE広告 前週比56%増</span>
+                    <span class="tag blue">瑞鳳 Metabase検討</span>
+                </div>
+            </div>
+            <span class="card-arrow">›</span>
+        </a>
 
-    <a href="kaigi/0520.html" class="card" target="_blank" rel="noopener">
-      <div class="date-block"><p class="date-mon">MAY</p><p class="date-day">20</p></div>
-      <div class="card-body">
-        <p class="card-title">和カフェ ファーストミーティング</p>
-        <p class="card-desc">コンセプト / ターゲット / メニュー / ブランド戦略</p>
-        <div class="tags"><span class="tag tag-g">ファーストミーティング</span></div>
-      </div>
-      <span class="arrow">›</span>
-    </a>
+        <!-- 6月2日 -->
+        <a href="./0602/" class="minutes-card">
+            <div class="card-date"><div class="month">Jun</div><div class="day">02</div></div>
+            <div class="card-divider"></div>
+            <div class="card-body">
+                <div class="card-title">TKW会議：2026年6月2日</div>
+                <div class="card-meta">MD・モビ関連 / スマレジ価格交渉 / LINE広告 / AI機能検討 / セキュリティ事案 / 新商品企画</div>
+                <div class="card-tags">
+                    <span class="tag red">セキュリティ緊急対応</span>
+                    <span class="tag green">LINE広告 過去最高</span>
+                    <span class="tag">AI機能検討</span>
+                </div>
+            </div>
+            <span class="card-arrow">›</span>
+        </a>
 
-  </div>
+        <!-- 次回予告 -->
+        <div class="empty-card">
+            <div class="empty-date"><div class="empty-month">Jun</div><div class="empty-day">23</div></div>
+            <div class="card-divider" style="background:#f3f4f6;"></div>
+            <div class="empty-text">次回会議の議事録がここに追加されます</div>
+        </div>
 
-  <footer>© Shime CaVa Branding Works</footer>
-
+    </div>
 </div>
+<footer>&copy; 2026 TKW Project Team. All Rights Reserved.</footer>
 </body>
 </html>
