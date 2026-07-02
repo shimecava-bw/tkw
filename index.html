@@ -3,20 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TKW会議　議事録一覧</title>
+    <title>TKW　ドキュメントハブ</title>
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif; background-color: #f9fafb; color: #1f2937; line-height: 1.8; min-height: 100vh; }
+
         .site-header { background: #ffffff; border-bottom: 1px solid #e5e7eb; padding: 2rem 3rem; }
         .site-header .badge { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 9999px; font-size: 0.72rem; font-weight: 700; background: #ecfdf5; color: #065f46; letter-spacing: 0.06em; margin-bottom: 0.6rem; }
         .site-header h1 { font-size: 1.8rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; }
         .site-header p { color: #6b7280; font-size: 0.88rem; margin-top: 0.3rem; }
+
         .container { max-width: 860px; margin: 0 auto; padding: 2.5rem 2rem 5rem 2rem; }
+
+        /* カテゴリリンク */
+        .category-bar { display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+        .category-btn { display: flex; align-items: center; justify-content: center; padding: 0.8rem 1.6rem; border-radius: 0.875rem; font-size: 1.45rem; font-weight: 800; text-decoration: none; border: 2px solid; transition: background 0.18s, color 0.18s, transform 0.15s, box-shadow 0.2s; letter-spacing: -0.02em; flex: 1; min-width: 160px; }
+        .category-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 20px -4px rgba(0,0,0,0.12); }
+        .category-btn.partners { border-color: #2563eb; color: #1d4ed8; background: #ffffff; }
+        .category-btn.partners:hover { background: #2563eb; color: #ffffff; }
+        .category-btn.kikaku { border-color: #7c3aed; color: #6d28d9; background: #ffffff; }
+        .category-btn.kikaku:hover { background: #7c3aed; color: #ffffff; }
+
         .year-label { font-size: 0.72rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; padding-left: 0.25rem; }
         .minutes-list { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2.5rem; }
+
         .minutes-card { display: flex; align-items: center; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.875rem; padding: 1.25rem 1.5rem; text-decoration: none; color: inherit; transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s; gap: 1.25rem; }
         .minutes-card:hover { box-shadow: 0 8px 20px -4px rgba(0,0,0,0.1); border-color: #10b981; transform: translateY(-1px); }
         .minutes-card.latest { border: 2px solid #10b981; background: #ecfdf5; }
+
         .card-date { flex-shrink: 0; width: 3.5rem; text-align: center; }
         .card-date .month { font-size: 0.7rem; font-weight: 700; color: #10b981; text-transform: uppercase; }
         .card-date .day { font-size: 1.75rem; font-weight: 800; color: #111827; line-height: 1; }
@@ -32,13 +46,22 @@
         .card-arrow { flex-shrink: 0; color: #d1d5db; font-size: 1.1rem; transition: color 0.2s; }
         .minutes-card:hover .card-arrow { color: #10b981; }
         .latest-badge { flex-shrink: 0; font-size: 0.68rem; font-weight: 700; background: #10b981; color: #ffffff; padding: 0.2rem 0.6rem; border-radius: 9999px; letter-spacing: 0.04em; }
+
         .empty-card { background: #ffffff; border: 1px dashed #d1d5db; border-radius: 0.875rem; padding: 1.75rem 1.5rem; display: flex; align-items: center; gap: 1.25rem; color: #9ca3af; }
-        .empty-card .empty-date { flex-shrink: 0; width: 3.5rem; text-align: center; }
-        .empty-card .empty-day { font-size: 1.75rem; font-weight: 800; color: #d1d5db; line-height: 1; }
-        .empty-card .empty-month { font-size: 0.7rem; font-weight: 700; color: #d1d5db; }
-        .empty-card .empty-text { font-size: 0.85rem; }
+        .empty-date { flex-shrink: 0; width: 3.5rem; text-align: center; }
+        .empty-day { font-size: 1.75rem; font-weight: 800; color: #d1d5db; line-height: 1; }
+        .empty-month { font-size: 0.7rem; font-weight: 700; color: #d1d5db; }
+        .empty-text { font-size: 0.85rem; }
+
         footer { text-align: center; font-size: 0.72rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; padding: 2rem 0; border-top: 1px solid #e5e7eb; margin-top: 2rem; }
-        @media (max-width: 600px) { .site-header { padding: 1.5rem 1.25rem; } .site-header h1 { font-size: 1.3rem; } .container { padding: 1.5rem 1rem 4rem 1rem; } .minutes-card { padding: 1rem 1.1rem; gap: 0.9rem; } .card-date .day { font-size: 1.4rem; } }
+
+        @media (max-width: 600px) {
+            .site-header { padding: 1.5rem 1.25rem; }
+            .site-header h1 { font-size: 1.3rem; }
+            .container { padding: 1.5rem 1rem 4rem 1rem; }
+            .minutes-card { padding: 1rem 1.1rem; gap: 0.9rem; }
+            .card-date .day { font-size: 1.4rem; }
+        }
     </style>
 </head>
 <body>
@@ -47,11 +70,18 @@
     <h1>TKW会議　議事録一覧</h1>
     <p>毎週の定例会議の記録です。タイトルをクリックして各議事録を開いてください。</p>
 </header>
+
 <div class="container">
-    <p class="year-label">2026年</p>
+
+    <div class="category-bar">
+        <a href="./partners/" class="category-btn partners">パートナー会議</a>
+        <a href="./kikaku/" class="category-btn kikaku">企画・提案資料</a>
+    </div>
+
+    <p class="year-label">2026年　定例会議</p>
+
     <div class="minutes-list">
 
-        <!-- 最新：6月16日 -->
         <a href="./0616/" class="minutes-card latest" target="_blank" rel="noopener">
             <div class="card-date"><div class="month">Jun</div><div class="day">16</div></div>
             <div class="card-divider"></div>
@@ -68,7 +98,6 @@
             <span class="card-arrow">›</span>
         </a>
 
-        <!-- 6月9日 -->
         <a href="./0609/" class="minutes-card" target="_blank" rel="noopener">
             <div class="card-date"><div class="month">Jun</div><div class="day">09</div></div>
             <div class="card-divider"></div>
@@ -84,7 +113,6 @@
             <span class="card-arrow">›</span>
         </a>
 
-        <!-- 6月2日 -->
         <a href="./0602/" class="minutes-card" target="_blank" rel="noopener">
             <div class="card-date"><div class="month">Jun</div><div class="day">02</div></div>
             <div class="card-divider"></div>
@@ -100,15 +128,15 @@
             <span class="card-arrow">›</span>
         </a>
 
-        <!-- 次回予告 -->
         <div class="empty-card">
-            <div class="empty-date"><div class="empty-month">Jun</div><div class="empty-day">23</div></div>
+            <div class="empty-date"><div class="empty-month">Jul</div><div class="empty-day">07</div></div>
             <div class="card-divider" style="background:#f3f4f6;"></div>
             <div class="empty-text">次回会議の議事録がここに追加されます</div>
         </div>
 
     </div>
 </div>
+
 <footer>&copy; 2026 TKW Project Team. All Rights Reserved.</footer>
 </body>
 </html>
