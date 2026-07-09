@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>オーラモバイル打合せ議事録　2026年7月2日</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif; background-color: #ffffff; color: #1f2937; line-height: 1.8; font-size: 15px; }
+        .layout { display: flex; min-height: 100vh; }
+        .sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; background-color: #f9fafb; border-right: 1px solid #e5e7eb; display: flex; flex-direction: column; padding: 2rem 0 3rem 0; }
+        .sidebar-label { font-size: 0.7rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; padding: 0 1.5rem; margin-bottom: 1rem; }
+        .sidebar-links { display: flex; flex-direction: column; }
+        .sidebar-link { display: block; padding: 0.45rem 1.5rem; font-size: 0.8rem; color: #6b7280; text-decoration: none; border-radius: 0.5rem; margin: 0.1rem 0.5rem; transition: background 0.18s, color 0.18s; }
+        .sidebar-link:hover { background-color: #e5e7eb; color: #111827; }
+        .sidebar-link.active-blue { background-color: #eff6ff; color: #1d4ed8; font-weight: 700; }
+        .sidebar-link.active-green { background-color: #ecfdf5; color: #065f46; font-weight: 700; }
+        .sidebar-card { margin: 1.5rem 1rem 0 1rem; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.25rem; font-size: 0.75rem; color: #6b7280; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .sidebar-card-title { font-weight: 700; color: #1f2937; font-size: 0.85rem; margin-bottom: 0.6rem; }
+        .sidebar-card-row { display: flex; justify-content: space-between; margin-bottom: 0.35rem; flex-wrap: wrap; gap: 0.2rem; }
+        .sidebar-card-row span:last-child { font-weight: 700; color: #1f2937; }
+        .sidebar-divider { border: none; border-top: 1px solid #e5e7eb; margin: 0.6rem 0; }
+        .main { flex: 1; padding: 0 4rem 4rem 4rem; background: #ffffff; min-width: 0; }
+        .page-header { padding: 3.5rem 0 2.5rem 0; margin-bottom: 2.5rem; border-bottom: 1px solid #e5e7eb; }
+        .badge { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 9999px; font-size: 0.78rem; font-weight: 600; background: #f3f4f6; color: #4b5563; margin-bottom: 1rem; letter-spacing: 0.04em; }
+        .page-title { font-size: 2.2rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.75rem; }
+        .page-subtitle { color: #6b7280; font-size: 1rem; font-weight: 500; }
+        .page-desc { margin-top: 1.25rem; color: #6b7280; font-size: 0.88rem; line-height: 1.7; }
+        .section-card { background: #ffffff; border-radius: 1rem; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 2rem; padding: 2.5rem; transition: box-shadow 0.25s, border-color 0.25s; }
+        .section-card:hover { box-shadow: 0 10px 20px -3px rgba(0,0,0,0.09); border-color: #2563eb; }
+        .section-card.blue-card { background-color: #eff6ff; border: 2px solid #2563eb; }
+        .section-card.green-card { background-color: #ecfdf5; border: 2px solid #10b981; }
+        .section-card.gray-card { background-color: #f9fafb; border: 1px solid #e5e7eb; }
+        .section-head { display: flex; align-items: center; margin-bottom: 1.75rem; }
+        .section-bar { width: 6px; height: 2rem; border-radius: 9999px; margin-right: 1rem; flex-shrink: 0; }
+        .bar-blue { background: #2563eb; }
+        .bar-green { background: #059669; }
+        .bar-gray { background: #6b7280; }
+        .section-title { font-size: 1.35rem; font-weight: 700; color: #111827; }
+        .section-title.blue { color: #1d4ed8; }
+        .section-title.gray { color: #374151; }
+        .section-intro { color: #6b7280; margin-bottom: 1.5rem; line-height: 1.8; }
+        .sub-heading { font-size: 1rem; font-weight: 700; color: #1f2937; margin: 1.75rem 0 0.75rem 0; }
+        ul.dot-list { list-style: disc; padding-left: 1.5rem; color: #4b5563; }
+        ul.dot-list li { margin-bottom: 0.6rem; line-height: 1.75; }
+        ul.dot-list li::marker { color: #2563eb; }
+        ul.dot-list.green-markers li::marker { color: #10b981; }
+        ul.dot-list.gray-markers li::marker { color: #6b7280; }
+        ul.dot-list li strong { color: #111827; }
+        .box-blue { border-left: 4px solid #2563eb; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-blue .box-label { font-size: 0.8rem; font-weight: 700; color: #1d4ed8; margin-bottom: 0.5rem; }
+        .box-blue ul.dot-list li::marker { color: #2563eb; }
+        .box-green { border-left: 4px solid #10b981; background: #f0fdf4; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-green .box-label { font-size: 0.8rem; font-weight: 700; color: #065f46; margin-bottom: 0.5rem; }
+        .box-green ul.dot-list li::marker { color: #10b981; }
+        .box-red { border-left: 4px solid #ef4444; background: #fef2f2; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-red .box-label { font-size: 0.8rem; font-weight: 700; color: #991b1b; margin-bottom: 0.5rem; }
+        .box-red ul.dot-list li::marker { color: #ef4444; }
+        .cost-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
+        .cost-table thead th { background: #eff6ff; padding: 0.65rem 1rem; text-align: left; font-weight: 700; color: #1d4ed8; border-bottom: 2px solid #2563eb; font-size: 0.78rem; letter-spacing: 0.04em; }
+        .cost-table tbody td { padding: 0.65rem 1rem; border-bottom: 1px solid #e5e7eb; color: #4b5563; }
+        .cost-table tbody tr:last-child td { font-weight: 700; color: #111827; background: #f9fafb; }
+        .page-footer { margin-top: 4rem; padding: 2.5rem 0; border-top: 1px solid #e5e7eb; text-align: center; font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; }
+        @media (max-width: 768px) {
+            .layout { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid #e5e7eb; padding: 1.25rem 0 1rem 0; }
+            .sidebar-card { display: none; }
+            .main { padding: 0 1.25rem 3rem 1.25rem; }
+            .page-header { padding: 2rem 0 1.5rem 0; }
+            .page-title { font-size: 1.5rem; }
+            .section-card { padding: 1.5rem; }
+            .sidebar-links { flex-direction: row; flex-wrap: wrap; padding: 0 0.75rem; gap: 0.25rem; }
+            .sidebar-link { margin: 0; padding: 0.3rem 0.7rem; font-size: 0.72rem; }
+            .sidebar-label { padding: 0 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+    <aside class="sidebar">
+        <p class="sidebar-label">INDEX / 目次</p>
+        <div class="sidebar-links">
+            <a href="#s1" class="sidebar-link">現行システムの課題</a>
+            <a href="#s2" class="sidebar-link">オーラモバイルへの打診</a>
+            <a href="#s3" class="sidebar-link">AIとダッシュボードの検討</a>
+            <a href="#s4" class="sidebar-link">今後の展開（検討中）</a>
+            <a href="#s5" class="sidebar-link">AI動画生成ツールの技術研究</a>
+            <a href="#s6" class="sidebar-link">共有確認事項（業界背景）</a>
+        </div>
+        <div class="sidebar-card">
+            <p class="sidebar-card-title">打合せ情報</p>
+            <div class="sidebar-card-row"><span>日時:</span><span>2026年7月2日　15:00〜</span></div>
+            <div class="sidebar-card-row"><span>テーマ:</span><span>ダッシュボード現状課題と今後の検討</span></div>
+            <hr class="sidebar-divider">
+            <p style="font-size:0.72rem; font-weight:700; color:#6b7280; margin-bottom:0.4rem;">オーラモバイル</p>
+            <div class="sidebar-card-row"><span></span><span>丁氏・水戸部氏・楊氏・カンザキ氏</span></div>
+            <hr class="sidebar-divider">
+            <p style="font-size:0.72rem; font-weight:700; color:#6b7280; margin-bottom:0.4rem;">TOKIWAGI</p>
+            <div class="sidebar-card-row"><span></span><span>清・新後・田子</span></div>
+        </div>
+    </aside>
+
+    <div class="main">
+        <header class="page-header">
+            <span class="badge">MEETING MINUTES / PARTNER</span>
+            <h1 class="page-title">オーラモバイル打合せ議事録</h1>
+            <p class="page-subtitle">店舗データ統合ダッシュボード　現状課題と今後の検討　2026年7月2日</p>
+
+        </header>
+
+        <!-- 1 現行システムの課題 -->
+        <section id="s1" class="section-card blue-card">
+            <div class="section-head">
+                <div class="section-bar bar-blue"></div>
+                <h2 class="section-title blue">現行システムの課題</h2>
+            </div>
+            <p class="section-intro">TOKIWAGIがクライアント（株式会社瑞鳳）向けに構築・提供しているダッシュボードにおける、現状の課題を共有した。</p>
+
+            <p class="sub-heading">インサイト機能が使えない</p>
+            <ul class="dot-list">
+                <li>Yellowfinには自動分析機能「インサイト」があり、クライアントへの提供を想定していた。しかし現状では活用できておらず、クライアントへの約束が果たせていない状態が続いている。</li>
+                <li>なお、YellowfinはAPI連携で生成AIと接続する新機能を提供しており、その活用も視野に入れていた。</li>
+            </ul>
+
+            <p class="sub-heading">ダッシュボードの動作が重い</p>
+            <ul class="dot-list">
+                <li>データの表示速度が極端に遅く、クライアントからも問題として認識されている。</li>
+                <li><strong>TOKIWAGIおよびオーラモバイルからの予測：</strong>現在のリレーショナルデータベース（RDBMS）の「行型」構造での集計、および全項目を網羅的に読み込む構造が遅延の原因である可能性が指摘されている。詳細はオーラモバイルがシステムを確認した上で正式な見解を提示予定。</li>
+            </ul>
+
+            <p class="sub-heading">コスト対効果の問題</p>
+            <div class="box-red">
+                <p class="box-label">【年間維持コストの内訳】</p>
+                <table class="cost-table">
+                    <thead><tr><th>項目</th><th>年間費用</th></tr></thead>
+                    <tbody>
+                        <tr><td>BIツール「Yellowfin」ライセンス</td><td>約120万円</td></tr>
+                        <tr><td>インフラ「AWS」</td><td>約120万〜130万円</td></tr>
+                        <tr><td>合計</td><td>約250万〜270万円</td></tr>
+                    </tbody>
+                </table>
+                <ul class="dot-list" style="margin-top:0.75rem;">
+                    <li>年間約270万円のコストをかけているにもかかわらず、クライアントへの約束が果たせていない現状に強い問題意識がある。</li>
+                    <li>現状の課題解決をYellowfinに依頼しようとすると、さらなる<strong>追加費用（100万円単位）</strong>を要求されるスタンスであることも、新たな協力体制を検討する要因となっている。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2 オーラモバイルへの打診 -->
+        <section id="s2" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-blue"></div>
+                <h2 class="section-title blue">オーラモバイルへの打診</h2>
+            </div>
+            <p class="section-intro">YellowfinがボトルネックであるならAIも含めて全面的にオーラモバイルに依頼できるのではないかという打診を行った。</p>
+
+            <p class="sub-heading">打合せの流れ</p>
+            <ul class="dot-list">
+                <li>オーラモバイルに対して初めてダッシュボードを実際に見せ、現状を共有した。</li>
+                <li>オーラモバイル側からは、現状への予測・指摘をいただいた。インサイトが使えていないこと・ダッシュボードが重いことのボトルネックについて、先方の視点からの見解が示された。</li>
+                <li>オーラモバイルが実際にシステムを詳細に確認した上で、<strong>正式な見解・回答を今後提示いただく</strong>予定となっている。</li>
+            </ul>
+
+            <p class="sub-heading">打診の内容</p>
+            <div class="box-blue">
+                <p class="box-label">【TOKIWAGIからの問いかけ】</p>
+                <ul class="dot-list">
+                    <li>YellowfinがボトルネックであるならばAI機能も含めてダッシュボード全体をオーラモバイルに依頼できるのではないか。</li>
+                    <li>AIが使えて、かつダッシュボードがきちんと機能する環境を構築できるか。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 3 AIとダッシュボードの検討 -->
+        <section id="s3" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-blue"></div>
+                <h2 class="section-title blue">AIとダッシュボードの検討（現状の整理）</h2>
+            </div>
+            <p class="section-intro">YellowfinのAPI連携によるAI活用の背景と、実現したいダッシュボードの姿について整理された。</p>
+
+            <p class="sub-heading">AIが議題に上がった背景</p>
+            <ul class="dot-list">
+                <li>YellowfinがAPI連携で生成AIと接続する新機能を提供しており、これを活用することでダッシュボード上でのAI分析が可能になる想定だった。</li>
+                <li>しかし現状のデータベース構造では、AI連携機能もインサイト機能も十分に動作しない。</li>
+            </ul>
+
+            <p class="sub-heading">実現したいことの整理</p>
+            <ul class="dot-list">
+                <li><strong>インサイト機能の活用：</strong>データの変動に対し、何が起きたか・なぜ起きたかをAIが自動で分析・提示できる環境。</li>
+                <li><strong>ダッシュボードの高速化：</strong>担当者の役割（店長・本部・運営など）に応じて必要なデータのみを迅速に表示できる構造。</li>
+                <li><strong>チャットベースのデータ取得：</strong>「先週の平均単価をグラフにして」といった指示だけで必要なデータを即座に抽出・可視化できるUI。</li>
+            </ul>
+
+            <p class="sub-heading">業務効率化での活用イメージ（検討中）</p>
+            <ul class="dot-list">
+                <li><strong>遊技機シミュレーション：</strong>機種特性（スペック）や○号機といった条件を学習させたAIによる新台入替・配置変更時の売上予測。「導入・移設・撤去」が絡む複雑なパターンや店舗間の台移動の最適化もAIに計算させることが想定されている。ベテランスタッフの経験・判断基準をナレッジとしてAIに蓄積・学習させ、叩き台を生成させた上で担当者が精査するワークフローを構築する。</li>
+                <li><strong>景品カウンター在庫管理：</strong>出庫データや在庫状況に基づく効率的な管理・発注予測の自動化。</li>
+                <li><strong>属人化の解消：</strong>店長・担当者が入れ替わっても一定のクオリティで店舗運営を継続できる体制の構築。</li>
+            </ul>
+        </section>
+
+        <!-- 4 今後の展開 -->
+        <section id="s4" class="section-card green-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">今後の展開（検討中）</h2>
+            </div>
+
+            <p class="sub-heading">オーラモバイルからの回答待ち</p>
+            <ul class="dot-list green-markers">
+                <li>オーラモバイルが実際にシステムを確認した上で、ボトルネックの特定・解決策・対応可否についての正式な見解を提示いただく予定。</li>
+                <li>その回答を踏まえて、具体的な協力体制・依頼内容・スケジュールについて改めて協議する。</li>
+            </ul>
+
+            <p class="sub-heading">社内体制について</p>
+            <div class="box-red">
+                <p class="box-label">【要注意】</p>
+                <ul class="dot-list">
+                    <li>現在のシステム担当者は関係性が近いため、本来入れるべき強い要望（クレーム）をメーカーに入れられていない側面がある。担当者が社内で不利にならないよう、プロジェクトを早期に成功させることが急務である。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 5 AI動画生成 -->
+        <section id="s5" class="section-card gray-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title gray">AI動画生成ツールの技術研究と活用案（参考）</h2>
+            </div>
+            <p class="section-intro">本打合せの本流ではないが、参考情報として共有された内容を記録する。</p>
+
+            <p class="sub-heading">技術検証の結果（Modex / Kling / Google）</p>
+            <ul class="dot-list gray-markers">
+                <li><strong>生成コスト：</strong>動画生成のトークン単価は非常に安価である。特にGoogleのモデルもトークンコストが安く、3〜4秒程度の動画であれば、モデルにより数十円から100円程度で生成可能であることが確認された。</li>
+                <li><strong>UIの評価：</strong>モデルが変わってもUIが変わらず、簡単に操作できる点に高い優位性がある。</li>
+            </ul>
+
+            <p class="sub-heading">運用上の課題と改善案</p>
+            <ul class="dot-list gray-markers">
+                <li><strong>制作工数：</strong>40秒程度の動画に対し、キャラクター設定やプロンプト調整などの前工程で6時間以上（徹夜作業）を要している現状がある。</li>
+                <li><strong>一貫性の維持：</strong>Kling等のツールではイメージを1個しか入力できず、複数の要素（人とボート等）を誤差なく入れるのが難しい。また、シーンごとに設定を覚えさせる（引き継ぐ）機能が不足している。</li>
+                <li><strong>ワークフローの自動化：</strong>モデル上に「特定のキャラクターや世界観（ジブリ風など）」を固定するワークフローを構築することで、2回目以降の制作をスムーズかつ自動化できる可能性がある。</li>
+            </ul>
+
+            <p class="sub-heading">今後のビジネス展開アイデア</p>
+            <ul class="dot-list gray-markers">
+                <li><strong>パッケージ化：</strong>パチンコ業界向けの動画広告・コンテンツ作成パッケージとしての展開。</li>
+                <li><strong>一般ユーザー向けアプリ：</strong>AIに慣れていない世代（父親など）が、自分の顔写真を取り込むだけでテンプレート（ダンスやアニメ風）に沿った動画をワンボタンで作れるような、「くだらないが面白い」動画生成サービスの可能性。</li>
+                <li><strong>言語対応：</strong>現在のUIは日本語対応が不十分であり、より自然な日本語環境での利用が望まれている。</li>
+            </ul>
+        </section>
+
+        <!-- 6 共有確認事項 -->
+        <section id="s6" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-blue"></div>
+                <h2 class="section-title blue">共有確認事項（オーラモバイルへのパチンコ業界背景説明）</h2>
+            </div>
+            <p class="section-intro">打合せ冒頭、オーラモバイル側にパチンコ業界特有の背景と現在の運営状況を説明・共有した内容を記録する。</p>
+
+            <p class="sub-heading">運営状況</p>
+            <ul class="dot-list">
+                <li>株式会社瑞鳳が運営する「ラカータ」全11店舗（埼玉県中心）では、全店舗のデータを統合して可視化するダッシュボードをTOKIWAGIが構築・提供している。</li>
+            </ul>
+
+            <p class="sub-heading">システムの分断と手作業の発生</p>
+            <ul class="dot-list">
+                <li>パチンコ業界の政治的背景により、店舗ごとに「ホールコンピューター（大黒電機製、北電子製など）」や「会員システム」のメーカーが異なっている。</li>
+                <li>メーカーごとにデータの持ち方や項目が異なるため、店舗間比較を行う際に現場で<strong>手作業によるデータマージ</strong>が発生しており、店長の交代時や本部集計時の大きな課題となっている。</li>
+            </ul>
+        </section>
+
+        <footer class="page-footer">
+            <p>&copy; 2026 TOKIWAGI / 株式会社瑞鳳. All Rights Reserved.</p>
+        </footer>
+    </div>
+</div>
+
+<script>
+    const links = document.querySelectorAll('.sidebar-link');
+    const sections = document.querySelectorAll('section[id]');
+    const greenSections = ['s4'];
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                links.forEach(link => {
+                    link.classList.remove('active-blue','active-green');
+                    if (link.getAttribute('href') === '#' + id) {
+                        link.classList.add(greenSections.includes(id) ? 'active-green' : 'active-blue');
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.2 });
+
+    sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
