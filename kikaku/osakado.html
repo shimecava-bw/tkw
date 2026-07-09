@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>広告予算の転用について</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+            background-color: #ffffff;
+            color: #1f2937;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .layout { display: flex; min-height: 100vh; }
+
+        /* ── Sidebar ── */
+        .sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            background-color: #f9fafb;
+            border-right: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem 0 3rem 0;
+        }
+        .sidebar-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .sidebar-links { display: flex; flex-direction: column; }
+        .sidebar-link {
+            display: block;
+            padding: 0.45rem 1.5rem;
+            font-size: 0.8rem;
+            color: #6b7280;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            margin: 0.1rem 0.5rem;
+            transition: background 0.18s, color 0.18s;
+        }
+        .sidebar-link:hover { background-color: #e5e7eb; color: #111827; }
+        .sidebar-link.active-green { background-color: #ecfdf5; color: #065f46; font-weight: 700; }
+        .sidebar-link.active-red { background-color: #fef2f2; color: #991b1b; font-weight: 700; }
+
+        .sidebar-card {
+            margin: 1.5rem 1rem 0 1rem;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            font-size: 0.75rem;
+            color: #6b7280;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+        .sidebar-card-title { font-weight: 700; color: #1f2937; font-size: 0.85rem; margin-bottom: 0.6rem; }
+        .sidebar-card-row { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
+        .sidebar-card-row span:last-child { font-weight: 700; color: #1f2937; }
+        .sidebar-card-row .status { color: #065f46; }
+
+        /* ── Main ── */
+        .main {
+            flex: 1;
+            padding: 0 4rem 4rem 4rem;
+            background: #ffffff;
+            min-width: 0;
+        }
+
+        /* ── Header ── */
+        .page-header {
+            padding: 3.5rem 0 2.5rem 0;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            background: #f3f4f6;
+            color: #4b5563;
+            margin-bottom: 1rem;
+            letter-spacing: 0.04em;
+        }
+        .page-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #111827;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+        .page-subtitle { color: #6b7280; font-size: 1rem; font-weight: 500; }
+        .page-desc { margin-top: 1.25rem; color: #6b7280; font-size: 0.88rem; line-height: 1.7; }
+
+        /* ── Section card ── */
+        .section-card {
+            background: #ffffff;
+            border-radius: 1rem;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            padding: 2.5rem;
+            transition: box-shadow 0.25s, border-color 0.25s;
+        }
+        .section-card:hover { box-shadow: 0 10px 20px -3px rgba(0,0,0,0.09); border-color: #10b981; }
+        .section-card.green-card { background-color: #ecfdf5; border: 2px solid #10b981; }
+        .section-card.red-card { background-color: #fff5f5; border: 1px solid #fecaca; }
+
+        /* ── Section heading ── */
+        .section-head { display: flex; align-items: center; margin-bottom: 1.75rem; }
+        .section-bar { width: 6px; height: 2rem; border-radius: 9999px; margin-right: 1rem; flex-shrink: 0; }
+        .bar-green { background: #059669; }
+        .bar-red { background: #dc2626; }
+        .bar-blue { background: #2563eb; }
+        .section-title { font-size: 1.35rem; font-weight: 700; color: #111827; }
+        .section-title.red { color: #dc2626; }
+        .section-title.blue { color: #1d4ed8; }
+
+        .section-intro { color: #6b7280; margin-bottom: 1.5rem; line-height: 1.8; }
+
+        .sub-heading { font-size: 1rem; font-weight: 700; color: #1f2937; margin: 1.75rem 0 0.75rem 0; }
+
+        /* ── Lists ── */
+        ul.dot-list { list-style: disc; padding-left: 1.5rem; color: #4b5563; }
+        ul.dot-list li { margin-bottom: 0.6rem; line-height: 1.75; }
+        ul.dot-list li::marker { color: #10b981; }
+        ul.dot-list.red-markers li::marker { color: #ef4444; }
+        ul.dot-list li strong { color: #111827; }
+
+        /* ── Boxes ── */
+        .box-green {
+            border-left: 4px solid #10b981;
+            background: #f9fafb;
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        .box-green .box-label { font-size: 0.8rem; font-weight: 700; color: #065f46; margin-bottom: 0.5rem; }
+
+        .box-red {
+            border-left: 4px solid #ef4444;
+            background: #fef2f2;
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        .box-red .box-label { font-size: 0.8rem; font-weight: 700; color: #991b1b; margin-bottom: 0.5rem; }
+        .box-red ul.dot-list li::marker { color: #ef4444; }
+
+        .box-blue {
+            border-left: 4px solid #2563eb;
+            background: #eff6ff;
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        .box-blue .box-label { font-size: 0.8rem; font-weight: 700; color: #1d4ed8; margin-bottom: 0.5rem; }
+        .box-blue ul.dot-list li::marker { color: #2563eb; }
+
+        /* ── TODO table ── */
+        .todo-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+        .todo-table thead th {
+            background: #f9fafb;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 700;
+            color: #374151;
+            border-bottom: 1px solid #e5e7eb;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+        .todo-table tbody td { padding: 0.75rem 1rem; border-bottom: 1px solid #f3f4f6; color: #4b5563; }
+        .todo-table tbody tr:hover { background: #f9fafb; }
+        .todo-table tbody tr.urgent { background: #fff5f5; }
+        .todo-table tbody tr.urgent td { color: #991b1b; }
+        .todo-table .deadline { white-space: nowrap; }
+        .todo-table .deadline.red { color: #dc2626; font-weight: 700; }
+
+        /* ── Footer ── */
+        .page-footer {
+            margin-top: 4rem;
+            padding: 2.5rem 0;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* ── Mobile ── */
+        @media (max-width: 768px) {
+            .layout { flex-direction: column; }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid #e5e7eb;
+                padding: 1.25rem 0 1rem 0;
+            }
+            .sidebar-card { display: none; }
+            .main { padding: 0 1.25rem 3rem 1.25rem; }
+            .page-header { padding: 2rem 0 1.5rem 0; }
+            .page-title { font-size: 1.5rem; }
+            .section-card { padding: 1.5rem; }
+            .sidebar-links { flex-direction: row; flex-wrap: wrap; padding: 0 0.75rem; gap: 0.25rem; }
+            .sidebar-link { margin: 0; padding: 0.3rem 0.7rem; font-size: 0.72rem; }
+            .sidebar-label { padding: 0 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <p class="sidebar-label">INDEX / 目次</p>
+        <div class="sidebar-links">
+            <a href="#s1" class="sidebar-link">1. 背景・前提</a>
+            <a href="#s2" class="sidebar-link">2. 決定事項</a>
+            <a href="#s2b" class="sidebar-link">　予算振り分けフロー</a>
+            <a href="#s3" class="sidebar-link">3. ヘルスケアIT新規参入</a>
+            <a href="#s4" class="sidebar-link">4. 物流・検品体制の強化</a>
+            <a href="#s5" class="sidebar-link">5. 社会貢献・研究支援</a>
+            <a href="#s6" class="sidebar-link">6. アクションアイテム（TODO）</a>
+            <a href="#s7" class="sidebar-link active-red">　参考：広告が出せない理由</a>
+        </div>
+
+        <div class="sidebar-card">
+            <p class="sidebar-card-title">会議情報</p>
+            <div class="sidebar-card-row"><span>会議名:</span><span>広告予算の転用について</span></div>
+            <div class="sidebar-card-row"><span>日時:</span><span>2026年7月2日</span></div>
+            <div class="sidebar-card-row"><span>形式:</span><span>原文保存版</span></div>
+            <div class="sidebar-card-row"><span>状態:</span><span class="status">チェック完了</span></div>
+        </div>
+    </aside>
+
+    <!-- Main -->
+    <div class="main">
+        <header class="page-header">
+            <span class="badge">MEETING MINUTES</span>
+            <h1 class="page-title">広告予算の転用について</h1>
+            <p class="page-subtitle">個人輸入代行事業における広告予算の転用先について　詳細記録</p>
+            <p class="page-desc">既存の広告予算を、代行事業への集客・誘導とは切り離した形でどう活用するかを整理した議事録です。</p>
+        </header>
+
+        <!-- 1 背景・前提 -->
+        <section id="s1" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">第1章　背景・前提</h2>
+            </div>
+            <p class="section-intro">個人輸入代行ビジネスを取り巻く規制環境を踏まえまして、既存の広告予算の使い道について方針を整理いたしました。</p>
+
+            <ul class="dot-list">
+                <li>個人輸入代行ビジネスは薬機法上、譲渡・販売にあたる行為として位置づけられており、<strong>広告・勧誘とみなされる行為の範囲も広い</strong>ものと考えられます（商品名・ロゴ・効能効果の掲出、購入意欲を喚起する表現など、媒体を問わず該当し得ます）。</li>
+                <li>既存の広告予算をそのまま広告出稿や、広告とみなされ得る代替施策（メディア買収による記事偽装、学会協賛の集客導線化、会員制コンサルによる誘導等）に投じることは、<strong>行政指導・アカウント凍結等のリスクを伴う</strong>と判断いたしました。</li>
+            </ul>
+
+            <div class="box-green">
+                <p class="box-label">【本会議の狙い】</p>
+                <ul class="dot-list">
+                    <li>広告・集客目的から完全に切り離した形で、既存予算をどのように活用できるか、<strong>3つの方向性</strong>としてご提案いたします。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2 決定事項 -->
+        <section id="s2" class="section-card green-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">第2章　決定事項</h2>
+            </div>
+            <ul class="dot-list">
+                <li>広告費につきましては、<strong>代行事業への集客・誘導を目的とした施策には投じない</strong>方針といたします。</li>
+                <li>以下3つの投資領域はいずれも、<strong>代行事業のサービスページ・会員相談窓口等への遷移・導線を設けないこと</strong>を条件とさせていただきます。</li>
+                <li>各領域の担当・予算規模・スケジュールにつきましては、次回会議までに個別にご検討いただければと存じます。</li>
+            </ul>
+        </section>
+
+        <!-- 2b 全体像フロー -->
+        <section id="s2b" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">全体像　予算の振り分けフロー</h2>
+            </div>
+            <p class="section-intro">既存の広告予算を、代行事業への導線を持たない3つの領域へ振り分けるイメージを図にまとめました。</p>
+
+            <svg viewBox="0 0 700 300" style="width:100%; height:auto; max-width:640px; display:block; margin:0 auto;" role="img" aria-label="広告予算を3領域へ振り分ける流れ図">
+                <defs>
+                    <marker id="flow-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M2 1L8 5L2 9" fill="none" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </marker>
+                </defs>
+
+                <!-- Root -->
+                <rect x="255" y="20" width="190" height="56" rx="10" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1"/>
+                <text x="350" y="42" text-anchor="middle" font-size="14" font-weight="700" fill="#111827">既存代行事業の予算</text>
+                <text x="350" y="62" text-anchor="middle" font-size="11" fill="#6b7280">広告出稿には投じない</text>
+
+                <!-- Connectors -->
+                <path d="M350 76 V100 H130 V140" fill="none" stroke="#9ca3af" stroke-width="1.2" marker-end="url(#flow-arrow)"/>
+                <path d="M350 76 V140" fill="none" stroke="#9ca3af" stroke-width="1.2" marker-end="url(#flow-arrow)"/>
+                <path d="M350 76 V100 H570 V140" fill="none" stroke="#9ca3af" stroke-width="1.2" marker-end="url(#flow-arrow)"/>
+
+                <!-- Box 1 -->
+                <rect x="40" y="140" width="180" height="64" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+                <text x="130" y="164" text-anchor="middle" font-size="13" font-weight="700" fill="#065f46">ヘルスケアIT参入</text>
+                <text x="130" y="184" text-anchor="middle" font-size="11" fill="#065f46">服薬管理/遠隔相談</text>
+
+                <!-- Box 2 -->
+                <rect x="260" y="140" width="180" height="64" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+                <text x="350" y="164" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4ed8">物流・検品強化</text>
+                <text x="350" y="184" text-anchor="middle" font-size="11" fill="#1d4ed8">偽造品リスク低減</text>
+
+                <!-- Box 3 -->
+                <rect x="480" y="140" width="180" height="64" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+                <text x="570" y="164" text-anchor="middle" font-size="13" font-weight="700" fill="#065f46">社会貢献・研究支援</text>
+                <text x="570" y="184" text-anchor="middle" font-size="11" fill="#065f46">自社誘導なし</text>
+
+                <!-- Common condition note -->
+                <path d="M130 204 V230 H570 V204" fill="none" stroke="#d1d5db" stroke-width="1" stroke-dasharray="4 3"/>
+                <rect x="230" y="230" width="240" height="40" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-width="1"/>
+                <text x="350" y="246" text-anchor="middle" font-size="11" font-weight="700" fill="#991b1b">共通条件</text>
+                <text x="350" y="262" text-anchor="middle" font-size="10.5" fill="#991b1b">代行事業ページへの遷移・導線を作らない</text>
+            </svg>
+        </section>
+
+        <!-- 3 ヘルスケアIT -->
+        <section id="s3" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">第3章　ヘルスケアIT新規参入</h2>
+            </div>
+            <p class="section-intro">服薬管理アプリや遠隔健康相談プラットフォームなど、薬の斡旋を伴わないヘルスケアIT領域への新規参入をご提案いたします。</p>
+
+            <p class="sub-heading">3-1. 施策の概要</p>
+            <ul class="dot-list">
+                <li>国内で承認された医薬品・サービスの範囲内で、既存の代行事業ブランドとは<strong>完全に切り離した別ブランド・別会社</strong>としての展開を想定しています。</li>
+                <li><strong>服薬管理アプリ：</strong>国内承認薬を対象に、飲み忘れ防止・服薬記録・かかりつけ薬局連携機能をご提供できればと考えます。</li>
+                <li><strong>遠隔健康相談プラットフォーム：</strong>医師・薬剤師資格を持つ専門家によるオンライン相談をご提供します。特定薬品・輸入代行サービスの紹介は規約上禁止し、システム上も外部リンクを設置しない設計といたします。</li>
+            </ul>
+
+            <div class="box-green">
+                <p class="box-label">【狙い】</p>
+                <ul class="dot-list">
+                    <li>既存予算を活かしつつ、薬機法上クリーンな収益源を確立できれば、<strong>代行事業への依存度を段階的に下げられる</strong>のではないかと考えております。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">3-2. 今後のアクション</p>
+            <ul class="dot-list">
+                <li>対象サービス（服薬管理／遠隔相談）の優先順位をご検討いただければと思います。</li>
+                <li>別会社化のスキーム（法人設立、ブランド名、既存事業との資本関係の整理）についてご検討をお願いいたします。</li>
+                <li>薬機法・医師法上の要件について、顧問弁護士にご確認いただければと存じます。</li>
+            </ul>
+        </section>
+
+        <!-- 4 物流・検品 -->
+        <section id="s4" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">第4章　物流・検品体制の強化</h2>
+            </div>
+            <p class="section-intro">既存事業を継続する前提で、仕入れ・保管・輸送の各工程における品質管理体制への投資をご提案いたします。広告とは無関係な内部投資であり、法的リスクを伴いません。</p>
+
+            <p class="sub-heading">4-1. 施策の概要</p>
+            <ul class="dot-list">
+                <li><strong>成分検査体制：</strong>第三者検査機関と提携し、入荷ロットごとに真贋・成分分析を実施することをご提案します。</li>
+                <li><strong>サプライヤー認証制度：</strong>仕入れ先を正規流通ルートに限定し、トレーサビリティを確保できる業者のみと取引する体制を整えます。</li>
+                <li><strong>保管・輸送環境の管理：</strong>温度・湿度管理等、品質劣化を防ぐ物流インフラへの投資をお願いできればと思います。</li>
+            </ul>
+
+            <div class="box-green">
+                <p class="box-label">【狙い】</p>
+                <ul class="dot-list">
+                    <li>厚労省FAQでも指摘されている<strong>偽造品混入・健康被害の補償対象外というリスクそのものを実際に低減</strong>し、事業の健全化につなげられればと考えております。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">4-2. 今後のアクション</p>
+            <ul class="dot-list">
+                <li>現行の検品フローの現状把握・課題整理をお願いいたします。</li>
+                <li>提携候補となる検査機関の選定・見積もりの取得をご検討ください。</li>
+                <li>サプライヤー認証基準のドラフトを作成いただければと存じます。</li>
+            </ul>
+        </section>
+
+        <!-- 5 社会貢献・研究支援 -->
+        <section id="s5" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">第5章　集客導線を持たない社会貢献・研究支援</h2>
+            </div>
+            <p class="section-intro">医薬品開発・薬学分野の研究支援や地域医療への寄付をご提案いたします。支援の事実は単純な事実として公表するに留め、自社サービスへの導線は設けません。</p>
+
+            <p class="sub-heading">5-1. 施策の概要</p>
+            <ul class="dot-list">
+                <li><strong>研究支援：</strong>大学・研究機関への奨学金・助成金を通じ、薬学分野の若手研究者を支援できればと考えます。</li>
+                <li><strong>地域医療支援：</strong>地方の薬学部や医療アクセスが弱い地域の医療支援団体への寄付をご検討いただければと思います。</li>
+            </ul>
+
+            <div class="box-red">
+                <p class="box-label">【運用上の注意】</p>
+                <ul class="dot-list">
+                    <li>支援先の選定・発表文面には、<strong>自社の輸入代行サービスや特定薬品名を一切絡めないこと</strong>を社内ガイドラインとして明文化いただくようお願いいたします。絡めてしまいますと、規制対象となる導線に逆戻りしてしまいますので、その点はご留意ください。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">5-2. 今後のアクション</p>
+            <ul class="dot-list">
+                <li>支援対象（大学・研究機関・団体）の候補をリストアップいただければと思います。</li>
+                <li>発表文面・広報方針について、自社サービスへの言及を禁止するガイドラインの作成をお願いいたします。</li>
+                <li>年間の支援予算規模をご検討ください。</li>
+            </ul>
+        </section>
+
+        <!-- 6 TODO -->
+        <section id="s6" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">第6章　アクションアイテム（TODO）</h2>
+            </div>
+            <div style="overflow-x:auto;">
+                <table class="todo-table">
+                    <thead>
+                        <tr>
+                            <th>領域</th>
+                            <th>タスク内容</th>
+                            <th>期限 / 目安</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ヘルスケアIT</td>
+                            <td>対象サービスの優先順位決定・別会社化スキームの検討</td>
+                            <td class="deadline">次回MTGまで</td>
+                        </tr>
+                        <tr>
+                            <td>ヘルスケアIT</td>
+                            <td>薬機法・医師法上の要件について顧問弁護士に確認</td>
+                            <td class="deadline">次回MTGまで</td>
+                        </tr>
+                        <tr>
+                            <td>物流・検品</td>
+                            <td>現行の検品フローの現状把握・課題整理</td>
+                            <td class="deadline">次回MTGまで</td>
+                        </tr>
+                        <tr>
+                            <td>物流・検品</td>
+                            <td>提携候補となる検査機関の選定・見積もり取得</td>
+                            <td class="deadline">次回MTGまで</td>
+                        </tr>
+                        <tr>
+                            <td>社会貢献・研究支援</td>
+                            <td>支援対象（大学・研究機関・団体）の候補リストアップ</td>
+                            <td class="deadline">次回MTGまで</td>
+                        </tr>
+                        <tr class="urgent">
+                            <td>全領域共通</td>
+                            <td>3領域いずれも「代行事業への導線を持たない」条件を法務チームでレビュー</td>
+                            <td class="deadline red">最優先</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="box-green" style="margin-top:1.5rem;">
+                <p class="box-label">【次回確認事項】</p>
+                <ul class="dot-list">
+                    <li>各領域の担当者アサイン状況</li>
+                    <li>各領域の概算予算・スケジュール案</li>
+                    <li>法務チームによる導線レビューの結果</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 7 参考：広告出稿ができない理由 -->
+        <section id="s7" class="section-card red-card">
+            <div class="section-head">
+                <div class="section-bar bar-red"></div>
+                <h2 class="section-title red">参考　なぜ広告出稿という手段を選択できないのか</h2>
+            </div>
+            <p class="section-intro">今回の方針の前提となる規制上の背景を、あらためて確認事項として記載いたします。</p>
+
+            <p class="sub-heading">個人輸入の原則</p>
+            <ul class="dot-list">
+                <li>個人輸入は、購入者ご本人が自ら使用することを目的とする場合にのみ認められており、輸入した医薬品を第三者に譲渡・販売する行為は薬機法（旧薬事法）で禁止されています。</li>
+                <li>「輸入代行」という形式であっても、実質的には販売に類する行為とみなされ、常に監視対象となる点にご留意いただければと思います。</li>
+            </ul>
+
+            <p class="sub-heading">未承認医薬品に伴うリスク</p>
+            <ul class="dot-list">
+                <li>未承認医薬品には、偽造品や成分の異なるものが含まれるリスクが高いとされています。</li>
+                <li>国内の「医薬品副作用被害救済制度」の対象外であるため、万一健康被害が生じても、行政やメーカーからの補償を受けられません。</li>
+            </ul>
+
+            <p class="sub-heading">広告とみなされる範囲の広さ</p>
+            <div class="box-red">
+                <p class="box-label">【広告の定義】</p>
+                <ul class="dot-list">
+                    <li>医薬品の商品名・ロゴ・効能効果を掲出し、購入意欲をそそる行為は、媒体を問わずすべて広告とみなされます（Webサイトに限らず、SNS・チラシ・看板等も対象です）。</li>
+                    <li>「代行します」という案内自体は広告とみなされない場合もありますが、特定の医薬品や効果を連想させる表示が伴う場合には、実質的な広告と判断され、行政指導の対象となり得ます。</li>
+                </ul>
+            </div>
+
+            <p class="section-intro" style="margin-top:1.25rem;">以上の理由から、既存の広告予算を広告出稿という手段に用いることは、行政指導や輸入貨物の没収等につながるリスクが高く、選択できないという結論に至りました。今回ご提案した3つの投資領域は、こうした制約を踏まえた代替案として、あわせてご検討いただければ幸いです。</p>
+        </section>
+
+        <footer class="page-footer">
+            <p>&copy; 2026 Project Team. All Rights Reserved.</p>
+        </footer>
+    </div>
+</div>
+
+<script>
+    const links = document.querySelectorAll('.sidebar-link');
+    const sections = document.querySelectorAll('section[id]');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                links.forEach(link => {
+                    link.classList.remove('active-green','active-red');
+                    if (link.getAttribute('href') === '#' + id) {
+                        link.classList.add('active-green');
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.2 });
+
+    sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
