@@ -13,8 +13,8 @@
         .sidebar-links { display: flex; flex-direction: column; }
         .sidebar-link { display: block; padding: 0.45rem 1.5rem; font-size: 0.8rem; color: #6b7280; text-decoration: none; border-radius: 0.5rem; margin: 0.1rem 0.5rem; transition: background 0.18s, color 0.18s; }
         .sidebar-link:hover { background-color: #e5e7eb; color: #111827; }
-        .sidebar-link.active-green { background-color: #ecfdf5; color: #065f46; font-weight: 700; }
-        .sidebar-link.active-blue { background-color: #eff6ff; color: #1d4ed8; font-weight: 700; }
+        .sidebar-link.active { background-color: #ecfdf5; color: #065f46; font-weight: 700; }
+        .sidebar-link.active-red { background-color: #fef2f2; color: #991b1b; font-weight: 700; }
         .sidebar-link.active-purple { background-color: #f5f3ff; color: #6d28d9; font-weight: 700; }
         .sidebar-card { margin: 1.5rem 1rem 0 1rem; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.25rem; font-size: 0.75rem; color: #6b7280; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
         .sidebar-card-title { font-weight: 700; color: #1f2937; font-size: 0.85rem; margin-bottom: 0.6rem; }
@@ -27,9 +27,7 @@
         .page-title { font-size: 2.2rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.75rem; }
         .page-subtitle { color: #6b7280; font-size: 1rem; font-weight: 500; }
         .section-card { background: #ffffff; border-radius: 1rem; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 2rem; padding: 2.5rem; transition: box-shadow 0.25s, border-color 0.25s; }
-        .section-card:hover { box-shadow: 0 10px 20px -3px rgba(0,0,0,0.09); border-color: #10b981; }
-        .section-card.green-card { background-color: #ecfdf5; border: 2px solid #10b981; }
-        .section-card.blue-card { background-color: #eff6ff; border: 2px solid #2563eb; }
+        .section-card:hover { box-shadow: 0 10px 20px -3px rgba(0,0,0,0.09); }
         .section-card.purple-card { background-color: #f5f3ff; border: 2px solid #7c3aed; }
         .section-card.red-card { background-color: #fff5f5; border: 1px solid #fecaca; }
         .section-head { display: flex; align-items: center; margin-bottom: 1.75rem; }
@@ -41,6 +39,7 @@
         .bar-gray { background: #6b7280; }
         .section-title { font-size: 1.35rem; font-weight: 700; color: #111827; }
         .section-title.blue { color: #1d4ed8; }
+        .section-title.green { color: #065f46; }
         .section-title.purple { color: #6d28d9; }
         .section-title.red { color: #dc2626; }
         .section-intro { color: #6b7280; margin-bottom: 1.5rem; line-height: 1.8; }
@@ -65,15 +64,13 @@
         .box-red { border-left: 4px solid #ef4444; background: #fef2f2; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
         .box-red .box-label { font-size: 0.8rem; font-weight: 700; color: #991b1b; margin-bottom: 0.5rem; }
         .box-red ul.dot-list li::marker { color: #ef4444; }
-        .box-gray { border-left: 4px solid #9ca3af; background: #f9fafb; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
-        .box-gray .box-label { font-size: 0.8rem; font-weight: 700; color: #374151; margin-bottom: 0.5rem; }
+        .reporter-badge { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.6rem; border-radius: 9999px; margin-right: 0.4rem; vertical-align: middle; }
+        .reporter-badge.nigo { background: #ecfdf5; color: #065f46; }
+        .reporter-badge.takada { background: #eff6ff; color: #1d4ed8; }
         .data-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1rem 0; }
         .data-table thead th { background: #f9fafb; padding: 0.65rem 1rem; text-align: left; font-weight: 700; color: #374151; border-bottom: 2px solid #e5e7eb; font-size: 0.78rem; letter-spacing: 0.04em; }
         .data-table tbody td { padding: 0.65rem 1rem; border-bottom: 1px solid #f3f4f6; color: #4b5563; vertical-align: top; }
         .data-table tbody tr:hover { background: #f9fafb; }
-        .reporter-badge { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.6rem; border-radius: 9999px; margin-right: 0.4rem; vertical-align: middle; }
-        .reporter-badge.nigo { background: #ecfdf5; color: #065f46; }
-        .reporter-badge.takada { background: #eff6ff; color: #1d4ed8; }
         .page-footer { margin-top: 4rem; padding: 2.5rem 0; border-top: 1px solid #e5e7eb; text-align: center; font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; }
         @media (max-width: 768px) {
             .layout { flex-direction: column; }
@@ -94,15 +91,14 @@
     <aside class="sidebar">
         <p class="sidebar-label">INDEX / 目次</p>
         <div class="sidebar-links">
-            <a href="#s1" class="sidebar-link">1. LINE広告　進捗と市場戦略</a>
-            <a href="#s2" class="sidebar-link">2. ボーネルンド　スマレジ導入</a>
-            <a href="#s3" class="sidebar-link">3. 瑞鳳　ABP方針転換</a>
-            <a href="#s4" class="sidebar-link">4. MID　追いかけ停止</a>
-            <a href="#s5" class="sidebar-link">5. Mooovi　内製顧客管理システム</a>
-            <a href="#s6" class="sidebar-link">6. AI社員制度（ECOちゃん）</a>
-            <a href="#s7" class="sidebar-link">7. 新規事業　広告商品開発</a>
-            <a href="#s8" class="sidebar-link">8. プラングレードダウン対応</a>
-            <a href="#s9" class="sidebar-link">9. アクションアイテム（TODO）</a>
+            <a href="#s1" class="sidebar-link">1. MID　追いかけ停止</a>
+            <a href="#s2" class="sidebar-link">2. Mooovi　内製顧客管理システム</a>
+            <a href="#s3" class="sidebar-link">3. ボーネルンド　スマレジ導入</a>
+            <a href="#s4" class="sidebar-link">4. 瑞鳳　ABP方針転換</a>
+            <a href="#s5" class="sidebar-link">5. LINE広告　進捗と市場戦略</a>
+            <a href="#s6" class="sidebar-link">6. 広告商品</a>
+            <a href="#s7" class="sidebar-link">7. AI社員制度（ECOちゃん）</a>
+            <a href="#s8" class="sidebar-link">8. アクションアイテム（TODO）</a>
         </div>
         <div class="sidebar-card">
             <p class="sidebar-card-title">会議情報</p>
@@ -117,21 +113,172 @@
         <header class="page-header">
             <span class="badge">MEETING MINUTES</span>
             <h1 class="page-title">TKW会議：2026年7月9日</h1>
-            <p class="page-subtitle">LINE広告新環境移行 / ボーネルンドスマレジ導入 / 瑞鳳ABP方針転換 / AI社員制度　詳細記録</p>
+            <p class="page-subtitle">MID / Mooovi / ボーネルンド / 瑞鳳ABP / LINE広告 / 広告商品 / AI社員制度</p>
         </header>
 
-        <!-- 凡例 -->
         <div style="display:flex; gap:0.5rem; margin-bottom:2rem; flex-wrap:wrap;">
             <span class="reporter-badge nigo">新後 報告</span>
             <span class="reporter-badge takada">高田 報告</span>
             <span style="font-size:0.78rem; color:#6b7280;">各セクションの情報源を示します</span>
         </div>
 
-        <!-- 1 LINE広告 -->
-        <section id="s1" class="section-card green-card">
+        <!-- 1 MID -->
+        <section id="s1" class="section-card red-card">
+            <div class="section-head">
+                <div class="section-bar bar-red"></div>
+                <h2 class="section-title red">1. MID　追いかけ停止判断</h2>
+            </div>
+            <p class="section-intro">弊社からMIDへの提案は一旦打ち切り判断。リソースは他プロジェクトへ優先配分する。</p>
+
+            <p class="sub-heading">進捗と経緯 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list red-markers">
+                <li>高田さんから三井さんへ電話を含めて再度連絡済み。</li>
+                <li>三井さんからは「他社との比較の上で判断したい」「現在社内で優先順位が上がった別の動きがあり、すぐに導入は難しい」「進展があり次第連絡する」との回答あり。</li>
+                <li>こちら主導で進行することが難しく、次にいつ連絡が来るかも見えない状態。今回の提案以外にも話したいテーマはあるが、その機会を作ること自体が難しい。</li>
+                <li><strong>弊社からの能動的な追いかけは一旦停止。先方から連絡があり次第、状況に応じて対応する。</strong></li>
+            </ul>
+        </section>
+
+        <!-- 2 Mooovi -->
+        <section id="s2" class="section-card">
             <div class="section-head">
                 <div class="section-bar bar-green"></div>
-                <h2 class="section-title">1. LINE広告　進捗と市場戦略</h2>
+                <h2 class="section-title">2. Mooovi　内製顧客管理システム　頭出し開始</h2>
+            </div>
+            <p class="section-intro">内製顧客管理システムが形になってきたことを受け、各所への頭出しを開始。来年度の大型改修に向けた提案タイミングの明確化が課題。</p>
+
+            <p class="sub-heading">進捗 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li>芦屋からの見積依頼や、Mooovi担当者とのやり取りの中で「来年度に向けて大型改修を控えている」ことを頭出し。</li>
+                <li>大型改修はLinyの仕組みを内製化するイメージの顧客管理システム。コストダウンやスタッフ負荷軽減につながる可能性がある点も伝え始めている。</li>
+            </ul>
+
+            <p class="sub-heading">論点・次アクション</p>
+            <ul class="dot-list">
+                <li>内製システムの完成時期・提案時期・新後さんがどのタイミングでジョインするかを整理する必要あり。提案時期を曖昧にしたままだと来年度予算や先方の検討タイミングに乗せにくい。</li>
+                <li>今日の社内定例で、提案可能時期とスケジュール概要を明確にする。</li>
+                <li>Liny依存から脱却できれば将来的なコスト削減と利益率改善につながる可能性あり。単発改修ではなく継続的なシステム提供・運用支援へ広げられる。</li>
+            </ul>
+
+            <p class="sub-heading">プラングレードダウン対応（蒲郡） <span class="reporter-badge takada">高田 報告</span></p>
+            <ul class="dot-list">
+                <li>蒲郡のコガ氏より、来月からプランのグレードダウンをしたいという要望あり。コガ氏は複数店舗を担当している。</li>
+                <li>チーム側は現在システム等の切り替えをお願いしているタイミングであるため、一旦その要望を待ってもらっている状態。</li>
+                <li>来月からの即時ダウンではなく<strong>「年度内でのグレードダウン」</strong>を提案したいと考えており、その旨をメールで伝えている。</li>
+                <li>この件のやり取りには井野氏もCCに入っており、今後の進め方については別途相談する予定。</li>
+            </ul>
+        </section>
+
+        <!-- 3 ボーネルンド -->
+        <section id="s3" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">3. ボーネルンド　スマレジ導入　進捗と課題</h2>
+            </div>
+            <p class="section-intro">弊社側でのテスト環境検収がスタートし、7月13日以降の本番リリースに向けた進行管理が重要局面を迎えている。一方でネットワーク環境整備がボトルネックとなっており、クライアント側の判断を前に進める支援が急務である。</p>
+
+            <p class="sub-heading">テスト検収の状況 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li>基本動作は確認できているが、特殊な使い方でステータス異常が派生する不具合を確認。</li>
+                <li>弊社側の全パターン検収は継続中。明日には一度すべて実施完了見込み。</li>
+                <li>検収パターンの妥当性をベンダー確認中。最終的にはクライアント合意のもと、検収成功基準にする想定。</li>
+                <li>クライアント側からは、スマレジ導入の後ろ倒し案も出ている。</li>
+            </ul>
+
+            <p class="sub-heading">ネットワーク環境整備の課題</p>
+            <div class="box-red">
+                <p class="box-label">【コスト問題】</p>
+                <ul class="dot-list">
+                    <li>スマレジはWi-Fi環境が推奨されているが、ボーネルンド側ではこれまで無線工事を行っておらず、無線環境がない店舗が存在する。</li>
+                    <li>施設側のネットワーク環境を整備しようとすると、<strong>1店舗あたり約60万円</strong>の費用がかかると見積もられており、全店舗での実施は現実的ではない。</li>
+                    <li>テナントによっては業務用のネットワークがなく、自社でB工事（ビル指定業者による工事）を行わなければならないケース（例：新都心のコクーンなど）があり、それが高額費用の要因となっている。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">コストを抑えるための代替案</p>
+            <ul class="dot-list">
+                <li><strong>既存LANの活用：</strong>旧ポスレジで使用していた有線LANの先にルーターを購入して接続し、ネットワークを構築する案。</li>
+                <li><strong>ブリッジモードの利用：</strong>自社で引いたLAN回線がある場合、ルーターをブリッジモードに設定することで既存の有線環境を無線化できる可能性がある。</li>
+                <li><strong>バックヤード環境の確認：</strong>スタッフがバックヤードでどのように通信しているか（施設のWi-Fiか独自のルーターか）を確認し、その電波をレジまで飛ばせるか精査する必要がある。</li>
+                <li><strong>実地調査の実施：</strong>理論的な検討だけでなく、まずは川崎フロンテなどの店舗へ実際に赴き、配線構成や電波状況を直接確認することが最善策とされている。</li>
+                <li>通信費用（利用料）を初期費用として請求するのではなく、<strong>サポート費用の中に埋め込む</strong>形での提案も検討されている。</li>
+            </ul>
+
+            <p class="sub-heading">スケジュールと事業上のリスク</p>
+            <div class="box-red">
+                <p class="box-label">【遅延させられない理由】</p>
+                <ul class="dot-list">
+                    <li>夏休み期間中の現場リスクが高く、夏休み突入後の新環境切り替えは避けたい。</li>
+                    <li>夏休み明けまで遅れると、東芝テック旧POSレジ（投テック）のライセンス更新が発生し、当初の狙いが外れる。</li>
+                    <li>弊社としても<strong>8月決算までの売上計上</strong>に欠かせない案件のため、遅延要因は早めに潰す必要がある。</li>
+                    <li><strong>7月13日以降の本番リリースに向けて、クライアント側の契約・通信環境判断を支援する。</strong></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 4 瑞鳳ABP -->
+        <section id="s4" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-blue"></div>
+                <h2 class="section-title blue">4. 瑞鳳　ABP（AIビジネスプラットフォーム）方針転換</h2>
+            </div>
+            <p class="section-intro">Yellowfin Insightsの改善という方向性から、AI判断・ロール別表示・施策実行支援まで含めた新基盤「ABP（AI Business Platform）」へ方針転換する。Yellowfinのライセンスが9月に切れるため、それまでに形にすることが目標。</p>
+
+            <p class="sub-heading">ABPのコンセプト <span class="reporter-badge nigo">新後 報告</span></p>
+            <div class="box-blue">
+                <p class="box-label">【「見える化」から「要因特定とアクション支援」へ】</p>
+                <ul class="dot-list">
+                    <li>単なる分析ダッシュボードではなく、経営者・管理者・現場担当者ごとに必要な情報とAI提案を出し分け、次の行動まで支援する業務基盤。</li>
+                    <li>ユーザーが複雑なプロンプトを入力しなくても、AIが自動で店舗の状況を診断し、「売上が低下している」などのアナウンスや具体的なインサイト（特定機種の偏り・投資金額の傾向など）を提示する。</li>
+                    <li>売上の増減要因をAIが特定し、次のアクションを提案する構造を目指している。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">DB設計と技術的方針 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list blue-markers">
+                <li>分析DBは既存DBの再現ではなく、ABPの利用目的から<strong>0ベースで設計</strong>する。</li>
+                <li>レイヤー構成：raw / stg / core / semantic / mart / ai / app-security / ops の8層で整理。</li>
+                <li>重要な設計方針：表示範囲（scope）と使用者ロール（role）を分け、AIには安全な集計Contextを渡す構造にする。</li>
+                <li>将来的な拡張性や方向性変化にも対応できるよう、大枠のレイヤー構成で整理。個人情報・権限・AIに渡すデータ範囲の設計を早期に固める必要がある。</li>
+            </ul>
+
+            <p class="sub-heading">MVPの優先機能 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list blue-markers">
+                <li>売上KPI・ロール別ホーム・AI Context生成・分析グラフの一部を優先する方針。</li>
+                <li>初期から広げすぎると開発範囲が膨らむため、MVP範囲の絞り込みが重要。</li>
+            </ul>
+
+            <p class="sub-heading">多彩な機能モジュール（将来構想）</p>
+            <ul class="dot-list blue-markers">
+                <li><strong>AIマーケティング：</strong>広告費の集計だけでなく、AIが「LINEの配信が少ない」「Instagramを活用すべき」といった提案を行い、システム上から直接広告の発注まで行える仕組みを検討。</li>
+                <li><strong>ナレッジセンター：</strong>社内規定・マニュアル・過去の会議録などをAIに学習させ、Q&A形式で必要な情報を即座に引き出せる仕組み。</li>
+                <li><strong>人事・労務支援：</strong>介護業界などの複雑な法令改正をAIが監視し、会社の規則を自動でアップデートする機能。社員の自己評価データをAIが分析し、S・A・Bなどのカテゴリーに一次選抜することで管理職の負担を大幅に軽減。</li>
+            </ul>
+
+            <p class="sub-heading">横展開の戦略</p>
+            <ul class="dot-list blue-markers">
+                <li>まずはパチンコ業界などの既存クライアントへの導入を進め、その後、葬儀業界など「IT化が遅れているがニーズがある業界」への横展開も視野に入れている。</li>
+                <li>Yellowfin改善に留めずABPとして再提案できれば、単発納品から継続的な分析基盤・AI活用支援へ発展する可能性あり。</li>
+            </ul>
+
+            <p class="sub-heading">次アクション <span class="reporter-badge nigo">新後 報告</span></p>
+            <div class="box-blue">
+                <p class="box-label">【優先アクション】</p>
+                <ul class="dot-list">
+                    <li>来週、AURORA Mobile社との打ち合わせを実施し、環境構成・DB・API・AI連携方針を確認する。</li>
+                    <li>公開モックの下層ページと機能遷移を確認し、ABPの実画面構成に落とし込む。</li>
+                    <li>MVPで作る画面・必要テーブル・AI ContextのJSON仕様を具体化する。</li>
+                    <li>既存DB・Google Drive・広告媒体など、利用する元データの所在と移行対象を棚卸しする。</li>
+                    <li><strong>7月中に、瑞鳳担当者の飯海さんへ事前資料をお渡しし、今後の進め方を相談する。</strong></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 5 LINE広告 -->
+        <section id="s5" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">5. LINE広告　進捗と市場戦略</h2>
             </div>
             <p class="section-intro">新プラットフォームへの移行が本格稼働し、初の新環境配信で良好な結果が出た。市場環境の変化により競合他社が苦戦する中、ビジットサーチ拡大の好機が到来している。</p>
 
@@ -139,7 +286,7 @@
             <ul class="dot-list">
                 <li>受注件数：<strong>102件</strong>（7月6日現在）。月初の出足好調で月初最高件数を記録。</li>
                 <li>「7」の日およびヒノマルキャンペーンもあり受注件数増。ヒノマルグループは全店キャンペーン（本部主導）に加えて個別店舗配信も受注増。</li>
-                <li>全体の売上底上げのための策および今後の売上傾向の見極めとして情報収集中。独占販売の解除などダイナミックな戦略が望まれる。一広側とのヒアリングやその他販売ルート・広告商品についての検討が必要（他メディア展開・他の販売ルート開拓など）。</li>
+                <li>全体の売上底上げのための策および今後の売上傾向の見極めとして情報収集中。独占販売の解除などダイナミックな戦略が望まれる。一広社へのヒアリングやその他販売ルート・広告商品についての検討が必要（他メディア展開・他の販売ルート開拓など）。</li>
                 <li>キャンペーンでの件数増でもアカウントおよびキャンペーン単価（50,000円/案件）の維持が重要課題。</li>
             </ul>
 
@@ -201,155 +348,38 @@
             </ul>
         </section>
 
-        <!-- 2 ボーネルンド -->
-        <section id="s2" class="section-card">
+        <!-- 6 広告商品 -->
+        <section id="s6" class="section-card">
             <div class="section-head">
                 <div class="section-bar bar-green"></div>
-                <h2 class="section-title">2. ボーネルンド　スマレジ導入　進捗と課題</h2>
+                <h2 class="section-title">6. 広告商品</h2>
             </div>
-            <p class="section-intro">弊社側でのテスト環境検収がスタートし、7月13日以降の本番リリースに向けた進行管理が重要局面を迎えている。一方でネットワーク環境整備がボトルネックとなっており、クライアント側の判断を前に進める支援が急務である。</p>
+            <p class="section-intro">既存事業の延長線上にある新たな広告商品・メディア化の構想が複数進行している。</p>
 
-            <p class="sub-heading">テスト検収の状況 <span class="reporter-badge nigo">新後 報告</span></p>
+            <p class="sub-heading">テクノブラッド（蔵前）×ネットカフェ広告メディア化</p>
             <ul class="dot-list">
-                <li>基本動作は確認できているが、特殊な使い方でステータス異常が派生する不具合を確認。</li>
-                <li>弊社側の全パターン検収は継続中。明日には一度すべて実施完了見込み。</li>
-                <li>検収パターンの妥当性をベンダー確認中。最終的にはクライアント合意のもと、検収成功基準にする想定。</li>
-                <li>クライアント側からは、スマレジ導入の後ろ倒し案も出ている。</li>
+                <li>テクノブラッドは広告プロモーションの会社。ネットカフェのランチャー提供会社（シェア約80%、全国約5,000店舗）との連携案。</li>
+                <li>施設内のメディア化（メーカー出稿実績あり）。5,000店舗のビーコン活用など、広告商品として成立する可能性がある。</li>
+                <li>パチンコホールへの送客など、特定ロケーションにおける新しい収益源（メディア化）としてのチャレンジが期待されている。</li>
             </ul>
 
-            <p class="sub-heading">ネットワーク環境整備の課題</p>
-            <div class="box-red">
-                <p class="box-label">【コスト問題】</p>
-                <ul class="dot-list">
-                    <li>スマレジはWi-Fi環境が推奨されているが、ボーネルンド側ではこれまで無線工事を行っておらず、無線環境がない店舗が存在する。</li>
-                    <li>施設側のネットワーク環境を整備しようとすると、<strong>1店舗あたり約60万円</strong>の費用がかかると見積もられており、全店舗での実施は現実的ではない。</li>
-                    <li>テナントによっては業務用のネットワークがなく、自社でB工事（ビル指定業者による工事）を行わなければならないケース（例：新都心のコクーンなど）があり、それが高額費用の要因となっている。</li>
-                </ul>
-            </div>
-
-            <p class="sub-heading">コストを抑えるための代替案</p>
+            <p class="sub-heading">その他広告商品開発 <span class="reporter-badge takada">高田 報告</span></p>
             <ul class="dot-list">
-                <li><strong>既存LANの活用：</strong>旧ポスレジで使用していた有線LANの先にルーターを購入して接続し、ネットワークを構築する案。</li>
-                <li><strong>ブリッジモードの利用：</strong>自社で引いたLAN回線がある場合、ルーターをブリッジモードに設定することで既存の有線環境を無線化できる可能性がある。</li>
-                <li><strong>バックヤード環境の確認：</strong>スタッフがバックヤードでどのように通信しているか（施設のWi-Fiか独自のルーターか）を確認し、その電波をレジまで飛ばせるか精査する必要がある。</li>
-                <li><strong>実地調査の実施：</strong>理論的な検討だけでなく、まずは川崎フロンテなどの店舗へ実際に赴き、配線構成や電波状況を直接確認することが最善策とされている。</li>
-                <li>通信費用（利用料）を初期費用として請求するのではなく、<strong>サポート費用の中に埋め込む</strong>形での提案も検討されている。</li>
-            </ul>
-
-            <p class="sub-heading">スケジュールと事業上のリスク</p>
-            <div class="box-red">
-                <p class="box-label">【遅延させられない理由】</p>
-                <ul class="dot-list">
-                    <li>夏休み期間中の現場リスクが高く、夏休み突入後の新環境切り替えは避けたい。</li>
-                    <li>夏休み明けまで遅れると、東芝テック旧POSレジ（投テック）のライセンス更新が発生し、当初の狙いが外れる。</li>
-                    <li>弊社としても<strong>8月決算までの売上計上</strong>に欠かせない案件のため、遅延要因は早めに潰す必要がある。</li>
-                    <li><strong>7月13日以降の本番リリースに向けて、クライアント側の契約・通信環境判断を支援する。</strong></li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- 3 瑞鳳ABP -->
-        <section id="s3" class="section-card blue-card">
-            <div class="section-head">
-                <div class="section-bar bar-blue"></div>
-                <h2 class="section-title blue">3. 瑞鳳　ABP（AIビジネスプラットフォーム）方針転換</h2>
-            </div>
-            <p class="section-intro">Yellowfin Insightsの改善という方向性から、AI判断・ロール別表示・施策実行支援まで含めた新基盤「ABP（AI Business Platform）」へ方針転換する。Yellowfinのライセンスが9月に切れるため、それまでに形にすることが目標。</p>
-
-            <p class="sub-heading">ABPのコンセプト <span class="reporter-badge nigo">新後 報告</span></p>
-            <div class="box-blue">
-                <p class="box-label">【「見える化」から「要因特定とアクション支援」へ】</p>
-                <ul class="dot-list">
-                    <li>単なる分析ダッシュボードではなく、経営者・管理者・現場担当者ごとに必要な情報とAI提案を出し分け、次の行動まで支援する業務基盤。</li>
-                    <li>ユーザーが複雑なプロンプトを入力しなくても、AIが自動で店舗の状況を診断し、「売上が低下している」などのアナウンスや具体的なインサイト（特定機種の偏り・投資金額の傾向など）を提示する。</li>
-                    <li>売上の増減要因をAIが特定し、次のアクションを提案する構造を目指している。</li>
-                </ul>
-            </div>
-
-            <p class="sub-heading">DB設計と技術的方針 <span class="reporter-badge nigo">新後 報告</span></p>
-            <ul class="dot-list blue-markers">
-                <li>分析DBは既存DBの再現ではなく、ABPの利用目的から<strong>0ベースで設計</strong>する。</li>
-                <li>レイヤー構成：raw / stg / core / semantic / mart / ai / app-security / ops の8層で整理。</li>
-                <li>重要な設計方針：表示範囲（scope）と使用者ロール（role）を分け、AIには安全な集計Contextを渡す構造にする。</li>
-                <li>将来的な拡張性や方向性変化にも対応できるよう、大枠のレイヤー構成で整理。個人情報・権限・AIに渡すデータ範囲の設計を早期に固める必要がある。</li>
-            </ul>
-
-            <p class="sub-heading">MVPの優先機能 <span class="reporter-badge nigo">新後 報告</span></p>
-            <ul class="dot-list blue-markers">
-                <li>売上KPI・ロール別ホーム・AI Context生成・分析グラフの一部を優先する方針。</li>
-                <li>初期から広げすぎると開発範囲が膨らむため、MVP範囲の絞り込みが重要。</li>
-            </ul>
-
-            <p class="sub-heading">多彩な機能モジュール（将来構想）</p>
-            <ul class="dot-list blue-markers">
-                <li><strong>AIマーケティング：</strong>広告費の集計だけでなく、AIが「LINEの配信が少ない」「Instagramを活用すべき」といった提案を行い、システム上から直接広告の発注まで行える仕組みを検討。</li>
-                <li><strong>ナレッジセンター：</strong>社内規定・マニュアル・過去の会議録などをAIに学習させ、Q&A形式で必要な情報を即座に引き出せる仕組み。</li>
-                <li><strong>人事・労務支援：</strong>介護業界などの複雑な法令改正をAIが監視し、会社の規則を自動でアップデートする機能。社員の自己評価データをAIが分析し、S・A・Bなどのカテゴリーに一次選抜することで管理職の負担を大幅に軽減。</li>
-            </ul>
-
-            <p class="sub-heading">横展開の戦略</p>
-            <ul class="dot-list blue-markers">
-                <li>まずはパチンコ業界などの既存クライアントへの導入を進め、その後、葬儀業界など「IT化が遅れているがニーズがある業界」への横展開も視野に入れている。</li>
-                <li>Yellowfin改善に留めずABPとして再提案できれば、単発納品から継続的な分析基盤・AI活用支援へ発展する可能性あり。</li>
-            </ul>
-
-            <p class="sub-heading">論点・リスクと次アクション <span class="reporter-badge nigo">新後 報告</span></p>
-            <div class="box-blue">
-                <p class="box-label">【次アクション】</p>
-                <ul class="dot-list">
-                    <li>来週、AURORA Mobile社との打ち合わせを実施し、環境構成・DB・API・AI連携方針を確認する。</li>
-                    <li>公開モックの下層ページと機能遷移を確認し、ABPの実画面構成に落とし込む。</li>
-                    <li>MVPで作る画面・必要テーブル・AI ContextのJSON仕様を具体化する。</li>
-                    <li>既存DB・Google Drive・広告媒体など、利用する元データの所在と移行対象を棚卸しする。</li>
-                    <li><strong>7月中に、瑞鳳担当者の飯海さんへ事前資料をお渡しし、今後の進め方を相談する。</strong></li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- 4 MID -->
-        <section id="s4" class="section-card red-card">
-            <div class="section-head">
-                <div class="section-bar bar-red"></div>
-                <h2 class="section-title red">4. MID　追いかけ停止判断</h2>
-            </div>
-            <p class="section-intro">弊社からMIDへの提案は一旦打ち切り判断。リソースは他プロジェクトへ優先配分する。</p>
-
-            <p class="sub-heading">進捗と経緯 <span class="reporter-badge nigo">新後 報告</span></p>
-            <ul class="dot-list red-markers">
-                <li>高田さんから三井さんへ電話を含めて再度連絡済み。</li>
-                <li>三井さんからは「他社との比較の上で判断したい」「現在社内で優先順位が上がった別の動きがあり、すぐに導入は難しい」「進展があり次第連絡する」との回答あり。</li>
-                <li>こちら主導で進行することが難しく、次にいつ連絡が来るかも見えない状態。今回の提案以外にも話したいテーマはあるが、その機会を作ること自体が難しい。</li>
-                <li><strong>弊社からの能動的な追いかけは一旦停止。先方から連絡があり次第、状況に応じて対応する。</strong></li>
+                <li>SNWへの商品化（ダッシュボード）。</li>
+                <li>広告商品：送客・Beacon（パチンコホールへの広告商品）。</li>
+                <li>売上拡大案として来季開始までに提案可能な状態まで構築すること。</li>
+                <li>上村さん（SAMILETANK）、一広（細谷さん／LINE以外）との関係強化。</li>
+                <li>Mooovi（システム）（秋口リリース→提案含めた入れ替え）：担当者変更などコンタクト先クリーニングが必要。</li>
+                <li>ダイナム：来季に向けて検討。</li>
+                <li>PRJ単位で案件を増やしていく必要がある。</li>
             </ul>
         </section>
 
-        <!-- 5 Mooovi -->
-        <section id="s5" class="section-card">
-            <div class="section-head">
-                <div class="section-bar bar-green"></div>
-                <h2 class="section-title">5. Mooovi　内製顧客管理システム　頭出し開始</h2>
-            </div>
-            <p class="section-intro">内製顧客管理システムが形になってきたことを受け、各所への頭出しを開始。来年度の大型改修に向けた提案タイミングの明確化が課題。</p>
-
-            <p class="sub-heading">進捗 <span class="reporter-badge nigo">新後 報告</span></p>
-            <ul class="dot-list">
-                <li>芦屋からの見積依頼や、Mooovi担当者とのやり取りの中で「来年度に向けて大型改修を控えている」ことを頭出し。</li>
-                <li>大型改修はLinyの仕組みを内製化するイメージの顧客管理システム。コストダウンやスタッフ負荷軽減につながる可能性がある点も伝え始めている。</li>
-            </ul>
-
-            <p class="sub-heading">論点・次アクション</p>
-            <ul class="dot-list">
-                <li>内製システムの完成時期・提案時期・新後さんがどのタイミングでジョインするかを整理する必要あり。提案時期を曖昧にしたままだと来年度予算や先方の検討タイミングに乗せにくい。</li>
-                <li>今日の社内定例で、提案可能時期とスケジュール概要を明確にする。</li>
-                <li>Liny依存から脱却できれば将来的なコスト削減と利益率改善につながる可能性あり。単発改修ではなく継続的なシステム提供・運用支援へ広げられる。</li>
-            </ul>
-        </section>
-
-        <!-- 6 AI社員制度 -->
-        <section id="s6" class="section-card purple-card">
+        <!-- 7 AI社員制度 -->
+        <section id="s7" class="section-card purple-card">
             <div class="section-head">
                 <div class="section-bar bar-purple"></div>
-                <h2 class="section-title purple">6. AI社員制度（ECOちゃん）</h2>
+                <h2 class="section-title purple">7. AI社員制度（ECOちゃん）</h2>
             </div>
             <p class="section-intro">少人数のチームで大企業のようなパフォーマンスを発揮することを目指した革新的な組織戦略として、AI社員制度の導入が提案・開始された。</p>
 
@@ -386,56 +416,11 @@
             </ul>
         </section>
 
-        <!-- 7 新規事業 -->
-        <section id="s7" class="section-card">
-            <div class="section-head">
-                <div class="section-bar bar-green"></div>
-                <h2 class="section-title">7. 新規事業　広告商品開発</h2>
-            </div>
-            <p class="section-intro">既存事業の延長線上にある新たな広告商品・メディア化の構想が複数進行している。</p>
-
-            <p class="sub-heading">テクノブラッド（蔵前）×ネットカフェ広告メディア化</p>
-            <ul class="dot-list">
-                <li>テクノブラッドは広告プロモーションの会社。ネットカフェのランチャー提供会社（シェア約80%、全国約5,000店舗）との連携案。</li>
-                <li>施設内のメディア化（メーカー出稿実績あり）。5,000店舗のビーコン活用など、広告商品として成立する可能性がある。</li>
-                <li>パチンコホールへの送客など、特定ロケーションにおける新しい収益源（メディア化）としてのチャレンジが期待されている。</li>
-            </ul>
-
-            <p class="sub-heading">その他広告商品開発 <span class="reporter-badge takada">高田 報告</span></p>
-            <ul class="dot-list">
-                <li>SNWへの商品化（ダッシュボード）。</li>
-                <li>広告商品：送客・Beacon（パチンコホールへの広告商品）。</li>
-                <li>売上拡大案として来季開始までに提案可能な状態まで構築すること。</li>
-            </ul>
-
-            <p class="sub-heading">来季・その他案件 <span class="reporter-badge takada">高田 報告</span></p>
-            <ul class="dot-list">
-                <li>上村さん（SAMILETANK）、一広（細谷さん／LINE以外）との関係強化。</li>
-                <li>Moovie（Mooovi）システム（秋口リリース→提案含めた入れ替え）：担当者変更などコンタクト先クリーニングが必要。</li>
-                <li>ダイナム：来季に向けて検討。</li>
-                <li>PRJ単位で案件を増やしていく必要がある。</li>
-            </ul>
-        </section>
-
-        <!-- 8 プラングレードダウン -->
+        <!-- 8 TODO -->
         <section id="s8" class="section-card">
             <div class="section-head">
-                <div class="section-bar bar-gray"></div>
-                <h2 class="section-title">8. プラングレードダウン対応</h2>
-            </div>
-            <ul class="dot-list gray-markers">
-                <li>蒲郡の小賀（こが）氏より、来月からプランのグレードダウンをしたいという要望あり。小賀氏は複数店舗を担当している。</li>
-                <li>チーム側は現在システム等の切り替えをお願いしているタイミングであるため、一旦その要望を待ってもらっている状態。</li>
-                <li>来月からの即時ダウンではなく<strong>「年度内でのグレードダウン」</strong>を提案したいと考えており、その旨をメールで伝えている。</li>
-                <li>この件のやり取りには井野氏もCCに入っており、今後の進め方については別途相談する予定。</li>
-            </ul>
-        </section>
-
-        <!-- 9 TODO -->
-        <section id="s9" class="section-card">
-            <div class="section-head">
                 <div class="section-bar bar-green"></div>
-                <h2 class="section-title">9. アクションアイテム（TODO）</h2>
+                <h2 class="section-title">8. アクションアイテム（TODO）</h2>
             </div>
             <div style="overflow-x:auto;">
                 <table class="data-table">
@@ -443,75 +428,22 @@
                         <tr><th>担当</th><th>タスク内容</th><th>期限 / 目安</th></tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>新後 / 高田</td>
-                            <td>LINE広告：一広との新プラットフォーム利用開始タイミング協議</td>
-                            <td>7月10日</td>
-                        </tr>
-                        <tr>
-                            <td>高田</td>
-                            <td>発注システム作業手順マニュアルを一広側に再度提示</td>
-                            <td>7月10日</td>
-                        </tr>
-                        <tr>
-                            <td>高田</td>
-                            <td>BW連携：杉山氏・簗田氏との広告商品打ち合わせ</td>
-                            <td>7月10日</td>
-                        </tr>
-                        <tr>
-                            <td>新後</td>
-                            <td>ボーネルンド：全パターン検収完了・クライアント側の契約・通信環境判断を支援</td>
-                            <td>7月13日リリースに向け</td>
-                        </tr>
-                        <tr>
-                            <td>新後</td>
-                            <td>ボーネルンド：ルーター候補・現在のネット環境確認ポイントを追加提案</td>
-                            <td>早急に</td>
-                        </tr>
-                        <tr>
-                            <td>新後</td>
-                            <td>LINE広告：レポート自動生成を運用土台に乗せる</td>
-                            <td>今月中</td>
-                        </tr>
-                        <tr>
-                            <td>新後</td>
-                            <td>BW連携：アカウント名管理体制を整理・統一店舗アカウント名で登録依頼できる体制を整える</td>
-                            <td>今月中</td>
-                        </tr>
-                        <tr>
-                            <td>新後</td>
-                            <td>Mooovi：提案可能時期とスケジュール概要を社内定例で明確化</td>
-                            <td>今日</td>
-                        </tr>
-                        <tr>
-                            <td>新後</td>
-                            <td>瑞鳳ABP：AURORA Mobile社との打ち合わせ実施・方向性すり合わせ</td>
-                            <td>来週</td>
-                        </tr>
-                        <tr>
-                            <td>新後</td>
-                            <td>瑞鳳ABP：飯海さんへ事前資料をお渡し・今後の進め方を相談</td>
-                            <td>7月中</td>
-                        </tr>
-                        <tr>
-                            <td>新後</td>
-                            <td>瑞鳳ABP：既存DB・Google Drive・広告媒体など元データの所在と移行対象を棚卸し</td>
-                            <td>来週以降</td>
-                        </tr>
-                        <tr>
-                            <td>高田</td>
-                            <td>SNW：メーカー広告のエリア選択と配信価格テーブルを作成・提示</td>
-                            <td>次回MTGまで</td>
-                        </tr>
-                        <tr>
-                            <td>全体</td>
-                            <td>LINE広告：一広側の勉強会・講習会の開催検討、クライアントを巻き込む体制構築</td>
-                            <td>次回MTGまでに計画</td>
-                        </tr>
+                        <tr><td>新後 / 高田</td><td>LINE広告：一広との新プラットフォーム利用開始タイミング協議</td><td>7月10日</td></tr>
+                        <tr><td>高田</td><td>発注システム作業手順マニュアルを一広側に再度提示</td><td>7月10日</td></tr>
+                        <tr><td>高田</td><td>BW連携：杉山氏・簗田氏との広告商品打ち合わせ</td><td>7月10日</td></tr>
+                        <tr><td>新後</td><td>ボーネルンド：全パターン検収完了・クライアント側の契約・通信環境判断を支援</td><td>7月13日リリースに向け</td></tr>
+                        <tr><td>新後</td><td>ボーネルンド：ルーター候補・現在のネット環境確認ポイントを追加提案</td><td>早急に</td></tr>
+                        <tr><td>新後</td><td>LINE広告：レポート自動生成を運用土台に乗せる</td><td>今月中</td></tr>
+                        <tr><td>新後</td><td>BW連携：統一店舗アカウント名で登録依頼できる体制を整える</td><td>今月中</td></tr>
+                        <tr><td>新後</td><td>Mooovi：提案可能時期とスケジュール概要を社内定例で明確化</td><td>今日</td></tr>
+                        <tr><td>新後</td><td>瑞鳳ABP：AURORA Mobile社との打ち合わせ実施・方向性すり合わせ</td><td>来週</td></tr>
+                        <tr><td>新後</td><td>瑞鳳ABP：飯海さんへ事前資料をお渡し・今後の進め方を相談</td><td>7月中</td></tr>
+                        <tr><td>新後</td><td>瑞鳳ABP：既存DB・Google Drive・広告媒体など元データの所在と移行対象を棚卸し</td><td>来週以降</td></tr>
+                        <tr><td>高田</td><td>SNW：メーカー広告のエリア選択と配信価格テーブルを作成・提示</td><td>次回MTGまで</td></tr>
+                        <tr><td>全体</td><td>LINE広告：一広側の勉強会・講習会の開催検討、クライアントを巻き込む体制構築</td><td>次回MTGまでに計画</td></tr>
                     </tbody>
                 </table>
             </div>
-
             <div class="box-green" style="margin-top:1.5rem;">
                 <p class="box-label">【次回確認事項】</p>
                 <ul class="dot-list">
@@ -532,20 +464,19 @@
 <script>
     const links = document.querySelectorAll('.sidebar-link');
     const sections = document.querySelectorAll('section[id]');
-    const blueSections = ['s3'];
-    const purpleSections = ['s6'];
-    const redSections = ['s4'];
+    const redSections = ['s1'];
+    const purpleSections = ['s7'];
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const id = entry.target.getAttribute('id');
                 links.forEach(link => {
-                    link.classList.remove('active-green','active-blue','active-purple');
+                    link.classList.remove('active','active-red','active-purple');
                     if (link.getAttribute('href') === '#' + id) {
-                        if (blueSections.includes(id)) link.classList.add('active-blue');
+                        if (redSections.includes(id)) link.classList.add('active-red');
                         else if (purpleSections.includes(id)) link.classList.add('active-purple');
-                        else link.classList.add('active-green');
+                        else link.classList.add('active');
                     }
                 });
             }
