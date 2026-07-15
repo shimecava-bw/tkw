@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKW会議：2026年5月26日</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif; background-color: #ffffff; color: #1f2937; line-height: 1.8; font-size: 15px; }
+        .layout { display: flex; min-height: 100vh; }
+        .sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; background-color: #f9fafb; border-right: 1px solid #e5e7eb; display: flex; flex-direction: column; padding: 2rem 0 3rem 0; }
+        .sidebar-label { font-size: 0.7rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; padding: 0 1.5rem; margin-bottom: 1rem; }
+        .sidebar-links { display: flex; flex-direction: column; }
+        .sidebar-link { display: block; padding: 0.45rem 1.5rem; font-size: 0.8rem; color: #6b7280; text-decoration: none; border-radius: 0.5rem; margin: 0.1rem 0.5rem; transition: background 0.18s, color 0.18s; }
+        .sidebar-link:hover { background-color: #e5e7eb; color: #111827; }
+        .sidebar-link.active { background-color: #ecfdf5; color: #065f46; font-weight: 700; }
+        .sidebar-link.active-red { background-color: #fef2f2; color: #991b1b; font-weight: 700; }
+        .sidebar-card { margin: 1.5rem 1rem 0 1rem; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.25rem; font-size: 0.75rem; color: #6b7280; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .sidebar-card-title { font-weight: 700; color: #1f2937; font-size: 0.85rem; margin-bottom: 0.6rem; }
+        .sidebar-card-row { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
+        .sidebar-card-row span:last-child { font-weight: 700; color: #1f2937; }
+        .sidebar-card-row .status { color: #065f46; }
+        .main { flex: 1; padding: 0 4rem 4rem 4rem; background: #ffffff; min-width: 0; }
+        .page-header { padding: 3.5rem 0 2.5rem 0; margin-bottom: 2.5rem; border-bottom: 1px solid #e5e7eb; }
+        .badge { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 9999px; font-size: 0.78rem; font-weight: 600; background: #f3f4f6; color: #4b5563; margin-bottom: 1rem; letter-spacing: 0.04em; }
+        .page-title { font-size: 2.2rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.75rem; }
+        .page-subtitle { color: #6b7280; font-size: 1rem; font-weight: 500; }
+        .section-card { background: #ffffff; border-radius: 1rem; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 2rem; padding: 2.5rem; transition: box-shadow 0.25s; }
+        .section-card:hover { box-shadow: 0 10px 20px -3px rgba(0,0,0,0.09); }
+        .section-card.red-card { background-color: #fff5f5; border: 1px solid #fecaca; }
+        .section-head { display: flex; align-items: center; margin-bottom: 1.75rem; }
+        .section-bar { width: 6px; height: 2rem; border-radius: 9999px; margin-right: 1rem; flex-shrink: 0; }
+        .bar-green { background: #059669; }
+        .bar-blue { background: #2563eb; }
+        .bar-red { background: #dc2626; }
+        .bar-gray { background: #6b7280; }
+        .section-title { font-size: 1.35rem; font-weight: 700; color: #111827; }
+        .section-title.blue { color: #1d4ed8; }
+        .section-title.green { color: #065f46; }
+        .section-title.red { color: #dc2626; }
+        .section-intro { color: #6b7280; margin-bottom: 1.5rem; line-height: 1.8; }
+        .sub-heading { font-size: 1rem; font-weight: 700; color: #1f2937; margin: 1.75rem 0 0.75rem 0; }
+        ul.dot-list { list-style: disc; padding-left: 1.5rem; color: #4b5563; }
+        ul.dot-list li { margin-bottom: 0.6rem; line-height: 1.75; }
+        ul.dot-list li::marker { color: #10b981; }
+        ul.dot-list.blue-markers li::marker { color: #2563eb; }
+        ul.dot-list.red-markers li::marker { color: #ef4444; }
+        ul.dot-list.gray-markers li::marker { color: #6b7280; }
+        ul.dot-list li strong { color: #111827; }
+        .box-green { border-left: 4px solid #10b981; background: #f0fdf4; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-green .box-label { font-size: 0.8rem; font-weight: 700; color: #065f46; margin-bottom: 0.5rem; }
+        .box-green ul.dot-list li::marker { color: #10b981; }
+        .box-blue { border-left: 4px solid #2563eb; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-blue .box-label { font-size: 0.8rem; font-weight: 700; color: #1d4ed8; margin-bottom: 0.5rem; }
+        .box-blue ul.dot-list li::marker { color: #2563eb; }
+        .box-red { border-left: 4px solid #ef4444; background: #fef2f2; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-red .box-label { font-size: 0.8rem; font-weight: 700; color: #991b1b; margin-bottom: 0.5rem; }
+        .box-red ul.dot-list li::marker { color: #ef4444; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1rem 0; }
+        .data-table thead th { background: #f9fafb; padding: 0.6rem 1rem; text-align: left; font-weight: 700; color: #374151; border-bottom: 2px solid #e5e7eb; font-size: 0.75rem; letter-spacing: 0.04em; }
+        .data-table tbody td { padding: 0.6rem 1rem; border-bottom: 1px solid #f3f4f6; color: #4b5563; vertical-align: top; }
+        .data-table tbody tr:hover { background: #f9fafb; }
+        .page-footer { margin-top: 4rem; padding: 2.5rem 0; border-top: 1px solid #e5e7eb; text-align: center; font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; }
+        @media (max-width: 768px) {
+            .layout { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid #e5e7eb; padding: 1.25rem 0 1rem 0; }
+            .sidebar-card { display: none; }
+            .main { padding: 0 1.25rem 3rem 1.25rem; }
+            .page-header { padding: 2rem 0 1.5rem 0; }
+            .page-title { font-size: 1.5rem; }
+            .section-card { padding: 1.5rem; }
+            .sidebar-links { flex-direction: row; flex-wrap: wrap; padding: 0 0.75rem; gap: 0.25rem; }
+            .sidebar-link { margin: 0; padding: 0.3rem 0.7rem; font-size: 0.72rem; }
+            .sidebar-label { padding: 0 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+    <aside class="sidebar">
+        <p class="sidebar-label">INDEX / 目次</p>
+        <div class="sidebar-links">
+            <a href="#s1" class="sidebar-link">1. Mooovi　リニーAPI連携検討</a>
+            <a href="#s2" class="sidebar-link">2. ボーネルンド　システム開発進捗</a>
+            <a href="#s3" class="sidebar-link">3. 瑞鳳　イエローフィン分析</a>
+            <a href="#s4" class="sidebar-link">4. LINE広告　新プラットフォーム移行</a>
+            <a href="#s5" class="sidebar-link">5. 上村さんの案件</a>
+            <a href="#s6" class="sidebar-link">6. インドネシア案件（BRODO）続報</a>
+            <a href="#s7" class="sidebar-link">7. アクションアイテム（TODO）</a>
+        </div>
+        <div class="sidebar-card">
+            <p class="sidebar-card-title">会議情報</p>
+            <div class="sidebar-card-row"><span>会議名:</span><span>TKW会議</span></div>
+            <div class="sidebar-card-row"><span>日時:</span><span>2026年5月26日</span></div>
+            <div class="sidebar-card-row"><span>形式:</span><span>原文保存版</span></div>
+            <div class="sidebar-card-row"><span>状態:</span><span class="status">チェック完了</span></div>
+        </div>
+    </aside>
+
+    <div class="main">
+        <header class="page-header">
+            <span class="badge">MEETING MINUTES</span>
+            <h1 class="page-title">TKW会議：2026年5月26日</h1>
+            <p class="page-subtitle">Mooovi / ボーネルンド / 瑞鳳 / LINE広告新プラットフォーム移行 / インドネシア案件続報　詳細記録</p>
+        </header>
+
+        <!-- 1 Mooovi -->
+        <section id="s1" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">1. Mooovi　リニーAPI連携検討</h2>
+            </div>
+            <p class="section-intro">リニー（Liny）のAPI連携については、主に「Mooovi」プロジェクトにおけるデータ分析の効率化という文脈で検討されている。</p>
+
+            <p class="sub-heading">API連携検討の背景と目的</p>
+            <ul class="dot-list">
+                <li><strong>無料入場者データの取得：</strong>特定の日に無料で入場した人数（5ポイント貯まった利用者）を把握し、データ分析に活用したいという相談がクライアントからあった。</li>
+                <li><strong>手動運用の限界：</strong>現在は毎日リストを手動でダウンロードして抽出しているが、休日を挟むとデータの取りこぼしが発生しやすく、遡って確認するのも困難であるという課題がある。</li>
+                <li><strong>高度な分析への需要：</strong>単なる人数把握だけでなく、1年間の来場回数や、一見客とリピーターの割合など、より深い顧客分析を行いたいというニーズがある。</li>
+            </ul>
+
+            <p class="sub-heading">コストを抑えた代替案（自動応答の活用）</p>
+            <div class="box-green">
+                <p class="box-label">【テクニカルな解決策】</p>
+                <ul class="dot-list">
+                    <li>無料入場のアクション（リッチメニューの変更など）が発生した際に、自動で特定のメッセージを配信するように設定する。</li>
+                    <li>自動応答の履歴はシステムに残るため、そこから日付ごとの件数を数えることで、APIを組まなくても実数把握が可能になる。</li>
+                    <li>1日の対象者が数名から数十名程度であれば、この方法で十分対応可能であり、追加費用をかけずにクライアントの要望を満たせる解決策として高く評価されている。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">スマレジ連携・AIモデルとの連携</p>
+            <ul class="dot-list">
+                <li><strong>スマレジ連携：</strong>リプロ側のシステムとスマレジをAPIで連携させる準備が進んでおり、川崎店を皮切りに今後の多店舗展開でも同様の仕組みが利用される予定。</li>
+                <li><strong>AIモデルとの連携：</strong>イエローフィンにおいて、OpenAIやGoogle Geminiといった生成AIのAPIを接続し、自然言語でグラフの分析ができる機能（AIエージェント）の導入が検討されている。</li>
+            </ul>
+        </section>
+
+        <!-- 2 ボーネルンド -->
+        <section id="s2" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">2. ボーネルンド　システム開発進捗</h2>
+            </div>
+            <p class="section-intro">リプロ（リニーの内製化プロジェクト）の開発進捗について。現在、開発は粛々と進んでいる状況であり、6月末のシステム完成と7月の初店舗リリースに向けた最終段階に入っている。</p>
+
+            <p class="sub-heading">開発スケジュール</p>
+            <table class="data-table">
+                <thead><tr><th>時期</th><th>内容</th></tr></thead>
+                <tbody>
+                    <tr><td>6月初旬</td><td>基本機能の開発が一旦完了</td></tr>
+                    <tr><td>6月中</td><td>自社内での検収（研修）およびリプロ側でのテスト・最適化調整</td></tr>
+                    <tr><td>6月末</td><td>システムが完全に完成する予定</td></tr>
+                    <tr><td>7月初旬</td><td>開発側から運用側へシステムが引き渡し</td></tr>
+                    <tr><td>7月18日</td><td>川崎店を最初の店舗としてリリース（納品）する想定で動いており、7月中には1店舗目の導入が確実に完了する見込み</td></tr>
+                </tbody>
+            </table>
+
+            <p class="sub-heading">主要な機能アップデートと改善点</p>
+            <ul class="dot-list">
+                <li><strong>入場フローの簡素化：</strong>従来のリッチメニューでの2回タップによる入場確認から、LIFF（リフ）を立ち上げて承認する形式への変更が検討されている。誤タップの防止や、1日2回の来場制限などのステータス管理が裏側で制御しやすくなり、複雑なリッチメニューの構成を減らすことができる。</li>
+                <li><strong>予約機能の制限：</strong>「空予約」を防ぐため、1ユーザーあたりの最大予約数に上限（1人につき最大3つまで）を設ける機能が実装される。</li>
+                <li><strong>子供の人数調整の簡素化：</strong>子供の人数調整や年齢データの管理方法については、複雑な仕組みを排除し、シンプルな設計へと変更された。</li>
+                <li><strong>無料入場者データの把握：</strong>無料入場のアクションが行われた際に自動応答メッセージを配信し、そのログを数えることで実数を把握するテクニカルな手法が採用される。</li>
+                <li><strong>データ出力：</strong>管理画面からデータをCSV形式で書き出せる機能も盛り込まれる予定。</li>
+            </ul>
+
+            <p class="sub-heading">端末とサポート体制の課題</p>
+            <ul class="dot-list">
+                <li>店舗に設置する端末は、ブラウザ（推奨：Google Chrome）が動作すればiPadやAndroidタブレット、中古端末でも対応可能。</li>
+                <li>端末の故障や不具合が起きた際、自社がどこまでサポートに関与するか（推奨スペックの提示など）を明確にする必要がある。</li>
+            </ul>
+        </section>
+
+        <!-- 3 瑞鳳 -->
+        <section id="s3" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-blue"></div>
+                <h2 class="section-title blue">3. 瑞鳳　イエローフィン分析の現状と判断局面</h2>
+            </div>
+            <p class="section-intro">イエローフィンを活用した分析については、「インサイト機能」の不具合解消と、新たに追加された「AI機能（AIエージェント）」の導入検討が大きな焦点となっている。</p>
+
+            <p class="sub-heading">インサイト機能の現状と課題</p>
+            <ul class="dot-list blue-markers">
+                <li>ダッシュボードのアップデートは完了したものの、主要な分析機能である「インサイト機能」が依然として使用できない状況にある。</li>
+                <li><strong>原因：</strong>データベースのテーブル構造が非常に複雑で、フィルタ機能やドリルダウン機能を多用しているため、インサイト機能の処理能力を超えてしまっている。</li>
+                <li><strong>対策案：</strong>全てのグラフでインサイト機能を使うのは難しいため、優先順位の高い主要なグラフに絞り、専用のテーブルとページを新規作成して対応する方針が検討されている。</li>
+            </ul>
+
+            <p class="sub-heading">新機能「AIエージェント」の導入検討</p>
+            <div class="box-blue">
+                <p class="box-label">【AIエージェントの概要】</p>
+                <ul class="dot-list">
+                    <li>イエローフィン自体が独自のAIを持つのではなく、外部の生成AI（OpenAI、Google Gemini、Anthropic Claudeなど）とAPI連携するためのインターフェースを提供するもの。</li>
+                    <li>自然言語で「この日のデータが下落している要因は何か？」といった質問を投げると、AIが紐づくデータを分析して回答を生成する。</li>
+                    <li>従来のインサイト機能よりも一歩踏み込んだ深掘り分析が可能。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">コストと運用の懸念事項</p>
+            <ul class="dot-list blue-markers">
+                <li><strong>従量課金：</strong>API連携にはトークン消費に応じた従量課金が発生する。分析のたびに高額な費用がかかる可能性があるため、事前に具体的な金額感を調査し、クライアントに提示する必要がある。</li>
+                <li><strong>契約形態：</strong>クライアント側でAPIキーを取得して接続する形式となるため、その設定や運用の手間も考慮しなければならない。</li>
+            </ul>
+
+            <p class="sub-heading">分析プラットフォームとしての戦略的判断</p>
+            <div class="box-red">
+                <p class="box-label">【重要な判断局面】</p>
+                <ul class="dot-list">
+                    <li>インサイト機能の構築に時間がかかりすぎていることから、イエローフィンという枠組み自体を見直す議論も出ている。</li>
+                    <li>すでにデータベース（AWSやさくらサーバー）は構築されているため、イエローフィンに年間100万円以上のライセンス料を払い続けるよりも、「別のBIツール＋AI連携」や「データベースへの直接AIアクセス」の方が安価で迅速に分析環境を構築できるのではないかという意見がある。</li>
+                    <li>現在は「動かないインサイト機能を追い続けるか、コストを把握した上でAI機能へ移行するか、あるいはプラットフォーム自体を再考するか」という重要な判断局面にある。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 4 LINE広告 -->
+        <section id="s4" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">4. LINE広告　新プラットフォーム移行</h2>
+            </div>
+
+            <p class="sub-heading">新プラットフォームの調査結果と配信方針</p>
+            <ul class="dot-list">
+                <li><strong>認証の必要性：</strong>LINE公式の認証が取れない限り、マイターゲティングや追加機能の活用は制限される。特にパチンコ店などの業種は認証難易度が高いとされているが、改めて申請に挑戦する方針。</li>
+                <li><strong>広告識別子の活用：</strong>広告識別子を用いたデータ突合テストを実施したところ、突合率は約50%〜65%（5万5,000リスト中、約3万6,000リスト）だった。</li>
+                <li><strong>処理スピードの向上：</strong>旧システムでは取り込みに1営業日かかっていたものが、新プラットフォームでは約5時間ほどで完了するなど、大幅なスピードアップが確認されている。</li>
+                <li><strong>今後の営業方針：</strong>今後は広告識別子を使った広告配信へと営業手法を切り替えていくことで話がまとまっている。</li>
+            </ul>
+
+            <p class="sub-heading">アカウント移行と運用体制</p>
+            <ul class="dot-list">
+                <li>現在管理している約270のアカウントについて、大規模な移行作業が予定されている。</li>
+                <li><strong>移行スケジュール：</strong>お盆休みを目安に、既存の270アカウントを新プラットフォームへ追加登録する計画。6月から、審査を通過したアカウントから順次配信を切り替えていく予定。</li>
+                <li><strong>登録に必要な情報：</strong>アカウント作成には、運営会社の法人名と法人番号が必要。</li>
+                <li><strong>レポート対応：</strong>現在使用している「アトム」での新プラットフォーム対応方法が判明したため、当面はアトムを使い続けるが、270アカウント分の再設定が必要となる。並行して、将来的なレポート機能の内製化も視野に入れている。</li>
+            </ul>
+
+            <p class="sub-heading">ブログウォッチャー（BW）との連携</p>
+            <ul class="dot-list">
+                <li><strong>自動連携システム：</strong>BWの自動連携システムが6月1日からテストリリースされ、6月上旬から中旬にかけて本格始動する予定。スプレッドシートのGAS（Google Apps Script）を用いて構築される。</li>
+                <li><strong>事前確認の自動化：</strong>配信前のリスト数確認についても、6月中旬前後にはBWのシステムで対応可能になる見込み（それまでは手動対応）。</li>
+                <li><strong>定例会議の実施：</strong>BW側と、隔週月曜日の15時から30分間のショートミーティングを行うことが決定した。</li>
+            </ul>
+
+            <p class="sub-heading">その他の広告商品</p>
+            <ul class="dot-list">
+                <li><strong>インバウンド向け広告：</strong>北九州のゲームセンターなどを対象とした、観光スポット訪問者向けのプッシュ型広告が相談に上がっている。訪日外国人はLINEを使用していないケースが多いため、LINEにこだわらず最適な商品を模索している。</li>
+                <li><strong>Ponta：</strong>「ガポリ」での審査は通過しており、配信可能。目安は1インプレッション＝5円程度で、現在東京都での見積もりを依頼中。</li>
+                <li><strong>ジョルダン：</strong>全てのメニューで審査NGとなっている。</li>
+            </ul>
+        </section>
+
+        <!-- 5 上村さん案件 -->
+        <section id="s5" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">5. 上村さんの案件</h2>
+            </div>
+            <ul class="dot-list">
+                <li><strong>直接的なコミュニケーション：</strong>以前（江戸川の時）は大村さんと直接やり取りをしていたが、現在は上村さんが直接話せるようになっている。</li>
+                <li><strong>元スタッフの存在：</strong>この良好な関係の背景には、江戸川の元スタッフが中にいて事情を知っているという繋がりがあり、その人物が窓口となっているため、案件が次々と入ってくる状況にある。</li>
+                <li>一部の案件について「ハードルが高い」「難しい」という声も上がっているようだが、直接話ができる体制が整っているため、実際にはそれほど困難ではないのではないかという見方も示されている。</li>
+            </ul>
+        </section>
+
+        <!-- 6 インドネシア案件 続報 -->
+        <section id="s6" class="section-card red-card">
+            <div class="section-head">
+                <div class="section-bar bar-red"></div>
+                <h2 class="section-title red">6. インドネシア案件（BRODO）続報</h2>
+            </div>
+            <p class="section-intro">先週（5月19日）から続くインドネシア案件の続報。YUKKA氏との連絡途絶が続いており、現在も非常にデリケートな状況にある。</p>
+
+            <ul class="dot-list red-markers">
+                <li>YUKKA氏からの連絡は引き続き途絶えている。インスタグラムの投稿は更新されているものの、日本チームからのメッセージはシャットアウトされている状態が続いている。</li>
+                <li>変に会話を試みるよりも、まずは相手からの連絡を待つというスタンスを維持している。</li>
+                <li>インドネシア側のサーバー問題や、それに伴う警察の関与といった話題も出ているが、日本側でできることは限られており、向こう側での調査や判断を待つしかない状況。</li>
+                <li><strong>証拠の保全：</strong>今後のトラブルに備え、WhatsAppなどのやり取りの履歴は削除せず証拠として保全しておく方針を継続する。</li>
+                <li><strong>トップ間連絡：</strong>ゼ氏からYUKKA氏への直接連絡を引き続き検討している。</li>
+            </ul>
+        </section>
+
+        <!-- 7 TODO -->
+        <section id="s7" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">7. アクションアイテム（TODO）</h2>
+            </div>
+            <div style="overflow-x:auto;">
+                <table class="data-table">
+                    <thead><tr><th>担当</th><th>タスク内容</th><th>期限</th></tr></thead>
+                    <tbody>
+                        <tr><td>広告チーム</td><td>LINE公式認証の再申請</td><td>早急に</td></tr>
+                        <tr><td>広告チーム</td><td>270アカウントの新プラットフォーム移行準備</td><td>お盆休みまで</td></tr>
+                        <tr><td>広告チーム</td><td>BW側との隔週月曜定例会議の設定・実施</td><td>隔週月曜 15:00</td></tr>
+                        <tr><td>全般</td><td>X（旧Twitter）への投稿対応</td><td>5月26日中</td></tr>
+                        <tr><td>Liny / リプロチーム</td><td>クライアントへAPI連携の代替案（自動応答）を提案</td><td>次回MTG</td></tr>
+                        <tr><td>リプロチーム</td><td>7月18日川崎店リリースに向けた最終検収・テスト</td><td>6月末まで</td></tr>
+                        <tr><td>経営陣</td><td>BRODO（YUKKA氏）へのトップ間連絡</td><td>検討中</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer class="page-footer">
+            <p>&copy; 2026 TKW Project Team. All Rights Reserved.</p>
+        </footer>
+    </div>
+</div>
+
+<script>
+    const links = document.querySelectorAll('.sidebar-link');
+    const sections = document.querySelectorAll('section[id]');
+    const redSections = ['s6'];
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                links.forEach(link => {
+                    link.classList.remove('active', 'active-red');
+                    if (link.getAttribute('href') === '#' + id) {
+                        link.classList.add(redSections.includes(id) ? 'active-red' : 'active');
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.2 });
+    sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
