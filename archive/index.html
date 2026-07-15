@@ -7,32 +7,23 @@
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif; background-color: #f9fafb; color: #1f2937; line-height: 1.8; min-height: 100vh; }
-
         .site-header { background: #ffffff; border-bottom: 1px solid #e5e7eb; padding: 2rem 3rem; }
         .site-header .back-link { display: inline-block; font-size: 0.78rem; color: #6b7280; text-decoration: none; margin-bottom: 0.75rem; }
         .site-header .back-link:hover { color: #111827; }
         .site-header .badge { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 9999px; font-size: 0.72rem; font-weight: 700; background: #f3f4f6; color: #374151; letter-spacing: 0.06em; margin-bottom: 0.6rem; margin-left: 0.5rem; }
         .site-header h1 { font-size: 1.8rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; }
         .site-header p { color: #6b7280; font-size: 0.88rem; margin-top: 0.3rem; }
-
         .container { max-width: 860px; margin: 0 auto; padding: 2.5rem 2rem 5rem 2rem; }
-
-        /* 月ボタン */
         .month-bar { display: flex; gap: 0.75rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
         .month-btn { padding: 0.5rem 1.5rem; border-radius: 0.5rem; font-size: 1rem; font-weight: 700; border: 2px solid #e5e7eb; color: #374151; background: #ffffff; cursor: pointer; transition: all 0.18s; }
         .month-btn:hover { border-color: #6b7280; background: #f9fafb; }
         .month-btn.active { border-color: #6b7280; background: #6b7280; color: #ffffff; }
-
-        /* 月セクション */
         .month-section { display: none; }
         .month-section.active { display: block; }
-
         .month-label { font-size: 0.72rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; padding-left: 0.25rem; }
         .minutes-list { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2.5rem; }
-
         .minutes-card { display: flex; align-items: center; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.875rem; padding: 1.25rem 1.5rem; text-decoration: none; color: inherit; transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s; gap: 1.25rem; }
         .minutes-card:hover { box-shadow: 0 8px 20px -4px rgba(0,0,0,0.1); border-color: #6b7280; transform: translateY(-1px); }
-
         .card-date { flex-shrink: 0; width: 3.5rem; text-align: center; }
         .card-date .month { font-size: 0.7rem; font-weight: 700; color: #6b7280; text-transform: uppercase; }
         .card-date .day { font-size: 1.75rem; font-weight: 800; color: #111827; line-height: 1; }
@@ -47,9 +38,7 @@
         .tag.red { background: #fef2f2; color: #991b1b; }
         .card-arrow { flex-shrink: 0; color: #d1d5db; font-size: 1.1rem; transition: color 0.2s; }
         .minutes-card:hover .card-arrow { color: #6b7280; }
-
         footer { text-align: center; font-size: 0.72rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; padding: 2rem 0; border-top: 1px solid #e5e7eb; margin-top: 2rem; }
-
         @media (max-width: 600px) {
             .site-header { padding: 1.5rem 1.25rem; }
             .site-header h1 { font-size: 1.3rem; }
@@ -70,31 +59,29 @@
 </header>
 
 <div class="container">
-
     <div class="month-bar">
-        <button class="month-btn active" onclick="showMonth('jun')">6月</button>
+        <button class="month-btn active" onclick="showMonth('jun', this)">6月</button>
+        <button class="month-btn" onclick="showMonth('may', this)">5月</button>
+        <button class="month-btn" onclick="showMonth('apr', this)">4月</button>
     </div>
 
     <!-- 6月 -->
     <div class="month-section active" id="month-jun">
         <p class="month-label">2026年6月</p>
         <div class="minutes-list">
-
             <a href="../0616/" class="minutes-card" target="_blank" rel="noopener">
                 <div class="card-date"><div class="month">Jun</div><div class="day">16</div></div>
                 <div class="card-divider"></div>
                 <div class="card-body">
                     <div class="card-title">TKW会議：2026年6月16日</div>
-                    <div class="card-meta">AI活用と未来の働き方 / LINE広告プラットフォーム移行 / ネットカフェ×ビーコン新規事業 / 組織・役割分担</div>
+                    <div class="card-meta">AI活用と未来の働き方 / LINE広告プラットフォーム移行 / ネットカフェ×ビーコン / 組織・役割分担</div>
                     <div class="card-tags">
                         <span class="tag blue">AI PC・NPU解説</span>
                         <span class="tag green">LINE広告 500件見込み</span>
-                        <span class="tag">新規事業アイデア</span>
                     </div>
                 </div>
                 <span class="card-arrow">›</span>
             </a>
-
             <a href="../0609/" class="minutes-card" target="_blank" rel="noopener">
                 <div class="card-date"><div class="month">Jun</div><div class="day">09</div></div>
                 <div class="card-divider"></div>
@@ -109,22 +96,98 @@
                 </div>
                 <span class="card-arrow">›</span>
             </a>
-
             <a href="../0602/" class="minutes-card" target="_blank" rel="noopener">
                 <div class="card-date"><div class="month">Jun</div><div class="day">02</div></div>
                 <div class="card-divider"></div>
                 <div class="card-body">
                     <div class="card-title">TKW会議：2026年6月2日</div>
-                    <div class="card-meta">MD・モビ関連 / スマレジ価格交渉 / LINE広告 / AI機能検討 / セキュリティ事案 / 新商品企画</div>
+                    <div class="card-meta">MD・モビ関連 / スマレジ価格交渉 / LINE広告 / AI機能検討 / セキュリティ事案</div>
                     <div class="card-tags">
                         <span class="tag red">セキュリティ緊急対応</span>
                         <span class="tag green">LINE広告 過去最高</span>
-                        <span class="tag">AI機能検討</span>
                     </div>
                 </div>
                 <span class="card-arrow">›</span>
             </a>
+        </div>
+    </div>
 
+    <!-- 5月 -->
+    <div class="month-section" id="month-may">
+        <p class="month-label">2026年5月</p>
+        <div class="minutes-list">
+            <a href="../0526/" class="minutes-card" target="_blank" rel="noopener">
+                <div class="card-date"><div class="month">May</div><div class="day">26</div></div>
+                <div class="card-divider"></div>
+                <div class="card-body">
+                    <div class="card-title">TKW会議：2026年5月26日</div>
+                    <div class="card-meta">Mooovi / ボーネルンド / 瑞鳳 / LINE広告新プラットフォーム移行 / インドネシア案件続報</div>
+                    <div class="card-tags">
+                        <span class="tag blue">瑞鳳 BIツール判断局面</span>
+                        <span class="tag red">インドネシア案件続報</span>
+                    </div>
+                </div>
+                <span class="card-arrow">›</span>
+            </a>
+            <a href="../0519/" class="minutes-card" target="_blank" rel="noopener">
+                <div class="card-date"><div class="month">May</div><div class="day">19</div></div>
+                <div class="card-divider"></div>
+                <div class="card-body">
+                    <div class="card-title">TKW会議：2026年5月19日</div>
+                    <div class="card-meta">Mooovi / ボーネルンド / 瑞鳳 / LINE広告認証マーク問題 / WhatsApp詐欺被害</div>
+                    <div class="card-tags">
+                        <span class="tag red">WhatsApp詐欺被害</span>
+                        <span class="tag green">LINE広告 148件見込み</span>
+                    </div>
+                </div>
+                <span class="card-arrow">›</span>
+            </a>
+            <a href="../0512/" class="minutes-card" target="_blank" rel="noopener">
+                <div class="card-date"><div class="month">May</div><div class="day">12</div></div>
+                <div class="card-divider"></div>
+                <div class="card-body">
+                    <div class="card-title">TKW会議：2026年5月12日</div>
+                    <div class="card-meta">Mooovi / ボーネルンド / 瑞鳳 / LINE広告環境移行 / 新規メディア調査 / JLC広告</div>
+                    <div class="card-tags">
+                        <span class="tag green">LINE広告 5月143件超見込み</span>
+                        <span class="tag blue">オセロ戦略</span>
+                    </div>
+                </div>
+                <span class="card-arrow">›</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- 4月 -->
+    <div class="month-section" id="month-apr">
+        <p class="month-label">2026年4月</p>
+        <div class="minutes-list">
+            <a href="../0421/" class="minutes-card" target="_blank" rel="noopener">
+                <div class="card-date"><div class="month">Apr</div><div class="day">21</div></div>
+                <div class="card-divider"></div>
+                <div class="card-body">
+                    <div class="card-title">TKW会議：2026年4月21日</div>
+                    <div class="card-meta">ダッシュボード化 / ボーネルンド / 瑞鳳リカバリー / ボートレース長崎 / グランフロント大阪</div>
+                    <div class="card-tags">
+                        <span class="tag red">瑞鳳 データ不備修正</span>
+                        <span class="tag">ボートレース長崎 公募</span>
+                    </div>
+                </div>
+                <span class="card-arrow">›</span>
+            </a>
+            <a href="../0407/" class="minutes-card" target="_blank" rel="noopener">
+                <div class="card-date"><div class="month">Apr</div><div class="day">07</div></div>
+                <div class="card-divider"></div>
+                <div class="card-body">
+                    <div class="card-title">TKW会議：2026年4月7日</div>
+                    <div class="card-meta">全体戦略 / BigQuery / ホルコン連携 / 効果検証 / Mooovi若松 / ボーネルンド</div>
+                    <div class="card-tags">
+                        <span class="tag blue">ツール優位性戦略</span>
+                        <span class="tag red">Mooovi認証未完了</span>
+                    </div>
+                </div>
+                <span class="card-arrow">›</span>
+            </a>
         </div>
     </div>
 
@@ -133,11 +196,11 @@
 <footer>&copy; 2026 TKW Project Team. All Rights Reserved.</footer>
 
 <script>
-    function showMonth(id) {
+    function showMonth(id, btn) {
         document.querySelectorAll('.month-section').forEach(s => s.classList.remove('active'));
         document.querySelectorAll('.month-btn').forEach(b => b.classList.remove('active'));
         document.getElementById('month-' + id).classList.add('active');
-        event.target.classList.add('active');
+        btn.classList.add('active');
     }
 </script>
 </body>
