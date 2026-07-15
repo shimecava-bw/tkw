@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKW会議：2026年4月21日</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif; background-color: #ffffff; color: #1f2937; line-height: 1.8; font-size: 15px; }
+        .layout { display: flex; min-height: 100vh; }
+        .sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; background-color: #f9fafb; border-right: 1px solid #e5e7eb; display: flex; flex-direction: column; padding: 2rem 0 3rem 0; }
+        .sidebar-label { font-size: 0.7rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; padding: 0 1.5rem; margin-bottom: 1rem; }
+        .sidebar-links { display: flex; flex-direction: column; }
+        .sidebar-link { display: block; padding: 0.45rem 1.5rem; font-size: 0.8rem; color: #6b7280; text-decoration: none; border-radius: 0.5rem; margin: 0.1rem 0.5rem; transition: background 0.18s, color 0.18s; }
+        .sidebar-link:hover { background-color: #e5e7eb; color: #111827; }
+        .sidebar-link.active { background-color: #ecfdf5; color: #065f46; font-weight: 700; }
+        .sidebar-link.active-red { background-color: #fef2f2; color: #991b1b; font-weight: 700; }
+        .sidebar-card { margin: 1.5rem 1rem 0 1rem; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.25rem; font-size: 0.75rem; color: #6b7280; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .sidebar-card-title { font-weight: 700; color: #1f2937; font-size: 0.85rem; margin-bottom: 0.6rem; }
+        .sidebar-card-row { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
+        .sidebar-card-row span:last-child { font-weight: 700; color: #1f2937; }
+        .sidebar-card-row .status { color: #065f46; }
+        .main { flex: 1; padding: 0 4rem 4rem 4rem; background: #ffffff; min-width: 0; }
+        .page-header { padding: 3.5rem 0 2.5rem 0; margin-bottom: 2.5rem; border-bottom: 1px solid #e5e7eb; }
+        .badge { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 9999px; font-size: 0.78rem; font-weight: 600; background: #f3f4f6; color: #4b5563; margin-bottom: 1rem; letter-spacing: 0.04em; }
+        .page-title { font-size: 2.2rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.75rem; }
+        .page-subtitle { color: #6b7280; font-size: 1rem; font-weight: 500; }
+        .section-card { background: #ffffff; border-radius: 1rem; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 2rem; padding: 2.5rem; transition: box-shadow 0.25s; }
+        .section-card:hover { box-shadow: 0 10px 20px -3px rgba(0,0,0,0.09); }
+        .section-card.red-card { background-color: #fff5f5; border: 1px solid #fecaca; }
+        .section-head { display: flex; align-items: center; margin-bottom: 1.75rem; }
+        .section-bar { width: 6px; height: 2rem; border-radius: 9999px; margin-right: 1rem; flex-shrink: 0; }
+        .bar-green { background: #059669; }
+        .bar-blue { background: #2563eb; }
+        .bar-red { background: #dc2626; }
+        .bar-gray { background: #6b7280; }
+        .section-title { font-size: 1.35rem; font-weight: 700; color: #111827; }
+        .section-title.blue { color: #1d4ed8; }
+        .section-title.green { color: #065f46; }
+        .section-title.red { color: #dc2626; }
+        .section-intro { color: #6b7280; margin-bottom: 1.5rem; line-height: 1.8; }
+        .sub-heading { font-size: 1rem; font-weight: 700; color: #1f2937; margin: 1.75rem 0 0.75rem 0; }
+        ul.dot-list { list-style: disc; padding-left: 1.5rem; color: #4b5563; }
+        ul.dot-list li { margin-bottom: 0.6rem; line-height: 1.75; }
+        ul.dot-list li::marker { color: #10b981; }
+        ul.dot-list.blue-markers li::marker { color: #2563eb; }
+        ul.dot-list.red-markers li::marker { color: #ef4444; }
+        ul.dot-list.gray-markers li::marker { color: #6b7280; }
+        ul.dot-list li strong { color: #111827; }
+        .box-green { border-left: 4px solid #10b981; background: #f0fdf4; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-green .box-label { font-size: 0.8rem; font-weight: 700; color: #065f46; margin-bottom: 0.5rem; }
+        .box-green ul.dot-list li::marker { color: #10b981; }
+        .box-blue { border-left: 4px solid #2563eb; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-blue .box-label { font-size: 0.8rem; font-weight: 700; color: #1d4ed8; margin-bottom: 0.5rem; }
+        .box-red { border-left: 4px solid #ef4444; background: #fef2f2; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-red .box-label { font-size: 0.8rem; font-weight: 700; color: #991b1b; margin-bottom: 0.5rem; }
+        .box-red ul.dot-list li::marker { color: #ef4444; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1rem 0; }
+        .data-table thead th { background: #f9fafb; padding: 0.6rem 1rem; text-align: left; font-weight: 700; color: #374151; border-bottom: 2px solid #e5e7eb; font-size: 0.75rem; letter-spacing: 0.04em; }
+        .data-table tbody td { padding: 0.6rem 1rem; border-bottom: 1px solid #f3f4f6; color: #4b5563; vertical-align: top; }
+        .data-table tbody tr:hover { background: #f9fafb; }
+        .page-footer { margin-top: 4rem; padding: 2.5rem 0; border-top: 1px solid #e5e7eb; text-align: center; font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; }
+        @media (max-width: 768px) {
+            .layout { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid #e5e7eb; padding: 1.25rem 0 1rem 0; }
+            .sidebar-card { display: none; }
+            .main { padding: 0 1.25rem 3rem 1.25rem; }
+            .page-header { padding: 2rem 0 1.5rem 0; }
+            .page-title { font-size: 1.5rem; }
+            .section-card { padding: 1.5rem; }
+            .sidebar-links { flex-direction: row; flex-wrap: wrap; padding: 0 0.75rem; gap: 0.25rem; }
+            .sidebar-link { margin: 0; padding: 0.3rem 0.7rem; font-size: 0.72rem; }
+            .sidebar-label { padding: 0 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+    <aside class="sidebar">
+        <p class="sidebar-label">INDEX / 目次</p>
+        <div class="sidebar-links">
+            <a href="#s1" class="sidebar-link">1. 配信結果のダッシュボード化</a>
+            <a href="#s2" class="sidebar-link">2. ボーネルンド　スマレジ導入</a>
+            <a href="#s3" class="sidebar-link">3. 瑞鳳　データ不備修正と業務ルール</a>
+            <a href="#s4" class="sidebar-link">4. ボートレース長崎　予約システム</a>
+            <a href="#s5" class="sidebar-link">5. グランフロント大阪　ラウンジ予約</a>
+            <a href="#s6" class="sidebar-link">6. その他案件</a>
+        </div>
+        <div class="sidebar-card">
+            <p class="sidebar-card-title">会議情報</p>
+            <div class="sidebar-card-row"><span>会議名:</span><span>TKW定例会議</span></div>
+            <div class="sidebar-card-row"><span>日時:</span><span>2026年4月21日</span></div>
+            <div class="sidebar-card-row"><span>状態:</span><span class="status">チェック完了</span></div>
+        </div>
+    </aside>
+
+    <div class="main">
+        <header class="page-header">
+            <span class="badge">MEETING MINUTES</span>
+            <h1 class="page-title">TKW会議：2026年4月21日</h1>
+            <p class="page-subtitle">ダッシュボード化 / ボーネルンド / 瑞鳳リカバリー / ボートレース長崎 / グランフロント大阪　詳細記録</p>
+        </header>
+
+        <!-- 1 ダッシュボード化 -->
+        <section id="s1" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-blue"></div>
+                <h2 class="section-title blue">1. 配信結果のダッシュボード化について</h2>
+            </div>
+            <p class="section-intro">現状、配信結果の判断が「LINE公式の結果」という一側面のみに依存しており、判断環境が限定的であるという課題があった。これに対し、クライアント（MID）が各工程において何を判断材料としているのかを再定義し、これまで経験則に頼っていた部分を数値化・比較可能な状態にすることを目指している。</p>
+
+            <p class="sub-heading">指標の3つのカテゴリー</p>
+            <table class="data-table">
+                <thead><tr><th>指標の種類</th><th>内容</th></tr></thead>
+                <tbody>
+                    <tr><td>先行指標</td><td>LINE配信やネット広告などの、実際の配信結果に関する数値。</td></tr>
+                    <tr><td>結果指標</td><td>配信当日、またはその期間中に実際にどのような動き（成果）があったかを示す数値。</td></tr>
+                    <tr><td>補足指標</td><td>スタッフの入れ替えや特定日（イベント日）といった、外的要因を含む補足的な数値。</td></tr>
+                </tbody>
+            </table>
+
+            <p class="sub-heading">ダッシュボードの役割</p>
+            <ul class="dot-list blue-markers">
+                <li>これらの指標を項目として扱い、それぞれがどのように結果に影響しているのかを可視化・分析できる環境を構築することがダッシュボード化の目的である。</li>
+            </ul>
+
+            <p class="sub-heading">今後の進め方</p>
+            <ul class="dot-list blue-markers">
+                <li><strong>資料化と提案：</strong>一旦ここまでの内容を資料としてまとめ、概算費用とともに提案を行う予定。</li>
+                <li><strong>フィードバックの活用：</strong>提案に対するクライアントの反応を確認し、手応えがある場合は追加のヒアリングを通じて内容をさらに具体化・深掘りしていく方針。</li>
+                <li><strong>直近の予定：</strong>今週中に資料化を完了させ、具体的なフィードバックをもらえる環境を整えることになっている。</li>
+            </ul>
+        </section>
+
+        <!-- 2 ボーネルンド -->
+        <section id="s2" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">2. ボーネルンド　スマレジの導入とサポート</h2>
+            </div>
+
+            <p class="sub-heading">導入状況とスケジュール</p>
+            <table class="data-table">
+                <thead><tr><th>時期</th><th>内容</th></tr></thead>
+                <tbody>
+                    <tr><td>完了</td><td>予約システムのテスト環境構築済み。JANコードベースの商品一括登録も完了。商品ごとにバーコードや画像を登録できる機能が追加されている。</td></tr>
+                    <tr><td>直近</td><td>今週木曜日か金曜日に、クライアントによるテスト環境での実施を調整している。</td></tr>
+                    <tr><td>4月23日</td><td>ハードウェア到着、9時に大阪入りして設置とテスト。</td></tr>
+                    <tr><td>4月24日</td><td>オープン当日。スマレジ本番導入。</td></tr>
+                </tbody>
+            </table>
+
+            <p class="sub-heading">当日および導入後のサポート体制</p>
+            <ul class="dot-list">
+                <li>24日のオープン当日はオンラインでのサポートを予定しているが、クライアント（早川氏）からは土日の繁忙期に対する不安から、現地での対応を望むようなニュアンスも出ている。</li>
+                <li><strong>トレーニングモードの活用：</strong>本番環境には履歴を残さずに試せる「トレーニングモード」があるため、これを利用して事前に習熟度を高める方針。</li>
+            </ul>
+
+            <div class="box-red">
+                <p class="box-label">【最重要：費用と契約に関する課題】</p>
+                <ul class="dot-list">
+                    <li><strong>サポート費用の保留：</strong>スマレジに関する月々のサポート費用（例として5,000円などの案）が現在「ペンディング」の状態であり、契約上の合意が取れていない。</li>
+                    <li><strong>対応方針（社内規定）：</strong>社内（上層部）の明確な方針として、「対価が発生しないのであれば、それは弊社の仕事ではなく、スマレジ側に直接問い合わせてもらうべき」と厳格に線引きしている。</li>
+                    <li><strong>最後通牒に近い確認：</strong>無償でのサポートはリソースの無駄遣いになるため、24日の対応を含め、「費用をいただくか、そうでなければ直接やっていただくか」という確認をクライアントに行う必要がある。担当者は「サポート費用が保留なので動けない」状況をクライアントへ明確に伝える。現地派遣の要望に対してはスマレジの担当者への依頼を促すなど役割分担の再定義を行う。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 3 瑞鳳 -->
+        <section id="s3" class="section-card red-card">
+            <div class="section-head">
+                <div class="section-bar bar-red"></div>
+                <h2 class="section-title red">3. 瑞鳳　データ不備修正と業務ルール策定</h2>
+            </div>
+            <p class="section-intro">「裏店」のデータ統合に関する報告において、データの不整合やページ遷移の不具合（リンク切れ等）が複数発覚し、完了報告ができなかった。</p>
+
+            <p class="sub-heading">不備の内容と原因</p>
+            <ul class="dot-list red-markers">
+                <li><strong>原因：</strong>ページの作り直しに伴うリンクの貼り直し漏れなど、事前の確認不足（ケアレスミス）が主な原因。</li>
+                <li>現在、田中が瑞鳳の修正を最優先事項としている。今週中に木田氏と打ち合わせを行い、不具合を完全になくした状態で再度完了報告ができるよう調整する。</li>
+                <li>今週中にユミ氏に対し、完了報告日がいつできるのかを明確にした上で、改めて謝罪と報告を行う予定。</li>
+            </ul>
+
+            <p class="sub-heading">策定された業務ルール</p>
+            <div class="box-red">
+                <p class="box-label">【今後の徹底事項】</p>
+                <ul class="dot-list">
+                    <li><strong>ダブルチェックの徹底：</strong>自分を過信せず、提出・報告前に必ず内部レビュー（田中と高田氏など、二人体制での突き合わせ）の時間を確保し、フローを徹底する。</li>
+                    <li><strong>リソースの活用：</strong>資料作成などの付随業務については高田氏が協力し、担当者（田中）がデータ修正や判断などの核心的な業務に集中できる環境を整える。</li>
+                    <li><strong>「完遂」の定義：</strong>一人で抱え込むのではなく、周囲（高田氏等）をうまく頼って仕事を「完了（完遂）」まで導けることが、真に仕事ができる人の能力であると再定義された。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 4 ボートレース長崎 -->
+        <section id="s4" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">4. ボートレース場（長崎）予約システム（公募案件）</h2>
+            </div>
+            <p class="section-intro">長崎での夏季限定で開催されるウォーターパークイベントに際し、予約システムが必要とされている。既に尼崎市で利用されているLinyが好評であるため、同様のシステム構築の相談が起点となっている。</p>
+
+            <p class="sub-heading">主な要件</p>
+            <ul class="dot-list">
+                <li>予約・抽選・入場管理（1クール120名想定）ができるシステム。夏季限定イベントに向けた迅速な構築が求められている。</li>
+            </ul>
+
+            <p class="sub-heading">システム構築の方針案（運用フロー案）</p>
+            <ul class="dot-list">
+                <li>Linyのイベント予約を「承認制」で受け付け、上限を広く設定して応募者を集める。</li>
+                <li>応募者をCSVで抽出し、外部（スプレッドシート等）で抽選作業を実施する。</li>
+                <li>当選者のみをシステムにインポートし、その後はキャンセルが出た場合に先着順で予約を受け付ける運用とする。</li>
+            </ul>
+
+            <div class="box-red">
+                <p class="box-label">【最重要課題：不正対策と説明責任】</p>
+                <ul class="dot-list">
+                    <li>市区町村が関わる公募案件であるため、抽選の「不正防止」と「セキュリティ」の担保・説明責任が極めて重く問われる。</li>
+                    <li>不正が発生しうる仕組みでは公募に落ちる可能性があるため、誰がどのように責任を持って抽選を行うのかを明確にする必要がある。</li>
+                    <li>セキュリティ体制がどのようになっているかを明確に説明できなければ、そもそも提案書を提出することすら困難なほど、自治体側のチェックは厳格である。</li>
+                    <li>システム（Liny）内で完結させようとせず、抽選作業自体を第三者機関（アクティオ等）に委託するなど、物理的・論理的にシステム上の不正が起こり得ない仕組みを提案する方針。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">契約形態とスケジュール</p>
+            <ul class="dot-list">
+                <li><strong>期間：</strong>通常は年間契約だが、3ヶ月間等のスポット利用が可能かベンダー側と調整中。</li>
+                <li><strong>データ保持：</strong>イベント終了後のデータは、最低プランに下げて維持する、あるいは顧客の要望に合わせて期間を決めて残す。</li>
+                <li><strong>期限：</strong>20日の公募提出期限に向け、至急予算と抽選ロジックを詰める必要がある。</li>
+            </ul>
+        </section>
+
+        <!-- 5 グランフロント大阪 -->
+        <section id="s5" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">5. グランフロント大阪　ラウンジ予約</h2>
+            </div>
+
+            <p class="sub-heading">相談内容</p>
+            <ul class="dot-list">
+                <li>託児機能付きラウンジの予約システムに関する相談を受けている。</li>
+            </ul>
+
+            <p class="sub-heading">検討課題</p>
+            <ul class="dot-list">
+                <li>現在の「入場予約」とは異なり、飲食店のような「席予約」の概念が必要となるため、既存システムの延長では開発コストが上がりすぎる懸念がある。</li>
+            </ul>
+
+            <div class="box-green">
+                <p class="box-label">【代替案の提案】</p>
+                <ul class="dot-list">
+                    <li>既存の仕組みにこだわらず、安価なサードパーティ製のLINEボット（月1.5万円程度）などの活用を検討し、提案する方針で進める。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 6 その他案件 -->
+        <section id="s6" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title">6. その他案件</h2>
+            </div>
+
+            <ul class="dot-list gray-markers">
+                <li><strong>平和島：</strong>30日からのLINE配信に向け、ヒアリングシート送付済み。5月20日のセミナー実績として使うため、配信結果（インプレッション、GPSコンバージョン等）をテキストベースで迅速に報告するよう手配している。</li>
+                <li><strong>ネットカフェ：</strong>広告配信実績が良好なため、継続して注力する。</li>
+                <li><strong>JLC：</strong>福岡での打ち合わせがあるが、担当者（田中）は瑞鳳のリカバリーを最優先するため、今回の現地立ち合いは見送る。</li>
+            </ul>
+        </section>
+
+        <footer class="page-footer">
+            <p>&copy; 2026 TKW Project Team. All Rights Reserved.</p>
+        </footer>
+    </div>
+</div>
+
+<script>
+    const links = document.querySelectorAll('.sidebar-link');
+    const sections = document.querySelectorAll('section[id]');
+    const redSections = ['s3'];
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                links.forEach(link => {
+                    link.classList.remove('active', 'active-red');
+                    if (link.getAttribute('href') === '#' + id) {
+                        link.classList.add(redSections.includes(id) ? 'active-red' : 'active');
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.2 });
+    sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
