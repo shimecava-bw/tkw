@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKW会議：2026年5月12日</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif; background-color: #ffffff; color: #1f2937; line-height: 1.8; font-size: 15px; }
+        .layout { display: flex; min-height: 100vh; }
+        .sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; background-color: #f9fafb; border-right: 1px solid #e5e7eb; display: flex; flex-direction: column; padding: 2rem 0 3rem 0; }
+        .sidebar-label { font-size: 0.7rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; padding: 0 1.5rem; margin-bottom: 1rem; }
+        .sidebar-links { display: flex; flex-direction: column; }
+        .sidebar-link { display: block; padding: 0.45rem 1.5rem; font-size: 0.8rem; color: #6b7280; text-decoration: none; border-radius: 0.5rem; margin: 0.1rem 0.5rem; transition: background 0.18s, color 0.18s; }
+        .sidebar-link:hover { background-color: #e5e7eb; color: #111827; }
+        .sidebar-link.active { background-color: #ecfdf5; color: #065f46; font-weight: 700; }
+        .sidebar-link.active-red { background-color: #fef2f2; color: #991b1b; font-weight: 700; }
+        .sidebar-card { margin: 1.5rem 1rem 0 1rem; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.25rem; font-size: 0.75rem; color: #6b7280; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .sidebar-card-title { font-weight: 700; color: #1f2937; font-size: 0.85rem; margin-bottom: 0.6rem; }
+        .sidebar-card-row { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
+        .sidebar-card-row span:last-child { font-weight: 700; color: #1f2937; }
+        .sidebar-card-row .status { color: #065f46; }
+        .main { flex: 1; padding: 0 4rem 4rem 4rem; background: #ffffff; min-width: 0; }
+        .page-header { padding: 3.5rem 0 2.5rem 0; margin-bottom: 2.5rem; border-bottom: 1px solid #e5e7eb; }
+        .badge { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 9999px; font-size: 0.78rem; font-weight: 600; background: #f3f4f6; color: #4b5563; margin-bottom: 1rem; letter-spacing: 0.04em; }
+        .page-title { font-size: 2.2rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.75rem; }
+        .page-subtitle { color: #6b7280; font-size: 1rem; font-weight: 500; }
+        .section-card { background: #ffffff; border-radius: 1rem; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 2rem; padding: 2.5rem; transition: box-shadow 0.25s; }
+        .section-card:hover { box-shadow: 0 10px 20px -3px rgba(0,0,0,0.09); }
+        .section-card.red-card { background-color: #fff5f5; border: 1px solid #fecaca; }
+        .section-head { display: flex; align-items: center; margin-bottom: 1.75rem; }
+        .section-bar { width: 6px; height: 2rem; border-radius: 9999px; margin-right: 1rem; flex-shrink: 0; }
+        .bar-green { background: #059669; }
+        .bar-blue { background: #2563eb; }
+        .bar-red { background: #dc2626; }
+        .bar-gray { background: #6b7280; }
+        .section-title { font-size: 1.35rem; font-weight: 700; color: #111827; }
+        .section-title.blue { color: #1d4ed8; }
+        .section-title.green { color: #065f46; }
+        .section-title.red { color: #dc2626; }
+        .section-intro { color: #6b7280; margin-bottom: 1.5rem; line-height: 1.8; }
+        .sub-heading { font-size: 1rem; font-weight: 700; color: #1f2937; margin: 1.75rem 0 0.75rem 0; }
+        ul.dot-list { list-style: disc; padding-left: 1.5rem; color: #4b5563; }
+        ul.dot-list li { margin-bottom: 0.6rem; line-height: 1.75; }
+        ul.dot-list li::marker { color: #10b981; }
+        ul.dot-list.blue-markers li::marker { color: #2563eb; }
+        ul.dot-list.red-markers li::marker { color: #ef4444; }
+        ul.dot-list.gray-markers li::marker { color: #6b7280; }
+        ul.dot-list li strong { color: #111827; }
+        .box-green { border-left: 4px solid #10b981; background: #f0fdf4; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-green .box-label { font-size: 0.8rem; font-weight: 700; color: #065f46; margin-bottom: 0.5rem; }
+        .box-green ul.dot-list li::marker { color: #10b981; }
+        .box-blue { border-left: 4px solid #2563eb; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-blue .box-label { font-size: 0.8rem; font-weight: 700; color: #1d4ed8; margin-bottom: 0.5rem; }
+        .box-blue ul.dot-list li::marker { color: #2563eb; }
+        .box-red { border-left: 4px solid #ef4444; background: #fef2f2; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-red .box-label { font-size: 0.8rem; font-weight: 700; color: #991b1b; margin-bottom: 0.5rem; }
+        .box-red ul.dot-list li::marker { color: #ef4444; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1rem 0; }
+        .data-table thead th { background: #f9fafb; padding: 0.6rem 1rem; text-align: left; font-weight: 700; color: #374151; border-bottom: 2px solid #e5e7eb; font-size: 0.75rem; letter-spacing: 0.04em; }
+        .data-table tbody td { padding: 0.6rem 1rem; border-bottom: 1px solid #f3f4f6; color: #4b5563; vertical-align: top; }
+        .data-table tbody tr:hover { background: #f9fafb; }
+        .page-footer { margin-top: 4rem; padding: 2.5rem 0; border-top: 1px solid #e5e7eb; text-align: center; font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; }
+        @media (max-width: 768px) {
+            .layout { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid #e5e7eb; padding: 1.25rem 0 1rem 0; }
+            .sidebar-card { display: none; }
+            .main { padding: 0 1.25rem 3rem 1.25rem; }
+            .page-header { padding: 2rem 0 1.5rem 0; }
+            .page-title { font-size: 1.5rem; }
+            .section-card { padding: 1.5rem; }
+            .sidebar-links { flex-direction: row; flex-wrap: wrap; padding: 0 0.75rem; gap: 0.25rem; }
+            .sidebar-link { margin: 0; padding: 0.3rem 0.7rem; font-size: 0.72rem; }
+            .sidebar-label { padding: 0 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+    <aside class="sidebar">
+        <p class="sidebar-label">INDEX / 目次</p>
+        <div class="sidebar-links">
+            <a href="#s1" class="sidebar-link">1. Mooovi　運用対応</a>
+            <a href="#s2" class="sidebar-link">2. ボーネルンド　第2フェーズ</a>
+            <a href="#s3" class="sidebar-link">3. 六本木ヒルズ　ラウンジ予約</a>
+            <a href="#s4" class="sidebar-link">4. 瑞鳳　戦略的展望</a>
+            <a href="#s5" class="sidebar-link">5. LINE広告　環境移行・戦略</a>
+            <a href="#s6" class="sidebar-link">6. 広告商品　新規メディア調査</a>
+            <a href="#s7" class="sidebar-link">7. JLC広告　実績と対策</a>
+            <a href="#s8" class="sidebar-link">8. システム連携・個別施策</a>
+            <a href="#s9" class="sidebar-link">9. アクションアイテム（TODO）</a>
+        </div>
+        <div class="sidebar-card">
+            <p class="sidebar-card-title">会議情報</p>
+            <div class="sidebar-card-row"><span>会議名:</span><span>TKW定例会議</span></div>
+            <div class="sidebar-card-row"><span>日時:</span><span>2026年5月12日</span></div>
+            <div class="sidebar-card-row"><span>形式:</span><span>原文保存版</span></div>
+            <div class="sidebar-card-row"><span>状態:</span><span class="status">チェック完了</span></div>
+        </div>
+    </aside>
+
+    <div class="main">
+        <header class="page-header">
+            <span class="badge">MEETING MINUTES</span>
+            <h1 class="page-title">TKW会議：2026年5月12日</h1>
+            <p class="page-subtitle">Mooovi / ボーネルンド / 瑞鳳 / LINE広告環境移行 / 新規メディア調査　詳細記録</p>
+        </header>
+
+        <!-- 1 Mooovi -->
+        <section id="s1" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">1. Mooovi　運用対応</h2>
+            </div>
+
+            <p class="sub-heading">M関連の進捗報告</p>
+            <ul class="dot-list">
+                <li>M関連は、現在、先方からの返信待ちの状態であり、最速での連絡を依頼している。</li>
+            </ul>
+
+            <p class="sub-heading">Mooovi（浜名湖）：入場者リスト作成のための改修</p>
+            <div class="box-red">
+                <p class="box-label">【懸念・リカバリー背景】</p>
+                <ul class="dot-list">
+                    <li>先日「請求の件」でクライアントに迷惑をかけた経緯があり、そのリカバリーとして早急な対応が必要であったため、即日対応を実施した。</li>
+                </ul>
+            </div>
+            <ul class="dot-list">
+                <li>来店ポイントを利用して入場した方のリスト作成依頼に対し、即日対応を実施した。</li>
+                <li>夕方のアクションを1つ追加し、該当者の「友達情報」に日付情報を記載する仕様変更を行うことで、管理画面での絞り込みを可能にした。今週土曜日から運用を開始する予定である。</li>
+            </ul>
+
+            <p class="sub-heading">Mooovi（若松）：QRコード読み取り不具合の解消</p>
+            <div class="box-red">
+                <p class="box-label">【システム上の事象・懸念】</p>
+                <ul class="dot-list">
+                    <li>完全予約制だが、当日飛び込み予約の枠設定の影響で、QRコード読み取り時に「当日入場メニュー」が表示されてしまう事象が発生していた。</li>
+                </ul>
+            </div>
+            <ul class="dot-list">
+                <li>解決策として、スタッフが毎日行っている作業に、さらにもう1つ特定の設定作業を追加してもらうことで設定を厳密化する方法を提案。これが最適解として合意され、現在は解決済み・継続モニタリング案件となっている。</li>
+            </ul>
+        </section>
+
+        <!-- 2 ボーネルンド -->
+        <section id="s2" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">2. ボーネルンド　第2フェーズ・システム改修</h2>
+            </div>
+
+            <p class="sub-heading">第2フェーズ要件定義と算出・保持すべき数字項目の明確化</p>
+            <ul class="dot-list">
+                <li>本社での打ち合わせにより、館報告およびオービック（OBIC）連携に必要な項目を明確化した。これらはスマレジ側で表現できないため、予約システム側で算出・保持する必要がある。</li>
+            </ul>
+            <table class="data-table">
+                <thead><tr><th>分類</th><th>項目</th></tr></thead>
+                <tbody>
+                    <tr><td>館報告用</td><td>①大人と子供の合計人数</td></tr>
+                    <tr><td>分析用</td><td>②延長の合計回数と該当の子供人数（これにより平均滞在時間を算出する）</td></tr>
+                    <tr><td>オービック（OBIC）登録用</td><td>③利用クーポン一覧とその数</td></tr>
+                </tbody>
+            </table>
+
+            <p class="sub-heading">画面設計とUIの検討</p>
+            <ul class="dot-list">
+                <li>クライアント（早川氏）は別ページを増やしたくないという強い要望だが、システム構造上の検討状況も含めて現在の項目ページ内での表現方法と併せて検討を進めている。</li>
+            </ul>
+
+            <p class="sub-heading">先行導入店舗と展開戦略・ロードマップ</p>
+            <ul class="dot-list">
+                <li>対象店舗：さいたま新都心、川崎ルフロン、テラスモール湘南を選定。</li>
+                <li>選定の理由：現在ショップと遊び場の売上が混在し、情報の整理が困難なため、早急にそれぞれのレジにスマレジを導入して整理をつけたいというニーズがある。</li>
+                <li>ロードマップ：店長（坂部氏）との連携がスムーズでしやすいさいたま新都心店で先行導入して不具合の最適化（バリ取り）を完了させてから、他店舗やグランフロントへ展開する。</li>
+            </ul>
+
+            <div class="box-red">
+                <p class="box-label">【改修費用と予算（事前合意の厳密性）】</p>
+                <ul class="dot-list">
+                    <li>追加オプションを含めた機能改修には20万〜30万円程度の追加費用が発生する見込みである。これが予算内で収まるのか、あるいは別途費用なのか、担当者（早川氏等）に改修には必ず費用がかかるという前提を事前にしっかり強く認識させ、事前の合意を取ることが必須である。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">リリース目標</p>
+            <ul class="dot-list">
+                <li>第2フェーズ全体のリリース日は<strong>7月18日</strong>を予定しており、ベンダー側の日数・工数の限界による前倒し困難な状況である。</li>
+            </ul>
+        </section>
+
+        <!-- 3 六本木ヒルズ -->
+        <section id="s3" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">3. 六本木ヒルズ　ラウンジ予約システム対応</h2>
+            </div>
+
+            <p class="sub-heading">概要と現状の課題・導入の目的</p>
+            <div class="box-red">
+                <p class="box-label">【オペレーション上の課題】</p>
+                <ul class="dot-list">
+                    <li>現在はレジでの手打ち入力に加え、手書きの札を首から下げる方法で管理しており、退場時の時間計算や延長料金算出でヒューマンエラーが発生しやすいことが大きな課題となっている。</li>
+                </ul>
+            </div>
+            <ul class="dot-list">
+                <li>六本木ヒルズ店において、有料席（5席程度）のラウンジスペースについてシステム管理（予約と決済連携）の相談があった。スタッフの負担とミスを削減するため、スマレジと連携した予約システムでの一括管理が求められている。</li>
+            </ul>
+
+            <p class="sub-heading">予約・利用のフロー（仕様の合意）</p>
+            <ul class="dot-list">
+                <li>ラウンジ単体での予約メニューは作成せず、通常の入場予約を完了した人、あるいはすでに入場チェックインが完了したユーザーを対象として紐付ける形となった。</li>
+                <li>入場チェックインが完了した際、オプションとして「ラウンジ利用はこちら」といった案内（バナーやQRコードなどの表示）を行い、ユーザーはそこからボタンをポチッと押すだけで即座に利用を開始できる簡易的な導線を構築する。</li>
+            </ul>
+
+            <p class="sub-heading">システム連携と在庫管理・自動計算</p>
+            <ul class="dot-list">
+                <li>ラウンジの席数は5席程度と非常に限られているため、予約システム側で空席状況（満席判定）をリアルタイムに管理することを主目的とする。個別席番号の割り当てまでは行わず、5席という枠の中での利用状況を管理する運用とする。</li>
+                <li>予約システムで利用時間を記録し、スマレジと連携させることで、退場時の精算で延長料金などの計算を自動化し、スタッフの負担とミスを削減する。</li>
+            </ul>
+        </section>
+
+        <!-- 4 瑞鳳 -->
+        <section id="s4" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-blue"></div>
+                <h2 class="section-title blue">4. 瑞鳳　戦略的展望</h2>
+            </div>
+
+            <p class="sub-heading">直近の修正とアップデート状況</p>
+            <ul class="dot-list blue-markers">
+                <li>現時点で、プラットフォーム自体の修正は完了している。</li>
+                <li>インサイト機能の不具合（バージョンの都合で発生していたもの）を解消するためのアップデート版があり、明日中に適用する予定である。</li>
+                <li>アップデート適用にあたってはバックアップを取得した上で、本体の書き換えを行う。適用後、木崎さんにまず見せて合意を取ってから本部に報告する運びとなっている。現在、今週の木曜日または金曜日で日程調整中。</li>
+            </ul>
+
+            <p class="sub-heading">将来的な戦略と「基幹エンジン」化への構想</p>
+            <div class="box-blue">
+                <p class="box-label">【基幹エンジン化への構想】</p>
+                <ul class="dot-list">
+                    <li>単に「言われたものを作る」段階から脱却し、クライアントの利益にどう貢献できるかという視点への転換が議論された。クライアントが手放せなくなるような、業務の核心に入り込むシステムを目指す。</li>
+                    <li><strong>最重要開発項目（機械代分析）：</strong>遊技機（機械代）の分析ができるようになれば、システムとしての価値が決定的なものになる。データは既にまとまっているため、マネジメントベースでの構築は可能であるとの見解。</li>
+                    <li><strong>AI技術の活用：</strong>ダッシュボード上で売上変動の要因分析を行い、ターゲットリストを即座に抽出できる仕組みの構築を目指す。来週を目途に構築案と費用の提案をまとめる方針。</li>
+                    <li><strong>システム基盤の検討：</strong>現在のYellowfinを使い続けるか、より簡素化・最適化された新しいフォームで再構成し販売していくかも含めて検討する。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 5 LINE広告 -->
+        <section id="s5" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">5. LINE広告　環境移行・戦略的グリップ</h2>
+            </div>
+
+            <p class="sub-heading">新環境への移行・構造と管理体制</p>
+            <ul class="dot-list">
+                <li>広告アカウントを束ねる上位レイヤーとして「ビジネスマネージャー」を導入し、既存アカウントを紐付ける作業を進めている。1つのビジネスマネージャーに対し、最大200の広告アカウントを管理・紐付けることが可能である。</li>
+                <li>ビジネスマネージャーの下に「MCC」と呼ばれる新しい管理概念を構築し、そこに新しいアカウントを作成して旧アカウントのデータを流し込む構造となる。</li>
+            </ul>
+
+            <p class="sub-heading">クライアント側の作業とスケジュール</p>
+            <ul class="dot-list">
+                <li>移行に伴い、クライアント側（パチンコホール等）で1回のみの承認作業が必要となる。まず1店舗でテスト移行を実施し、フローを確立する。</li>
+                <li>例えば10月を移行目標とする場合、その1ヶ月前には全店舗へ一斉に承認依頼メールを送り、配信直前になって作業が滞るリスクを回避する段取りを検討している。</li>
+            </ul>
+
+            <div class="box-red">
+                <p class="box-label">【戦略的グリップ（オセロゲーム理論）・運用上の注意点】</p>
+                <ul class="dot-list">
+                    <li>LINE広告のアカウントとマネージャーの紐付けは、先に登録した者が優先される。他社に先に紐付けをされてしまうと、解除や奪還には多大な労力を要する。配信の有無にかかわらず、まずはアカウントを作成しビジネスマネージャーに紐付けることで他社にアカウントを奪われないよう盤面を確保する「オセロゲーム」の完遂が重要である。</li>
+                    <li><strong>他社への乗り換えリスク：</strong>クライアントが他社での配信に切り替える場合は、自社のマネージャーからアカウントを「手放す」作業が必要になる。</li>
+                    <li><strong>予算運用の厳密化：</strong>5万円の予算を1万円ずつ分割して運用する場合、1万円のキャンペーンは最低でも5日間は維持させなければならない。数日間で予算を食い潰して終了するような運用はクライアントとの約束違反になるため、是正と厳密な管理を行う。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 6 広告商品・新規メディア -->
+        <section id="s6" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">6. 広告商品　新規メディア調査（4月〜8月戦略）</h2>
+            </div>
+
+            <p class="sub-heading">4月・5月の推移</p>
+            <div class="box-green">
+                <p class="box-label">【実績】</p>
+                <ul class="dot-list">
+                    <li>4月実績は約480万円（前月比5%増）で、配信単価は下落傾向にあるが売上は堅調である。</li>
+                    <li>5月は受注数・キャンペーン件数が大幅に増加しており、過去最高の<strong>143件を超える見込み</strong>である。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">新規媒体の開拓状況（8月の大型プロモーションに向けて）</p>
+            <table class="data-table">
+                <thead><tr><th>媒体</th><th>状況</th></tr></thead>
+                <tbody>
+                    <tr><td>Discord</td><td>「Discord Quest」はミニマム予算1,600万円と高額だが、年間予算内で消化可能であれば検討の余地がある。国内セグメントでの具体的なシミュレーションを依頼中。</td></tr>
+                    <tr><td>Twitch</td><td>GMOグループを通じて調査中。純広告やタイアップ配信など計6種類のメニューがあり、活用可能性が高い。</td></tr>
+                    <tr><td>Criteo</td><td>最低出稿50万円、月間5万UUが条件。以前フランス本社からの「18歳未満利用不可」の文言挿入指示を巡り停止した経緯があるが、今回は最初から対応する前提で、前の代理店ができなかった部分をカバーする形で再開を依頼する。</td></tr>
+                    <tr><td>屋外広告（OOH）</td><td>大手交通広告はパチンコ関連に極めて厳しいため、ユニカビジョン等の大型LEDビジョンやアドトラックを中心に、8月のプロモーションに向けた全国的な費用調査を進めている。</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 7 JLC広告 -->
+        <section id="s7" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">7. JLC広告　実績報告と今後の対策</h2>
+            </div>
+
+            <p class="sub-heading">配信実績と成果の乖離</p>
+            <div class="box-red">
+                <p class="box-label">【成果の著しい乖離】</p>
+                <ul class="dot-list">
+                    <li>運用初期の4日間を経てADネットワークの配信面を追加した結果、それまで1%程度だったクリック率（CTR）が6%〜10%にまで劇的に向上した。しかし、最終的な新規友達追加は全期間で<strong>18人</strong>にとどまり、当初の期待を下回る獲得件数の課題が残る結果となった。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">要因分析とクライアントの反応</p>
+            <ul class="dot-list">
+                <li>インフラックス社側は、この「クリックはされるが友達追加に繋がらない」という結果をJLCへどう説明すべきか苦慮している状況である。</li>
+                <li>入り口（クリック）の反応は良いが、その後の友達追加というアクションへのハードルが高いという点が事実として確認された。</li>
+            </ul>
+
+            <p class="sub-heading">今後の改善策と提案方針</p>
+            <ul class="dot-list">
+                <li><strong>LPの活用：</strong>クリックした後に直接友達追加を迫るのではなく、ワンステップ（LPを挟む導線）を挟むことで次の動きに繋げる導線を検討・提案する。</li>
+                <li><strong>CPF配信の導入：</strong>友達登録のみをコンバージョンとして狙う配信手法を提案し、並行して実施する。</li>
+                <li><strong>費用の考え方：</strong>予算の消化額よりも、友達にならなければ費用が発生しない、あるいは低くなるという実績ベースの効率性を重視すべきであると結論付けられた。</li>
+                <li><strong>クライアントへの報告スタンス：</strong>新規友達追加が目的であれば、現在の配信手法はマッチしていないことをはっきりと伝える。一方で、現在の高いCTRはWebキャンペーンの告知などには非常に有効であるため、今後は目的（キャンペーン告知 vs 新規獲得）に応じて運用手法を使い分ける方針を提示し、次回の予算獲得に繋げる。</li>
+            </ul>
+        </section>
+
+        <!-- 8 システム連携・個別施策 -->
+        <section id="s8" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title">8. システム連携・個別施策</h2>
+            </div>
+
+            <p class="sub-heading">ブログウォッチャー（BW）連携の遅延と交渉方針</p>
+            <ul class="dot-list gray-markers">
+                <li>システムの自動化（ID抽出）は6月までかかる見込みだが、現状でも接触情報は取得できている。</li>
+                <li>交渉方針として、自動化を待つために足踏みする必要はなく、「手動でもいいから今すぐデータを出せ」と強気で交渉し、早期のデータ活用を優先させる。</li>
+            </ul>
+
+            <p class="sub-heading">受注システム</p>
+            <ul class="dot-list gray-markers">
+                <li>今週中に詳細を確定させ、来週には引き渡しができるスケジュールで進行する。</li>
+            </ul>
+
+            <p class="sub-heading">エブロード（Ebroad）施策</p>
+            <ul class="dot-list gray-markers">
+                <li><strong>横浜店舗：</strong>スタッフ向けに配布した靴（サイズ39に中敷き対応）が非常に好評で、女性スタッフからも要望が出ている。</li>
+                <li><strong>販促：</strong>ショップカードの設置許可を取得。今後はパチンコライターやVTuberなど、動画やSNSに露出する層に靴を履いてもらう泥臭いPRも展開する。</li>
+                <li><strong>SNSテスト：</strong>一括管理ツール「Statusbrew」の無料トライアルを活用し、インスタグラムの投稿をXへ同時配信する等のテストを行う。</li>
+            </ul>
+
+            <p class="sub-heading">呉オイスターランド</p>
+            <ul class="dot-list gray-markers">
+                <li><strong>実績：</strong>生産者団体（呉市かき振興協議会）が母体。36日の営業で4,000人が来場し、日商60万〜70万円を記録する驚異的な集客力を示している。</li>
+                <li><strong>今後の展開：</strong>プロモーション経験豊富な現代表のビジョンを確認し、大阪や東京への2号店進出を支援するため、8月末から9月にかけて広島現地へ視察に行く予定である。</li>
+            </ul>
+        </section>
+
+        <!-- 9 TODO -->
+        <section id="s9" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">9. アクションアイテム（TODO）</h2>
+            </div>
+            <div style="overflow-x:auto;">
+                <table class="data-table">
+                    <thead><tr><th>担当</th><th>タスク内容</th><th>期限</th></tr></thead>
+                    <tbody>
+                        <tr><td>担当者</td><td>瑞鳳：インサイト機能アップデート適用・木崎さんへの確認・本部報告</td><td>今週木〜金</td></tr>
+                        <tr><td>担当者</td><td>瑞鳳：機械代分析・AI活用の構築案と費用提案をまとめる</td><td>来週目途</td></tr>
+                        <tr><td>担当者</td><td>ボーネルンド：改修費用の事前合意取得（早川氏等への説明）</td><td>早急に</td></tr>
+                        <tr><td>担当者</td><td>LINE広告：1店舗でテスト移行を実施しフローを確立する</td><td>早急に</td></tr>
+                        <tr><td>担当者</td><td>新規媒体：Discord・Twitch・Criteo・OOHの費用・条件調査</td><td>8月プロモーションに向け</td></tr>
+                        <tr><td>担当者</td><td>JLC：LP活用・CPF配信の提案をまとめてクライアントへ報告</td><td>次回MTG</td></tr>
+                        <tr><td>担当者</td><td>BW連携：手動でのデータ提供を要求する強気交渉を実施</td><td>今週中</td></tr>
+                        <tr><td>担当者</td><td>受注システム：詳細確定・来週引き渡し準備</td><td>今週中</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer class="page-footer">
+            <p>&copy; 2026 TKW Project Team. All Rights Reserved.</p>
+        </footer>
+    </div>
+</div>
+
+<script>
+    const links = document.querySelectorAll('.sidebar-link');
+    const sections = document.querySelectorAll('section[id]');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                links.forEach(link => {
+                    link.classList.remove('active', 'active-red');
+                    if (link.getAttribute('href') === '#' + id) link.classList.add('active');
+                });
+            }
+        });
+    }, { threshold: 0.2 });
+    sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
