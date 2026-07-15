@@ -14,7 +14,23 @@
         .site-header h1 { font-size: 1.8rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; }
         .site-header p { color: #6b7280; font-size: 0.88rem; margin-top: 0.3rem; }
         .container { max-width: 860px; margin: 0 auto; padding: 2.5rem 2rem 5rem 2rem; }
-        .empty-card { background: #ffffff; border: 1px dashed #d1d5db; border-radius: 0.875rem; padding: 2rem 1.5rem; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 0.88rem; }
+        .minutes-list { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2.5rem; }
+        .minutes-card { display: flex; align-items: center; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.875rem; padding: 1.25rem 1.5rem; text-decoration: none; color: inherit; transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s; gap: 1.25rem; }
+        .minutes-card:hover { box-shadow: 0 8px 20px -4px rgba(0,0,0,0.1); border-color: #7c3aed; transform: translateY(-1px); }
+        .minutes-card.latest { border: 2px solid #7c3aed; background: #f5f3ff; }
+        .card-icon { flex-shrink: 0; width: 3.5rem; text-align: center; font-size: 1.75rem; }
+        .card-divider { width: 1px; height: 2.5rem; background: #e5e7eb; flex-shrink: 0; }
+        .card-body { flex: 1; min-width: 0; }
+        .card-title { font-size: 0.95rem; font-weight: 700; color: #111827; }
+        .card-meta { font-size: 0.78rem; color: #6b7280; margin-top: 0.2rem; }
+        .card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+        .tag { font-size: 0.68rem; font-weight: 600; padding: 0.15rem 0.55rem; border-radius: 9999px; background: #f3f4f6; color: #4b5563; }
+        .tag.purple { background: #f5f3ff; color: #6d28d9; }
+        .tag.red { background: #fef2f2; color: #991b1b; }
+        .card-arrow { flex-shrink: 0; color: #d1d5db; font-size: 1.1rem; transition: color 0.2s; }
+        .minutes-card:hover .card-arrow { color: #7c3aed; }
+        .latest-badge { flex-shrink: 0; font-size: 0.68rem; font-weight: 700; background: #7c3aed; color: #ffffff; padding: 0.2rem 0.6rem; border-radius: 9999px; letter-spacing: 0.04em; }
+        .section-label { font-size: 0.72rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; padding-left: 0.25rem; }
         footer { text-align: center; font-size: 0.72rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; padding: 2rem 0; border-top: 1px solid #e5e7eb; margin-top: 2rem; }
         @media (max-width: 600px) {
             .site-header { padding: 1.5rem 1.25rem; }
@@ -34,7 +50,24 @@
 </header>
 
 <div class="container">
-    <div class="empty-card">資料が追加されるとここに表示されます</div>
+    <p class="section-label">2026年</p>
+    <div class="minutes-list">
+        <a href="./osakado.html" class="minutes-card latest" target="_blank" rel="noopener">
+            <div class="card-icon">📄</div>
+            <div class="card-divider"></div>
+            <div class="card-body">
+                <div class="card-title">広告予算の転用について</div>
+                <div class="card-meta">個人輸入代行事業における広告予算の転用先について　2026年7月2日</div>
+                <div class="card-tags">
+                    <span class="tag purple">ヘルスケアIT参入</span>
+                    <span class="tag">物流・検品強化</span>
+                    <span class="tag red">薬機法対応</span>
+                </div>
+            </div>
+            <span class="latest-badge">LATEST</span>
+            <span class="card-arrow">›</span>
+        </a>
+    </div>
 </div>
 
 <footer>&copy; 2026 TKW Project Team. All Rights Reserved.</footer>
