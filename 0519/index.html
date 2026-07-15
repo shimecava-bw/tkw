@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKW会議：2026年5月19日</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif; background-color: #ffffff; color: #1f2937; line-height: 1.8; font-size: 15px; }
+        .layout { display: flex; min-height: 100vh; }
+        .sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; background-color: #f9fafb; border-right: 1px solid #e5e7eb; display: flex; flex-direction: column; padding: 2rem 0 3rem 0; }
+        .sidebar-label { font-size: 0.7rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; padding: 0 1.5rem; margin-bottom: 1rem; }
+        .sidebar-links { display: flex; flex-direction: column; }
+        .sidebar-link { display: block; padding: 0.45rem 1.5rem; font-size: 0.8rem; color: #6b7280; text-decoration: none; border-radius: 0.5rem; margin: 0.1rem 0.5rem; transition: background 0.18s, color 0.18s; }
+        .sidebar-link:hover { background-color: #e5e7eb; color: #111827; }
+        .sidebar-link.active { background-color: #ecfdf5; color: #065f46; font-weight: 700; }
+        .sidebar-link.active-red { background-color: #fef2f2; color: #991b1b; font-weight: 700; }
+        .sidebar-card { margin: 1.5rem 1rem 0 1rem; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.25rem; font-size: 0.75rem; color: #6b7280; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .sidebar-card-title { font-weight: 700; color: #1f2937; font-size: 0.85rem; margin-bottom: 0.6rem; }
+        .sidebar-card-row { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
+        .sidebar-card-row span:last-child { font-weight: 700; color: #1f2937; }
+        .sidebar-card-row .status { color: #065f46; }
+        .main { flex: 1; padding: 0 4rem 4rem 4rem; background: #ffffff; min-width: 0; }
+        .page-header { padding: 3.5rem 0 2.5rem 0; margin-bottom: 2.5rem; border-bottom: 1px solid #e5e7eb; }
+        .badge { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 9999px; font-size: 0.78rem; font-weight: 600; background: #f3f4f6; color: #4b5563; margin-bottom: 1rem; letter-spacing: 0.04em; }
+        .page-title { font-size: 2.2rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.75rem; }
+        .page-subtitle { color: #6b7280; font-size: 1rem; font-weight: 500; }
+        .section-card { background: #ffffff; border-radius: 1rem; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 2rem; padding: 2.5rem; transition: box-shadow 0.25s; }
+        .section-card:hover { box-shadow: 0 10px 20px -3px rgba(0,0,0,0.09); }
+        .section-card.red-card { background-color: #fff5f5; border: 1px solid #fecaca; }
+        .section-head { display: flex; align-items: center; margin-bottom: 1.75rem; }
+        .section-bar { width: 6px; height: 2rem; border-radius: 9999px; margin-right: 1rem; flex-shrink: 0; }
+        .bar-green { background: #059669; }
+        .bar-blue { background: #2563eb; }
+        .bar-red { background: #dc2626; }
+        .bar-gray { background: #6b7280; }
+        .section-title { font-size: 1.35rem; font-weight: 700; color: #111827; }
+        .section-title.blue { color: #1d4ed8; }
+        .section-title.green { color: #065f46; }
+        .section-title.red { color: #dc2626; }
+        .section-intro { color: #6b7280; margin-bottom: 1.5rem; line-height: 1.8; }
+        .sub-heading { font-size: 1rem; font-weight: 700; color: #1f2937; margin: 1.75rem 0 0.75rem 0; }
+        ul.dot-list { list-style: disc; padding-left: 1.5rem; color: #4b5563; }
+        ul.dot-list li { margin-bottom: 0.6rem; line-height: 1.75; }
+        ul.dot-list li::marker { color: #10b981; }
+        ul.dot-list.blue-markers li::marker { color: #2563eb; }
+        ul.dot-list.red-markers li::marker { color: #ef4444; }
+        ul.dot-list.gray-markers li::marker { color: #6b7280; }
+        ul.dot-list li strong { color: #111827; }
+        .box-green { border-left: 4px solid #10b981; background: #f0fdf4; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-green .box-label { font-size: 0.8rem; font-weight: 700; color: #065f46; margin-bottom: 0.5rem; }
+        .box-green ul.dot-list li::marker { color: #10b981; }
+        .box-blue { border-left: 4px solid #2563eb; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-blue .box-label { font-size: 0.8rem; font-weight: 700; color: #1d4ed8; margin-bottom: 0.5rem; }
+        .box-blue ul.dot-list li::marker { color: #2563eb; }
+        .box-red { border-left: 4px solid #ef4444; background: #fef2f2; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-red .box-label { font-size: 0.8rem; font-weight: 700; color: #991b1b; margin-bottom: 0.5rem; }
+        .box-red ul.dot-list li::marker { color: #ef4444; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1rem 0; }
+        .data-table thead th { background: #f9fafb; padding: 0.6rem 1rem; text-align: left; font-weight: 700; color: #374151; border-bottom: 2px solid #e5e7eb; font-size: 0.75rem; letter-spacing: 0.04em; }
+        .data-table tbody td { padding: 0.6rem 1rem; border-bottom: 1px solid #f3f4f6; color: #4b5563; vertical-align: top; }
+        .data-table tbody tr:hover { background: #f9fafb; }
+        .page-footer { margin-top: 4rem; padding: 2.5rem 0; border-top: 1px solid #e5e7eb; text-align: center; font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; }
+        @media (max-width: 768px) {
+            .layout { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid #e5e7eb; padding: 1.25rem 0 1rem 0; }
+            .sidebar-card { display: none; }
+            .main { padding: 0 1.25rem 3rem 1.25rem; }
+            .page-header { padding: 2rem 0 1.5rem 0; }
+            .page-title { font-size: 1.5rem; }
+            .section-card { padding: 1.5rem; }
+            .sidebar-links { flex-direction: row; flex-wrap: wrap; padding: 0 0.75rem; gap: 0.25rem; }
+            .sidebar-link { margin: 0; padding: 0.3rem 0.7rem; font-size: 0.72rem; }
+            .sidebar-label { padding: 0 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+    <aside class="sidebar">
+        <p class="sidebar-label">INDEX / 目次</p>
+        <div class="sidebar-links">
+            <a href="#s1" class="sidebar-link">1. Mooovi　プロジェクト</a>
+            <a href="#s2" class="sidebar-link">2. ボーネルンド　ラウンジ予約システム</a>
+            <a href="#s3" class="sidebar-link">3. 瑞鳳　ダッシュボード戦略</a>
+            <a href="#s4" class="sidebar-link">4. LINE広告　環境移行と認証マーク問題</a>
+            <a href="#s5" class="sidebar-link">5. 広告・メディア実績</a>
+            <a href="#s6" class="sidebar-link">6. 広告商品　Broad提携と物販</a>
+            <a href="#s7" class="sidebar-link">7. インドネシア案件　連絡途絶</a>
+            <a href="#s8" class="sidebar-link">8. WhatsApp詐欺被害</a>
+            <a href="#s9" class="sidebar-link">9. その他・事務</a>
+        </div>
+        <div class="sidebar-card">
+            <p class="sidebar-card-title">会議情報</p>
+            <div class="sidebar-card-row"><span>会議名:</span><span>TKW定例会議</span></div>
+            <div class="sidebar-card-row"><span>日時:</span><span>2026年5月19日</span></div>
+            <div class="sidebar-card-row"><span>形式:</span><span>原文保存版</span></div>
+            <div class="sidebar-card-row"><span>状態:</span><span class="status">チェック完了</span></div>
+        </div>
+    </aside>
+
+    <div class="main">
+        <header class="page-header">
+            <span class="badge">MEETING MINUTES</span>
+            <h1 class="page-title">TKW会議：2026年5月19日</h1>
+            <p class="page-subtitle">Mooovi / ボーネルンド / 瑞鳳 / LINE広告認証マーク問題 / WhatsApp詐欺被害　詳細記録</p>
+        </header>
+
+        <!-- 1 Mooovi -->
+        <section id="s1" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">1. Mooovi　プロジェクト</h2>
+            </div>
+            <ul class="dot-list">
+                <li>特筆すべき進捗はない。</li>
+                <li>高尾氏とすり合わせた資料は、別途送付される予定となっている。</li>
+                <li>現状における要件の書き方については、「やりながら聞いていく」「やってみないとわからない」という、手探りの状態である。</li>
+            </ul>
+        </section>
+
+        <!-- 2 ボーネルンド -->
+        <section id="s2" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">2. ボーネルンド　六本木ヒルズ店「子供・大人ラウンジ」予約システム</h2>
+            </div>
+            <p class="section-intro">六本木ヒルズ店の「子供・大人ラウンジ」への予約システム導入方針、具体的な運用フロー、在庫・入退場管理、決済方法、および今後のフェーズ展開における協議事項の全容。本日午前中に行われた打ち合わせ（波多川氏主体）の結果を反映している。</p>
+
+            <p class="sub-heading">導入の基本方針</p>
+            <ul class="dot-list">
+                <li>新たなシステム開発を行うのではなく、既存の予約システム（フェーズ1）をそのまま使って運用を開始することになった。新たなシステム開発費は不要との認識。</li>
+                <li>管理画面を含め、本当に手入れが不要であるか（既存の機能で十分に事足りるか）については、今後も引き続き精査を行う。</li>
+                <li>六本木ヒルズ店には既にスマレジが導入されているが、今回の運用においては「既存の店舗で使っている予約商品」とシステム上の見え方が変わらないため、システム間の特別な連携は必要ないという結論に至っている。</li>
+                <li>現在、「予約システムの在庫」と「スマレジの在庫」を自動で付け合わせる仕組みは現時点では存在しない。スタッフは管理画面で利用状況を確認しながら運用することになる。</li>
+            </ul>
+
+            <p class="sub-heading">具体的な運用フロー・在庫管理の仕組み</p>
+            <ul class="dot-list">
+                <li>1時間ごとに特定の予約枠（時間帯別の予約枠）を作成し、そこに<strong>上限10組</strong>の席数（在庫）を設定する。</li>
+                <li>商品は「10時予約用枠商品」「11時予約用枠商品」という形で、時間帯ごとの事前決済商品として販売・管理する。</li>
+                <li>システム上で全自動の入場制限をかけるのではなく、スタッフが管理画面等でお客様が購入したチケット（予約内容）を確認し、入場制限を行う。具体的な事象例：12時の枠を購入したお客様が11時に来場した場合、システム上はバーコードを読み取れば入場できてしまうが、スタッフが「12時なのであと1時間後に来てください」と目視で確認し静止することで時間を固定する運用でカバーする。</li>
+            </ul>
+
+            <p class="sub-heading">決済・延長料金・不参加（ノーショー）および返金への対応</p>
+            <ul class="dot-list">
+                <li>今回の商品は、1時間分を事前に購入し、1時間を超えた場合の延長は自動更新となるが、<strong>当日発生した延長料金については、現場のスマレジで決済を行う</strong>運用となる。</li>
+                <li>返金が必要な場合は、現状でも手動で返金対応が可能。システム上で自動返金を行う機能を実装する場合は、追加の開発費用が必要になる。</li>
+            </ul>
+
+            <p class="sub-heading">費用・保守・導入時期・今後のフェーズ移行</p>
+            <ul class="dot-list">
+                <li><strong>保守費の発生タイミング：</strong>フェーズ2の導入を待たず、今回の予約システム（フェーズ1）を導入した時点で、店舗追加に伴う保守費が発生する。</li>
+                <li><strong>導入時期の想定：</strong>施設は既に稼働中のため、システム構成が見え次第、速やかに起動・稼働したいという意向がある。夏休み前の導入や、スマレジ連携（フェーズ2）のタイミングとの調整を検討する。</li>
+                <li><strong>フェーズ2導入店舗の変更（重要）：</strong>関東の先行導入店舗が、当初予定の「さいたま新都心店」から<strong>「川崎ルフロン店」</strong>に変更となった。次点として、「テラスモール湘南」および「コクーン（さいたま新都心）」の準備を進める。</li>
+            </ul>
+        </section>
+
+        <!-- 3 瑞鳳 -->
+        <section id="s3" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-blue"></div>
+                <h2 class="section-title blue">3. 瑞鳳　ダッシュボード戦略</h2>
+            </div>
+
+            <p class="sub-heading">直近の修正とアップデート状況・確認フロー</p>
+            <ul class="dot-list blue-markers">
+                <li>現時点で、プラットフォーム自体の修正は完了している。</li>
+                <li>インサイト機能の不具合を解消するためのアップデート版を明日中に適用する予定。バックアップを取得した上で本体の書き換えを行い、木崎さんに確認を取ってから本部に報告する。</li>
+                <li>今週の木曜日または金曜日で最終的な日程調整を行っている。</li>
+            </ul>
+
+            <p class="sub-heading">現行仕様の評価と課題</p>
+            <ul class="dot-list blue-markers">
+                <li>初期に構成したページの構造に基づき、要件通りに作り込みは完了している。</li>
+                <li>一度完成させた上で、グラフのブラッシュアップやUIを含めた再構成が必要であるとの認識がある。</li>
+                <li>来週を目途に、機械代分析や分析フェーズへの移行を盛り込んだ構築案と費用の提案をまとめる方針。</li>
+            </ul>
+
+            <div class="box-blue">
+                <p class="box-label">【将来的な戦略：「基幹エンジン」化への構想】</p>
+                <ul class="dot-list">
+                    <li>クライアントが手放せなくなるような、業務の核心に入り込むシステムを目指す。</li>
+                    <li>現在のYellowfinを使い続けるか、より簡素化・最適化された新しいフォームで再構成し、販売していくかも含めて検討する。</li>
+                    <li>現場（本部長や店長クラス）の視点に立ち、どれだけ瑞鳳の利益に貢献できるかを突き詰めることで、システムの影響力を高めていく必要がある。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 4 LINE広告 -->
+        <section id="s4" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">4. LINE広告　環境移行と認証マーク問題</h2>
+            </div>
+            <p class="section-intro">YahooとLINEの統合に伴う新しい広告プラットフォームへの移行において発生している、認証マークに関する重大な仕様変更と、それに伴う移行上の課題・リスクについて整理した。</p>
+
+            <p class="sub-heading">プラットフォーム統合の背景と新概念</p>
+            <ul class="dot-list">
+                <li>LINE広告はYahooとの統合に伴い、新しいプラットフォームへと移行する。</li>
+                <li>新しく導入された概念として「ビジネスマネージャー」がある。LINE公式アカウント、LINE広告、Yahoo広告のアカウントを束ねて管理し、オーディエンスデータ（友達情報など）を広告プラットフォームに渡す機能を持つ。</li>
+            </ul>
+
+            <div class="box-red">
+                <p class="box-label">【認証マークに関する重大な仕様変更】</p>
+                <ul class="dot-list">
+                    <li><strong>友達ターゲティングの制限（仕様確定）：</strong>新プラットフォームでは、LINE公式アカウントの「認証マーク」がないと、友達ターゲティング（友達登録者への配信、および類似オーディエンス作成・友達類似配信）が利用できないことが仕様として確定した。</li>
+                    <li><strong>認証マークとビジネスマネージャーの関係：</strong>認証マークがないとビジネスマネージャーと連携できず、友達情報を広告プラットフォームに渡せないロジックとなっている。</li>
+                    <li><strong>配信方式・目的の制限：</strong>認証マークがない場合、「友達追加時課金（CPF）」や「WEBコンバージョン目的の配信」などの特定の配信方式・目的も利用できない可能性がある。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">移行に伴う運用上の課題とリスク</p>
+            <ul class="dot-list">
+                <li><strong>全アカウントの再審査：</strong>認証がないアカウントは連携できないため、既存の約200〜250アカウントすべてについて、新プラットフォーム上で審査をやり直す必要が出てくる。</li>
+                <li><strong>弊社名の露出懸念：</strong>ビジネスマネージャーと公式アカウントを接続する際、店舗側に通知メールが届き、その際に接続元として弊社名が表示される懸念がある。この名称を任意で変更できるかどうか現在検証中。</li>
+                <li><strong>広告識別子の活用：</strong>友達情報が使えない場合でも、広告識別子（IDFA/AAID等）があれば一定の優位性は保てると考えられているが、精査が必要。</li>
+            </ul>
+
+            <p class="sub-heading">今後の対応方針</p>
+            <ul class="dot-list">
+                <li><strong>新プラットフォーム単独での申請：</strong>ビジネスマネージャーを通さず、新プラットフォーム単体で広告アカウントの申請を進める選択肢を検討している。</li>
+                <li><strong>認証マーク取得の試行：</strong>パチンコ店などの業種が認証審査に通るかは不透明だが、まずは一部のアカウントで認証申請を試行し、審査の結果を確認する方針。</li>
+                <li><strong>LINE側のサポート体制：</strong>現在、LINE広告の担当者が組織変更により不在となっており、窓口対応のみの状態。公式ルートを通じて仕様のギャップについて改めて確認を試みる。</li>
+            </ul>
+        </section>
+
+        <!-- 5 広告・メディア実績 -->
+        <section id="s5" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">5. 広告・メディア実績</h2>
+            </div>
+
+            <p class="sub-heading">LINE広告 5月実績</p>
+            <div class="box-green">
+                <p class="box-label">【5月実績・見込み】</p>
+                <ul class="dot-list">
+                    <li>5月の見込みは<strong>148件</strong>（前週比+26件）で、月間160件ペースの過去最高を記録する見通しである。</li>
+                    <li>売上目標<strong>500万円</strong>も達成の見込み。</li>
+                    <li>5月22日の感謝祭キャンペーンなどが貢献。リピート率も高い状況。</li>
+                    <li>ベガスベガス（39店舗中約半分に設置完了）、MGM系、Dステーション、有楽グループなどへの展開が進行中。特にGPS配信が好評で、グループ系店舗のリピートに繋がっている。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">その他の広告・メディア実績</p>
+            <ul class="dot-list">
+                <li><strong>屋外広告（OOH）：</strong>高畑氏より、全国対応可能な「ミアデプト社」の紹介を受けた。来週打ち合わせを予定している。</li>
+                <li><strong>その他媒体の改修：</strong>ガポリのプロモーションからサミータウンへの全メディア書き換えを完了した。今週中に回答予定。</li>
+            </ul>
+        </section>
+
+        <!-- 6 Broad提携 -->
+        <section id="s6" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">6. 広告商品　Broad（ブロード）提携と物販戦略</h2>
+            </div>
+
+            <p class="sub-heading">面談予定</p>
+            <ul class="dot-list">
+                <li>新村社長を含む4名と面談を行う。挨拶および今後のディスカッションを行う予定。</li>
+            </ul>
+
+            <p class="sub-heading">物販とSNS戦略</p>
+            <ul class="dot-list">
+                <li>インスタグラムを活用したSNS戦略を強化し、ネット販売および卸売活動を本格化させる。</li>
+            </ul>
+
+            <div class="box-red">
+                <p class="box-label">【注意】関税リスクについて</p>
+                <ul class="dot-list">
+                    <li>革製品（靴、ベルト等）は関税が非常に高いため、素材が「合皮」や「特殊な布（タオル地等）」であるかどうかのエビデンス確認が重要となる。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 7 インドネシア案件 -->
+        <section id="s7" class="section-card red-card">
+            <div class="section-head">
+                <div class="section-bar bar-red"></div>
+                <h2 class="section-title red">7. インドネシア案件　連絡途絶・不信感の発生</h2>
+            </div>
+            <p class="section-intro">インドネシア本国のメンバーやYUKKA氏との会議が予定されていたが、YUKKA氏が現れず、会議は実施されなかった。現在、非常にデリケートな状況にある。</p>
+
+            <p class="sub-heading">会議の欠席と連絡の途絶</p>
+            <ul class="dot-list red-markers">
+                <li>リマインドの連絡や電話も試みたが反応がなく、Instagramの投稿（家族のマラソンの様子など）は更新されているものの、日本チームからのメッセージはシャットアウトされている状態。</li>
+                <li>日本側では「完全にシャットアウトされているのではないか」という不安が広がっている。</li>
+            </ul>
+
+            <p class="sub-heading">不信感の発生と背景</p>
+            <ul class="dot-list red-markers">
+                <li>今回の連絡途絶の背景には、以前のやり取りにおける英文のニュアンスの違いから生じた危機感や、日本チームに対する不信感があるのではないかと推測されている。</li>
+                <li>SNS上でも、以前は行われていた「いいね」などの反応がなくなっており、心理的な距離が生じていることが伺える。</li>
+            </ul>
+
+            <p class="sub-heading">今後の対応方針</p>
+            <ul class="dot-list red-markers">
+                <li><strong>深追いの回避：</strong>焦って国際電話をかけても、言葉の壁があるため内容がねじ曲げられて伝わるリスクがある。まずは相手からの連絡を待つスタンス。</li>
+                <li><strong>トップによる連絡：</strong>現場レベルでの解決が難しいため、「トップ同士（ゼ氏からYUKKA氏へ）」での直接連絡を検討している。</li>
+                <li><strong>証拠の保全：</strong>今後のトラブルや「犯人探し」に備え、WhatsAppなどのやり取りの履歴は削除せず、証拠として保全しておく方針。</li>
+                <li>インドネシア側のサーバーや、それに伴う警察の関与といった話題も出ているが、日本側でできることは限られており、向こう側での調査や判断を待つしかない状況。</li>
+            </ul>
+        </section>
+
+        <!-- 8 WhatsApp詐欺 -->
+        <section id="s8" class="section-card red-card">
+            <div class="section-head">
+                <div class="section-bar bar-red"></div>
+                <h2 class="section-title red">8. WhatsAppなりすまし詐欺被害　詳細報告</h2>
+            </div>
+            <p class="section-intro">高田氏およびインドネシアスタッフ（YUKKA氏）を狙って発生した、WhatsAppを用いた巧妙ななりすまし詐欺に関する詳細報告。</p>
+
+            <p class="sub-heading">事案の概要と被害状況</p>
+            <div class="box-red">
+                <p class="box-label">【被害額】</p>
+                <ul class="dot-list">
+                    <li>YUKKA氏が日本円で約<strong>17万円〜17万5千円</strong>（インドネシア現地通貨で約670万〜780万ルピア相当）を実際に振り込んでしまった。</li>
+                    <li>高田氏の元にも不審なメッセージが届き、不審に思った高田氏がグループチャットで確認したところ、YUKKA氏が既に振り込んだ後であることが発覚した。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">詐欺の手口と詳細なストーリー</p>
+            <ul class="dot-list red-markers">
+                <li><strong>なりすましの手法：</strong>高田氏と全く同じアイコン、名前のアカウントからメッセージが届いた。</li>
+                <li><strong>偽りの依頼内容：</strong>「妻の誕生日なのでプレゼントを買いたいが、妻との共同口座が現在使えない」という理由をつけられた。さらに「日本の業者に今すぐデポジットを収めないと始まらないので、一時的に立て替えてほしい。明日改めて高田の方から返金する」というストーリーでYUKKA氏に接触・立て替えを依頼した。</li>
+                <li><strong>接触の巧妙さ：</strong>過去のやり取りの文脈を汲み取ったような形で非常に自然にメッセージが入り込んできた。YUKKA氏には「高田氏からの依頼」として届き、同時に高田氏の元にも「YUKKA氏からの相談」を装ったメッセージが届いていた。これらはお互いに送っているように見えるが、実際には本人の送信履歴には一切残らない形式となっていた。</li>
+            </ul>
+
+            <p class="sub-heading">技術的調査と分析</p>
+            <ul class="dot-list red-markers">
+                <li><strong>ログイン履歴の謎：</strong>通常の「乗っ取り」であれば新しいデバイスからのログイン履歴が残るが、高田氏のアカウントにはログイン履歴がない状態で乗っ取られたような挙動を示しており、新しいログイン履歴が確認されていない。</li>
+                <li><strong>メタ社の対応：</strong>メタ社へ問い合わせたところ、新しいデバイスのログインなしにアカウントが乗っ取られるという事例はメタ社でも把握していない（事例が1個もない）とのことである。</li>
+                <li><strong>原因の推測：</strong>「WhatsApp」の綴りが「Whats-up」となっている偽の認証URLや、アカウント制限を解除するための偽URLなどを踏んだ可能性が高いと推測されている。</li>
+            </ul>
+
+            <p class="sub-heading">現在の対応と今後の対策</p>
+            <ul class="dot-list red-markers">
+                <li><strong>法的措置と証拠保全：</strong>YUKKA氏はインドネシアの警察署のサイバー犯罪部門（サイバー警察）へ被害届を提出済み。詐欺グループとの全てのやり取りおよびスクリーンショットはすべて保全されており、警察に提出する準備を整えている。</li>
+                <li><strong>社内対策の徹底：</strong>二次被害を防ぐため、該当のWhatsAppグループのやり取りを即座に停止させた。全スタッフに対し、不審なリンク・URLを踏まないよう注意を徹底させるとともに、各自のデバイスの確認、パスワードの変更、およびピンコード（2段階認証）の設定を徹底するよう指示が出された。</li>
+            </ul>
+        </section>
+
+        <!-- 9 その他 -->
+        <section id="s9" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title">9. その他・事務</h2>
+            </div>
+            <ul class="dot-list gray-markers">
+                <li><strong>請求関連：</strong>クラブインの4月分利用料について、先方の要望に基づき、4月付の請求書を発行する。</li>
+                <li><strong>システム開発：</strong>Creators向けの発注システム（Kintoneアプリ）の開発を検討している。新プラットフォームの仕様が固まり次第着手する。</li>
+                <li><strong>J-Sparkの活用：</strong>共有資料の作成にJ-Sparkを活用している。</li>
+            </ul>
+        </section>
+
+        <footer class="page-footer">
+            <p>&copy; 2026 TKW Project Team. All Rights Reserved.</p>
+        </footer>
+    </div>
+</div>
+
+<script>
+    const links = document.querySelectorAll('.sidebar-link');
+    const sections = document.querySelectorAll('section[id]');
+    const redSections = ['s7', 's8'];
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                links.forEach(link => {
+                    link.classList.remove('active', 'active-red');
+                    if (link.getAttribute('href') === '#' + id) {
+                        link.classList.add(redSections.includes(id) ? 'active-red' : 'active');
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.2 });
+    sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
