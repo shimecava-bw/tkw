@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKW会議：2026年4月7日</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif; background-color: #ffffff; color: #1f2937; line-height: 1.8; font-size: 15px; }
+        .layout { display: flex; min-height: 100vh; }
+        .sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; background-color: #f9fafb; border-right: 1px solid #e5e7eb; display: flex; flex-direction: column; padding: 2rem 0 3rem 0; }
+        .sidebar-label { font-size: 0.7rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; padding: 0 1.5rem; margin-bottom: 1rem; }
+        .sidebar-links { display: flex; flex-direction: column; }
+        .sidebar-link { display: block; padding: 0.45rem 1.5rem; font-size: 0.8rem; color: #6b7280; text-decoration: none; border-radius: 0.5rem; margin: 0.1rem 0.5rem; transition: background 0.18s, color 0.18s; }
+        .sidebar-link:hover { background-color: #e5e7eb; color: #111827; }
+        .sidebar-link.active { background-color: #ecfdf5; color: #065f46; font-weight: 700; }
+        .sidebar-link.active-red { background-color: #fef2f2; color: #991b1b; font-weight: 700; }
+        .sidebar-card { margin: 1.5rem 1rem 0 1rem; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.25rem; font-size: 0.75rem; color: #6b7280; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .sidebar-card-title { font-weight: 700; color: #1f2937; font-size: 0.85rem; margin-bottom: 0.6rem; }
+        .sidebar-card-row { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
+        .sidebar-card-row span:last-child { font-weight: 700; color: #1f2937; }
+        .sidebar-card-row .status { color: #065f46; }
+        .main { flex: 1; padding: 0 4rem 4rem 4rem; background: #ffffff; min-width: 0; }
+        .page-header { padding: 3.5rem 0 2.5rem 0; margin-bottom: 2.5rem; border-bottom: 1px solid #e5e7eb; }
+        .badge { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 9999px; font-size: 0.78rem; font-weight: 600; background: #f3f4f6; color: #4b5563; margin-bottom: 1rem; letter-spacing: 0.04em; }
+        .page-title { font-size: 2.2rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.75rem; }
+        .page-subtitle { color: #6b7280; font-size: 1rem; font-weight: 500; }
+        .section-card { background: #ffffff; border-radius: 1rem; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 2rem; padding: 2.5rem; transition: box-shadow 0.25s; }
+        .section-card:hover { box-shadow: 0 10px 20px -3px rgba(0,0,0,0.09); }
+        .section-card.red-card { background-color: #fff5f5; border: 1px solid #fecaca; }
+        .section-head { display: flex; align-items: center; margin-bottom: 1.75rem; }
+        .section-bar { width: 6px; height: 2rem; border-radius: 9999px; margin-right: 1rem; flex-shrink: 0; }
+        .bar-green { background: #059669; }
+        .bar-blue { background: #2563eb; }
+        .bar-red { background: #dc2626; }
+        .bar-gray { background: #6b7280; }
+        .section-title { font-size: 1.35rem; font-weight: 700; color: #111827; }
+        .section-title.blue { color: #1d4ed8; }
+        .section-title.green { color: #065f46; }
+        .section-title.red { color: #dc2626; }
+        .section-intro { color: #6b7280; margin-bottom: 1.5rem; line-height: 1.8; }
+        .sub-heading { font-size: 1rem; font-weight: 700; color: #1f2937; margin: 1.75rem 0 0.75rem 0; }
+        ul.dot-list { list-style: disc; padding-left: 1.5rem; color: #4b5563; }
+        ul.dot-list li { margin-bottom: 0.6rem; line-height: 1.75; }
+        ul.dot-list li::marker { color: #10b981; }
+        ul.dot-list.blue-markers li::marker { color: #2563eb; }
+        ul.dot-list.red-markers li::marker { color: #ef4444; }
+        ul.dot-list.gray-markers li::marker { color: #6b7280; }
+        ul.dot-list li strong { color: #111827; }
+        .box-green { border-left: 4px solid #10b981; background: #f0fdf4; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-green .box-label { font-size: 0.8rem; font-weight: 700; color: #065f46; margin-bottom: 0.5rem; }
+        .box-green ul.dot-list li::marker { color: #10b981; }
+        .box-blue { border-left: 4px solid #2563eb; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-blue .box-label { font-size: 0.8rem; font-weight: 700; color: #1d4ed8; margin-bottom: 0.5rem; }
+        .box-blue ul.dot-list li::marker { color: #2563eb; }
+        .box-red { border-left: 4px solid #ef4444; background: #fef2f2; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-red .box-label { font-size: 0.8rem; font-weight: 700; color: #991b1b; margin-bottom: 0.5rem; }
+        .box-red ul.dot-list li::marker { color: #ef4444; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1rem 0; }
+        .data-table thead th { background: #f9fafb; padding: 0.6rem 1rem; text-align: left; font-weight: 700; color: #374151; border-bottom: 2px solid #e5e7eb; font-size: 0.75rem; letter-spacing: 0.04em; }
+        .data-table tbody td { padding: 0.6rem 1rem; border-bottom: 1px solid #f3f4f6; color: #4b5563; vertical-align: top; }
+        .data-table tbody tr:hover { background: #f9fafb; }
+        .page-footer { margin-top: 4rem; padding: 2.5rem 0; border-top: 1px solid #e5e7eb; text-align: center; font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; }
+        @media (max-width: 768px) {
+            .layout { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid #e5e7eb; padding: 1.25rem 0 1rem 0; }
+            .sidebar-card { display: none; }
+            .main { padding: 0 1.25rem 3rem 1.25rem; }
+            .page-header { padding: 2rem 0 1.5rem 0; }
+            .page-title { font-size: 1.5rem; }
+            .section-card { padding: 1.5rem; }
+            .sidebar-links { flex-direction: row; flex-wrap: wrap; padding: 0 0.75rem; gap: 0.25rem; }
+            .sidebar-link { margin: 0; padding: 0.3rem 0.7rem; font-size: 0.72rem; }
+            .sidebar-label { padding: 0 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+    <aside class="sidebar">
+        <p class="sidebar-label">INDEX / 目次</p>
+        <div class="sidebar-links">
+            <a href="#s1" class="sidebar-link">1. 全体戦略・コンセプト</a>
+            <a href="#s2" class="sidebar-link">2. データ可視化と解析戦略（BigQuery）</a>
+            <a href="#s3" class="sidebar-link">3. ホルコン連携の詳細</a>
+            <a href="#s4" class="sidebar-link">4. 効果検証の定義と指標</a>
+            <a href="#s5" class="sidebar-link">5. ツール運用とコスト・リスク管理</a>
+            <a href="#s6" class="sidebar-link">6. クライアント別進捗</a>
+            <a href="#s7" class="sidebar-link">7. アクションアイテム（TODO）</a>
+        </div>
+        <div class="sidebar-card">
+            <p class="sidebar-card-title">会議情報</p>
+            <div class="sidebar-card-row"><span>会議名:</span><span>TKW定例会議</span></div>
+            <div class="sidebar-card-row"><span>日時:</span><span>2026年4月7日</span></div>
+            <div class="sidebar-card-row"><span>議題:</span><span>戦略の具体化と連携強化</span></div>
+            <div class="sidebar-card-row"><span>状態:</span><span class="status">チェック完了</span></div>
+        </div>
+    </aside>
+
+    <div class="main">
+        <header class="page-header">
+            <span class="badge">MEETING MINUTES</span>
+            <h1 class="page-title">TKW会議：2026年4月7日</h1>
+            <p class="page-subtitle">データの裏付けによる掘り起こし施策の最適化と戦略的優位性の確立</p>
+        </header>
+
+        <!-- 1 全体戦略 -->
+        <section id="s1" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-blue"></div>
+                <h2 class="section-title blue">1. 全体戦略・コンセプト</h2>
+            </div>
+            <p class="section-intro">プロジェクト全体の主要テーマとして「MID / 掘り起こし」が掲げられた。単なる表面的な施策ではなく、データの裏付けを持った掘り起こし施策の展開や、運用の最適化を図る計画となっている。</p>
+
+            <p class="sub-heading">ツールの優位性の追求（「コストダウン」からの脱却）</p>
+            <div class="box-blue">
+                <p class="box-label">【戦略の根幹】</p>
+                <ul class="dot-list">
+                    <li>安さを売りにするのではなく、「ツールの優位性を高める」ことが明確に打ち出されている。単なる「コストダウン」を目的とするのではなく、ツールの価値そのものを高める運用を目指す。</li>
+                    <li>クライアントに対して価格以外の導入メリットを提示することで、サービスの継続性を確保する狙いがある。</li>
+                    <li>今回の議論における「ツールの優位性」とは、「過去の蓄積データ」と「外部データ連携（ホルコン/BigQuery）」を掛け合わせ、圧倒的な「効果検証の精度」を実現することを指している。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2 データ可視化 -->
+        <section id="s2" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-blue"></div>
+                <h2 class="section-title blue">2. データ可視化と解析戦略（BigQuery）</h2>
+            </div>
+            <p class="section-intro">現状の「感覚値」による不透明な判断を脱却し、客観的な数値根拠に基づいた運用・検証の仕組みを構築するためのアプローチ。</p>
+
+            <p class="sub-heading">データ可視化の目的と「感覚値」からの脱却</p>
+            <ul class="dot-list blue-markers">
+                <li><strong>現状の課題：</strong>現在、ホールコンピュータ（ホルコン）などのデータは、担当者の感覚で判断される部分が多く、「感覚値」で扱われているという課題がある。</li>
+                <li><strong>解決策（BigQueryの活用）：</strong>これらをBigQuery（ビッグクエリ）を用いて解析し、数値データとして明確化・可視化することを目指している。</li>
+                <li><strong>優位性への転換：</strong>感覚値ではない明確なデータとして可視化できる点は、ツールとしての大きな優位性となる。</li>
+            </ul>
+        </section>
+
+        <!-- 3 ホルコン連携 -->
+        <section id="s3" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-blue"></div>
+                <h2 class="section-title blue">3. ホルコン連携の詳細</h2>
+            </div>
+
+            <p class="sub-heading">目的：客観的データへの変換</p>
+            <ul class="dot-list blue-markers">
+                <li>ホルコンデータを連携させることで、ホールの状況判断を明確なデータとして抽出・可視化することが最大の目的である。具体的には、BigQueryを用いて解析を行う計画となっている。</li>
+            </ul>
+
+            <p class="sub-heading">具体的な分析手法と指標</p>
+            <ul class="dot-list blue-markers">
+                <li><strong>IN玉（打ち込み玉数）との相関：</strong>機種ごとに傾向が異なることを前提に、IN玉のデータとLINEでの施策を照らし合わせる。</li>
+                <li><strong>LINE施策との照合：</strong>LINE公式アカウントでの施策（メッセージ配信等）の結果と、実際のIN玉の推移データを照らし合わせ、その相関を分析する。</li>
+                <li><strong>付加価値としての提案：</strong>ホルコン連携はメインの機能というよりも、サービスへの「+アルファ（付加価値）」として「ホルコン連携も可能です」といった形で提案する方針。</li>
+            </ul>
+        </section>
+
+        <!-- 4 効果検証 -->
+        <section id="s4" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-blue"></div>
+                <h2 class="section-title blue">4. 効果検証の定義と多角的な指標</h2>
+            </div>
+            <p class="section-intro">これまで不明瞭だった施策の影響を、複数のレイヤーで算出・証明し、ベネフィットとして提示する。</p>
+
+            <table class="data-table">
+                <thead><tr><th>指標の種類</th><th>内容</th></tr></thead>
+                <tbody>
+                    <tr><td>デジタル行動ログ</td><td>施策に対する「クリック数」や「閲覧数」などの数値を収集し、効果検証を行う。</td></tr>
+                    <tr><td>ビジネス成果</td><td>行動ログが、最終的に「客数」および「売上」にどの程度貢献したかを可視化・検証する。</td></tr>
+                    <tr><td>成果の定義（柔軟な評価基準）</td><td>「施策とIN玉の直接的な相関」を証明することに固執しすぎず、施策によって「客が来店したこと（来店数）」そのものを成果として捉えるという柔軟な評価基準も検討・許容されている。</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 5 ツール運用 -->
+        <section id="s5" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">5. ツール運用およびコスト・リスク管理戦略</h2>
+            </div>
+
+            <p class="sub-heading">戦略的判断：Liny（リニー）の継続利用</p>
+            <ul class="dot-list">
+                <li><strong>過去データの重要性：</strong>既存のLinyには、すでに過去の運用データが蓄積されている。</li>
+                <li><strong>判断の根拠：</strong>新規ツールへの切り替えによる一時的なコスト削減よりも、過去データを活用できる継続運用の方が、分析や施策の精度においてメリットが大きいと判断されている。データの継続性を維持することが、長期的な優位性に繋がると考えられている。</li>
+            </ul>
+
+            <p class="sub-heading">責任範囲の拡大と支払いフローの変更</p>
+            <div class="box-red">
+                <p class="box-label">【注意】</p>
+                <ul class="dot-list">
+                    <li><strong>提供側のリスク：</strong>全てのデータを提供・連携・分析対象に含めることで、こちら側（提供側）の責任が増えるという点に留意が必要。</li>
+                    <li><strong>運用調整：</strong>提供データと分析結果に対する責任の所在についてより慎重な管理が必要であるため、「投資対効果（ROI）の最大化」と「リスクに伴う支払いフローの変更」という2つの側面から調整が行われている。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 6 クライアント別進捗 -->
+        <section id="s6" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">6. クライアント別進捗状況</h2>
+            </div>
+
+            <p class="sub-heading">Mooovi若松　自治体案件　10万円プラン進行中</p>
+            <div class="box-red">
+                <p class="box-label">【要対応：LINE公式アカウント認証の課題】</p>
+                <ul class="dot-list">
+                    <li>現在、審査に<strong>2回落ちており</strong>、「認証未完了」の状態。原因特定と再申請、または認証未完了を前提とした運用の定着化が必要。</li>
+                </ul>
+            </div>
+            <ul class="dot-list">
+                <li><strong>支払い（前払い運用とPaid）：</strong>認証未完了のため通常サイクルが適用できず、アカウントの支払いは「前払い」となる。決済サービス「Paid（ペイド）」からまとめて請求を行うフロー（決済の集約化）となる。また、担当者変更に伴う引き継ぎの実施が必要。</li>
+            </ul>
+
+            <p class="sub-heading">ボーネルンド　4月24日 実施期限</p>
+            <div class="box-red">
+                <p class="box-label">【最優先：週明けの対応が必須】</p>
+                <ul class="dot-list">
+                    <li>業務内容：スマレジの入れ替え対応。</li>
+                    <li>合同会議により全体方針は決定済みだが、導入方法が「リースか購入か」という資産管理・コスト面での最終判断がまだ下されていない。</li>
+                    <li>「週明け」に早急に対応を行わないと、その後の検証作業ができなくなる。未決定事項の最終確認、および作業進行・システム検証の開始が急務。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 7 TODO -->
+        <section id="s7" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">7. アクションアイテム（TODO）</h2>
+            </div>
+            <div style="overflow-x:auto;">
+                <table class="data-table">
+                    <thead><tr><th>領域</th><th>タスク内容</th><th>期限</th></tr></thead>
+                    <tbody>
+                        <tr><td>データ解析</td><td>BigQuery分析モデルの構築・増大する責任範囲を定義した運用ルールの策定</td><td>早急に</td></tr>
+                        <tr><td>Mooovi若松</td><td>LINE認証落ちの解決策実行・前払い運用の定着化・担当者変更に伴う引き継ぎの実施</td><td>早急に</td></tr>
+                        <tr><td>ボーネルンド</td><td>【最優先】リース/購入の最終決定確認・週明けからのシステム検証の確実な開始</td><td>週明け</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer class="page-footer">
+            <p>&copy; 2026 TKW Project Team. All Rights Reserved.</p>
+        </footer>
+    </div>
+</div>
+
+<script>
+    const links = document.querySelectorAll('.sidebar-link');
+    const sections = document.querySelectorAll('section[id]');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                links.forEach(link => {
+                    link.classList.remove('active', 'active-red');
+                    if (link.getAttribute('href') === '#' + id) link.classList.add('active');
+                });
+            }
+        });
+    }, { threshold: 0.2 });
+    sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
