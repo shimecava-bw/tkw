@@ -1,147 +1,469 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TKW　ドキュメントハブ</title>
+    <title>TKW会議：2026年7月21日</title>
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif; background-color: #f9fafb; color: #1f2937; line-height: 1.8; min-height: 100vh; }
-
-        .site-header { background: #ffffff; border-bottom: 1px solid #e5e7eb; padding: 2rem 3rem; }
-        .site-header .badge { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 9999px; font-size: 0.72rem; font-weight: 700; background: #ecfdf5; color: #065f46; letter-spacing: 0.06em; margin-bottom: 0.6rem; }
-        .site-header h1 { font-size: 1.8rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; }
-        .site-header p { color: #6b7280; font-size: 0.88rem; margin-top: 0.3rem; }
-
-        .container { max-width: 860px; margin: 0 auto; padding: 2.5rem 2rem 5rem 2rem; }
-
-        /* カテゴリボタン */
-        .category-bar { display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
-        .category-btn { display: flex; align-items: center; justify-content: center; padding: 0.8rem 1.6rem; border-radius: 0.875rem; font-size: 1.45rem; font-weight: 800; text-decoration: none; border: 2px solid; transition: background 0.18s, color 0.18s, transform 0.15s, box-shadow 0.2s; letter-spacing: -0.02em; flex: 1; min-width: 160px; }
-        .category-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 20px -4px rgba(0,0,0,0.12); }
-        .category-btn.partners { border-color: #2563eb; color: #1d4ed8; background: #ffffff; }
-        .category-btn.partners:hover { background: #2563eb; color: #ffffff; }
-        .category-btn.kikaku { border-color: #7c3aed; color: #6d28d9; background: #ffffff; }
-        .category-btn.kikaku:hover { background: #7c3aed; color: #ffffff; }
-        .category-btn.archive { border-color: #6b7280; color: #374151; background: #ffffff; }
-        .category-btn.archive:hover { background: #6b7280; color: #ffffff; }
-
-        .month-label { font-size: 0.72rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; padding-left: 0.25rem; }
-        .minutes-list { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2.5rem; }
-
-        .minutes-card { display: flex; align-items: center; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.875rem; padding: 1.25rem 1.5rem; text-decoration: none; color: inherit; transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s; gap: 1.25rem; }
-        .minutes-card:hover { box-shadow: 0 8px 20px -4px rgba(0,0,0,0.1); border-color: #10b981; transform: translateY(-1px); }
-        .minutes-card.latest { border: 2px solid #10b981; background: #ecfdf5; }
-
-        .card-date { flex-shrink: 0; width: 3.5rem; text-align: center; }
-        .card-date .month { font-size: 0.7rem; font-weight: 700; color: #10b981; text-transform: uppercase; }
-        .card-date .day { font-size: 1.75rem; font-weight: 800; color: #111827; line-height: 1; }
-        .card-divider { width: 1px; height: 2.5rem; background: #e5e7eb; flex-shrink: 0; }
-        .card-body { flex: 1; min-width: 0; }
-        .card-title { font-size: 0.95rem; font-weight: 700; color: #111827; }
-        .card-meta { font-size: 0.78rem; color: #6b7280; margin-top: 0.2rem; }
-        .card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
-        .tag { font-size: 0.68rem; font-weight: 600; padding: 0.15rem 0.55rem; border-radius: 9999px; background: #f3f4f6; color: #4b5563; }
-        .tag.green { background: #ecfdf5; color: #065f46; }
-        .tag.blue { background: #eff6ff; color: #1d4ed8; }
-        .tag.purple { background: #f5f3ff; color: #6d28d9; }
-        .tag.red { background: #fef2f2; color: #991b1b; }
-        .card-arrow { flex-shrink: 0; color: #d1d5db; font-size: 1.1rem; transition: color 0.2s; }
-        .minutes-card:hover .card-arrow { color: #10b981; }
-        .latest-badge { flex-shrink: 0; font-size: 0.68rem; font-weight: 700; background: #10b981; color: #ffffff; padding: 0.2rem 0.6rem; border-radius: 9999px; letter-spacing: 0.04em; }
-
-        .empty-card { background: #ffffff; border: 1px dashed #d1d5db; border-radius: 0.875rem; padding: 1.75rem 1.5rem; display: flex; align-items: center; gap: 1.25rem; color: #9ca3af; }
-        .empty-date { flex-shrink: 0; width: 3.5rem; text-align: center; }
-        .empty-day { font-size: 1.75rem; font-weight: 800; color: #d1d5db; line-height: 1; }
-        .empty-month { font-size: 0.7rem; font-weight: 700; color: #d1d5db; }
-        .empty-text { font-size: 0.85rem; }
-
-        footer { text-align: center; font-size: 0.72rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; padding: 2rem 0; border-top: 1px solid #e5e7eb; margin-top: 2rem; }
-
-        @media (max-width: 600px) {
-            .site-header { padding: 1.5rem 1.25rem; }
-            .site-header h1 { font-size: 1.3rem; }
-            .container { padding: 1.5rem 1rem 4rem 1rem; }
-            .minutes-card { padding: 1rem 1.1rem; gap: 0.9rem; }
-            .card-date .day { font-size: 1.4rem; }
-            .category-btn { font-size: 1.1rem; padding: 0.7rem 1rem; }
+        body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif; background-color: #ffffff; color: #1f2937; line-height: 1.8; font-size: 15px; }
+        .layout { display: flex; min-height: 100vh; }
+        .sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; background-color: #f9fafb; border-right: 1px solid #e5e7eb; display: flex; flex-direction: column; padding: 2rem 0 3rem 0; }
+        .sidebar-label { font-size: 0.7rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; padding: 0 1.5rem; margin-bottom: 1rem; }
+        .sidebar-links { display: flex; flex-direction: column; }
+        .sidebar-link { display: block; padding: 0.45rem 1.5rem; font-size: 0.8rem; color: #6b7280; text-decoration: none; border-radius: 0.5rem; margin: 0.1rem 0.5rem; transition: background 0.18s, color 0.18s; }
+        .sidebar-link:hover { background-color: #e5e7eb; color: #111827; }
+        .sidebar-link.active { background-color: #ecfdf5; color: #065f46; font-weight: 700; }
+        .sidebar-link.active-red { background-color: #fef2f2; color: #991b1b; font-weight: 700; }
+        .sidebar-link.active-blue { background-color: #eff6ff; color: #1d4ed8; font-weight: 700; }
+        .sidebar-card { margin: 1.5rem 1rem 0 1rem; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.25rem; font-size: 0.75rem; color: #6b7280; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .sidebar-card-title { font-weight: 700; color: #1f2937; font-size: 0.85rem; margin-bottom: 0.6rem; }
+        .sidebar-card-row { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
+        .sidebar-card-row span:last-child { font-weight: 700; color: #1f2937; }
+        .sidebar-card-row .status { color: #065f46; }
+        .main { flex: 1; padding: 0 4rem 4rem 4rem; background: #ffffff; min-width: 0; }
+        .page-header { padding: 3.5rem 0 2.5rem 0; margin-bottom: 2.5rem; border-bottom: 1px solid #e5e7eb; }
+        .badge { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 9999px; font-size: 0.78rem; font-weight: 600; background: #f3f4f6; color: #4b5563; margin-bottom: 1rem; letter-spacing: 0.04em; }
+        .page-title { font-size: 2.2rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.75rem; }
+        .page-subtitle { color: #6b7280; font-size: 1rem; font-weight: 500; }
+        .section-card { background: #ffffff; border-radius: 1rem; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 2rem; padding: 2.5rem; transition: box-shadow 0.25s; }
+        .section-card:hover { box-shadow: 0 10px 20px -3px rgba(0,0,0,0.09); }
+        .section-card.red-card { background-color: #fff5f5; border: 1px solid #fecaca; }
+        .section-card.gray-card { background-color: #f9fafb; border: 1px solid #e5e7eb; }
+        .section-head { display: flex; align-items: center; margin-bottom: 1.75rem; }
+        .section-bar { width: 6px; height: 2rem; border-radius: 9999px; margin-right: 1rem; flex-shrink: 0; }
+        .bar-green { background: #059669; }
+        .bar-blue { background: #2563eb; }
+        .bar-red { background: #dc2626; }
+        .bar-gray { background: #6b7280; }
+        .section-title { font-size: 1.35rem; font-weight: 700; color: #111827; }
+        .section-title.blue { color: #1d4ed8; }
+        .section-title.green { color: #065f46; }
+        .section-title.red { color: #dc2626; }
+        .section-title.gray { color: #374151; }
+        .section-intro { color: #6b7280; margin-bottom: 1.5rem; line-height: 1.8; }
+        .sub-heading { font-size: 1rem; font-weight: 700; color: #1f2937; margin: 1.75rem 0 0.75rem 0; }
+        ul.dot-list { list-style: disc; padding-left: 1.5rem; color: #4b5563; }
+        ul.dot-list li { margin-bottom: 0.6rem; line-height: 1.75; }
+        ul.dot-list li::marker { color: #10b981; }
+        ul.dot-list.blue-markers li::marker { color: #2563eb; }
+        ul.dot-list.red-markers li::marker { color: #ef4444; }
+        ul.dot-list.gray-markers li::marker { color: #6b7280; }
+        ul.dot-list li strong { color: #111827; }
+        .box-green { border-left: 4px solid #10b981; background: #f0fdf4; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-green .box-label { font-size: 0.8rem; font-weight: 700; color: #065f46; margin-bottom: 0.5rem; }
+        .box-green ul.dot-list li::marker { color: #10b981; }
+        .box-blue { border-left: 4px solid #2563eb; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-blue .box-label { font-size: 0.8rem; font-weight: 700; color: #1d4ed8; margin-bottom: 0.5rem; }
+        .box-blue ul.dot-list li::marker { color: #2563eb; }
+        .box-red { border-left: 4px solid #ef4444; background: #fef2f2; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-red .box-label { font-size: 0.8rem; font-weight: 700; color: #991b1b; margin-bottom: 0.5rem; }
+        .box-red ul.dot-list li::marker { color: #ef4444; }
+        .box-gray { border-left: 4px solid #9ca3af; background: #f9fafb; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-gray .box-label { font-size: 0.8rem; font-weight: 700; color: #374151; margin-bottom: 0.5rem; }
+        .reporter-badge { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.6rem; border-radius: 9999px; margin-right: 0.4rem; vertical-align: middle; }
+        .reporter-badge.nigo { background: #ecfdf5; color: #065f46; }
+        .reporter-badge.takada { background: #eff6ff; color: #1d4ed8; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1rem 0; }
+        .data-table thead th { background: #f9fafb; padding: 0.6rem 1rem; text-align: left; font-weight: 700; color: #374151; border-bottom: 2px solid #e5e7eb; font-size: 0.75rem; letter-spacing: 0.04em; }
+        .data-table tbody td { padding: 0.6rem 1rem; border-bottom: 1px solid #f3f4f6; color: #4b5563; vertical-align: top; }
+        .data-table tbody tr:hover { background: #f9fafb; }
+        .page-footer { margin-top: 4rem; padding: 2.5rem 0; border-top: 1px solid #e5e7eb; text-align: center; font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; }
+        @media (max-width: 768px) {
+            .layout { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid #e5e7eb; padding: 1.25rem 0 1rem 0; }
+            .sidebar-card { display: none; }
+            .main { padding: 0 1.25rem 3rem 1.25rem; }
+            .page-header { padding: 2rem 0 1.5rem 0; }
+            .page-title { font-size: 1.5rem; }
+            .section-card { padding: 1.5rem; }
+            .sidebar-links { flex-direction: row; flex-wrap: wrap; padding: 0 0.75rem; gap: 0.25rem; }
+            .sidebar-link { margin: 0; padding: 0.3rem 0.7rem; font-size: 0.72rem; }
+            .sidebar-label { padding: 0 1rem; }
         }
     </style>
 </head>
 <body>
-<header class="site-header">
-    <span class="badge">MEETING MINUTES</span>
-    <h1>TKW会議　議事録</h1>
-    <p>毎週の定例会議の記録です。タイトルをクリックして各議事録を開いてください。</p>
-</header>
+<div class="layout">
+    <aside class="sidebar">
+        <p class="sidebar-label">INDEX / 目次</p>
+        <div class="sidebar-links">
+            <a href="#s1" class="sidebar-link">1. ボーネルンド　本番検収・リリースへ</a>
+            <a href="#s2" class="sidebar-link">2. 瑞鳳　ABP・DB環境整備</a>
+            <a href="#s3" class="sidebar-link">3. LINE広告　自動化完成と移行計画</a>
+            <a href="#s4" class="sidebar-link">4. ホールカレンダー　ミニアプリ構想</a>
+            <a href="#s5" class="sidebar-link">5. BRODO・WhatsApp対応続報</a>
+            <a href="#s6" class="sidebar-link">6. その他案件</a>
+            <a href="#s7" class="sidebar-link">7. アクションアイテム（TODO）</a>
+            <a href="#s8" class="sidebar-link">8. 参考情報</a>
+        </div>
+        <div class="sidebar-card">
+            <p class="sidebar-card-title">会議情報</p>
+            <div class="sidebar-card-row"><span>会議名:</span><span>TKW定例会議</span></div>
+            <div class="sidebar-card-row"><span>日時:</span><span>2026年7月21日</span></div>
+            <div class="sidebar-card-row"><span>形式:</span><span>原文保存版</span></div>
+            <div class="sidebar-card-row"><span>状態:</span><span class="status">チェック完了</span></div>
+        </div>
+    </aside>
 
-<div class="container">
+    <div class="main">
+        <header class="page-header">
+            <span class="badge">MEETING MINUTES</span>
+            <h1 class="page-title">TKW会議：2026年7月21日</h1>
+            <p class="page-subtitle">ボーネルンド本番検収 / 瑞鳳ABP DB整備 / LINE広告自動化完成 / ホールカレンダーミニアプリ構想　詳細記録</p>
+        </header>
 
-    <div class="category-bar">
-        <a href="./partners/" class="category-btn partners">パートナー会議</a>
-        <a href="./kikaku/" class="category-btn kikaku">企画・提案</a>
-        <a href="./archive/" class="category-btn archive">会議アーカイブ</a>
-    </div>
-
-    <p class="month-label">2026年7月</p>
-
-    <div class="minutes-list">
-
-        <a href="./0721/" class="minutes-card latest" target="_blank" rel="noopener">
-            <div class="card-date"><div class="month">Jul</div><div class="day">21</div></div>
-            <div class="card-divider"></div>
-            <div class="card-body">
-                <div class="card-title">TKW会議：2026年7月21日</div>
-                <div class="card-meta">ボーネルンド本番検収 / 瑞鳳ABP DB整備 / LINE広告自動化完成 / ホールカレンダーミニアプリ構想</div>
-                <div class="card-tags">
-                    <span class="tag green">LINE広告 153件 過去最多</span>
-                    <span class="tag blue">LINE広告自動化 貫通テスト完了</span>
-                </div>
-            </div>
-            <span class="latest-badge">LATEST</span>
-            <span class="card-arrow">›</span>
-        </a>
-
-        <a href="./0714/" class="minutes-card" target="_blank" rel="noopener">
-            <div class="card-date"><div class="month">Jul</div><div class="day">14</div></div>
-            <div class="card-divider"></div>
-            <div class="card-body">
-                <div class="card-title">TKW会議：2026年7月14日</div>
-                <div class="card-meta">MID反省と終了 / Mooovi / ボーネルンド本番検収へ / 瑞鳳ABP進捗 / ペット新事業 / AI社員制度</div>
-                <div class="card-tags">
-                    <span class="tag green">LINE広告 135件</span>
-                    <span class="tag blue">瑞鳳ABP 専務説明へ</span>
-                    <span class="tag" style="background:#f5f3ff;color:#6d28d9;">ペット新事業 始動</span>
-                </div>
-            </div>
-            <span class="card-arrow">›</span>
-        </a>
-
-        <a href="./0709/" class="minutes-card" target="_blank" rel="noopener">
-            <div class="card-date"><div class="month">Jul</div><div class="day">09</div></div>
-            <div class="card-divider"></div>
-            <div class="card-body">
-                <div class="card-title">TKW会議：2026年7月9日</div>
-                <div class="card-meta">LINE広告新環境移行 / ボーネルンドスマレジ導入 / 瑞鳳ABP方針転換 / AI社員制度（ECOちゃん）</div>
-                <div class="card-tags">
-                    <span class="tag green">LINE広告 月初最高102件</span>
-                    <span class="tag blue">瑞鳳 ABP方針転換</span>
-                    <span class="tag purple">AI社員 ECOちゃん</span>
-                </div>
-            </div>
-            <span class="card-arrow">›</span>
-        </a>
-
-        <div class="empty-card">
-            <div class="empty-date"><div class="empty-month">Jul</div><div class="empty-day">28</div></div>
-            <div class="card-divider" style="background:#f3f4f6;"></div>
-            <div class="empty-text">次回会議の議事録がここに追加されます</div>
+        <div style="display:flex; gap:0.5rem; margin-bottom:2rem; flex-wrap:wrap;">
+            <span class="reporter-badge nigo">新後 報告</span>
+            <span class="reporter-badge takada">高田 報告</span>
+            <span style="font-size:0.78rem; color:#6b7280;">各セクションの情報源を示します</span>
         </div>
 
+        <!-- 1 ボーネルンド -->
+        <section id="s1" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">1. ボーネルンド　本番検収・リリースへ</h2>
+            </div>
+            <p class="section-intro">7月17日（金）のテスト環境検収がオールクリアとなり、7月23日（木）の本番3店舗合同検収へ進行。8月決算に向けた重要な山場を迎えている。</p>
+
+            <p class="sub-heading">リリーススケジュール <span class="reporter-badge nigo">新後 報告</span></p>
+            <div style="margin:1.25rem 0; overflow-x:auto;">
+                <svg viewBox="0 0 680 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;min-width:500px;display:block;">
+                    <line x1="40" y1="75" x2="640" y2="75" stroke="#e5e7eb" stroke-width="3"/>
+                    <circle cx="90" cy="75" r="10" fill="#059669"/>
+                    <text x="90" y="50" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="11" font-weight="700" fill="#065f46">7/17（金）</text>
+                    <text x="90" y="100" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="10" fill="#4b5563">テスト環境</text>
+                    <text x="90" y="114" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="10" fill="#4b5563">オールクリア</text>
+                    <circle cx="270" cy="75" r="12" fill="#dc2626"/>
+                    <text x="270" y="47" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="11" font-weight="700" fill="#dc2626">7/23（木）</text>
+                    <text x="270" y="100" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="10" font-weight="700" fill="#dc2626">本番3店舗</text>
+                    <text x="270" y="114" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="10" font-weight="700" fill="#dc2626">合同検収・納品</text>
+                    <circle cx="450" cy="75" r="10" fill="#059669"/>
+                    <text x="450" y="50" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="11" font-weight="700" fill="#065f46">8/3（月）〜</text>
+                    <text x="450" y="100" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="10" fill="#4b5563">正式リリース</text>
+                    <text x="450" y="114" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="10" fill="#4b5563">予定</text>
+                    <circle cx="590" cy="75" r="10" fill="#059669"/>
+                    <text x="590" y="50" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="11" font-weight="700" fill="#065f46">8/4（火）</text>
+                    <text x="590" y="100" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="10" fill="#4b5563">運用開始</text>
+                    <text x="590" y="114" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="10" fill="#4b5563">有力</text>
+                    <rect x="20" y="138" width="640" height="24" rx="6" fill="#f0fdf4" stroke="#10b981" stroke-width="1"/>
+                    <text x="340" y="154" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="11" fill="#065f46">導入順：① 湘南テラスモール店　→　② 川崎ルフロン店　→　③ さいたま新都心店</text>
+                </svg>
+            </div>
+
+            <ul class="dot-list">
+                <li>7月17日（金）のテスト環境検収は、クライアントが想定した複雑なパターンも含めてオールクリア。エラーはすべて修正済み。</li>
+                <li>7月23日（木）に本番環境で3店舗同時検収を実施。確認用パターンリストをクライアントと最終調整中。</li>
+                <li>23日の研修完了で「納品扱い」となり、7月請求で進行。</li>
+                <li>実際の運用開始は8月3日（月）以降を予定。月曜スタートだと前週金曜夜のリリース作業がベンダー負荷になるため、<strong>8月4日（火）スタート</strong>が有力。</li>
+                <li>追加機能（ブラッシュアップ）は23日に間に合わなくても本番運営に支障はないことでクライアントと合意済み。</li>
+            </ul>
+
+            <p class="sub-heading">オービック（OBIC）全店登録 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li>7月20日（月）夜に全店登録が完了。今週中にデータ収集と整合性確認を実施し、今月中に完了させる予定。</li>
+                <li>すでに1店舗で整合性が取れていることを確認済みのため、残作業はコードの打ち間違いなど「一面的な確認」が主となる。</li>
+            </ul>
+
+            <div class="box-red">
+                <p class="box-label">【論点】ショップ側売上データの構造問題</p>
+                <ul class="dot-list">
+                    <li>ショップ側はCSV手動取り込みが確認済みだが、ショップデータは「1客ごとの細かい販売データ（1会計ごと）」を保持しているのに対し、予約システムは「1つの決済」としてデータを扱っているため、構造のまま移行できるかが焦点。経理・OBIC側への確認が必要。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">団体利用の請求対応：システムか運用か <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li>現在、団体客の請求書は本部が発行しているため、売上が店舗ではなく本部に計上され、施設（館）側への売上報告が正しく行えないという問題がある。</li>
+                <li>「予約システムに請求書発行機能を載せるべき」という意見に対し、<strong>「スマレジに『請求扱い』という項目を作って決済すれば店舗の売上として立てられるのではないか」</strong>という運用の工夫で解決できる可能性も示された。</li>
+                <li>請求書の発行権限（経理か現場か）、銀行振込後払いの場合のレジ処理についても議論になった。結論として「社内管理ルールで売上を店舗に付け替えるだけの話ではないか」という見方もあり、システム改修の必要性を再精査することになった。</li>
+                <li>8月中に団体利用対応をシステムに組み込めるかどうか、要件を詰めていく予定。クレジット決済に加え、クレジットがない場合の請求書対応も必要なことが確認されている。</li>
+            </ul>
+        </section>
+
+        <!-- 2 瑞鳳ABP -->
+        <section id="s2" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-blue"></div>
+                <h2 class="section-title blue">2. 瑞鳳　ABP・DB環境整備</h2>
+            </div>
+            <p class="section-intro">AWS管理権限の取得とセキュリティ調整が完了。ABP接続に向けたDB環境の再設計フェーズに入った。</p>
+
+            <p class="sub-heading">AWS環境整備 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list blue-markers">
+                <li>前任者（伊原氏）からAWS管理権限を完全に引き継ぎ、不完全だったセキュリティ対策も調整済み。</li>
+                <li>清さんのAWSアカウントIDを共有いただければ、こちらで招待しデータアクセス可能な状態にする方針。</li>
+            </ul>
+
+            <p class="sub-heading">DB環境の方針整理 <span class="reporter-badge nigo">新後 報告</span></p>
+            <table class="data-table">
+                <thead><tr><th>観点</th><th>現状・課題</th><th>今回の方向性</th></tr></thead>
+                <tbody>
+                    <tr><td>ダッシュボードの目的</td><td>既存Yellowfinの延長だけではABP連携に必要な構造が不足する可能性あり。</td><td>ABPで活用できるDB環境を前提に再整理する。</td></tr>
+                    <tr><td>AI機能の扱い</td><td>AI活用には、どのデータを安全に渡せるかの設計が必要。</td><td>データアクセス・権限・セキュリティの前提を先に固める。</td></tr>
+                    <tr><td>データベース設計</td><td>現行DBをそのまま流用できるかは未確定。</td><td>ABP接続に合わせてDB環境の再調整方針を決める。</td></tr>
+                    <tr><td>クライアントへの説明</td><td>技術前提が未確定なままだと提案内容がぶれる。</td><td>DB環境方針を固めた上で、ABP提案の説明材料に落とし込む。</td></tr>
+                </tbody>
+            </table>
+
+            <ul class="dot-list blue-markers">
+                <li>AURORA Mobileとの打ち合わせで、ABPとつなぎ込むためにDB環境の再調整が必要との認識になった。</li>
+                <li>水戸部氏とすり合わせながら、今週中から遅くとも週明けまでにDB環境方針を固める。</li>
+                <li>DB方針が固まれば、瑞鳳向け説明・提案内容をより具体的にできる状態になる。</li>
+            </ul>
+
+            <div class="box-red">
+                <p class="box-label">【リスク】Yellowfin期限</p>
+                <ul class="dot-list">
+                    <li>Yellowfinのライセンスが<strong>9月30日に切れる</strong>。DB環境方針が固まらないとABP側の実装・提案が具体化しづらいため、週内の方針決定が急務。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 3 LINE広告 -->
+        <section id="s3" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">3. LINE広告　自動化完成と移行計画</h2>
+            </div>
+
+            <p class="sub-heading">7月度売上実績 <span class="reporter-badge takada">高田 報告</span></p>
+            <div class="box-green">
+                <p class="box-label">【7月21日時点】</p>
+                <ul class="dot-list">
+                    <li>受注件数：<strong>153件</strong>（前週比18件増）。過去最多件数・最大売上達成見込み（売上500万円越えの予定）。</li>
+                    <li>期末最終月（8月度）受注増に向けて一広側へのサポートを強化。</li>
+                    <li>明日（22日）より毎週月曜日・常駐（週1回）開始。営業強化および新プラットフォーム・新発注システム運用開始に向けたサポートを実施。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">自動化フロー <span class="reporter-badge nigo">新後 報告</span></p>
+            <div style="margin:1.25rem 0; overflow-x:auto;">
+                <svg viewBox="0 0 760 155" xmlns="http://www.w3.org/2000/svg" style="width:100%;min-width:580px;display:block;">
+                    <!-- ステップボックス -->
+                    <!-- 1 -->
+                    <rect x="10" y="30" width="120" height="60" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="2"/>
+                    <text x="70" y="56" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="10" font-weight="700" fill="#065f46">新案件入稿</text>
+                    <text x="70" y="72" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="9" fill="#4b5563">kintone</text>
+                    <text x="70" y="84" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="9" fill="#4b5563">（フォームブリッジ）</text>
+                    <!-- 矢印 -->
+                    <polygon points="140,60 152,54 152,66" fill="#6b7280"/>
+                    <line x1="130" y1="60" x2="152" y2="60" stroke="#6b7280" stroke-width="1.5"/>
+                    <!-- 2 -->
+                    <rect x="160" y="30" width="120" height="60" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="2"/>
+                    <text x="220" y="56" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="10" font-weight="700" fill="#065f46">データ抽出</text>
+                    <text x="220" y="72" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="9" fill="#4b5563">kintone→</text>
+                    <text x="220" y="84" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="9" fill="#4b5563">自動読み取り</text>
+                    <!-- 矢印 -->
+                    <polygon points="290,60 302,54 302,66" fill="#6b7280"/>
+                    <line x1="280" y1="60" x2="302" y2="60" stroke="#6b7280" stroke-width="1.5"/>
+                    <!-- 3 -->
+                    <rect x="310" y="30" width="120" height="60" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+                    <text x="370" y="56" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="10" font-weight="700" fill="#1d4ed8">自動入稿</text>
+                    <text x="370" y="72" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="9" fill="#4b5563">LYプラット</text>
+                    <text x="370" y="84" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="9" fill="#4b5563">フォームへ</text>
+                    <!-- 矢印 -->
+                    <polygon points="440,60 452,54 452,66" fill="#6b7280"/>
+                    <line x1="430" y1="60" x2="452" y2="60" stroke="#6b7280" stroke-width="1.5"/>
+                    <!-- 4 -->
+                    <rect x="460" y="30" width="120" height="60" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+                    <text x="520" y="49" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="10" font-weight="700" fill="#1d4ed8">GPS / Beacon</text>
+                    <text x="520" y="63" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="9" fill="#4b5563">オーディエンス</text>
+                    <text x="520" y="75" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="9" fill="#4b5563">作成・配信</text>
+                    <rect x="464" y="84" width="112" height="14" rx="3" fill="#fef3c7"/>
+                    <text x="520" y="95" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="9" fill="#92400e">テスト中</text>
+                    <!-- 矢印 -->
+                    <polygon points="590,60 602,54 602,66" fill="#6b7280"/>
+                    <line x1="580" y1="60" x2="602" y2="60" stroke="#6b7280" stroke-width="1.5"/>
+                    <!-- 5 -->
+                    <rect x="610" y="30" width="130" height="60" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="2"/>
+                    <text x="675" y="56" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="10" font-weight="700" fill="#065f46">レポート自動生成</text>
+                    <text x="675" y="72" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="9" fill="#4b5563">Googleドライブ</text>
+                    <text x="675" y="84" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-size="9" fill="#4b5563">に書き出し</text>
+                    <!-- 凡例 -->
+                    <rect x="10" y="118" width="14" height="10" rx="2" fill="#f0fdf4" stroke="#059669" stroke-width="1.5"/>
+                    <text x="28" y="128" font-family="Noto Sans JP,sans-serif" font-size="10" fill="#374151">完了済み</text>
+                    <rect x="90" y="118" width="14" height="10" rx="2" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+                    <text x="108" y="128" font-family="Noto Sans JP,sans-serif" font-size="10" fill="#374151">テスト済み</text>
+                    <rect x="185" y="118" width="14" height="10" rx="2" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+                    <text x="203" y="128" font-family="Noto Sans JP,sans-serif" font-size="10" fill="#374151">テスト中</text>
+                </svg>
+            </div>
+
+            <p class="sub-heading">移行計画と管理体制 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li>旧プラットフォームと新プラットフォームは今後約2ヶ月間並行稼働。入稿窓口を<strong>旧環境→Googleフォーム、新環境→kintone（フォームブリッジ）</strong>と明確に区別する。</li>
+                <li>旧プラットフォームは10月から順次停止予定。現行レポートツール「アトム」も旧環境データ出し切りをもって終了（解約）する方向で調整中。</li>
+                <li>kintoneと広告プラットフォームを繋ぐ自動入稿システムのAPI連携テストが完了。データ取得→プラットフォーム設定→レポート自動作成まで、一気通貫の貫通テストに成功。</li>
+                <li>レポートはGoogleドライブへ自動書き出し。ビーコンIDの取得やCV期間の設定も自動化する改善案を検討中。</li>
+            </ul>
+
+            <p class="sub-heading">役割の変化 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li>自動化により、これまで手作業で行っていた入稿作業が大幅に削減される。高田氏・金子氏が担当していた実務の多くがシステムに置き換わる見込み。</li>
+                <li>今後の人的作業は「バリデーションエラーの確認」「特殊ルール案件への個別対応」「配信ステータスの最終チェック」に限定され、担当者はフロント業務や売上拡大施策に注力できる環境が整う。</li>
+            </ul>
+
+            <p class="sub-heading">PasportAD審査 <span class="reporter-badge takada">高田 報告</span></p>
+            <ul class="dot-list">
+                <li>PasportADへの配信審査の結果が明日予定。</li>
+            </ul>
+        </section>
+
+        <!-- 4 ホールカレンダー -->
+        <section id="s4" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-blue"></div>
+                <h2 class="section-title blue">4. ホールカレンダー（ホルカレ）　LINEミニアプリ化構想</h2>
+            </div>
+            <p class="section-intro">既存のホールカレンダーをLINEミニアプリ化し、広告・来店分析・顧客施策を一気通貫で提供する強力なプラットフォームへと進化させる構想が議論された。</p>
+
+            <div class="box-blue">
+                <p class="box-label">【構想の核心】</p>
+                <ul class="dot-list">
+                    <li>1つのミニアプリで、流入元の店舗IDを識別して表示を切り替えるプラットフォーム的な構造を目指す。</li>
+                    <li>ビーコンの接触データをミニアプリに連携させ、<strong>来店分析・チェックイン機能・来店プレゼント施策</strong>などを統合する。</li>
+                    <li>LINE広告から来店計測、顧客分析までを一気通貫で提供できるツールとして位置付ける。</li>
+                </ul>
+            </div>
+
+            <ul class="dot-list blue-markers">
+                <li>前回議事録で出ていたニコニコのホールカレンダーシステム案件（買取検討）とも関連する動き。</li>
+                <li>LINEタッチ（NFCカード）を発注済み。到着後、入場フローとポイント付与の仕組みをテスト実装する。</li>
+            </ul>
+        </section>
+
+        <!-- 5 BRODO続報 -->
+        <section id="s5" class="section-card red-card">
+            <div class="section-head">
+                <div class="section-bar bar-red"></div>
+                <h2 class="section-title red">5. BRODO・WhatsApp対応　続報</h2>
+            </div>
+            <ul class="dot-list red-markers">
+                <li>渋谷警察署で<strong>公文書（開示請求文書）を受領</strong>した。</li>
+                <li>案件番号や時系列をまとめた英語版資料を作成し、Meta社のWhatsAppヘルプデスクに報告済み。ただし文字数制限がありPDF添付もできないため、やり取りに工夫が必要な状況。</li>
+                <li>WhatsApp側への報告送信も完了。引き続き証拠の保全を継続。</li>
+            </ul>
+        </section>
+
+        <!-- 6 その他案件 -->
+        <section id="s6" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title">6. その他案件</h2>
+            </div>
+
+            <p class="sub-heading">上村さん案件 <span class="reporter-badge takada">高田 報告</span></p>
+            <ul class="dot-list gray-markers">
+                <li>AI研修を実施し、非常に高い熱量（株を買いたいと言うほどの勢い）で理解が得られた。</li>
+                <li>平和島の店舗から順次施策を進める。</li>
+            </ul>
+
+            <p class="sub-heading">ミラクルワールド <span class="reporter-badge takada">高田 報告</span></p>
+            <ul class="dot-list gray-markers">
+                <li>8月9日の1日限定配信（予算10万円）について、大阪エリア限定での配信可否や最低予算条件を確認する。</li>
+            </ul>
+
+            <p class="sub-heading">広告商品開発 <span class="reporter-badge takada">高田 報告</span></p>
+            <ul class="dot-list gray-markers">
+                <li>テクノブラッド（蔵前）×ネットカフェ広告メディア化（ランチャー80%・全国5,000店舗・Beacon活用）の進行継続。</li>
+                <li>広告商品：送客・Beacon（パチンコホールへの広告商品）、SNWへの商品化（ダッシュボード）。</li>
+                <li>来季開始までに提案可能な状態まで構築すること。</li>
+            </ul>
+
+            <p class="sub-heading">MID・Mooovi <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list gray-markers">
+                <li><strong>MID：</strong>今週は報告対象なし。必要があれば再度報告対象に戻す。</li>
+                <li><strong>Mooovi：</strong>内製顧客管理システム側の進行待ち。進捗が出た段階で提案時期・入れ替え方針を再整理。</li>
+            </ul>
+        </section>
+
+        <!-- 7 TODO -->
+        <section id="s7" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">7. アクションアイテム（TODO）</h2>
+            </div>
+            <div style="overflow-x:auto;">
+                <table class="data-table">
+                    <thead><tr><th>担当</th><th>タスク内容</th><th>期限</th></tr></thead>
+                    <tbody>
+                        <tr><td>新後</td><td>ボーネルンド：7/23本番3店舗合同検収に向けて確認観点・当日進行を整理する</td><td>7/23前</td></tr>
+                        <tr><td>新後</td><td>ボーネルンド：OBICデータの収集と整合性確認を実施する</td><td>今週中</td></tr>
+                        <tr><td>新後</td><td>ボーネルンド：団体利用対応の請求書発行要件を整理し、見積書作成・提出提案へ進める</td><td>早期</td></tr>
+                        <tr><td>新後</td><td>瑞鳳：清さんのAWSアカウントIDを確認し、データアクセスできるよう招待する</td><td>確認後すぐ</td></tr>
+                        <tr><td>新後</td><td>瑞鳳：水戸部氏とDB環境についてすり合わせ、ABP接続に向けたDB環境方針を決定する</td><td>今週中〜週明け</td></tr>
+                        <tr><td>新後</td><td>LINE広告：GPS・Beaconデータ取得からLY側オーディエンス作成までの自動化テストを実施する</td><td>今週中</td></tr>
+                        <tr><td>新後</td><td>LINE広告：入稿からレポート作成までの自動化フローに目処をつける</td><td>今週中</td></tr>
+                        <tr><td>新後</td><td>LINE広告：イレギュラーケース・エラーケースを整理し、8月から自動化運用できる状態にする</td><td>7月中</td></tr>
+                        <tr><td>高田</td><td>LINE広告：明日（22日）より毎週月曜日・一広常駐開始</td><td>7/22〜</td></tr>
+                        <tr><td>高田</td><td>ミラクルワールド：大阪エリア限定配信可否・最低予算条件の確認</td><td>早急に</td></tr>
+                        <tr><td>高田</td><td>PasportAD審査結果の確認・対応</td><td>7/22</td></tr>
+                        <tr><td>新後</td><td>LINEタッチ（NFCカード）到着後、入場フロー・ポイント付与のテスト実装</td><td>到着後</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="box-green" style="margin-top:1.5rem;">
+                <p class="box-label">【次回確認事項】</p>
+                <ul class="dot-list">
+                    <li>ボーネルンド：7/23本番3店舗合同検収の結果・納品・請求の確定</li>
+                    <li>瑞鳳：DB環境方針の決定内容・清さんのAWSアクセス状況</li>
+                    <li>LINE広告：GPS/Beaconオーディエンス自動化テストの結果・自動化フローの完成状況</li>
+                    <li>PasportAD審査結果</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 8 参考情報 -->
+        <section id="s8" class="section-card gray-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title gray">8. 参考情報（自社サイト制作とAIツール評価）</h2>
+            </div>
+            <p class="section-intro">本流の議題ではないが、社内の知見として共有された内容を記録する。</p>
+
+            <p class="sub-heading">自社サイト制作におけるAI活用の実態</p>
+            <ul class="dot-list gray-markers">
+                <li>自社サイトのオープニングアニメーション制作をAIで行ったが、<strong>わずか数秒の動きに3日間</strong>を要した。AIに指示しても期待通りの動きにならないため、結局は人間が元絵を作成し、ベクター分解し、透過PNGを一つずつ作るなど膨大な手作業が必要になった。</li>
+                <li>AIが「できた」と言って渡してきた画像が、背景透過されていないただの「市松模様の画像」だったという失敗談も共有された。</li>
+            </ul>
+
+            <p class="sub-heading">AIツール評価（社内所感）</p>
+            <ul class="dot-list gray-markers">
+                <li><strong>Claude（特に3.5 Sonnet）：</strong>プログラムやシステム系のコンテキスト理解については圧倒的に優秀との評価。</li>
+                <li><strong>ChatGPT（GPT-4o）：</strong>会話の文脈理解には向いているが、システム構築では力不足を感じる場面がある。</li>
+            </ul>
+        </section>
+
+        <footer class="page-footer">
+            <p>&copy; 2026 TKW Project Team. All Rights Reserved.</p>
+        </footer>
     </div>
 </div>
 
-<footer>&copy; 2026 TKW Project Team. All Rights Reserved.</footer>
+<script>
+    const links = document.querySelectorAll('.sidebar-link');
+    const sections = document.querySelectorAll('section[id]');
+    const redSections = ['s5'];
+    const blueSections = ['s2', 's4'];
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                links.forEach(link => {
+                    link.classList.remove('active', 'active-red', 'active-blue');
+                    if (link.getAttribute('href') === '#' + id) {
+                        if (redSections.includes(id)) link.classList.add('active-red');
+                        else if (blueSections.includes(id)) link.classList.add('active-blue');
+                        else link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.2 });
+    sections.forEach(s => observer.observe(s));
+</script>
 </body>
 </html>
