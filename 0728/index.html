@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKW会議：2026年7月28日</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif; background-color: #ffffff; color: #1f2937; line-height: 1.8; font-size: 15px; }
+        .layout { display: flex; min-height: 100vh; }
+        .sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; background-color: #f9fafb; border-right: 1px solid #e5e7eb; display: flex; flex-direction: column; padding: 2rem 0 3rem 0; }
+        .sidebar-label { font-size: 0.7rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; padding: 0 1.5rem; margin-bottom: 1rem; }
+        .sidebar-links { display: flex; flex-direction: column; }
+        .sidebar-link { display: block; padding: 0.45rem 1.5rem; font-size: 0.8rem; color: #6b7280; text-decoration: none; border-radius: 0.5rem; margin: 0.1rem 0.5rem; transition: background 0.18s, color 0.18s; }
+        .sidebar-link:hover { background-color: #e5e7eb; color: #111827; }
+        .sidebar-link.active { background-color: #ecfdf5; color: #065f46; font-weight: 700; }
+        .sidebar-link.active-red { background-color: #fef2f2; color: #991b1b; font-weight: 700; }
+        .sidebar-link.active-blue { background-color: #eff6ff; color: #1d4ed8; font-weight: 700; }
+        .sidebar-link.active-purple { background-color: #f5f3ff; color: #6d28d9; font-weight: 700; }
+        .sidebar-link.active-gray { background-color: #f3f4f6; color: #374151; font-weight: 700; }
+        .sidebar-card { margin: 1.5rem 1rem 0 1rem; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.25rem; font-size: 0.75rem; color: #6b7280; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .sidebar-card-title { font-weight: 700; color: #1f2937; font-size: 0.85rem; margin-bottom: 0.6rem; }
+        .sidebar-card-row { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
+        .sidebar-card-row span:last-child { font-weight: 700; color: #1f2937; }
+        .sidebar-card-row .status { color: #92400e; }
+        .main { flex: 1; padding: 0 4rem 4rem 4rem; background: #ffffff; min-width: 0; }
+        .page-header { padding: 3.5rem 0 2.5rem 0; margin-bottom: 2.5rem; border-bottom: 1px solid #e5e7eb; }
+        .badge { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 9999px; font-size: 0.78rem; font-weight: 600; background: #f3f4f6; color: #4b5563; margin-bottom: 1rem; letter-spacing: 0.04em; }
+        .page-title { font-size: 2.2rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.75rem; }
+        .page-subtitle { color: #6b7280; font-size: 1rem; font-weight: 500; }
+        .section-card { background: #ffffff; border-radius: 1rem; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 2rem; padding: 2.5rem; transition: box-shadow 0.25s; }
+        .section-card:hover { box-shadow: 0 10px 20px -3px rgba(0,0,0,0.09); }
+        .section-card.purple-card { background-color: #faf5ff; border: 1px solid #e9d5ff; }
+        .section-card.gray-card { background-color: #f9fafb; border: 1px solid #e5e7eb; }
+        .section-head { display: flex; align-items: center; margin-bottom: 1.75rem; }
+        .section-bar { width: 6px; height: 2rem; border-radius: 9999px; margin-right: 1rem; flex-shrink: 0; }
+        .bar-green { background: #059669; }
+        .bar-blue { background: #2563eb; }
+        .bar-red { background: #dc2626; }
+        .bar-purple { background: #7c3aed; }
+        .bar-gray { background: #6b7280; }
+        .section-title { font-size: 1.35rem; font-weight: 700; color: #111827; }
+        .section-title.blue { color: #1d4ed8; }
+        .section-title.green { color: #065f46; }
+        .section-title.red { color: #dc2626; }
+        .section-title.purple { color: #6d28d9; }
+        .section-title.gray { color: #374151; }
+        .section-intro { color: #6b7280; margin-bottom: 1.5rem; line-height: 1.8; }
+        .sub-heading { font-size: 1rem; font-weight: 700; color: #1f2937; margin: 1.75rem 0 0.75rem 0; }
+        ul.dot-list { list-style: disc; padding-left: 1.5rem; color: #4b5563; }
+        ul.dot-list li { margin-bottom: 0.6rem; line-height: 1.75; }
+        ul.dot-list li::marker { color: #10b981; }
+        ul.dot-list.blue-markers li::marker { color: #2563eb; }
+        ul.dot-list.red-markers li::marker { color: #ef4444; }
+        ul.dot-list.purple-markers li::marker { color: #8b5cf6; }
+        ul.dot-list.gray-markers li::marker { color: #6b7280; }
+        ul.dot-list li strong { color: #111827; }
+        .box-green { border-left: 4px solid #10b981; background: #f0fdf4; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-green .box-label { font-size: 0.8rem; font-weight: 700; color: #065f46; margin-bottom: 0.5rem; }
+        .box-green ul.dot-list li::marker { color: #10b981; }
+        .box-blue { border-left: 4px solid #2563eb; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-blue .box-label { font-size: 0.8rem; font-weight: 700; color: #1d4ed8; margin-bottom: 0.5rem; }
+        .box-blue ul.dot-list li::marker { color: #2563eb; }
+        .box-red { border-left: 4px solid #ef4444; background: #fef2f2; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-red .box-label { font-size: 0.8rem; font-weight: 700; color: #991b1b; margin-bottom: 0.5rem; }
+        .box-red ul.dot-list li::marker { color: #ef4444; }
+        .box-gray { border-left: 4px solid #9ca3af; background: #f9fafb; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-gray .box-label { font-size: 0.8rem; font-weight: 700; color: #374151; margin-bottom: 0.5rem; }
+        .reporter-badge { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.6rem; border-radius: 9999px; margin-right: 0.4rem; vertical-align: middle; }
+        .reporter-badge.nigo { background: #ecfdf5; color: #065f46; }
+        .reporter-badge.takada { background: #eff6ff; color: #1d4ed8; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1rem 0; }
+        .data-table thead th { background: #f9fafb; padding: 0.6rem 1rem; text-align: left; font-weight: 700; color: #374151; border-bottom: 2px solid #e5e7eb; font-size: 0.75rem; letter-spacing: 0.04em; }
+        .data-table tbody td { padding: 0.6rem 1rem; border-bottom: 1px solid #f3f4f6; color: #4b5563; vertical-align: top; }
+        .data-table tbody tr:hover { background: #f9fafb; }
+        .page-footer { margin-top: 4rem; padding: 2.5rem 0; border-top: 1px solid #e5e7eb; text-align: center; font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; }
+        @media (max-width: 768px) {
+            .layout { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid #e5e7eb; padding: 1.25rem 0 1rem 0; }
+            .sidebar-card { display: none; }
+            .main { padding: 0 1.25rem 3rem 1.25rem; }
+            .page-header { padding: 2rem 0 1.5rem 0; }
+            .page-title { font-size: 1.5rem; }
+            .section-card { padding: 1.5rem; }
+            .sidebar-links { flex-direction: row; flex-wrap: wrap; padding: 0 0.75rem; gap: 0.25rem; }
+            .sidebar-link { margin: 0; padding: 0.3rem 0.7rem; font-size: 0.72rem; }
+            .sidebar-label { padding: 0 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+    <aside class="sidebar">
+        <p class="sidebar-label">INDEX / 目次</p>
+        <div class="sidebar-links">
+            <a href="#s1" class="sidebar-link">1. ボーネルンド　本番研修完了・8/4本番リリース</a>
+            <a href="#s2" class="sidebar-link">2. 瑞鳳ABP　新DB基盤整備</a>
+            <a href="#s3" class="sidebar-link">3. LINE広告　過去最高実績と自動化進捗</a>
+            <a href="#s4" class="sidebar-link">4. 広告商品開発</a>
+            <a href="#s5" class="sidebar-link">5. AI社員制度「こだち」　新規事業始動</a>
+            <a href="#s6" class="sidebar-link">6. その他・組織運営</a>
+            <a href="#s7" class="sidebar-link">7. アクションアイテム（TODO）</a>
+        </div>
+        <div class="sidebar-card">
+            <p class="sidebar-card-title">会議情報</p>
+            <div class="sidebar-card-row"><span>会議名:</span><span>TKW定例会議</span></div>
+            <div class="sidebar-card-row"><span>日時:</span><span>2026年7月28日</span></div>
+            <div class="sidebar-card-row"><span>形式:</span><span>原文保存版</span></div>
+            <div class="sidebar-card-row"><span>状態:</span><span class="status">初稿（未確認）</span></div>
+        </div>
+    </aside>
+
+    <div class="main">
+        <header class="page-header">
+            <span class="badge">MEETING MINUTES</span>
+            <h1 class="page-title">TKW会議：2026年7月28日</h1>
+            <p class="page-subtitle">ボーネルンド本番研修完了・8/4本番リリース決定 / 瑞鳳ABP新DB基盤整備 / LINE広告過去最高実績 / AI社員制度「こだち」始動　詳細記録</p>
+        </header>
+
+        <div style="display:flex; gap:0.5rem; margin-bottom:2rem; flex-wrap:wrap;">
+            <span class="reporter-badge nigo">新後 報告</span>
+            <span class="reporter-badge takada">高田 報告</span>
+            <span style="font-size:0.78rem; color:#6b7280;">各セクションの情報源を示します（バッジなしは会議本体の記録）</span>
+        </div>
+
+        <!-- 1 ボーネルンド -->
+        <section id="s1" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">1. ボーネルンド　本番研修完了・8/4本番リリース</h2>
+            </div>
+
+            <p class="sub-heading">本番研修の結果と評価</p>
+            <ul class="dot-list">
+                <li>先週実施された3者合同による本番研修が完了した。クオリティが合格ラインに達したため、今月分の請求にて、スマレジに関連するオービック分も含めた残金全額を精算することでクライアント（早川氏）から承諾を得た。</li>
+                <li>研修は湘南テラスモール、既存のグランフロント、さいたま新都心の3店舗で実施された。さいたま新都心店での研修中、予約システムと旧ポスレジ側の計算に差異が生じる事象が発生したが、後日の調査により<strong>旧ポス側の不具合</strong>であることが判明した。早川氏も「早く（システムを）変えなければならない」と前向きな反応を示しており、8月4日のリリースに影響はない。</li>
+                <li>湘南テラスモール店・グランフロント大阪店は完全クリア。さいたま新都心店も主要パターンは問題なし。<span class="reporter-badge nigo">新後 報告</span></li>
+            </ul>
+
+            <p class="sub-heading">現場の反応</p>
+            <ul class="dot-list">
+                <li>湘南テラスモール店での締め作業中、スタッフから「計算しなくてよくなる」「手入力のオペレーションがなくなる」と高い評価を得ており、現場のテンションが上がるほどの感触であった。</li>
+                <li>顧客側も、マイページを経由せずトップページからワンタップでバーコードを表示できる点や、自動判別機能の実装により、迷わず操作できる環境が整った。</li>
+            </ul>
+
+            <p class="sub-heading">今後のスケジュール</p>
+            <ul class="dot-list">
+                <li><strong>8月4日（火）の朝から現場立ち合い</strong>のもと、本番リリースを実施する。</li>
+                <li>今後の展開として、関東3店舗の後はグランフロント大阪を優先し、全店展開を完了させるイメージで進める。ただし、既存の東芝テック製レジのライセンス状況を考慮し、タイミングを調整する必要がある。</li>
+            </ul>
+
+            <div class="box-red">
+                <p class="box-label">【提案・補足】</p>
+                <p style="color:#4b5563; font-size:0.9rem;">全店展開の完了時期について、会議本体では「今期中（12月まで）」、新後報告書では「今期中（2027年1月）まで」と表現に差異がありました。誤字脱字ではなく解釈・時期認識の相違の可能性があるため、修正せずそれぞれ原文のまま記載しています。次回までにどちらが正しいかご確認をお願いします。</p>
+            </div>
+
+            <p class="sub-heading">団体利用対応・請求整理 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li>団体利用対応：請求書発行機能は一旦保留。請求書発行以外の機能について仕様確認をベンダーへ依頼済み。</li>
+                <li>追加相談・派生案件：東芝テックとの契約確認は必要だが、できれば一斉入替したいとの話も出ている。</li>
+                <li>今月請求対象：スマレジ改修、OBIC機能、GMOセキュリティ対応、LINE ID保存機能。</li>
+            </ul>
+
+            <p class="sub-heading">課題とタスク</p>
+            <ul class="dot-list">
+                <li>月額費用について、クライアント社内での説明が十分でない可能性があるため、来週の報告までに懸念を解消する。</li>
+                <li>リリース前のタスクとして、スタッフ用の運用マニュアル作成を完了させる。</li>
+            </ul>
+        </section>
+
+        <!-- 2 瑞鳳ABP -->
+        <section id="s2" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-blue"></div>
+                <h2 class="section-title blue">2. 瑞鳳ABP　新DB基盤整備</h2>
+            </div>
+
+            <p class="sub-heading">基本方針</p>
+            <ul class="dot-list blue-markers">
+                <li>Yellowfinのデータ共有については、AWS側のセキュリティ環境と外部接続環境が整っており、清さんのAWSアカウントIDを共有いただければシェア可能な状態。</li>
+                <li>ABPの構築環境は、既存Yellowfin用DBを移行元として活用しつつ、そのまま本番DBには流用せず、新環境へ再構築する方針。</li>
+                <li>初期データ基盤は、現時点のデータ量・日次更新・運用コストのバランスから、<strong>Amazon RDS for PostgreSQL</strong>を推奨。</li>
+                <li>GPT-BotsはDBへ直接接続させず、専用API経由でグラフや関連数値を参照させる構成にする。重い集計は夜間処理へ回す。</li>
+                <li>設計進捗：既存データ調査と新DBの基本設計まで完了。今後は指標定義、不足データ確認、日次集計処理、GPT-Bots連携検証へ進む。<span class="reporter-badge nigo">新後 報告</span></li>
+            </ul>
+
+            <p class="sub-heading">方針整理 <span class="reporter-badge nigo">新後 報告</span></p>
+            <div style="overflow-x:auto;">
+                <table class="data-table">
+                    <thead><tr><th>観点</th><th>現状・課題</th><th>今回の方向性</th></tr></thead>
+                    <tbody>
+                        <tr><td>ダッシュボードの目的</td><td>既存Yellowfin DBは管理上の都合からそのままABP本番DBとして使うには不適切。</td><td>ABP向けに新DBを再構築し、日次集計テーブルで高速表示できる構成にする。</td></tr>
+                        <tr><td>AI機能の扱い</td><td>GPT-BotsをDBへ直接接続すると、負荷・権限・安全性の管理が難しい。</td><td>専用API経由で必要なグラフ・数値のみ参照させる。重い集計は夜間処理またはmart化。</td></tr>
+                        <tr><td>データベース設計</td><td>将来的な拡張余地はあるが、初期からAurora/Redshiftは過剰構成の可能性あり。</td><td>初期はAmazon RDS for PostgreSQL。利用量増加後にAurora/Redshiftへ段階拡張。</td></tr>
+                        <tr><td>セキュリティ／権限</td><td>外部接続環境は整備済み。今後は新DB側の権限管理・バックアップ・暗号化設定が必要。</td><td>新DB構築時に権限管理、バックアップ、暗号化など基本セキュリティを設定。</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="sub-heading">論点・リスク</p>
+            <ul class="dot-list blue-markers">
+                <li>既存Yellowfin DBの構造・品質課題をどこまで移行時に整理するか、判断が必要。</li>
+                <li>指標定義や不足データの確認が曖昧なままだと、ABP側のグラフ・AI回答の信頼性に影響する。</li>
+                <li>GPT-Bots連携では、AIに渡すデータ範囲とAPI設計を誤ると、負荷・セキュリティ・回答精度の問題が出る。</li>
+                <li>Yellowfin閉鎖後の既存DB閉鎖・元データ取り込み先変更まで含めると、段階移行計画が必要。</li>
+            </ul>
+
+            <div class="box-gray">
+                <p class="box-label">【備考】</p>
+                <p style="color:#4b5563; font-size:0.9rem;">本基盤はAI社員プラットフォーム「こだち」の技術基盤としても位置づけられる（詳細は5章参照）。</p>
+            </div>
+        </section>
+
+        <!-- 3 LINE広告 -->
+        <section id="s3" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">3. LINE広告　過去最高実績と自動化進捗</h2>
+            </div>
+
+            <div class="box-gray">
+                <p class="box-label">【継続課題】<span class="reporter-badge takada">高田 報告</span></p>
+                <p style="color:#4b5563; font-size:0.9rem;">全体の売上の底上げのための策および今後の売上傾向としての見極めを情報収集。独占販売の解除などダイナミックな戦略が望まれる。そのための動きとして一広側とのヒアリングやその他販売ルートや広告商品について検討が必要（他メディア展開・他の販売ルート開拓など）。キャンペーンでの件数増でもアカウントおよびキャンペーン単価（50,000円/案件）。</p>
+            </div>
+
+            <p class="sub-heading">7月実績と8月の展望 <span class="reporter-badge takada">高田 報告</span></p>
+            <ul class="dot-list">
+                <li>受注件数：<strong>168件</strong>（前週比15件増）、過去最多件数、売上予測<strong>550万円</strong>で過去最大を記録。</li>
+                <li>8月は期末最終月。8月ヒノマルグループキャンペーン2回、「8」の日など、既に確定案件多数。受注件数拡大に向けて営業支援強化（営業マン個別対応など）を進める。</li>
+                <li>一広側の夏季休暇（8月12日から16日）に伴う発注管理を徹底する。</li>
+            </ul>
+
+            <p class="sub-heading">自動化システムの進捗 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li>新プラットフォーム移行に伴う自動化システムは、初回テスト段階で主要機能が完了。kintone連携、広告PF自動入稿、GPS/Beacon取得、オーディエンス作成、レポート作成まで確認済み。</li>
+                <li>次フェーズ：人間が確認するための管理画面（GUI、Googleスプレッドシートが候補）の構築、特殊ケース・エラーケースの洗い出しと手動対応方針の明確化、自動レポートの提出フォーマット整理。</li>
+                <li>技術構成：複雑なAIは使わず、スプレッドシートをGUIとして活用するシンプルな仕組みを想定。</li>
+            </ul>
+
+            <div class="box-red">
+                <p class="box-label">【要対応】<span class="reporter-badge nigo">新後 報告</span></p>
+                <ul class="dot-list red-markers" style="margin-bottom:0;">
+                    <li>kintone発注システムのフローテスト中に、クライアント側でマイページURLを開けない権限エラーが発生しており、入稿導線の確認が必要。解消しないとクライアント側で入稿できず、新運用が定着しない。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">LINE社との連携とキャンペーン</p>
+            <ul class="dot-list">
+                <li>LINE社側が専任の担当者をつけてくれることになった。</li>
+                <li><strong>アカウント開設キャンペーン：</strong>8月に新規アカウント開設に伴うキャンペーンクーポン。新規アカウント開設一つに対して、9月末までに配信およびクリック発生で翌月末にそのアカウントで利用できる<strong>40,000円分</strong>のクーポンを発行。既に開設したアカウント（287アカウント）が対象になるかどうかLYD側で調整中。<span class="reporter-badge takada">高田 報告</span></li>
+                <li><strong>Migrationキャンペーン：</strong>8月から10月末までに対象アカウントにおいて、一つのアカウントにつき月額10万円以上の配信が実施された場合、そのアカウントに最大<strong>30％のキャッシュバック</strong>（月額最大30万円まで）。可能性ありの対象アカウントは10アカウント程度（予測では月額30万円の30％程度）。<span class="reporter-badge takada">高田 報告</span></li>
+            </ul>
+
+            <p class="sub-heading">BWとの取り組み・一広側との取り組み <span class="reporter-badge takada">高田 報告</span></p>
+            <ul class="dot-list">
+                <li>運用面確認：リタゲ用リストの費用交渉とリアルタイムプッシュの価格体系について再交渉（7月31日予定）。</li>
+                <li>一広側常駐（週一回）開始。売上拡大に向けて少額案件の取り込みについて要検討（現状、他社が運用している案件50件/月程度）。当社配信運用自動化と併行して検討。</li>
+                <li>発注システムおよび新プラットフォーム運用：新プラットフォーム配信一部開始、新発注システムの8月から一部店舗でテスト運用開始。運用フローの再確認とフォームの文言変更。</li>
+            </ul>
+
+            <p class="sub-heading">運用戦略・一社独占の回避</p>
+            <ul class="dot-list">
+                <li>現在、単価の低い案件を他社に振っているが、自動化が進んでもそれを全て自社に取り込むべきではないとの判断が示された。一社独占にすることでクライアント担当者内での反発や「遊び」がなくなるリスクを避けるための、戦略的な配慮（「生殺し」の術）による。</li>
+            </ul>
+
+            <div class="box-gray">
+                <p class="box-label">【人員体制について】</p>
+                <p style="color:#4b5563; font-size:0.9rem;">現在レポート作成などを担当している金子氏について、新環境への移行に伴い作業量を調整していく方針。処遇に関する詳しい議論は5章「AI社員制度『こだち』」参照。</p>
+            </div>
+        </section>
+
+        <!-- 4 広告商品開発 -->
+        <section id="s4" class="section-card gray-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title gray">4. 広告商品開発</h2>
+            </div>
+
+            <p class="sub-heading">来季に向けた検討 <span class="reporter-badge takada">高田 報告</span></p>
+            <ul class="dot-list gray-markers">
+                <li>新たな環境（効率化による空いた時間）を踏まえて何をしていくか、来季に向けて考慮する。</li>
+                <li>案件増のため、バックアップ。営業活動の効率が上がらない理由、案件受注が伸びない理由（実質）、その理由に対する施策再考。</li>
+            </ul>
+
+            <p class="sub-heading">テクノブラッド（蔵前） <span class="reporter-badge takada">高田 報告</span></p>
+            <ul class="dot-list gray-markers">
+                <li>ネットカフェ（ランチャー80%）広告メディアとして施設の中のメディア化（メーカー出稿実績あり）。5,000店舗（広告メディア化）Beaconなど。</li>
+            </ul>
+
+            <p class="sub-heading">広告商品開発 <span class="reporter-badge takada">高田 報告</span></p>
+            <ul class="dot-list gray-markers">
+                <li>送客：Beacon（パチンコホールへの広告商品）。</li>
+                <li>SNWへの商品化（ダッシュボード）。</li>
+            </ul>
+        </section>
+
+        <!-- 5 AI社員制度「こだち」 -->
+        <section id="s5" class="section-card purple-card">
+            <div class="section-head">
+                <div class="section-bar bar-purple"></div>
+                <h2 class="section-title purple">5. AI社員制度「こだち」　新規事業始動</h2>
+            </div>
+            <p class="section-intro">時上げ社が開発を進めるAI社員プラットフォーム。従来「瑞鳳ABP」の文脈で言及されていた構想が、今回「こだち」という名称で独立した新規事業として提示された。</p>
+
+            <p class="sub-heading">名称とコンセプト</p>
+            <ul class="dot-list purple-markers">
+                <li>AIとの3時間にわたる議論を経て、名称を「こだち」に決定した（会話内では「こたち」とも言及）。スマートな和名の響きがあり、会社名との親和性も高い。</li>
+                <li>「AIを道具として使う」のではなく、「AI社員と一緒に働く」という環境を企業に提供することを目指す。これにより、管理業務や管理部門そのものを不要にする組織変革を提案する。</li>
+                <li>個々人がプロンプトを駆使して使う「道具」ではなく、ユーザーが意識せずに業務の中で自然に活用できる環境を目指している。会社全体や個人の状況を理解した「1人の従業員」として、必要な情報を最適な形で伝えてくれる存在として定義されている。</li>
+            </ul>
+
+            <p class="sub-heading">機能と技術的特徴</p>
+            <ul class="dot-list purple-markers">
+                <li>Freee、マネーフォワード、Kintone、Google Workspace、Microsoft 365、Slack等の外部システムとAPIでシームレスに連携し、会社の状況や個人のスケジュールをAIが理解する。</li>
+                <li>RAG（検索拡張生成）の仕組みを用い、就業規則や給与規定などの社内ナレッジを継続的に学習・監視する。単なる情報の検索ではなく、必要な情報を最適な形で従業員に伝える役割を担う。</li>
+                <li>売上分析や、介護業界における拠点ごとの稼働率・適正人数の算出など、複雑なデータを読み解き、経営判断に直結する提案を行うことができる。</li>
+                <li>開発にはClaude等のAIをフル活用しており、コーディングやデザインにおいて非常に高いスピード感とクオリティを実現している。</li>
+                <li>既に高いデザイン性のサイトが構築されており、ドメインを分けてSaaSシステムとして展開する予定。</li>
+            </ul>
+
+            <p class="sub-heading">事業展開計画</p>
+            <ul class="dot-list purple-markers">
+                <li><strong>10月1日の本格稼働</strong>をデッドエンド（最終期限）として設定している。</li>
+                <li>ターゲットとして、葬儀・介護・パチンコ業界などの2番手企業や代理店を想定。汎用的なデモではなく、相手の業界に合わせたデモシステムを数時間で作成し、具体的な業務改善（稼働率分析やスタッフ配置の最適化など）を提示することで、即座に価値を理解させる手法を取っている。</li>
+                <li>自社だけで全クライアントを管理するのは限界があるため、業界ごとに力を持つ企業を代理店として活用し、一気に普及させる「代理店制度（2次代理店）」の構築を目指す。</li>
+                <li>費用感：最初の2ヶ月のPoC（概念実証）で約50万円、その後は1エージェント単位で年間約50万円程度を想定。現状の既存案件（瑞鳳など）の移行も含め、月額100万円近い売上規模への成長を見込んでいる。</li>
+                <li>システムを売って終わりではなく、クライアントがAIを組織に馴染ませ、進化させ続けるための「伴走者（パートナー）」としての役割を重視している。</li>
+            </ul>
+
+            <p class="sub-heading">組織運営と人員評価（金子氏の処遇を巡る議論）</p>
+            <ul class="dot-list purple-markers">
+                <li>LINE広告のレポート作成を継続している金子氏について、システムの自動化に伴い役割をどうすべきか議論がなされた。</li>
+                <li>「人がいいから一緒に仕事がしたい」という感情論ではなく、ビジネスとしての「雇う正当性」（新規事業のボリュームや収支モデル）に基づいて判断すべきであると厳しく指摘された。</li>
+                <li>功労者であっても、必要がなくなった際に「切る」判断をすることは、経営者として避けては通れない非常に大事な経験である。感情的に逃げる（耳触りのいい言葉で関係を続ける）ことは、結果として双方のためにならない。</li>
+                <li>金子氏が新事業（こだち）の営業に適性があるとは考えにくく、既存の人間関係に甘えさせるのではなく、会社の方向性と照らしてシビアに役割を整理すべきであるとの結論に至った。</li>
+                <li>事業拡大にあたり外部スタッフ（金子氏など）の活用も検討されたが、経営層は「こだち」のような重要プロジェクトには、高い営業スキルや事業理解を持つ人材を厳選して充てるべきという、厳しい判断を下している。</li>
+            </ul>
+
+            <div class="box-red">
+                <p class="box-label">【提案・補足】</p>
+                <p style="color:#4b5563; font-size:0.9rem;">金子氏の処遇について、会議本体では「切る」方向の厳しい判断が強調されている一方、新後報告書のLINE広告関連の記録では「Mooovi顧客管理ツール内製化やABPも紹介。今後の横展開時に営業面で協力を依頼する可能性も共有」「金子さんの反応：ABPに対して『かなり売れそう』という期待感あり」と、協力継続の余地を残す記述もあります。方針が変わったのか、両論併記の状態なのか、確認をお願いします。</p>
+            </div>
+
+            <p class="sub-heading">組織論・評価の考え方</p>
+            <ul class="dot-list purple-markers">
+                <li>特定のスタッフの継続雇用を巡り、組織としての評価の在り方が厳しく問われている。「いい人」は評価基準にならない。人を雇い続けるには、明確なボリュームや収支モデルに基づく正当性が不可欠。</li>
+                <li>プロンプトが上手いといったAIスキルは、あくまで個人の能力の一部に過ぎず、会社における絶対的な人員評価の基準にはなり得ない。重要なのは、AIを意識せずに業務が回る環境を構築すること。</li>
+                <li>人間関係の縁を切るのではなく、「今、その仕事にその人が必要か」をシンプルに考えるべき。最終的には、自分自身（自社）のために動くことが周囲のためにもなるという考えに基づき、各メンバーが自立して機能する組織が理想とされている。</li>
+            </ul>
+        </section>
+
+        <!-- 6 その他・組織運営 -->
+        <section id="s6" class="section-card gray-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title gray">6. その他・組織運営</h2>
+            </div>
+
+            <p class="sub-heading">MID・Mooovi <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list gray-markers">
+                <li><strong>MID：</strong>今週は報告対象なし。前週までに整理済み。必要があれば再度報告対象に戻す。</li>
+                <li><strong>Mooovi：</strong>今週は大きな進捗なし。内製顧客管理システム側の進行待ち。進捗が出た段階で提案時期・入れ替え方針を再整理。</li>
+            </ul>
+
+            <p class="sub-heading">ミラクルワールド配信案件 <span class="reporter-badge takada">高田 報告</span></p>
+            <ul class="dot-list gray-markers">
+                <li>急遽対象がインバウンド向けに変更。リタゲで再検討。</li>
+                <li>配信費用が縮小、リアルタイム配信はNG（配信案件はなくなりそうな気配）。</li>
+            </ul>
+
+            <p class="sub-heading">BRODO <span class="reporter-badge takada">高田 報告</span></p>
+            <ul class="dot-list gray-markers">
+                <li>WhatsApp側への報告送信。</li>
+            </ul>
+        </section>
+
+        <!-- 7 TODO -->
+        <section id="s7" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">7. アクションアイテム（TODO）</h2>
+            </div>
+            <div style="overflow-x:auto;">
+                <table class="data-table">
+                    <thead><tr><th>担当</th><th>タスク内容</th><th>期限</th></tr></thead>
+                    <tbody>
+                        <tr><td>新後</td><td>ボーネルンド：8/4本番リリースに向け、現場立ち会い時の確認観点を整理する</td><td>8/4前</td></tr>
+                        <tr><td>新後</td><td>ボーネルンド：今月請求対象（スマレジ、OBIC、GMOセキュリティ、LINE ID保存機能）を整理する</td><td>今月中</td></tr>
+                        <tr><td>新後</td><td>ボーネルンド：団体受付機能について、請求書発行以外の仕様確認結果をベンダーから回収する</td><td>確認後</td></tr>
+                        <tr><td>新後</td><td>ボーネルンド：今期中の導入対象拡大に向け、東芝テック契約・切替条件を確認する</td><td>継続</td></tr>
+                        <tr><td>新後</td><td>LINE広告：kintoneマイページURLの権限エラーについて、クライアント側で正しく開く方法を確認する</td><td>早急</td></tr>
+                        <tr><td>新後</td><td>LINE広告：Googleスプレッドシート等を候補に、運用確認用GUIの仕様を整理する</td><td>次フェーズ</td></tr>
+                        <tr><td>新後</td><td>LINE広告：特殊ケース・エラーケースを洗い出し、手動対応方針を明確化する</td><td>継続</td></tr>
+                        <tr><td>新後</td><td>LINE広告：自動レポートの提出フォーマットと運用フローを整理する</td><td>継続</td></tr>
+                        <tr><td>新後</td><td>LINE広告：金子さんとは、今後の営業協力・AI啓蒙・横展開協力の接点を整理する</td><td>継続</td></tr>
+                        <tr><td>新後</td><td>瑞鳳：清さんのAWSアカウントIDを確認し、データ共有できる状態にする</td><td>確認後すぐ</td></tr>
+                        <tr><td>新後</td><td>瑞鳳：ABPで想定する使い方・AI質問・指標定義を整理する</td><td>次フェーズ</td></tr>
+                        <tr><td>新後</td><td>瑞鳳：Amazon RDS for PostgreSQLの新DB構築準備を進める</td><td>次フェーズ</td></tr>
+                        <tr><td>新後</td><td>瑞鳳：既存DBからABP向けに移行する必要データと不足データを確認する</td><td>次フェーズ</td></tr>
+                        <tr><td>新後</td><td>瑞鳳：日次集計テーブルとGPT-Bots専用APIの検証方針を整理する</td><td>次フェーズ</td></tr>
+                        <tr><td>高田</td><td>LINE広告：BWとリタゲ用リスト費用交渉・リアルタイムプッシュ価格体系の再交渉</td><td>7/31予定</td></tr>
+                        <tr><td>高田</td><td>LINE広告：一広側夏季休暇（8/12〜16）に伴う発注管理の徹底</td><td>8月上旬</td></tr>
+                        <tr><td>高田</td><td>LINE広告：新発注システムの一部店舗テスト運用開始</td><td>8月から</td></tr>
+                        <tr><td>高田</td><td>LINE広告：アカウント開設キャンペーン対象（287アカウント）の適用可否確認</td><td>LYD側調整中</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="box-green" style="margin-top:1.5rem;">
+                <p class="box-label">【今週の重点】<span class="reporter-badge nigo">新後 報告</span></p>
+                <ul class="dot-list" style="margin-bottom:0;">
+                    <li>ボーネルンド：8/4本番リリースに向けた現場立ち会い準備と、今月請求対象の整理を進める。</li>
+                    <li>LINE広告：自動化システムの次フェーズとして、GUI作成、運用最適化、特殊ケース対応、kintone権限エラー確認を進める。</li>
+                    <li>瑞鳳：ABP用DB構築に向け、要件・指標定義・不足データ確認と、新DB準備方針を具体化する。</li>
+                </ul>
+            </div>
+
+            <div class="box-gray" style="margin-top:1rem;">
+                <p class="box-label">【補足メモ】<span class="reporter-badge nigo">新後 報告</span></p>
+                <ul class="dot-list gray-markers" style="margin-bottom:0;">
+                    <li>口頭で補足する内容：ボーネルンド検収時の特殊ケース、LINE広告自動化の完了範囲、kintoneマイページ権限エラー、瑞鳳ABP用DBの段階拡張方針。</li>
+                    <li>社内で確認しておきたい内容：ボーネルンド今月請求対象、kintone入稿導線の権限設計、清さんのAWSアカウントID、ABPで優先すべき指標定義。</li>
+                    <li>次回以降の報告で深掘りしたい内容：スマレジ全店入替計画、LINE広告自動化の運用画面・例外対応、瑞鳳ABPの新DB構成とGPT-Bots連携設計。</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="page-footer">
+            <p>&copy; 2026 TKW Project Team. All Rights Reserved.</p>
+        </footer>
+    </div>
+</div>
+
+<script>
+    const links = document.querySelectorAll('.sidebar-link');
+    const sections = document.querySelectorAll('section[id]');
+    const blueSections = ['s2'];
+    const purpleSections = ['s5'];
+    const graySections = ['s4', 's6'];
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                links.forEach(link => {
+                    link.classList.remove('active', 'active-red', 'active-blue', 'active-purple', 'active-gray');
+                    if (link.getAttribute('href') === '#' + id) {
+                        if (blueSections.includes(id)) link.classList.add('active-blue');
+                        else if (purpleSections.includes(id)) link.classList.add('active-purple');
+                        else if (graySections.includes(id)) link.classList.add('active-gray');
+                        else link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.2 });
+    sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
