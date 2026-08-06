@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>CODATI「AI Business Platform」資料 チェックリスト＆修正提案</title>
+<style>
+  :root {
+    --ink: #111827;
+    --sub: #52606d;
+    --accent: #0d6b60;
+    --accent-bg: #e6f4f2;
+    --line: #d9dee3;
+    --bg-soft: #f7f9fa;
+    --card-bg: #ffffff;
+    --high: #b91c1c;
+    --high-bg: #fdecec;
+    --mid: #b45309;
+    --mid-bg: #fdf3e3;
+    --low: #4b5563;
+    --low-bg: #eef0f2;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic UI", "Noto Sans JP", sans-serif;
+    color: var(--ink);
+    line-height: 1.9;
+    font-size: 17px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 56px 28px 120px;
+    background: #fdfdfd;
+  }
+
+  /* ── ヘッダー ── */
+  h1.title {
+    font-size: 2.1rem;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+  .subtitle {
+    display: inline-block;
+    color: var(--accent);
+    background: var(--accent-bg);
+    font-weight: 700;
+    font-size: 1.15rem;
+    padding: 4px 14px;
+    border-radius: 999px;
+    margin: 6px 0 18px;
+  }
+  .meta {
+    color: var(--sub);
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+    border-left: 3px solid var(--line);
+    padding-left: 12px;
+  }
+  hr {
+    border: none;
+    border-top: 2px solid var(--line);
+    margin: 36px 0;
+  }
+
+  /* ── セクション見出し ── */
+  h2.section {
+    font-size: 1.65rem;
+    font-weight: 800;
+    margin-top: 64px;
+    margin-bottom: 24px;
+    padding: 10px 0 10px 16px;
+    border-left: 8px solid var(--accent);
+    background: var(--accent-bg);
+    border-radius: 0 6px 6px 0;
+    color: var(--ink);
+  }
+
+  /* ── 個別issueカード ── */
+  .issue {
+    margin: 22px 0;
+    padding: 22px 24px;
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-left: 6px solid var(--accent);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .issue h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .issue dl {
+    margin: 0;
+  }
+  .issue dt {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #fff;
+    background: var(--accent);
+    padding: 3px 12px;
+    border-radius: 4px;
+    margin-top: 16px;
+    margin-bottom: 6px;
+  }
+  .issue dt.dt-why { background: var(--high); }
+  .issue dt.dt-proposal { background: #1d4ed8; }
+  .issue dt.dt-alt { background: #6d28d9; }
+  .issue dd {
+    margin: 0 0 4px;
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--ink);
+  }
+
+  /* ── 優先度テーブル ── */
+  table.priority {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  table.priority th, table.priority td {
+    border: 1px solid var(--line);
+    padding: 14px 16px;
+    text-align: left;
+    vertical-align: top;
+  }
+  table.priority th {
+    background: var(--ink);
+    color: #fff;
+    font-size: 0.95rem;
+  }
+  table.priority tr:nth-child(even) td {
+    background: var(--bg-soft);
+  }
+  table.priority td.level {
+    font-weight: 800;
+    white-space: nowrap;
+    font-size: 1.05rem;
+  }
+  td.lv-top { color: var(--high); background: var(--high-bg) !important; }
+  td.lv-high { color: var(--high); background: var(--high-bg) !important; }
+  td.lv-mid { color: var(--mid); background: var(--mid-bg) !important; }
+  td.lv-low { color: var(--low); background: var(--low-bg) !important; }
+
+  /* ── 目次 ── */
+  .toc {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 20px 28px;
+    margin: 24px 0 40px;
+  }
+  .toc h2 {
+    margin-top: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--sub);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .toc ul { columns: 2; margin: 8px 0 0; padding-left: 20px; }
+  .toc li { margin-bottom: 8px; }
+  .toc a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  .toc a:hover { text-decoration: underline; }
+
+  /* ── 図解 ── */
+  .diagram {
+    margin: 16px 0 20px;
+    padding: 18px 20px;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+  .diagram-caption {
+    font-size: 0.85rem;
+    color: var(--sub);
+    margin-top: 10px;
+    text-align: center;
+  }
+  .diagram svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+
+  @media (max-width: 600px) {
+    body { font-size: 16px; padding: 32px 16px 80px; }
+    h1.title { font-size: 1.6rem; }
+    h2.section { font-size: 1.3rem; }
+    .toc ul { columns: 1; }
+  }
+
+  @media print {
+    .toc { display: none; }
+    .issue { break-inside: avoid; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<h1 class="title">CODATI「AI Business Platform」資料</h1>
+<p class="subtitle">チェックリスト＆修正提案</p>
+<p class="meta">対象：CODATI___AI_Business_Platform_20260729072302.pdf（全17ページ）</p>
+
+<div class="toc">
+  <h2>目次</h2>
+  <ul>
+    <li><a href="#a">A. 数字が合っていない（データ整合性）</a></li>
+    <li><a href="#b">B. コア構造の説明がスライドごとに違う</a></li>
+    <li><a href="#c">C. スクリーンショットが売り文句と矛盾</a></li>
+    <li><a href="#d">D. ポジショニングの自己矛盾</a></li>
+    <li><a href="#e">E. 業種選定・ドメインの違和感</a></li>
+    <li><a href="#f">F. ページ番号・章番号の不整合</a></li>
+    <li><a href="#priority">優先度まとめ</a></li>
+  </ul>
+</div>
+
+<hr>
+
+<h2 class="section" id="a">A. 数字が合っていない（データ整合性）</h2>
+
+<div class="issue">
+<h3>A-1. p4「要確認事項は5件」なのに内訳合計は10件</h3>
+
+<div class="diagram">
+<svg viewBox="0 0 640 190" xmlns="http://www.w3.org/2000/svg">
+  <!-- 表示されている合計 -->
+  <text x="20" y="28" font-size="14" font-weight="700" fill="#111827">全社サマリーの表示</text>
+  <rect x="20" y="38" width="90" height="48" rx="6" fill="#e6f4f2" stroke="#0d6b60" stroke-width="1.5"/>
+  <text x="65" y="68" font-size="20" font-weight="800" fill="#0d6b60" text-anchor="middle">5件</text>
+
+  <text x="300" y="28" font-size="14" fill="#52606d">実際の合計は？</text>
+
+  <!-- 内訳 -->
+  <text x="20" y="118" font-size="14" font-weight="700" fill="#111827">事業別カードの内訳</text>
+  <rect x="20" y="128" width="90" height="48" rx="6" fill="#fdecec" stroke="#b91c1c" stroke-width="1.5"/>
+  <text x="65" y="158" font-size="18" font-weight="800" fill="#b91c1c" text-anchor="middle">3件</text>
+  <text x="65" y="188" font-size="11" fill="#52606d" text-anchor="middle">アミューズメント</text>
+
+  <text x="128" y="158" font-size="20" fill="#52606d">+</text>
+
+  <rect x="150" y="128" width="90" height="48" rx="6" fill="#fdecec" stroke="#b91c1c" stroke-width="1.5"/>
+  <text x="195" y="158" font-size="18" font-weight="800" fill="#b91c1c" text-anchor="middle">7件</text>
+  <text x="195" y="188" font-size="11" fill="#52606d" text-anchor="middle">訪問看護</text>
+
+  <text x="258" y="158" font-size="20" fill="#52606d">=</text>
+
+  <rect x="280" y="128" width="90" height="48" rx="6" fill="#fdf3e3" stroke="#b45309" stroke-width="2"/>
+  <text x="325" y="158" font-size="20" font-weight="800" fill="#b45309" text-anchor="middle">10件</text>
+
+  <!-- 矢印 差分 -->
+  <path d="M 400 152 L 470 152" stroke="#b91c1c" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="480" y="140" font-size="13" font-weight="700" fill="#b91c1c">表示の「5件」と</text>
+  <text x="480" y="158" font-size="13" font-weight="700" fill="#b91c1c">5件の差が発生</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#b91c1c"/>
+    </marker>
+  </defs>
+</svg>
+<div class="diagram-caption">全社サマリー「5件」と、事業別カードの内訳合計「10件」が一致していない</div>
+</div>
+
+<dl>
+<dt>問題箇所</dt><dd>全社サマリー本文「要確認事項は5件あります」に対し、同ページのカードでは「アミューズメント事業：要確認3件」「訪問看護事業：要確認7件」（3+7=10）。p6のAI通知センターでも同じ「3件」「7件」が再登場し、5件という数字と矛盾したまま放置されている。</dd>
+<dt class="dt-why">なぜ問題か</dt><dd>「AIが正確に横断集計する」ことが製品の中核価値のスライドで、表示データの足し算が破綻している。閲覧者が電卓を叩けば即座に気づくレベルのミスであり、信頼性を自ら損なう。</dd>
+<dt class="dt-proposal">提案</dt><dd>全社サマリーの合計値を自動算出（3+7=10）に修正するか、「5件」が別の集計基準（重要度：高のみ等）であるなら、その旨をラベルで明示する。</dd>
+<dt class="dt-alt">代替案</dt><dd>ダミーデータではなく数値をあえて揃えない場合は、サマリー欄に「要確認：計10件（内訳：アミューズメント3件／訪問看護7件）」のように内訳を併記する形にすれば、算数の矛盾自体が発生しない設計にできる。</dd>
+</dl>
+</div>
+
+<div class="issue">
+<h3>A-2. p8「12部」と「12冊」の単位ゆれ</h3>
+<dl>
+<dt>問題箇所</dt><dd>サイドバー表記「11店舗 12部 330件」／本文スクショ内表示「11店舗 12冊 330件」。</dd>
+<dt class="dt-why">なぜ問題か</dt><dd>同一画面内で単位語が統一されていない。ナレッジの管理単位が「部」なのか「冊」なのか、閲覧者に混乱を与える。</dd>
+<dt class="dt-proposal">提案</dt><dd>用語集（デザインシステムのコピーガイドライン）を1つ作り、「マニュアル＝◯冊」「規程集＝◯部」など単位語の使い分けルールを先に決めてから全スクショに反映する。</dd>
+<dt class="dt-alt">代替案</dt><dd>単位語自体を廃止し「11店舗／12カテゴリ／330件」のように数量詞を使わない表現に統一すれば、和語の数え方ゆれ問題を根本から回避できる。</dd>
+</dl>
+</div>
+
+<div class="issue">
+<h3>A-3. p5「訪問看護AI解析レポート（5月分）」の公開日が2026-07-22</h3>
+<dl>
+<dt>問題箇所</dt><dd>5月分のレポートなのに、表示されている日付が7月22日。約2ヶ月のラグ。</dd>
+<dt class="dt-why">なぜ問題か</dt><dd>「AI速報＝質問しなくても、AIから届く」という即時性訴求の直後の実例が、2ヶ月遅れのレポートであるため、スピード感の説得力を自ら削いでいる。</dd>
+<dt class="dt-proposal">提案</dt><dd>デモ用ダミーデータの日付を、資料の想定閲覧タイミング（直近1〜2週間以内）に合わせて再生成する。</dd>
+<dt class="dt-alt">代替案</dt><dd>日次の速報性を訴求する画面と、月次・四半期など長いスパンで振り返るレポート画面を別スライドとして切り分け、「速報＝即日〜翌日」「月次レポート＝翌月上旬に確定版公開」のように更新頻度が異なることを明示的に説明する設計にする。</dd>
+</dl>
+</div>
+
+<h2 class="section" id="b">B. コア構造（アーキテクチャ）の説明がスライドごとに違う</h2>
+
+<div class="issue">
+<h3>B-1. 構成要素の数と順番が一致しない</h3>
+
+<div class="diagram">
+<svg viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg">
+  <!-- 凡例色: Portal=teal, Knowledge=blue, Integration=amber, AIEmployees=red, Workflow=purple -->
+  <!-- p3 -->
+  <text x="10" y="20" font-size="13" font-weight="700" fill="#111827">p3</text>
+  <g font-size="11" font-weight="700" fill="#fff" text-anchor="middle">
+    <rect x="50" y="6" width="110" height="28" rx="4" fill="#0d6b60"/><text x="105" y="24">Portal</text>
+    <rect x="168" y="6" width="150" height="28" rx="4" fill="#1d4ed8"/><text x="243" y="24">Knowledge Center</text>
+    <rect x="326" y="6" width="140" height="28" rx="4" fill="#b45309"/><text x="396" y="24">Integration Hub</text>
+    <rect x="474" y="6" width="150" height="28" rx="4" fill="#b91c1c"/><text x="549" y="24">AI Employees</text>
+  </g>
+
+  <!-- p12 -->
+  <text x="10" y="70" font-size="13" font-weight="700" fill="#111827">p12</text>
+  <g font-size="11" font-weight="700" fill="#fff" text-anchor="middle">
+    <rect x="50" y="56" width="110" height="28" rx="4" fill="#0d6b60"/><text x="105" y="74">Portal</text>
+    <rect x="168" y="56" width="150" height="28" rx="4" fill="#b91c1c"/><text x="243" y="74">AI Employees</text>
+    <rect x="326" y="56" width="150" height="28" rx="4" fill="#1d4ed8"/><text x="401" y="74">Knowledge Platform</text>
+    <rect x="484" y="56" width="140" height="28" rx="4" fill="#b45309"/><text x="554" y="74">Integration Hub</text>
+  </g>
+  <text x="700" y="74" font-size="10" fill="#b91c1c">※名称も変化</text>
+
+  <!-- p13 -->
+  <text x="10" y="120" font-size="13" font-weight="700" fill="#111827">p13</text>
+  <g font-size="11" font-weight="700" fill="#fff" text-anchor="middle">
+    <rect x="50" y="106" width="90" height="28" rx="4" fill="#0d6b60"/><text x="95" y="124">Portal</text>
+    <rect x="148" y="106" width="120" height="28" rx="4" fill="#b91c1c"/><text x="208" y="124">AI Employees</text>
+    <rect x="276" y="106" width="100" height="28" rx="4" fill="#6d28d9"/><text x="326" y="124">Workflow</text>
+    <rect x="384" y="106" width="110" height="28" rx="4" fill="#1d4ed8"/><text x="439" y="124">Knowledge</text>
+    <rect x="502" y="106" width="100" height="28" rx="4" fill="#b45309"/><text x="552" y="124">AI Engine</text>
+  </g>
+  <text x="612" y="124" font-size="10" fill="#6d28d9">※Workflowが新登場（5層に）</text>
+
+  <!-- p14 -->
+  <text x="10" y="170" font-size="13" font-weight="700" fill="#111827">p14</text>
+  <g font-size="10.5" font-weight="700" fill="#fff" text-anchor="middle">
+    <rect x="50" y="156" width="120" height="28" rx="4" fill="#b45309"/><text x="110" y="174">Integration Hub</text>
+    <rect x="178" y="156" width="100" height="28" rx="4" fill="#1d4ed8"/><text x="228" y="174">AI Curation</text>
+    <rect x="286" y="156" width="90" height="28" rx="4" fill="#1d4ed8"/><text x="331" y="174">Review</text>
+    <rect x="384" y="156" width="100" height="28" rx="4" fill="#1d4ed8"/><text x="434" y="174">Published</text>
+    <rect x="492" y="156" width="120" height="28" rx="4" fill="#b91c1c"/><text x="552" y="174">AI Employees</text>
+    <rect x="620" y="156" width="90" height="28" rx="4" fill="#0d6b60"/><text x="665" y="174">Portal</text>
+  </g>
+
+  <text x="10" y="220" font-size="12" fill="#52606d">→ 要素数（4個/4個/5個/6個）・並び順・呼称が4枚とも異なる</text>
+</svg>
+<div class="diagram-caption">同じ「CODATIの構成要素」を説明しているはずが、スライドごとに要素数・順番・呼称がバラバラ</div>
+</div>
+
+<dl>
+<dt>問題箇所</dt><dd>p3：4要素、順番はPortal→Knowledge Center→Integration Hub→AI Employees（P/K/I/Eラベル）。p12：4要素だが順番がPortal→AI Employees→Knowledge Platform→Integration Hub（p3と並びが逆転し、かつ「Knowledge Center」が「Knowledge Platform」に呼称変更）。p13：5層に増える。Portal→AI Employees→Workflow（p3・p12に存在しない新概念）→Knowledge→AI Engine。p14：01 Integration Hub→02 AI Curation→03 Review→04 Published→05 AI Employees→06 Portalという別の並び。</dd>
+<dt class="dt-why">なぜ問題か</dt><dd>営業や導入検討の場で「結局CODATIは何層構成ですか、Workflowはどこに位置しますか」と聞かれた際、資料内で一貫した答えが出せない。複数人・複数タイミングで作成されたスライドを後から結合した痕跡が明確に残っている。</dd>
+<dt class="dt-proposal">提案</dt><dd>全社で使う「唯一のリファレンス図」を1枚だけ確定させ（推奨：p13の5層構造をベースに、Workflowを正式な構成要素として全スライドに反映）、他ページの図はすべてそのマスター図から切り出す形に統一する。</dd>
+<dt class="dt-alt">代替案</dt><dd>あえて図を複数持つ場合は、「利用者向け（Portal視点）」「システム構成（5層アーキテクチャ）」「データフロー（6ステップ）」のように視点が異なる図であることを明記するキャプションを各図に付け、矛盾ではなく「同じ実態を異なる切り口で説明している」ことを読み手に明示する。</dd>
+</dl>
+</div>
+
+<div class="issue">
+<h3>B-2. 「Sources」と「Integration Hub」が同じ位置なのに別名称</h3>
+<dl>
+<dt>問題箇所</dt><dd>p9（Knowledge Lifecycle）の起点は「Sources：情報源を接続」。p14（Data Flow）の同じ位置のステップは「Integration Hub」。</dd>
+<dt class="dt-why">なぜ問題か</dt><dd>両者が同一の工程を指すのか別工程なのかが不明瞭。ライフサイクル図とデータフロー図で用語が揃っていないため、読み比べると混乱する。</dd>
+<dt class="dt-proposal">提案</dt><dd>Sources＝接続対象（OneDrive、SharePoint等のデータ源そのもの）、Integration Hub＝接続する機能（コネクタ機能）と役割を明確に切り分け、図中の呼称をこの定義に沿って統一する。</dd>
+<dt class="dt-alt">代替案</dt><dd>呼称を無理に一致させず、「Sources（データの置き場）はIntegration Hub（接続の仕組み）を通じて取り込まれる」という親子関係を矢印や注記で図示し、別の概念であることをむしろ積極的に見せる。</dd>
+</dl>
+</div>
+
+<div class="issue">
+<h3>B-3. 用語の細かいゆれ（Knowledge Curator/Curator、OpenAI/GPT）</h3>
+<dl>
+<dt>問題箇所</dt><dd>p3・p11「Knowledge Curator」がp13の図では単に「Curator」。p10「OpenAI」表記がp13では「GPT」表記。</dd>
+<dt class="dt-why">なぜ問題か</dt><dd>細部とはいえ、同一の役職・同一のエンジンを指す言葉が資料内で統一されていないと、レビューの粗さの印象を与える。</dd>
+<dt class="dt-proposal">提案</dt><dd>AI社員の正式名称一覧（Eco／Analyst／Secretary／Auditor／Knowledge Curator）とAIエンジン名称一覧（OpenAI GPT／Claude／Gemini／Azure OpenAI／Local LLM）を用語集としてスライド外に用意し、全ページ一括チェックしてから統一する。</dd>
+<dt class="dt-alt">代替案</dt><dd>スペースの都合で略称を使う場合は、初出ページで「以下、Knowledge Curatorを『Curator』と表記」のように一度だけ注記を入れれば、略記自体は問題にならない。</dd>
+</dl>
+</div>
+
+<h2 class="section" id="c">C. スクリーンショットが自分の売り文句と矛盾している</h2>
+
+<div class="issue">
+<h3>C-1. p11「すでに稼働中」なのにAuditorが赤い「エラー」バッジ</h3>
+<dl>
+<dt>問題箇所</dt><dd>見出し「役割ごとに、すでに稼働中。」の直下スクショで、5体中Auditorのみステータスが「稼働中」ではなく「エラー」表示。</dd>
+<dt class="dt-why">なぜ問題か</dt><dd>稼働実績をアピールする最重要スクショの中に、そのまま矛盾する状態表示が写り込んでいる。相手が意地悪であるほど確実に突かれる箇所。</dd>
+<dt class="dt-proposal">提案</dt><dd>デモ環境のAuditorのエラーを解消したうえで撮り直す。もしくは意図的にエラー状態を見せたいなら、「エラー検知時はこのように即座に可視化されます」という別の訴求ポイントとして文脈を変えて使う。</dd>
+<dt class="dt-alt">代替案</dt><dd>本番同等のクリーンな環境を別途用意し、営業資料専用のデモテナントでスクリーンショットを撮影するフローを確立する（実運用環境のスクショをそのまま使わない）。</dd>
+</dl>
+</div>
+
+<div class="issue">
+<h3>C-2. p13「エンジンはいつでも交換可能」なのに、実画面は全社員が同一の「GPTBots」表記</h3>
+<dl>
+<dt>問題箇所</dt><dd>p13で「AIエンジンは、いつでも入れ替え可能」（GPT/Claude/Gemini/Azure OpenAI/Local LLM）と訴求している直後、p11の実画面ではAI社員5体すべての「利用モデル」欄が判で押したように「GPTBots」。しかもこの名称はp13で挙げたどのエンジン名とも一致せず、外部サービス「GPTBots.ai」との混同リスクもある。</dd>
+<dt class="dt-why">なぜ問題か</dt><dd>交換可能性という差別化ポイントの直後に、実例が「全部同じ」に見える証拠画像を置いてしまっており、訴求内容の説得力を自ら打ち消している。</dd>
+<dt class="dt-proposal">提案</dt><dd>スクショ内の「利用モデル」欄をAI社員ごとに異なるエンジン（例：Eco＝Claude、Analyst＝GPT-4、Secretary＝Gemini等）に差し替えて撮影し直し、「GPTBots」という曖昧な名称は正式なモデル名（例：GPT-4o、Claude Sonnet等）に統一する。</dd>
+<dt class="dt-alt">代替案</dt><dd>あえて全社員が同一エンジンを使う設計を維持するなら、「現在は統一運用中。用途に応じて個別切替も可能」という運用ポリシー上の説明を添えて、矛盾ではなく「今はこの設定を選んでいる」という運用上の選択であることを明示する。</dd>
+</dl>
+</div>
+
+<div class="issue">
+<h3>C-3. p16 STEP01「1画面で状態を確認できる」なのに、p10の実画面はほぼ未接続</h3>
+<dl>
+<dt>問題箇所</dt><dd>p16では「Integration Hubで既存の会計・人事・CRMを接続。1画面で状態を確認できる」と導入の容易さを訴求。しかしp10のスクショではfreeeのみ「接続済み」で、マネーフォワード・kintone・SmartHR・Salesforce・HubSpotはすべて「未接続」。</dd>
+<dt class="dt-why">なぜ問題か</dt><dd>導入初期段階のデモとしては自然な状態とも言えるが、「簡単につながる」ことを訴求する文脈で見せる画像としては説得力に欠け、「結局あまりつながっていない」という逆の印象を与えかねない。</dd>
+<dt class="dt-proposal">提案</dt><dd>導入完了後のフル接続状態のスクショを別途用意し、p16では「接続イメージ（導入完了後）」として差し替える。</dd>
+<dt class="dt-alt">代替案</dt><dd>あえて未接続状態を見せる場合は、「導入初期はこの状態からスタートし、必要な接続だけを選んで有効化できる」という段階導入のメリット訴求としてキャプションを付け替え、「未接続＝弱み」ではなく「未接続＝柔軟性の証拠」というポジティブな文脈に転換する。</dd>
+</dl>
+</div>
+
+<div class="issue">
+<h3>C-4. p4とp7が、ほぼ同一の数字・同一の説明文を重複掲載</h3>
+<dl>
+<dt>問題箇所</dt><dd>売上¥128,400,000、客数18,200人、稼働率79.7%などの数値と説明文が、p4（Portal）とp7（Analytics）でそのまま重複。</dd>
+<dt class="dt-why">なぜ問題か</dt><dd>「Portal＝毎朝の速報」「Analytics＝会社全体を1つのダッシュボードで」と機能を差別化して説明しているにもかかわらず、見せている中身が同一だと「この2画面は何が違うのか」という疑問に資料内で答えられない。</dd>
+<dt class="dt-proposal">提案</dt><dd>Portalには直近24時間の差分・要対応事項に絞った軽量表示、Analyticsには期間比較・トレンドグラフなど分析的な表示という形で、実際に画面の役割を差別化してからスクショを撮り直す。</dd>
+<dt class="dt-alt">代替案</dt><dd>機能的な差別化が難しい場合は、いっそ「PortalはAnalyticsのダイジェスト版」という位置づけを正直に明記し、2画面の関係性（サマリー⇄詳細）を資料上で説明してしまう。</dd>
+</dl>
+</div>
+
+<h2 class="section" id="d">D. ポジショニングの自己矛盾</h2>
+
+<div class="issue">
+<h3>D-1. p17「AIチャットでもRAGでもない」vs p8の実画面</h3>
+<dl>
+<dt>問題箇所</dt><dd>最終ページで「× AIチャットではありません／× RAGでもありません」と明言している一方、p8のKnowledge Centerは「質問を入力する」検索窓＋よくある質問候補＋「根拠つきで回答」という、機能面では典型的なRAGチャットボットの構成。</dd>
+<dt class="dt-why">なぜ問題か</dt><dd>資料の締めくくりで打ち出す最重要メッセージが、7ページ前の実画面と矛盾して見える。技術に詳しい相手ほど「これは普通にRAGでは？」と即座に反論できてしまう。</dd>
+<dt class="dt-proposal">提案</dt><dd>否定文の表現を「単体のAIチャットやRAGに閉じたツールではなく、業務プロセス全体を横断する基盤である」という趣旨に修正し、RAG的な機能を内包すること自体は否定せず、「RAGはCODATIの一機能に過ぎない」という位置づけに変更する。</dd>
+<dt class="dt-alt">代替案</dt><dd>p17の対比表を「Not（何ではないか）」ではなく「Beyond（何を超えているか）」という表現に変え、「単体のRAGチャットで終わらせず、承認フロー・AI社員・業務連携まで含めて正式なナレッジ運用基盤にした」という発展形としてのストーリーで締める。</dd>
+</dl>
+</div>
+
+<div class="issue">
+<h3>D-2. 「置き換えない」を4回連呼しているが証拠が薄い</h3>
+<dl>
+<dt>問題箇所</dt><dd>p9・p12・p14・p16の複数スライドで「既存システムを置き換えるのではなく、つなぐ」というほぼ同じ一文が繰り返し登場する一方、C-3で指摘した通りp10の接続実績はほぼ未接続。</dd>
+<dt class="dt-why">なぜ問題か</dt><dd>同じ主張を各章で繰り返すこと自体は強調として有効だが、支える証拠画像が伴っていないため「口では言うが実績が薄い」という印象を与えるリスクがある。</dd>
+<dt class="dt-proposal">提案</dt><dd>4回のうち1〜2回は同じ文言の反復を避け、代わりに「導入企業数」「接続実績のあるSaaS数」など定量的な裏付けを添えて説得力を補強する。</dd>
+<dt class="dt-alt">代替案</dt><dd>まだ実績数値が少ない段階であれば、「対応予定SaaS一覧」のようなロードマップ表現に変え、「今つながっている」ではなく「今後つながる計画がある」という正直な期待値設定に切り替える。</dd>
+</dl>
+</div>
+
+<h2 class="section" id="e">E. 業種選定・ドメインの違和感</h2>
+
+<div class="issue">
+<h3>E-1. デモ企業が「アミューズメント事業」×「訪問看護事業」という組み合わせで汎用性を欠く</h3>
+<dl>
+<dt>問題箇所</dt><dd>p8のFAQ例が「セルフ休憩のルールは？」「ランプ対応の手順は？」「景品交換のルールは？」など、遊技機・アミューズメント施設特有の業界用語で構成されている。</dd>
+<dt class="dt-why">なぜ問題か</dt><dd>「AI Business Platform」という汎用プラットフォームを謳う資料の実例が、かなりニッチな業界に偏っている。閲覧者が小売・製造・IT等の業種だった場合、「自社には関係ない」と感じて離脱するリスクがある。</dd>
+<dt class="dt-proposal">提案</dt><dd>業界非依存の汎用的な質問例（例：「有給休暇の申請方法は？」「経費精算のルールは？」）を主軸に据え、業界特化の例は補足的な扱いに留める。</dd>
+<dt class="dt-alt">代替案</dt><dd>逆に「業界特化の柔軟性」を強みとして押し出す場合は、「アミューズメント業界向けの導入例」であることを明記したうえで、他業種向けの導入例（小売、製造、士業など）も1枚を追加して並列に見せ、汎用性と柔軟性の両方を訴求する。</dd>
+</dl>
+</div>
+
+<div class="issue">
+<h3>E-2. 「ハウコレ」という固有名詞が説明なく登場（p4・p6）</h3>
+<dl>
+<dt>問題箇所</dt><dd>「ハウコレ資料の確認事項」「ハウコレ書類の要修正を自動抽出」という表現が、注釈なしに複数箇所で使われている。</dd>
+<dt class="dt-why">なぜ問題か</dt><dd>社内固有の資料名または略語と思われるが、初見の読者には意味が伝わらない。</dd>
+<dt class="dt-proposal">提案</dt><dd>初出時に「ハウコレ（＝ハウスコレクション、店舗別の運用マニュアル資料）」のように簡単な注釈を添える。</dd>
+<dt class="dt-alt">代替案</dt><dd>外部向け資料では固有名詞をそのまま使わず、「店舗運用マニュアル」など一般化した呼称に置き換える。</dd>
+</dl>
+</div>
+
+<h2 class="section" id="f">F. ページ番号・章番号の不整合</h2>
+
+<div class="issue">
+<h3>F-1. フッターの分母が「/13」と「/17」で混在</h3>
+
+<div class="diagram">
+<svg viewBox="0 0 700 110" xmlns="http://www.w3.org/2000/svg">
+  <!-- 17 cells, p1..p17 -->
+  <!-- /13 pages: 1,2,3,5,6,7,8  /17 pages: 4,9,10,11,12,13,14,15,16,17 -->
+  <g font-size="11" font-weight="700" text-anchor="middle">
+    <!-- generate cells manually -->
+    <!-- p1 -->
+    <rect x="10" y="10" width="38" height="38" rx="4" fill="#fdf3e3" stroke="#b45309"/><text x="29" y="34" fill="#b45309">p1</text>
+    <!-- p2 -->
+    <rect x="52" y="10" width="38" height="38" rx="4" fill="#fdf3e3" stroke="#b45309"/><text x="71" y="34" fill="#b45309">p2</text>
+    <!-- p3 -->
+    <rect x="94" y="10" width="38" height="38" rx="4" fill="#fdf3e3" stroke="#b45309"/><text x="113" y="34" fill="#b45309">p3</text>
+    <!-- p4 -->
+    <rect x="136" y="10" width="38" height="38" rx="4" fill="#e6f4f2" stroke="#0d6b60"/><text x="155" y="34" fill="#0d6b60">p4</text>
+    <!-- p5 -->
+    <rect x="178" y="10" width="38" height="38" rx="4" fill="#fdf3e3" stroke="#b45309"/><text x="197" y="34" fill="#b45309">p5</text>
+    <!-- p6 -->
+    <rect x="220" y="10" width="38" height="38" rx="4" fill="#fdf3e3" stroke="#b45309"/><text x="239" y="34" fill="#b45309">p6</text>
+    <!-- p7 -->
+    <rect x="262" y="10" width="38" height="38" rx="4" fill="#fdf3e3" stroke="#b45309"/><text x="281" y="34" fill="#b45309">p7</text>
+    <!-- p8 -->
+    <rect x="304" y="10" width="38" height="38" rx="4" fill="#fdf3e3" stroke="#b45309"/><text x="323" y="34" fill="#b45309">p8</text>
+    <!-- p9 -->
+    <rect x="346" y="10" width="38" height="38" rx="4" fill="#e6f4f2" stroke="#0d6b60"/><text x="365" y="34" fill="#0d6b60">p9</text>
+    <!-- p10 -->
+    <rect x="388" y="10" width="40" height="38" rx="4" fill="#e6f4f2" stroke="#0d6b60"/><text x="408" y="34" fill="#0d6b60">p10</text>
+    <!-- p11 -->
+    <rect x="432" y="10" width="40" height="38" rx="4" fill="#e6f4f2" stroke="#0d6b60"/><text x="452" y="34" fill="#0d6b60">p11</text>
+    <!-- p12 -->
+    <rect x="476" y="10" width="40" height="38" rx="4" fill="#e6f4f2" stroke="#0d6b60"/><text x="496" y="34" fill="#0d6b60">p12</text>
+    <!-- p13 -->
+    <rect x="520" y="10" width="40" height="38" rx="4" fill="#e6f4f2" stroke="#0d6b60"/><text x="540" y="34" fill="#0d6b60">p13</text>
+    <!-- p14 -->
+    <rect x="564" y="10" width="40" height="38" rx="4" fill="#e6f4f2" stroke="#0d6b60"/><text x="584" y="34" fill="#0d6b60">p14</text>
+    <!-- p15 -->
+    <rect x="608" y="10" width="40" height="38" rx="4" fill="#e6f4f2" stroke="#0d6b60"/><text x="628" y="34" fill="#0d6b60">p15</text>
+  </g>
+  <!-- second row p16,p17 -->
+  <g font-size="11" font-weight="700" text-anchor="middle">
+    <rect x="10" y="58" width="40" height="38" rx="4" fill="#e6f4f2" stroke="#0d6b60"/><text x="30" y="82" fill="#0d6b60">p16</text>
+    <rect x="54" y="58" width="40" height="38" rx="4" fill="#e6f4f2" stroke="#0d6b60"/><text x="74" y="82" fill="#0d6b60">p17</text>
+  </g>
+
+  <!-- legend -->
+  <rect x="130" y="66" width="16" height="16" rx="3" fill="#fdf3e3" stroke="#b45309"/>
+  <text x="152" y="79" font-size="12" fill="#111827">分母が「/13」のまま（未更新）</text>
+  <rect x="380" y="66" width="16" height="16" rx="3" fill="#e6f4f2" stroke="#0d6b60"/>
+  <text x="402" y="79" font-size="12" fill="#111827">分母が「/17」に更新済み</text>
+</svg>
+<div class="diagram-caption">p1・p2・p3・p5・p6・p7・p8の7ページだけ分母が「/13」のまま取り残されている</div>
+</div>
+
+<dl>
+<dt>問題箇所</dt><dd>p1, p2, p3, p5, p6, p7, p8が「/13」のまま、p4, p9〜p17は「/17」に更新済み。</dd>
+<dt class="dt-why">なぜ問題か</dt><dd>後から「Technology」「Adoption」章を追加した際、旧13ページ構成のフッター表記を一括で更新し忘れたことが明白。閲覧者が最初のページで「/13」を見た直後に「/17」へ切り替わるため、違和感が強い。</dd>
+<dt class="dt-proposal">提案</dt><dd>全ページのフッターを機械的に「/17」へ一括置換する（テンプレート側で自動連番になっていない場合は、マスタースライドの設定を見直す）。</dd>
+<dt class="dt-alt">代替案</dt><dd>今後スライド追加が頻発する資料であれば、フッターの総ページ数を手打ちせず、PowerPoint／Figma等のオートページ番号機能に切り替えて、以後この種のミスが起きない仕組みにする。</dd>
+</dl>
+</div>
+
+<div class="issue">
+<h3>F-2. 章番号「09」「10」が2回使われている</h3>
+<dl>
+<dt>問題箇所</dt><dd>p10「09―INTEGRATION HUB」、p11「10―AI EMPLOYEES」の後、p12〜p15で再び「CHAPTER 09・TECHNOLOGY」、p16で再び「CHAPTER 10・ADOPTION」が登場。</dd>
+<dt class="dt-why">なぜ問題か</dt><dd>前半（機能紹介パート）と後半（Technology/Adoptionパート）を別々に作成し、後から結合した際に通し番号を振り直していないことが明確に分かる。</dd>
+<dt class="dt-proposal">提案</dt><dd>後半のTechnology／Adoption章をp11以降の通し番号（11〜16）に振り直す。</dd>
+<dt class="dt-alt">代替案</dt><dd>前半と後半で意図的に章立てを分けたい場合は、「PART 1：プロダクト機能編（Chapter 01-08）」「PART 2：テクノロジー編（Chapter 01-06）」のようにパートごとに章番号をリセットする構成に変更し、それぞれのパート表紙で明示する。</dd>
+</dl>
+</div>
+
+<div class="issue">
+<h3>F-3. p16の見出しとリード文の行間衝突（表示崩れの疑い）</h3>
+<dl>
+<dt>問題箇所</dt><dd>見出し「Adoption ― 今ある資産から、段階的に始められる。」の2行目末尾とリード文冒頭が「る既存シ。ステムを置き換える必要はありません。」のように接触・重なって見える形でテキスト抽出されている。</dd>
+<dt class="dt-why">なぜ問題か</dt><dd>見出しが長く2行に折り返した際、直下のリード文との行間マージンが不足している可能性が高く、実際のスライド上でも視覚的な衝突（文字の重なり）が起きている疑いがある。</dd>
+<dt class="dt-proposal">提案</dt><dd>元データ（Figma/PowerPoint等）でp16を開き、見出しとリード文の間隔を他ページと同じ余白に揃える。特に見出しが2行になるケースを想定した最小マージンをテンプレート側で設定しておく。</dd>
+<dt class="dt-alt">代替案</dt><dd>見出し文言自体を短縮し（例：「今ある資産から、段階的に。」）、1行に収めることで折り返しによる衝突リスクそのものを回避する。</dd>
+</dl>
+</div>
+
+<h2 class="section" id="priority">優先度まとめ（対応推奨順）</h2>
+
+<table class="priority">
+  <tr><th>優先度</th><th>項目</th><th>理由</th></tr>
+  <tr>
+    <td class="level lv-top">最優先</td>
+    <td>A-1（要確認件数の算数矛盾）<br>C-1（Auditorのエラー表示）<br>F-1（ページ番号/13・/17混在）</td>
+    <td>誰が見ても即座に気づく明白なミスで、資料全体の信頼性に直結する</td>
+  </tr>
+  <tr>
+    <td class="level lv-high">高</td>
+    <td>B-1（構造図の不一致）<br>D-1（RAG否定と実画面の矛盾）<br>C-2（エンジン交換の矛盾）</td>
+    <td>突っ込まれると資料の核心的な主張が崩れる</td>
+  </tr>
+  <tr>
+    <td class="level lv-mid">中</td>
+    <td>F-2（章番号の重複）<br>C-3（未接続スクショ）<br>C-4（Portal/Analytics重複）</td>
+    <td>見た目の完成度・説得力に影響するが致命傷ではない</td>
+  </tr>
+  <tr>
+    <td class="level lv-low">低</td>
+    <td>A-2/A-3（単位・日付ゆれ）<br>B-3（用語ゆれ）<br>E-1/E-2（業種選定・固有名詞）</td>
+    <td>細部の詰めの問題。時間があれば直したい</td>
+  </tr>
+</table>
+
+</body>
+</html>
