@@ -197,6 +197,58 @@
                 </table>
             </div>
 
+            <div style="margin: 1.5rem 0;">
+                <svg viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN',sans-serif;">
+                    <text x="0" y="18" font-size="13" font-weight="700" fill="#374151">瑞鳳ABP　新DB基盤　構成イメージ</text>
+
+                    <!-- Yellowfin box -->
+                    <rect x="20" y="140" width="180" height="80" rx="10" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.5"/>
+                    <text x="110" y="172" font-size="12.5" font-weight="700" fill="#374151" text-anchor="middle">既存 Yellowfin用DB</text>
+                    <text x="110" y="190" font-size="10.5" fill="#6b7280" text-anchor="middle">（移行元）</text>
+
+                    <!-- arrow to RDS -->
+                    <path d="M203 180 L275 180" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow0728b)"/>
+                    <text x="238" y="170" font-size="10" fill="#6b7280" text-anchor="middle">データ移行</text>
+
+                    <!-- RDS box -->
+                    <rect x="280" y="130" width="220" height="100" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+                    <text x="390" y="160" font-size="12.5" font-weight="700" fill="#1d4ed8" text-anchor="middle">新DB</text>
+                    <text x="390" y="178" font-size="12" font-weight="700" fill="#1d4ed8" text-anchor="middle">Amazon RDS</text>
+                    <text x="390" y="195" font-size="12" font-weight="700" fill="#1d4ed8" text-anchor="middle">for PostgreSQL</text>
+                    <text x="390" y="213" font-size="10.5" fill="#2563eb" text-anchor="middle">構築準備中</text>
+
+                    <!-- arrow up to GPT-Bots -->
+                    <path d="M390 128 L390 78" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrow0728p)"/>
+                    <text x="480" y="100" font-size="10" fill="#7c3aed" text-anchor="middle">API経由</text>
+                    <text x="480" y="113" font-size="10" fill="#7c3aed" text-anchor="middle">(DB直接接続なし)</text>
+
+                    <!-- GPT-Bots box -->
+                    <rect x="300" y="15" width="180" height="65" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.5"/>
+                    <text x="390" y="42" font-size="12.5" font-weight="700" fill="#6d28d9" text-anchor="middle">GPT-Bots</text>
+                    <text x="390" y="60" font-size="10.5" fill="#7c3aed" text-anchor="middle">専用API経由で参照</text>
+
+                    <!-- arrow down to ABP dashboard -->
+                    <path d="M390 232 L390 272" stroke="#10b981" stroke-width="1.5" marker-end="url(#arrow0728g)"/>
+
+                    <!-- Dashboard box -->
+                    <rect x="300" y="275" width="180" height="60" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+                    <text x="390" y="300" font-size="12.5" font-weight="700" fill="#065f46" text-anchor="middle">ABPダッシュボード</text>
+                    <text x="390" y="317" font-size="10.5" fill="#059669" text-anchor="middle">グラフ・数値表示</text>
+
+                    <!-- legend -->
+                    <text x="540" y="150" font-size="10.5" fill="#9ca3af">グレー：移行元／既存</text>
+                    <text x="540" y="168" font-size="10.5" fill="#9ca3af">青：構築中の新基盤</text>
+                    <text x="540" y="186" font-size="10.5" fill="#9ca3af">紫：AI連携（API経由）</text>
+                    <text x="540" y="204" font-size="10.5" fill="#9ca3af">緑：出力先（表示）</text>
+
+                    <defs>
+                        <marker id="arrow0728b" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9ca3af"/></marker>
+                        <marker id="arrow0728p" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#8b5cf6"/></marker>
+                        <marker id="arrow0728g" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#10b981"/></marker>
+                    </defs>
+                </svg>
+            </div>
+
             <p class="sub-heading">論点・リスク</p>
             <ul class="dot-list blue-markers">
                 <li>既存Yellowfin DBの構造・品質課題をどこまで移行時に整理するか、判断が必要。</li>
@@ -242,6 +294,69 @@
                 <ul class="dot-list red-markers" style="margin-bottom:0;">
                     <li>kintone発注システムのフローテスト中に、クライアント側でマイページURLを開けない権限エラーが発生しており、入稿導線の確認が必要。解消しないとクライアント側で入稿できず、新運用が定着しない。</li>
                 </ul>
+            </div>
+
+            <div style="margin: 1.5rem 0;">
+                <svg viewBox="0 0 940 210" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN',sans-serif;">
+                    <text x="0" y="18" font-size="13" font-weight="700" fill="#374151">LINE広告自動化システム　進捗フロー</text>
+
+                    <!-- Step boxes -->
+                    <g>
+                        <rect x="15" y="50" width="130" height="70" rx="10" fill="#ecfdf5" stroke="#059669" stroke-width="1.5"/>
+                        <text x="80" y="80" font-size="12.5" font-weight="700" fill="#065f46" text-anchor="middle">kintone連携</text>
+                        <text x="80" y="99" font-size="10.5" fill="#059669" text-anchor="middle">完了</text>
+                    </g>
+                    <path d="M148 85 L172 85" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow0728)"/>
+
+                    <g>
+                        <rect x="175" y="50" width="130" height="70" rx="10" fill="#ecfdf5" stroke="#059669" stroke-width="1.5"/>
+                        <text x="240" y="75" font-size="12.5" font-weight="700" fill="#065f46" text-anchor="middle">広告PF</text>
+                        <text x="240" y="91" font-size="12.5" font-weight="700" fill="#065f46" text-anchor="middle">自動入稿</text>
+                        <text x="240" y="108" font-size="10.5" fill="#059669" text-anchor="middle">完了</text>
+                    </g>
+                    <path d="M308 85 L332 85" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow0728)"/>
+
+                    <g>
+                        <rect x="335" y="50" width="130" height="70" rx="10" fill="#ecfdf5" stroke="#059669" stroke-width="1.5"/>
+                        <text x="400" y="80" font-size="12.5" font-weight="700" fill="#065f46" text-anchor="middle">GPS/Beacon</text>
+                        <text x="400" y="97" font-size="11.5" font-weight="700" fill="#065f46" text-anchor="middle">取得</text>
+                        <text x="400" y="108" font-size="10.5" fill="#059669" text-anchor="middle">完了</text>
+                    </g>
+                    <path d="M468 85 L492 85" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow0728)"/>
+
+                    <g>
+                        <rect x="495" y="50" width="130" height="70" rx="10" fill="#ecfdf5" stroke="#059669" stroke-width="1.5"/>
+                        <text x="560" y="80" font-size="12.5" font-weight="700" fill="#065f46" text-anchor="middle">オーディエンス</text>
+                        <text x="560" y="97" font-size="11.5" font-weight="700" fill="#065f46" text-anchor="middle">作成</text>
+                        <text x="560" y="108" font-size="10.5" fill="#059669" text-anchor="middle">完了</text>
+                    </g>
+                    <path d="M628 85 L652 85" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow0728)"/>
+
+                    <g>
+                        <rect x="655" y="50" width="130" height="70" rx="10" fill="#ecfdf5" stroke="#059669" stroke-width="1.5"/>
+                        <text x="720" y="80" font-size="12.5" font-weight="700" fill="#065f46" text-anchor="middle">レポート</text>
+                        <text x="720" y="97" font-size="11.5" font-weight="700" fill="#065f46" text-anchor="middle">作成</text>
+                        <text x="720" y="108" font-size="10.5" fill="#059669" text-anchor="middle">完了</text>
+                    </g>
+                    <path d="M788 85 L812 85" stroke="#9ca3af" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrow0728)"/>
+
+                    <g>
+                        <rect x="815" y="50" width="120" height="70" rx="10" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.5" stroke-dasharray="4 3"/>
+                        <text x="875" y="80" font-size="12.5" font-weight="700" fill="#4b5563" text-anchor="middle">GUI作成</text>
+                        <text x="875" y="97" font-size="11.5" font-weight="700" fill="#4b5563" text-anchor="middle">(候補:Sheets)</text>
+                        <text x="875" y="108" font-size="10.5" fill="#6b7280" text-anchor="middle">次フェーズ</text>
+                    </g>
+
+                    <!-- risk note -->
+                    <rect x="15" y="150" width="920" height="40" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-width="1"/>
+                    <text x="30" y="174" font-size="11.5" fill="#991b1b">⚠ kintoneマイページURLの権限エラーが発生中（クライアント側で開けない）。入稿導線の解消が必要</text>
+
+                    <defs>
+                        <marker id="arrow0728" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                            <path d="M0,0 L8,4 L0,8 Z" fill="#9ca3af"/>
+                        </marker>
+                    </defs>
+                </svg>
             </div>
 
             <p class="sub-heading">LINE社との連携とキャンペーン</p>
