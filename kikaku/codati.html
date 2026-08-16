@@ -656,11 +656,146 @@
         </div>
     </section>
 
-    <!-- 13 未解決事項 -->
+    <!-- 14 士業関与が必要な論点 -->
+    <section class="section">
+        <div class="section-head">
+            <div class="section-bar bar-blue"></div>
+            <h2 class="section-title blue">14. 士業関与が必要な論点</h2>
+        </div>
+        <div class="box-blue">
+            <p class="box-label">【注記】以下はClaudeによる整理です。Claudeは弁護士・税理士・弁理士ではないため、最終的な要否・内容の適法性は各専門家に確認してください。</p>
+        </div>
+
+        <div class="card">
+            <p class="sub-heading">弁護士が必要／いたほうがいい箇所</p>
+
+            <p style="font-weight:700; color:#1f2937; margin:1rem 0 0.4rem 0; font-size:0.92rem;">① 利用規約・サービス契約書の整備</p>
+            <ul class="dot-list blue-markers">
+                <li>初期費用（プラットフォーム導入費100万円／AI社員導入費20万円／伴走サポート費50万円）と月額費用（基本料金10万円／AI社員利用料2万円）という料金体系を、正式な契約書として落とし込む必要がある</li>
+                <li>特に「AI社員が経営判断・タスク作成の指示まで自動で行う」という機能は、AIの判断ミスで顧客の事業に損害が出た場合の免責・責任限定条項が必須</li>
+            </ul>
+
+            <p style="font-weight:700; color:#1f2937; margin:1rem 0 0.4rem 0; font-size:0.92rem;">② データの取り扱い・個人情報保護法対応</p>
+            <ul class="dot-list blue-markers">
+                <li>OneDrive・NAS・会計・勤怠・CRMなど、顧客企業の内部データ全般にAIがアクセスする設計</li>
+                <li>訪問看護事業の例があり、介護・医療系の情報（要配慮個人情報になりうる）を扱う可能性がある → 個人情報保護法・場合によっては医療/介護分野特有の規制への対応が必要</li>
+                <li>企業の情報をAIが学習・保持する設計上、データの保存場所・第三者提供の有無・削除リクエスト対応などをプライバシーポリシーに明記する必要</li>
+            </ul>
+
+            <p style="font-weight:700; color:#1f2937; margin:1rem 0 0.4rem 0; font-size:0.92rem;">③ GPTBots側との契約審査</p>
+            <ul class="dot-list blue-markers">
+                <li>GPTBotsをエンジンとして利用し、それを「AI社員」として再販（実質的な白ラベル提供）している構造</li>
+                <li>GPTBots側の利用規約で再販・商用転用が許可されているか、料金改定リスク、データ処理委託契約（第三者提供にあたらないかの整理）を確認する必要がある</li>
+            </ul>
+
+            <p style="font-weight:700; color:#1f2937; margin:1rem 0 0.4rem 0; font-size:0.92rem;">④ 代理店契約</p>
+            <ul class="dot-list blue-markers">
+                <li>代理店戦略への言及があるため、今後代理店展開する場合は代理店契約書のドラフトが必要</li>
+            </ul>
+        </div>
+
+        <div class="card gray-card">
+            <p class="sub-heading">税理士が必要／いたほうがいい箇所</p>
+            <p style="font-weight:700; color:#1f2937; margin:1rem 0 0.4rem 0; font-size:0.92rem;">⑤ 収益認識・原価計算</p>
+            <ul class="dot-list gray-markers">
+                <li>初期費用（一括）と月額費用（継続）が混在する料金体系のため、収益認識のタイミング（一括計上か按分か）の整理が必要</li>
+                <li>「粗利6割超」という数字の算出根拠（GPTBots原価800万円/年をどう配賦しているか）を税務上も整合させておいた方がいい</li>
+                <li>消費税の扱い（役務提供のタイミング等）も契約書と連動させる必要がある</li>
+            </ul>
+        </div>
+
+        <div class="card gray-card">
+            <p class="sub-heading">弁理士が必要／いたほうがいい箇所</p>
+            <p style="font-weight:700; color:#1f2937; margin:1rem 0 0.4rem 0; font-size:0.92rem;">⑥ 商標登録</p>
+            <ul class="dot-list gray-markers">
+                <li>「『AI社員』というキーワードで100本の記事を作成し、カテゴリーリーダーを狙う」という戦略が明記されている</li>
+                <li>先行してカテゴリーを取りに行く戦略なら、「AI社員」「Co-Datch」「CODATI」等の商標登録を早めに検討したほうがいい（他社に先に取られるリスク、逆に自社が意図せず他社商標を侵害していないかの調査も含む）</li>
+            </ul>
+        </div>
+
+        <div class="box-gray">
+            <p class="box-label">社労士との連携が望ましい箇所（法的必須ではないが）</p>
+            <p style="font-weight:700; color:#1f2937; margin:0.75rem 0 0.4rem 0; font-size:0.92rem;">⑦ 「AI社員」というマーケティング表現のリスク</p>
+            <ul class="dot-list gray-markers" style="margin-bottom:0;">
+                <li>「新しく社員を1人雇う感覚」という訴求は分かりやすい反面、導入企業側で「AIに仕事を奪われる」という不安が実際の雇用・人員配置の議論に発展する可能性がある</li>
+                <li>直接の法的リスクは薄いが、導入企業の人事・組織設計に関わる話なので、大規模導入案件では社労士的な視点（配置転換・役割再定義のアドバイス）があると提案の説得力が増す。詳細は次項15を参照。</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 15 社労士の必要性 -->
     <section class="section">
         <div class="section-head">
             <div class="section-bar bar-red"></div>
-            <h2 class="section-title" style="color:#dc2626;">14. 未解決の疑問点（保留中）</h2>
+            <h2 class="section-title" style="color:#dc2626;">15. 社労士の必要性（人事系サービスとして絶対に必須な理由）</h2>
+        </div>
+        <div class="box-red">
+            <p class="box-label">【注記】以下はClaudeによる一般的な法令情報に基づく整理です。Claudeは社労士ではないため、個別の適法性判断は必ず社労士・弁護士に確認してください。</p>
+        </div>
+
+        <div class="card">
+            <p class="sub-heading">必須になる根本理由：社会保険労務士法の「独占業務」に抵触するリスク</p>
+            <p style="color:#4b5563;">社労士法には、無資格者が行うと罰則（6ヶ月以下の懲役または30万円以下の罰金）が科される独占業務が定められている（社会保険労務士法第27条、第32条の2）。これは弁護士業界における「非弁行為」と同じ構造。AI社員が実質的にこの独占業務を代行してしまうと、「AIがやっているから」は言い訳にならず、提供事業者側が違法となりうる。</p>
+        </div>
+
+        <div class="card gray-card">
+            <p class="sub-heading">1号業務（独占）</p>
+            <ul class="dot-list gray-markers">
+                <li>労働保険の書類の作成・提出代行、健康保険・雇用保険などへの加入・脱退手続き、給付手続きや助成金の申請など</li>
+                <li>報酬が発生する労働社会保険関連の手続きは、弁護士・社労士のみが可能</li>
+            </ul>
+
+            <p class="sub-heading">2号業務（独占）</p>
+            <ul class="dot-list gray-markers">
+                <li>労働社会保険諸法令に従う帳簿書類の作成、労働者名簿や賃金台帳の作成請負、就業規則や各種労使協定の作成など</li>
+                <li>企業が常時10名以上の従業員を使用する場合は就業規則の作成が義務付けられており、この就業規則の作成も社労士の独占業務</li>
+            </ul>
+
+            <p class="sub-heading">3号業務（独占ではない）</p>
+            <ul class="dot-list gray-markers" style="margin-bottom:0;">
+                <li>労務管理に関する相談・指導やコンサルティング業務。ここはAIが担っても法的な独占業務違反にはならない</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <p class="sub-heading">AI社員の機能別・独占業務リスク一覧</p>
+            <div style="overflow-x:auto;">
+                <table class="data-table">
+                    <thead><tr><th>AI社員の機能例</th><th>独占業務に触れるか</th><th>対応の方向性</th></tr></thead>
+                    <tbody>
+                        <tr><td>「有給申請の方法は？」等のFAQ回答</td><td>セーフ（相談・案内レベル、3号業務相当）</td><td>問題なし</td></tr>
+                        <tr style="background:#fef2f2;"><td>就業規則の内容をAIが自動生成・改定して公開</td><td style="color:#991b1b; font-weight:700;">アウトの可能性大（2号業務）</td><td>社労士の監修・承認フローを必須化</td></tr>
+                        <tr style="background:#fef2f2;"><td>社会保険の加入・脱退手続き書類をAIが作成し提出まで代行</td><td style="color:#991b1b; font-weight:700;">アウト（1号業務）</td><td>社労士法人との提携が必須。AIは下書き作成までに留め、提出行為は必ず有資格者を介す設計にする</td></tr>
+                        <tr style="background:#fef2f2;"><td>助成金の申請書類作成支援</td><td style="color:#991b1b; font-weight:700;">アウトの可能性大（1号業務）</td><td>同上、社労士連携が必須</td></tr>
+                        <tr><td>勤怠データから残業代（割増賃金）を自動計算</td><td>グレー（専門知識が必要、計算ミスは未払い残業代訴訟に直結）</td><td>計算ロジックを社労士に監修させる</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="box-purple">
+            <p class="box-label">解決の方向性：Knowledge Lifecycleの仕組みをそのまま応用する</p>
+            <ul class="dot-list" style="margin-bottom:0;">
+                <li>本資料4章の「人が承認して正式ナレッジになる」というHuman-in-the-loopの設計思想を、労務領域にそのまま適用できる</li>
+                <li>AIは下書き・提案・分析まで（3号業務相当の部分はAIでも可）</li>
+                <li>就業規則の正式版公開、行政への届出書類の最終作成・提出は、必ず社労士がReviewフェーズで承認・実行する、という役割分担をシステム設計・契約書の両方で明文化するのが現実的</li>
+            </ul>
+        </div>
+
+        <div class="card gray-card">
+            <p class="sub-heading">社労士が絶対に必要な理由（まとめ）</p>
+            <ul class="dot-list gray-markers" style="margin-bottom:0;">
+                <li><strong>法律上の必須：</strong>独占業務（1号・2号業務）に該当する機能を提供する以上、社労士（個人または社労士法人）との提携なしでは違法になりうる</li>
+                <li><strong>リスク管理上の必須：</strong>就業規則は労働契約の内容を規律する法的効力を持つ重要な文書で、法改正のたびに見直しが必要。AIが古い法令基準のまま回答し続けると、クライアント企業が労基署の是正勧告や未払い残業代請求を受けるリスクに直結する</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 16 未解決事項 -->
+    <section class="section">
+        <div class="section-head">
+            <div class="section-bar bar-red"></div>
+            <h2 class="section-title" style="color:#dc2626;">16. 未解決の疑問点（保留中）</h2>
         </div>
         <div style="overflow-x:auto;">
             <table class="data-table">
@@ -688,7 +823,7 @@
     <section class="section">
         <div class="section-head">
             <div class="section-bar bar-gray"></div>
-            <h2 class="section-title gray">15. 競合・類似サービスとの比較</h2>
+            <h2 class="section-title gray">17. 競合・類似サービスとの比較</h2>
         </div>
         <div class="box-gray">
             <p class="box-label">【注記】ここから先はWeb調査に基づく参考情報です。TOKIWAGIメモ・公式デックには含まれていません。金額・仕様は変更される可能性があります。</p>
