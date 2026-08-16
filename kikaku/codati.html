@@ -71,9 +71,55 @@
             .compare-3col { grid-template-columns: 1fr; }
             .card { padding: 1.25rem; }
         }
+
+        .layout { display: flex; min-height: 100vh; }
+        .sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; background-color: #f9fafb; border-right: 1px solid #e5e7eb; display: flex; flex-direction: column; padding: 2rem 0 3rem 0; }
+        .sidebar-label { font-size: 0.7rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; padding: 0 1.5rem; margin-bottom: 1rem; }
+        .sidebar-links { display: flex; flex-direction: column; }
+        .sidebar-link { display: block; padding: 0.45rem 1.5rem; font-size: 0.78rem; color: #6b7280; text-decoration: none; border-radius: 0.5rem; margin: 0.1rem 0.5rem; transition: background 0.18s, color 0.18s; line-height: 1.4; }
+        .sidebar-link:hover { background-color: #e5e7eb; color: #111827; }
+        .sidebar-link.active { background-color: #f5f3ff; color: #6d28d9; font-weight: 700; }
+        .sidebar-link.active-blue { background-color: #eff6ff; color: #1d4ed8; font-weight: 700; }
+        .sidebar-link.active-gray { background-color: #f3f4f6; color: #374151; font-weight: 700; }
+        .sidebar-link.active-red { background-color: #fef2f2; color: #991b1b; font-weight: 700; }
+        .sidebar-back { display: block; font-size: 0.78rem; color: #6b7280; text-decoration: none; padding: 0 1.5rem; margin-bottom: 1.5rem; }
+        .sidebar-back:hover { color: #111827; }
+        .main { flex: 1; min-width: 0; }
+        @media (max-width: 900px) {
+            .layout { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid #e5e7eb; padding: 1.25rem 0 1rem 0; }
+            .sidebar-links { flex-direction: row; flex-wrap: wrap; padding: 0 0.75rem; gap: 0.25rem; }
+            .sidebar-link { margin: 0; padding: 0.3rem 0.7rem; font-size: 0.7rem; }
+            .sidebar-label, .sidebar-back { padding: 0 1rem; }
+        }
     </style>
 </head>
 <body>
+    <div class="layout">
+    <aside class="sidebar">
+        <a href="./" class="sidebar-back">&larr; 企画・提案一覧へ戻る</a>
+        <p class="sidebar-label">INDEX / 目次</p>
+        <div class="sidebar-links">
+            <a href="#s1" class="sidebar-link">1. コンセプト</a>
+            <a href="#s2" class="sidebar-link">2. プロダクト構成（4つの柱）</a>
+            <a href="#s3" class="sidebar-link">3. 画面詳細</a>
+            <a href="#s4" class="sidebar-link">4. Knowledge Center詳細</a>
+            <a href="#s5" class="sidebar-link">5. Integration Hub詳細</a>
+            <a href="#s6" class="sidebar-link">6. AI Employeesの思想と役割</a>
+            <a href="#s7" class="sidebar-link">7. Technology（技術アーキテクチャ）</a>
+            <a href="#s8" class="sidebar-link">8. 導入ステップ（Adoption）</a>
+            <a href="#s9" class="sidebar-link">9. 他社・他モデルとの違い／優位性</a>
+            <a href="#s10" class="sidebar-link">10. 料金体系</a>
+            <a href="#s11" class="sidebar-link">11. GPTBotsの技術的位置づけ</a>
+            <a href="#s12" class="sidebar-link">12. 導入事例</a>
+            <a href="#s13" class="sidebar-link">13. 営業戦略と今後の展開</a>
+            <a href="#s14" class="sidebar-link">14. 士業関与が必要な論点</a>
+            <a href="#s15" class="sidebar-link">15. 社労士の必要性（人事系サービスとして絶対に必須な理由）</a>
+            <a href="#s16" class="sidebar-link">16. 未解決の疑問点（保留中）</a>
+            <a href="#s17" class="sidebar-link">17. 競合・類似サービスとの比較</a>
+        </div>
+    </aside>
+    <div class="main">
 <div class="container">
     <header class="page-header">
         <a href="./" class="back-link">← 企画・提案一覧へ戻る</a><br>
@@ -88,7 +134,7 @@
     </header>
 
     <!-- 1 コンセプト -->
-    <section class="section">
+    <section class="section" id="s1">
         <div class="section-head">
             <div class="section-bar bar-purple"></div>
             <h2 class="section-title purple">1. コンセプト</h2>
@@ -167,7 +213,7 @@
     </section>
 
     <!-- 2 プロダクト構成 -->
-    <section class="section">
+    <section class="section" id="s2">
         <div class="section-head">
             <div class="section-bar bar-purple"></div>
             <h2 class="section-title purple">2. プロダクト構成（4つの柱）</h2>
@@ -220,7 +266,7 @@
     </section>
 
     <!-- 3 画面詳細 -->
-    <section class="section">
+    <section class="section" id="s3">
         <div class="section-head">
             <div class="section-bar bar-purple"></div>
             <h2 class="section-title purple">3. 画面詳細</h2>
@@ -245,7 +291,7 @@
     </section>
 
     <!-- 4 Knowledge Center -->
-    <section class="section">
+    <section class="section" id="s4">
         <div class="section-head">
             <div class="section-bar bar-purple"></div>
             <h2 class="section-title purple">4. Knowledge Center詳細</h2>
@@ -301,7 +347,7 @@
     </section>
 
     <!-- 5 Integration Hub -->
-    <section class="section">
+    <section class="section" id="s5">
         <div class="section-head">
             <div class="section-bar bar-purple"></div>
             <h2 class="section-title purple">5. Integration Hub詳細</h2>
@@ -322,7 +368,7 @@
     </section>
 
     <!-- 6 AI Employeesの思想 -->
-    <section class="section">
+    <section class="section" id="s6">
         <div class="section-head">
             <div class="section-bar bar-purple"></div>
             <h2 class="section-title purple">6. AI Employeesの思想と役割</h2>
@@ -379,7 +425,7 @@
     </section>
 
     <!-- 7 Technology -->
-    <section class="section">
+    <section class="section" id="s7">
         <div class="section-head">
             <div class="section-bar bar-blue"></div>
             <h2 class="section-title blue">7. Technology（技術アーキテクチャ）</h2>
@@ -447,7 +493,7 @@
     </section>
 
     <!-- 8 Adoption -->
-    <section class="section">
+    <section class="section" id="s8">
         <div class="section-head">
             <div class="section-bar bar-purple"></div>
             <h2 class="section-title purple">8. 導入ステップ（Adoption）</h2>
@@ -490,7 +536,7 @@
     </section>
 
     <!-- 9 優位性 -->
-    <section class="section">
+    <section class="section" id="s9">
         <div class="section-head">
             <div class="section-bar bar-purple"></div>
             <h2 class="section-title purple">9. 他社・他モデルとの違い／優位性</h2>
@@ -510,7 +556,7 @@
     <p class="divider-label">ここから補足資料（社内向け検討メモ）</p>
 
     <!-- 10 料金体系 -->
-    <section class="section">
+    <section class="section" id="s10">
         <div class="section-head">
             <div class="section-bar bar-gray"></div>
             <h2 class="section-title gray">10. 料金体系</h2>
@@ -561,7 +607,7 @@
     </section>
 
     <!-- 11 GPTBots -->
-    <section class="section">
+    <section class="section" id="s11">
         <div class="section-head">
             <div class="section-bar bar-gray"></div>
             <h2 class="section-title gray">11. GPTBotsの技術的位置づけ</h2>
@@ -590,7 +636,7 @@
     </section>
 
     <!-- 12 事例 -->
-    <section class="section">
+    <section class="section" id="s12">
         <div class="section-head">
             <div class="section-bar bar-gray"></div>
             <h2 class="section-title gray">12. 導入事例</h2>
@@ -614,7 +660,7 @@
     </section>
 
     <!-- 12.5 営業戦略 -->
-    <section class="section">
+    <section class="section" id="s13">
         <div class="section-head">
             <div class="section-bar bar-gray"></div>
             <h2 class="section-title gray">13. 営業戦略と今後の展開</h2>
@@ -657,7 +703,7 @@
     </section>
 
     <!-- 14 士業関与が必要な論点 -->
-    <section class="section">
+    <section class="section" id="s14">
         <div class="section-head">
             <div class="section-bar bar-blue"></div>
             <h2 class="section-title blue">14. 士業関与が必要な論点</h2>
@@ -724,7 +770,7 @@
     </section>
 
     <!-- 15 社労士の必要性 -->
-    <section class="section">
+    <section class="section" id="s15">
         <div class="section-head">
             <div class="section-bar bar-red"></div>
             <h2 class="section-title" style="color:#dc2626;">15. 社労士の必要性（人事系サービスとして絶対に必須な理由）</h2>
@@ -792,7 +838,7 @@
     </section>
 
     <!-- 16 未解決事項 -->
-    <section class="section">
+    <section class="section" id="s16">
         <div class="section-head">
             <div class="section-bar bar-red"></div>
             <h2 class="section-title" style="color:#dc2626;">16. 未解決の疑問点（保留中）</h2>
@@ -820,7 +866,7 @@
     <p class="divider-label">ここから参考：外部調査（ソース外の情報）</p>
 
     <!-- 14 競合比較 -->
-    <section class="section">
+    <section class="section" id="s17">
         <div class="section-head">
             <div class="section-bar bar-gray"></div>
             <h2 class="section-title gray">17. 競合・類似サービスとの比較</h2>
@@ -856,5 +902,31 @@
         <p>&copy; 2026 TKW Project Team. All Rights Reserved.</p>
     </footer>
 </div>
+    </div>
+    </div>
+
+<script>
+    const colorMap = {'s1':'purple', 's2':'purple', 's3':'purple', 's4':'purple', 's5':'purple', 's6':'purple', 's7':'blue', 's8':'purple', 's9':'purple', 's10':'gray', 's11':'gray', 's12':'gray', 's13':'gray', 's14':'blue', 's15':'red', 's16':'red', 's17':'gray'};
+    const links = document.querySelectorAll('.sidebar-link');
+    const sections = document.querySelectorAll('section[id]');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                const color = colorMap[id] || 'purple';
+                links.forEach(link => {
+                    link.classList.remove('active', 'active-blue', 'active-gray', 'active-red');
+                    if (link.getAttribute('href') === '#' + id) {
+                        if (color === 'blue') link.classList.add('active-blue');
+                        else if (color === 'gray') link.classList.add('active-gray');
+                        else if (color === 'red') link.classList.add('active-red');
+                        else link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.15 });
+    sections.forEach(s => observer.observe(s));
+</script>
 </body>
 </html>
