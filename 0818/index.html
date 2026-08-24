@@ -6,28 +6,28 @@
     <title>TKW会議：2026年8月18日</title>
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif; background-color: #ffffff; color: #1f2937; line-height: 1.8; font-size: 15px; }
+        body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif; background-color: #ffffff; color: #1f2937; line-height: 1.8; font-size: 16.5px; }
         .layout { display: flex; min-height: 100vh; }
         .sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; background-color: #f9fafb; border-right: 1px solid #e5e7eb; display: flex; flex-direction: column; padding: 2rem 0 3rem 0; }
-        .sidebar-label { font-size: 0.7rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; padding: 0 1.5rem; margin-bottom: 1rem; }
+        .sidebar-label { font-size: 0.75rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; padding: 0 1.5rem; margin-bottom: 1rem; }
         .sidebar-links { display: flex; flex-direction: column; }
-        .sidebar-link { display: block; padding: 0.45rem 1.5rem; font-size: 0.8rem; color: #6b7280; text-decoration: none; border-radius: 0.5rem; margin: 0.1rem 0.5rem; transition: background 0.18s, color 0.18s; }
+        .sidebar-link { display: block; padding: 0.45rem 1.5rem; font-size: 0.86rem; color: #6b7280; text-decoration: none; border-radius: 0.5rem; margin: 0.1rem 0.5rem; transition: background 0.18s, color 0.18s; }
         .sidebar-link:hover { background-color: #e5e7eb; color: #111827; }
         .sidebar-link.active { background-color: #ecfdf5; color: #065f46; font-weight: 700; }
         .sidebar-link.active-red { background-color: #fef2f2; color: #991b1b; font-weight: 700; }
         .sidebar-link.active-blue { background-color: #eff6ff; color: #1d4ed8; font-weight: 700; }
         .sidebar-link.active-purple { background-color: #f5f3ff; color: #6d28d9; font-weight: 700; }
         .sidebar-link.active-gray { background-color: #f3f4f6; color: #374151; font-weight: 700; }
-        .sidebar-card { margin: 1.5rem 1rem 0 1rem; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.25rem; font-size: 0.75rem; color: #6b7280; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
-        .sidebar-card-title { font-weight: 700; color: #1f2937; font-size: 0.85rem; margin-bottom: 0.6rem; }
+        .sidebar-card { margin: 1.5rem 1rem 0 1rem; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.25rem; font-size: 0.8rem; color: #6b7280; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .sidebar-card-title { font-weight: 700; color: #1f2937; font-size: 0.9rem; margin-bottom: 0.6rem; }
         .sidebar-card-row { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
         .sidebar-card-row span:last-child { font-weight: 700; color: #1f2937; }
         .sidebar-card-row .status { color: #92400e; }
         .main { flex: 1; padding: 0 4rem 4rem 4rem; background: #ffffff; min-width: 0; }
         .page-header { padding: 3.5rem 0 2.5rem 0; margin-bottom: 2.5rem; border-bottom: 1px solid #e5e7eb; }
-        .badge { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 9999px; font-size: 0.78rem; font-weight: 600; background: #f3f4f6; color: #4b5563; margin-bottom: 1rem; letter-spacing: 0.04em; }
+        .badge { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 9999px; font-size: 0.84rem; font-weight: 600; background: #f3f4f6; color: #4b5563; margin-bottom: 1rem; letter-spacing: 0.04em; }
         .page-title { font-size: 2.2rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.75rem; }
-        .page-subtitle { color: #6b7280; font-size: 1rem; font-weight: 500; }
+        .page-subtitle { color: #6b7280; font-size: 1.05rem; font-weight: 500; }
         .section-card { background: #ffffff; border-radius: 1rem; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 2rem; padding: 2.5rem; transition: box-shadow 0.25s; }
         .section-card:hover { box-shadow: 0 10px 20px -3px rgba(0,0,0,0.09); }
         .section-card.purple-card { background-color: #faf5ff; border: 1px solid #e9d5ff; }
@@ -46,7 +46,7 @@
         .section-title.purple { color: #6d28d9; }
         .section-title.gray { color: #374151; }
         .section-intro { color: #6b7280; margin-bottom: 1.5rem; line-height: 1.8; }
-        .sub-heading { font-size: 1rem; font-weight: 700; color: #1f2937; margin: 1.75rem 0 0.75rem 0; }
+        .sub-heading { font-size: 1.08rem; font-weight: 700; color: #1f2937; margin: 1.75rem 0 0.75rem 0; }
         ul.dot-list { list-style: disc; padding-left: 1.5rem; color: #4b5563; }
         ul.dot-list li { margin-bottom: 0.6rem; line-height: 1.75; }
         ul.dot-list li::marker { color: #10b981; }
@@ -56,23 +56,24 @@
         ul.dot-list.gray-markers li::marker { color: #6b7280; }
         ul.dot-list li strong { color: #111827; }
         .box-green { border-left: 4px solid #10b981; background: #f0fdf4; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
-        .box-green .box-label { font-size: 0.8rem; font-weight: 700; color: #065f46; margin-bottom: 0.5rem; }
+        .box-green .box-label { font-size: 0.86rem; font-weight: 700; color: #065f46; margin-bottom: 0.5rem; }
         .box-blue { border-left: 4px solid #2563eb; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
-        .box-blue .box-label { font-size: 0.8rem; font-weight: 700; color: #1d4ed8; margin-bottom: 0.5rem; }
+        .box-blue .box-label { font-size: 0.86rem; font-weight: 700; color: #1d4ed8; margin-bottom: 0.5rem; }
         .box-red { border-left: 4px solid #ef4444; background: #fef2f2; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
-        .box-red .box-label { font-size: 0.8rem; font-weight: 700; color: #991b1b; margin-bottom: 0.5rem; }
+        .box-red .box-label { font-size: 0.86rem; font-weight: 700; color: #991b1b; margin-bottom: 0.5rem; }
         .box-gray { border-left: 4px solid #9ca3af; background: #f9fafb; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
-        .box-gray .box-label { font-size: 0.8rem; font-weight: 700; color: #374151; margin-bottom: 0.5rem; }
+        .box-gray .box-label { font-size: 0.86rem; font-weight: 700; color: #374151; margin-bottom: 0.5rem; }
         .box-purple { border-left: 4px solid #7c3aed; background: #faf5ff; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
-        .box-purple .box-label { font-size: 0.8rem; font-weight: 700; color: #6d28d9; margin-bottom: 0.5rem; }
-        .reporter-badge { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.6rem; border-radius: 9999px; margin-right: 0.4rem; vertical-align: middle; }
+        .box-purple .box-label { font-size: 0.86rem; font-weight: 700; color: #6d28d9; margin-bottom: 0.5rem; }
+        .reporter-badge { display: inline-block; font-size: 0.74rem; font-weight: 700; padding: 0.15rem 0.6rem; border-radius: 9999px; margin-right: 0.4rem; vertical-align: middle; }
         .reporter-badge.nigo { background: #ecfdf5; color: #065f46; }
         .reporter-badge.takada { background: #eff6ff; color: #1d4ed8; }
-        .data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1rem 0; }
-        .data-table thead th { background: #f9fafb; padding: 0.6rem 1rem; text-align: left; font-weight: 700; color: #374151; border-bottom: 2px solid #e5e7eb; font-size: 0.75rem; letter-spacing: 0.04em; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; margin: 1rem 0; }
+        .data-table thead th { background: #f9fafb; padding: 0.6rem 1rem; text-align: left; font-weight: 700; color: #374151; border-bottom: 2px solid #e5e7eb; font-size: 0.8rem; letter-spacing: 0.04em; }
         .data-table tbody td { padding: 0.6rem 1rem; border-bottom: 1px solid #f3f4f6; color: #4b5563; vertical-align: top; }
         .data-table tbody tr:hover { background: #f9fafb; }
         .page-footer { margin-top: 4rem; padding: 2.5rem 0; border-top: 1px solid #e5e7eb; text-align: center; font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; }
+        .diagram-wrap { margin: 1.5rem 0; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.25rem; overflow-x: auto; }
         @media (max-width: 768px) {
             .layout { flex-direction: column; }
             .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid #e5e7eb; padding: 1.25rem 0 1rem 0; }
@@ -119,7 +120,7 @@
         <div style="display:flex; gap:0.5rem; margin-bottom:2rem; flex-wrap:wrap;">
             <span class="reporter-badge nigo">新後 報告</span>
             <span class="reporter-badge takada">高田 報告</span>
-            <span style="font-size:0.78rem; color:#6b7280;">各セクションの情報源を示します（バッジなしは会議本体の記録）</span>
+            <span style="font-size:0.85rem; color:#6b7280;">各セクションの情報源を示します（バッジなしは会議本体の記録）</span>
         </div>
 
         <!-- 1 Mooovi -->
@@ -134,6 +135,40 @@
                 <li>5月に戸田ボートレース企業団に対して行った請求で、サンクスフェスタの追加配信分の請求先を誤るトラブルが発生した。本来は通常の月額利用料と、追加配信分（別会社である「ボートレース総合管理株式会社」宛て）の2箇所に宛先を分けて、それぞれ1枚ずつ（計2枚）の請求書を出さなければならなかった。しかし、これらをまとめて1枚の請求書として戸田ボートレース企業団に送付してしまい、そのまま全額が支払われてしまった。</li>
                 <li>担当者は先方に状況を一度報告・説明し、先方側でどのような対処（返金や処理）が必要かつ望ましいか、お伺いを立てて回答を待っている状況であると報告した。</li>
             </ul>
+
+            <div class="diagram-wrap">
+                <svg viewBox="0 0 980 300" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family:'Noto Sans JP',sans-serif;">
+                    <text x="0" y="22" font-size="16" font-weight="700" fill="#374151">組織関係と請求ミスの構造</text>
+
+                    <rect x="15" y="50" width="255" height="72" rx="10" fill="#ecfdf5" stroke="#059669" stroke-width="1.5"/>
+                    <text x="142" y="80" font-size="14" font-weight="700" fill="#065f46" text-anchor="middle">戸田ボートレース企業団</text>
+                    <text x="142" y="100" font-size="12" fill="#059669" text-anchor="middle">（戸田競艇／戸田市・蕨市・川口市）</text>
+
+                    <rect x="285" y="50" width="255" height="72" rx="10" fill="#ecfdf5" stroke="#059669" stroke-width="1.5"/>
+                    <text x="412" y="80" font-size="14" font-weight="700" fill="#065f46" text-anchor="middle">埼玉県都市ボートレース企業団</text>
+                    <text x="412" y="100" font-size="12" fill="#059669" text-anchor="middle">（埼玉都市／県内15市）</text>
+
+                    <path d="M142 124 L142 148" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow0818m1)"/>
+                    <text x="80" y="140" font-size="12" fill="#6b7280">100％出資</text>
+
+                    <rect x="15" y="150" width="525" height="65" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+                    <text x="277" y="177" font-size="14" font-weight="700" fill="#1d4ed8" text-anchor="middle">ボートレース総合管理株式会社（管理会社）</text>
+                    <text x="277" y="198" font-size="12" fill="#2563eb" text-anchor="middle">日常的にシステムを直接使用する実務運営会社</text>
+
+                    <rect x="565" y="50" width="400" height="165" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+                    <text x="765" y="78" font-size="14" font-weight="700" fill="#991b1b" text-anchor="middle">5月請求ミスの構造</text>
+                    <text x="590" y="104" font-size="12.5" fill="#4b5563">本来：月額利用料 → 戸田競艇 宛て（1枚）</text>
+                    <text x="590" y="126" font-size="12.5" fill="#4b5563">　　　追加配信分 → 管理会社 宛て（1枚）</text>
+                    <text x="590" y="150" font-size="12.5" fill="#991b1b" font-weight="700">実際：2枚を1枚にまとめて</text>
+                    <text x="590" y="172" font-size="12.5" fill="#991b1b" font-weight="700">　　　戸田競艇へ送付</text>
+                    <text x="590" y="196" font-size="12.5" fill="#991b1b" font-weight="700">→ 全額支払われてしまった</text>
+
+                    <text x="277" y="255" font-size="12.5" fill="#6b7280" text-anchor="middle">戸田競艇が古いシステムを</text>
+                    <text x="277" y="275" font-size="12.5" fill="#6b7280" text-anchor="middle">使い続ける背景には、この3者の複雑さが影響している</text>
+
+                    <defs><marker id="arrow0818m1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9ca3af"/></marker></defs>
+                </svg>
+            </div>
 
             <div class="box-red">
                 <p class="box-label">【会議における指摘・大至急の指示】</p>
@@ -175,38 +210,38 @@
                 <li>自治体（意思決定に一番時間がかかる決済者）に対していつアプローチを開始するかについて、明日中（翌日）に日程を決定する方針となった。</li>
             </ul>
 
-            <div style="margin: 1.5rem 0;">
-                <svg viewBox="0 0 900 220" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family:'Noto Sans JP',sans-serif;">
-                    <text x="0" y="18" font-size="13" font-weight="700" fill="#374151">移行スケジュール　逆算イメージ</text>
+            <div class="diagram-wrap">
+                <svg viewBox="0 0 1020 280" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family:'Noto Sans JP',sans-serif;">
+                    <text x="0" y="22" font-size="16" font-weight="700" fill="#374151">移行スケジュール　逆算イメージ</text>
 
-                    <text x="0" y="55" font-size="11.5" font-weight="700" fill="#991b1b">開発視点（このままだと間に合わない）</text>
-                    <rect x="0" y="65" width="220" height="40" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
-                    <text x="110" y="90" font-size="11" fill="#991b1b" text-anchor="middle">開発継続（3〜4週間）</text>
-                    <path d="M223 85 L253 85" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow0818r)"/>
-                    <rect x="256" y="65" width="140" height="40" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
-                    <text x="326" y="90" font-size="11" fill="#991b1b" text-anchor="middle">10月完成</text>
-                    <path d="M399 85 L429 85" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow0818r)"/>
-                    <rect x="432" y="65" width="140" height="40" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
-                    <text x="502" y="90" font-size="11" fill="#991b1b" text-anchor="middle">11月営業開始</text>
-                    <path d="M575 85 L605 85" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow0818r)"/>
-                    <rect x="608" y="65" width="180" height="40" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
-                    <text x="698" y="85" font-size="11" font-weight="700" fill="#991b1b" text-anchor="middle">自治体の判断が</text>
-                    <text x="698" y="99" font-size="11" font-weight="700" fill="#991b1b" text-anchor="middle">間に合わない</text>
+                    <text x="0" y="65" font-size="14" font-weight="700" fill="#991b1b">開発視点（このままだと間に合わない）</text>
+                    <rect x="0" y="78" width="250" height="58" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+                    <text x="125" y="112" font-size="13" fill="#991b1b" text-anchor="middle">開発継続（3〜4週間）</text>
+                    <path d="M253 107 L283 107" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow0818r)"/>
+                    <rect x="286" y="78" width="160" height="58" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+                    <text x="366" y="112" font-size="13" fill="#991b1b" text-anchor="middle">10月完成</text>
+                    <path d="M449 107 L479 107" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow0818r)"/>
+                    <rect x="482" y="78" width="160" height="58" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+                    <text x="562" y="112" font-size="13" fill="#991b1b" text-anchor="middle">11月営業開始</text>
+                    <path d="M645 107 L675 107" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow0818r)"/>
+                    <rect x="678" y="78" width="220" height="58" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+                    <text x="788" y="103" font-size="13" font-weight="700" fill="#991b1b" text-anchor="middle">自治体の判断が</text>
+                    <text x="788" y="123" font-size="13" font-weight="700" fill="#991b1b" text-anchor="middle">間に合わない</text>
 
-                    <text x="0" y="150" font-size="11.5" font-weight="700" fill="#065f46">逆算視点（採用する方針）</text>
-                    <rect x="0" y="160" width="180" height="40" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
-                    <text x="90" y="185" font-size="11" fill="#065f46" text-anchor="middle">9月中アナウンス開始</text>
-                    <path d="M183 180 L213 180" stroke="#10b981" stroke-width="2" marker-end="url(#arrow0818g)"/>
-                    <rect x="216" y="160" width="220" height="40" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
-                    <text x="326" y="180" font-size="10.5" fill="#065f46" text-anchor="middle">未完成でもイメージで</text>
-                    <text x="326" y="194" font-size="10.5" fill="#065f46" text-anchor="middle">第1関門突破</text>
-                    <path d="M439 180 L469 180" stroke="#10b981" stroke-width="2" marker-end="url(#arrow0818g)"/>
-                    <rect x="472" y="160" width="200" height="40" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
-                    <text x="572" y="180" font-size="10.5" fill="#065f46" text-anchor="middle">自治体の意思決定</text>
-                    <text x="572" y="194" font-size="10.5" fill="#065f46" text-anchor="middle">猶予を確保</text>
-                    <path d="M675 180 L705 180" stroke="#10b981" stroke-width="2" marker-end="url(#arrow0818g)"/>
-                    <rect x="708" y="160" width="180" height="40" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="2"/>
-                    <text x="798" y="185" font-size="11" font-weight="700" fill="#065f46" text-anchor="middle">開発は並行して継続</text>
+                    <text x="0" y="188" font-size="14" font-weight="700" fill="#065f46">逆算視点（採用する方針）</text>
+                    <rect x="0" y="200" width="210" height="58" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+                    <text x="105" y="234" font-size="13" fill="#065f46" text-anchor="middle">9月中アナウンス開始</text>
+                    <path d="M213 229 L243 229" stroke="#10b981" stroke-width="2" marker-end="url(#arrow0818g)"/>
+                    <rect x="246" y="200" width="250" height="58" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+                    <text x="371" y="224" font-size="12.5" fill="#065f46" text-anchor="middle">未完成でもイメージで</text>
+                    <text x="371" y="244" font-size="12.5" fill="#065f46" text-anchor="middle">第1関門突破</text>
+                    <path d="M499 229 L529 229" stroke="#10b981" stroke-width="2" marker-end="url(#arrow0818g)"/>
+                    <rect x="532" y="200" width="230" height="58" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+                    <text x="647" y="224" font-size="12.5" fill="#065f46" text-anchor="middle">自治体の意思決定</text>
+                    <text x="647" y="244" font-size="12.5" fill="#065f46" text-anchor="middle">猶予を確保</text>
+                    <path d="M765 229 L795 229" stroke="#10b981" stroke-width="2" marker-end="url(#arrow0818g)"/>
+                    <rect x="798" y="200" width="210" height="58" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="2"/>
+                    <text x="903" y="234" font-size="13" font-weight="700" fill="#065f46" text-anchor="middle">開発は並行して継続</text>
 
                     <defs>
                         <marker id="arrow0818r" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#ef4444"/></marker>
@@ -240,7 +275,42 @@
 
             <div class="box-red">
                 <p class="box-label">【未解決の課題：数量変更の同期問題】</p>
-                <p style="color:#4b5563; font-size:0.9rem;">現場で精算する際、システムから送られた精算内容を、スタッフが手動で商品の数量を変更（増減）してスマレジで精算を行うケースが想定できていなかった。そのため、数量変更の結果が予約システム側に返されず、スマレジと予約システムの間で商品数に差が出てしまい、最終的にオービックへ登録する集計データにも差が生じている。主に延長料金で発生している。</p>
+                <p style="color:#4b5563; font-size:0.96rem;">現場で精算する際、システムから送られた精算内容を、スタッフが手動で商品の数量を変更（増減）してスマレジで精算を行うケースが想定できていなかった。そのため、数量変更の結果が予約システム側に返されず、スマレジと予約システムの間で商品数に差が出てしまい、最終的にオービックへ登録する集計データにも差が生じている。主に延長料金で発生している。</p>
+            </div>
+
+            <div class="diagram-wrap">
+                <svg viewBox="0 0 980 240" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family:'Noto Sans JP',sans-serif;">
+                    <text x="0" y="22" font-size="16" font-weight="700" fill="#374151">精算数の不一致　発生箇所</text>
+
+                    <rect x="15" y="55" width="200" height="70" rx="10" fill="#ecfdf5" stroke="#059669" stroke-width="1.5"/>
+                    <text x="115" y="86" font-size="14" font-weight="700" fill="#065f46" text-anchor="middle">予約システム</text>
+                    <text x="115" y="106" font-size="12" fill="#059669" text-anchor="middle">精算内容を送信</text>
+
+                    <path d="M218 90 L248 90" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow0818b1)"/>
+
+                    <rect x="251" y="55" width="200" height="70" rx="10" fill="#fffbeb" stroke="#b45309" stroke-width="1.5"/>
+                    <text x="351" y="80" font-size="13.5" font-weight="700" fill="#92400e" text-anchor="middle">スマレジ</text>
+                    <text x="351" y="100" font-size="11.5" fill="#92400e" text-anchor="middle">現場でスタッフが</text>
+                    <text x="351" y="116" font-size="11.5" fill="#92400e" text-anchor="middle">手動で数量変更</text>
+
+                    <path d="M351 128 L351 152" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 3"/>
+                    <text x="351" y="172" font-size="12.5" font-weight="700" fill="#dc2626" text-anchor="middle">変更結果が</text>
+                    <text x="351" y="190" font-size="12.5" font-weight="700" fill="#dc2626" text-anchor="middle">予約システムへ戻らない</text>
+
+                    <path d="M454 90 L484 90" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow0818b1)"/>
+
+                    <rect x="487" y="55" width="200" height="70" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+                    <text x="587" y="86" font-size="14" font-weight="700" fill="#991b1b" text-anchor="middle">オービック</text>
+                    <text x="587" y="106" font-size="12" fill="#991b1b" text-anchor="middle">集計データに差異発生</text>
+
+                    <rect x="717" y="40" width="250" height="120" rx="10" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.5"/>
+                    <text x="842" y="66" font-size="13" font-weight="700" fill="#374151" text-anchor="middle">暫定運用</text>
+                    <text x="737" y="92" font-size="11.5" fill="#6b7280">毎日19時に集計報告を実施</text>
+                    <text x="737" y="112" font-size="11.5" fill="#6b7280">延長料金を手動修正した</text>
+                    <text x="737" y="132" font-size="11.5" fill="#6b7280">予約IDを店舗がメモ</text>
+
+                    <defs><marker id="arrow0818b1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9ca3af"/></marker></defs>
+                </svg>
             </div>
 
             <p class="sub-heading">課題解決の見積もりと請求・利益調整</p>
@@ -277,7 +347,7 @@
 
             <div class="box-gray">
                 <p class="box-label">【継続課題】<span class="reporter-badge takada">高田 報告</span></p>
-                <p style="color:#4b5563; font-size:0.9rem;">全体の売上の底上げのための策および今後の売上傾向としての見極めを情報収集。独占販売の解除などダイナミックな戦略が望まれる。そのための動きとして一広側とのヒアリングやその他販売ルートや広告商品について検討が必要（他メディア展開・他の販売ルート開拓など）。キャンペーンでの件数増でもアカウントおよびキャンペーン単価（50,000円/案件）。</p>
+                <p style="color:#4b5563; font-size:0.96rem;">全体の売上の底上げのための策および今後の売上傾向としての見極めを情報収集。独占販売の解除などダイナミックな戦略が望まれる。そのための動きとして一広側とのヒアリングやその他販売ルートや広告商品について検討が必要（他メディア展開・他の販売ルート開拓など）。キャンペーンでの件数増でもアカウントおよびキャンペーン単価（50,000円/案件）。</p>
             </div>
 
             <p class="sub-heading">8月実績 <span class="reporter-badge takada">高田 報告</span></p>
@@ -306,6 +376,38 @@
                 <li>通常の平均的な配信額は1アカウントあたり月2万5,000円程度のため、10月に2万5,000円分を配信した場合、前月の配信実績に基づき4万円を上限とするクーポンが適用され、10月分は実質「無料（100%オフ）」となる仕組み。</li>
                 <li>「9月に配信すれば、翌月（10月）分が実質無料（または半額）になる」というメリットを強く打ち出して営業（掘り起こし）を行う方針。早急に対象リストを整理し、来週中にはアナウンスのタイミングや詳細条件（ディスカウント率など、杉山氏等と相談）を決定してキャンペーンを開始する。</li>
             </ul>
+
+            <div class="diagram-wrap">
+                <svg viewBox="0 0 980 220" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family:'Noto Sans JP',sans-serif;">
+                    <text x="0" y="22" font-size="16" font-weight="700" fill="#374151">掘り起こしキャンペーン　仕組み</text>
+
+                    <rect x="15" y="55" width="270" height="88" rx="10" fill="#ecfdf5" stroke="#059669" stroke-width="1.5"/>
+                    <text x="150" y="85" font-size="14" font-weight="700" fill="#065f46" text-anchor="middle">9月　配信実績を作る</text>
+                    <text x="150" y="106" font-size="12" fill="#059669" text-anchor="middle">対象：休眠・未稼働アカウント</text>
+                    <text x="150" y="124" font-size="12" fill="#059669" text-anchor="middle">（約200以上）月2.5万円目安</text>
+
+                    <path d="M288 99 L318 99" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow0818l1)"/>
+                    <text x="303" y="88" font-size="12" fill="#6b7280" text-anchor="middle">実績に応じ</text>
+
+                    <rect x="321" y="55" width="240" height="88" rx="10" fill="#f0fdf4" stroke="#10b981" stroke-width="2"/>
+                    <text x="441" y="85" font-size="14" font-weight="700" fill="#065f46" text-anchor="middle">クーポン適用</text>
+                    <text x="441" y="106" font-size="12" fill="#059669" text-anchor="middle">最大4万円分・上限あり</text>
+                    <text x="441" y="124" font-size="12" fill="#059669" text-anchor="middle">配信原価　最大50%減</text>
+
+                    <path d="M564 99 L594 99" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow0818l1)"/>
+                    <text x="579" y="88" font-size="12" fill="#6b7280" text-anchor="middle">翌月末まで</text>
+
+                    <rect x="597" y="55" width="270" height="88" rx="10" fill="#ecfdf5" stroke="#059669" stroke-width="1.5"/>
+                    <text x="732" y="85" font-size="14" font-weight="700" fill="#065f46" text-anchor="middle">10月　配信</text>
+                    <text x="732" y="106" font-size="12" fill="#059669" text-anchor="middle">2.5万円分の配信なら</text>
+                    <text x="732" y="124" font-size="12" fill="#059669" text-anchor="middle">実質「無料（100%オフ）」</text>
+
+                    <text x="490" y="175" font-size="12.5" fill="#6b7280" text-anchor="middle">既存287アカウントも対象。既存アクティブ約80件</text>
+                    <text x="490" y="195" font-size="12.5" fill="#6b7280" text-anchor="middle">（うち64件が毎月継続）とは別枠で掘り起こし</text>
+
+                    <defs><marker id="arrow0818l1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9ca3af"/></marker></defs>
+                </svg>
+            </div>
 
             <p class="sub-heading">BWとの取り組み・一広側との取り組み <span class="reporter-badge takada">高田 報告</span></p>
             <ul class="dot-list">
@@ -359,6 +461,35 @@
                 <li>出来上がったデモを引っ提げ、経営層（ボス）自らが木下氏（瑞鳳のキーマン）のところへ説明に行き、直接提案を行うことが決定した。</li>
             </ul>
 
+            <div class="diagram-wrap">
+                <svg viewBox="0 0 1060 180" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family:'Noto Sans JP',sans-serif;">
+                    <text x="0" y="22" font-size="16" font-weight="700" fill="#374151">CODATIアカデミー　教材登録からテスト生成まで</text>
+
+                    <rect x="15" y="55" width="230" height="88" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+                    <text x="130" y="90" font-size="13.5" font-weight="700" fill="#6d28d9" text-anchor="middle">教材D&amp;D登録</text>
+                    <text x="130" y="112" font-size="12" fill="#7c3aed" text-anchor="middle">PDF・動画・YouTube</text>
+                    <path d="M248 99 L278 99" stroke="#c4b5fd" stroke-width="1.5" marker-end="url(#arrow0818c1)"/>
+
+                    <rect x="281" y="55" width="230" height="88" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+                    <text x="396" y="90" font-size="13.5" font-weight="700" fill="#6d28d9" text-anchor="middle">AIが学習</text>
+                    <text x="396" y="112" font-size="12" fill="#7c3aed" text-anchor="middle">ナレッジ化</text>
+                    <path d="M514 99 L544 99" stroke="#c4b5fd" stroke-width="1.5" marker-end="url(#arrow0818c1)"/>
+
+                    <rect x="547" y="55" width="250" height="88" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+                    <text x="672" y="82" font-size="13.5" font-weight="700" fill="#6d28d9" text-anchor="middle">対象者・難易度を指定</text>
+                    <text x="672" y="103" font-size="12" fill="#7c3aed" text-anchor="middle">店長/営業/新人/管理職</text>
+                    <text x="672" y="122" font-size="12" fill="#7c3aed" text-anchor="middle">初級/中級/上級</text>
+                    <path d="M800 99 L830 99" stroke="#c4b5fd" stroke-width="1.5" marker-end="url(#arrow0818c1)"/>
+
+                    <rect x="833" y="55" width="215" height="88" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+                    <text x="940" y="82" font-size="13.5" font-weight="700" fill="#4c1d95" text-anchor="middle">テスト自動生成</text>
+                    <text x="940" y="103" font-size="12" fill="#7c3aed" text-anchor="middle">丸バツ/記述/複数選択</text>
+                    <text x="940" y="122" font-size="12" fill="#7c3aed" text-anchor="middle">→受講管理・人的評価へ</text>
+
+                    <defs><marker id="arrow0818c1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a78bfa"/></marker></defs>
+                </svg>
+            </div>
+
             <p class="sub-heading">サンプル手配業務自動化デモ（飯田氏の業務）</p>
             <ul class="dot-list purple-markers">
                 <li>これまで手動で行われていた、非常に煩雑なサンプル手配業務をほぼ完全に自動化するシステムがデモされた。</li>
@@ -368,38 +499,39 @@
                 <li>差分取り込み機能：1日1回などのタイミングで、前回からの差分データだけを取り込んで処理することも可能。担当者が1日中画面に張り付く必要がなくなり、作業負荷が劇的に削減される。</li>
             </ul>
 
-            <div style="margin: 1.5rem 0;">
-                <svg viewBox="0 0 940 210" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family:'Noto Sans JP',sans-serif;">
-                    <text x="0" y="18" font-size="13" font-weight="700" fill="#374151">サンプル手配業務　自動化フロー</text>
+            <div class="diagram-wrap">
+                <svg viewBox="0 0 1060 250" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family:'Noto Sans JP',sans-serif;">
+                    <text x="0" y="22" font-size="16" font-weight="700" fill="#374151">サンプル手配業務　自動化フロー</text>
 
-                    <rect x="15" y="50" width="150" height="70" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
-                    <text x="90" y="80" font-size="12" font-weight="700" fill="#6d28d9" text-anchor="middle">エクセル発注</text>
-                    <text x="90" y="98" font-size="11" font-weight="700" fill="#6d28d9" text-anchor="middle">データ入力</text>
-                    <path d="M168 85 L192 85" stroke="#c4b5fd" stroke-width="1.5" marker-end="url(#arrow0818p)"/>
+                    <rect x="15" y="58" width="170" height="88" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+                    <text x="100" y="96" font-size="13.5" font-weight="700" fill="#6d28d9" text-anchor="middle">エクセル発注</text>
+                    <text x="100" y="118" font-size="12.5" font-weight="700" fill="#6d28d9" text-anchor="middle">データ入力</text>
+                    <path d="M188 102 L212 102" stroke="#c4b5fd" stroke-width="1.5" marker-end="url(#arrow0818p)"/>
 
-                    <rect x="195" y="50" width="150" height="70" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
-                    <text x="270" y="80" font-size="12" font-weight="700" fill="#6d28d9" text-anchor="middle">在庫CSVと</text>
-                    <text x="270" y="98" font-size="12" font-weight="700" fill="#6d28d9" text-anchor="middle">自動照合</text>
-                    <path d="M348 85 L372 85" stroke="#c4b5fd" stroke-width="1.5" marker-end="url(#arrow0818p)"/>
+                    <rect x="215" y="58" width="170" height="88" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+                    <text x="300" y="96" font-size="13.5" font-weight="700" fill="#6d28d9" text-anchor="middle">在庫CSVと</text>
+                    <text x="300" y="118" font-size="13.5" font-weight="700" fill="#6d28d9" text-anchor="middle">自動照合</text>
+                    <path d="M388 102 L412 102" stroke="#c4b5fd" stroke-width="1.5" marker-end="url(#arrow0818p)"/>
 
-                    <rect x="375" y="50" width="150" height="70" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
-                    <text x="450" y="75" font-size="11.5" font-weight="700" fill="#6d28d9" text-anchor="middle">自動振分</text>
-                    <text x="450" y="93" font-size="10.5" fill="#7c3aed" text-anchor="middle">センター/</text>
-                    <text x="450" y="108" font-size="10.5" fill="#7c3aed" text-anchor="middle">メーカー手配</text>
-                    <path d="M528 85 L552 85" stroke="#c4b5fd" stroke-width="1.5" marker-end="url(#arrow0818p)"/>
+                    <rect x="415" y="58" width="170" height="88" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+                    <text x="500" y="90" font-size="13" font-weight="700" fill="#6d28d9" text-anchor="middle">自動振分</text>
+                    <text x="500" y="111" font-size="12" fill="#7c3aed" text-anchor="middle">センター/</text>
+                    <text x="500" y="129" font-size="12" fill="#7c3aed" text-anchor="middle">メーカー手配</text>
+                    <path d="M588 102 L612 102" stroke="#c4b5fd" stroke-width="1.5" marker-end="url(#arrow0818p)"/>
 
-                    <rect x="555" y="50" width="150" height="70" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
-                    <text x="630" y="80" font-size="12" font-weight="700" fill="#6d28d9" text-anchor="middle">承認ボタン→</text>
-                    <text x="630" y="98" font-size="12" font-weight="700" fill="#6d28d9" text-anchor="middle">メール自動生成</text>
-                    <path d="M708 85 L732 85" stroke="#c4b5fd" stroke-width="1.5" marker-end="url(#arrow0818p)"/>
+                    <rect x="615" y="58" width="170" height="88" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+                    <text x="700" y="96" font-size="13.5" font-weight="700" fill="#6d28d9" text-anchor="middle">承認ボタン→</text>
+                    <text x="700" y="118" font-size="13.5" font-weight="700" fill="#6d28d9" text-anchor="middle">メール自動生成</text>
+                    <path d="M788 102 L812 102" stroke="#c4b5fd" stroke-width="1.5" marker-end="url(#arrow0818p)"/>
 
-                    <rect x="735" y="50" width="190" height="70" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
-                    <text x="830" y="75" font-size="12" font-weight="700" fill="#4c1d95" text-anchor="middle">Outlook連携</text>
-                    <text x="830" y="93" font-size="10.5" fill="#7c3aed" text-anchor="middle">返信メールから</text>
-                    <text x="830" y="108" font-size="10.5" fill="#7c3aed" text-anchor="middle">ステータス自動更新</text>
+                    <rect x="815" y="58" width="230" height="88" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+                    <text x="930" y="90" font-size="13.5" font-weight="700" fill="#4c1d95" text-anchor="middle">Outlook連携</text>
+                    <text x="930" y="111" font-size="12" fill="#7c3aed" text-anchor="middle">返信メールから</text>
+                    <text x="930" y="129" font-size="12" fill="#7c3aed" text-anchor="middle">ステータス自動更新</text>
 
-                    <rect x="15" y="150" width="910" height="40" rx="8" fill="#faf5ff" stroke="#7c3aed" stroke-width="1"/>
-                    <text x="30" y="174" font-size="11.5" fill="#4c1d95">差分取り込み機能：1日1回、前回からの差分データのみ処理。依頼数36件／センター手配14件／自動化可能率68.6%（画面上でリアルタイム可視化）</text>
+                    <rect x="15" y="175" width="1030" height="55" rx="8" fill="#faf5ff" stroke="#7c3aed" stroke-width="1"/>
+                    <text x="30" y="197" font-size="12.5" fill="#4c1d95">差分取り込み機能：1日1回、前回からの差分データのみ処理。</text>
+                    <text x="30" y="217" font-size="12.5" fill="#4c1d95">依頼数36件／センター手配14件／自動化可能率68.6%（画面上でリアルタイム可視化）</text>
 
                     <defs><marker id="arrow0818p" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a78bfa"/></marker></defs>
                 </svg>
@@ -416,7 +548,7 @@
 
             <div class="box-gray">
                 <p class="box-label">【kintone発注システムの不要化（驚きの予見）】</p>
-                <p style="color:#4b5563; font-size:0.9rem;">この自動化システムが本格導入され、外部とのコミュニケーション（メールのやり取りや差分確認など）がすべてAIの裏側で処理されるようになれば、現在導入しようとしている発注用kintoneシステム自体がそもそも不要になる（メールとAIだけで手配が完結するため）という予言が示された。すでに発注用システム開発としてkintoneの導入費用を一部もらっているため、まずは一度稼働させて本番運用を行うが、将来的には「これ、AI自動化にすればkintone自体が不要になってさらに安く運用できますよ」と顧客側に気づかせる形で、当社の自動化システムへの切り替えを促していく。</p>
+                <p style="color:#4b5563; font-size:0.96rem;">この自動化システムが本格導入され、外部とのコミュニケーション（メールのやり取りや差分確認など）がすべてAIの裏側で処理されるようになれば、現在導入しようとしている発注用kintoneシステム自体がそもそも不要になる（メールとAIだけで手配が完結するため）という予言が示された。すでに発注用システム開発としてkintoneの導入費用を一部もらっているため、まずは一度稼働させて本番運用を行うが、将来的には「これ、AI自動化にすればkintone自体が不要になってさらに安く運用できますよ」と顧客側に気づかせる形で、当社の自動化システムへの切り替えを促していく。</p>
             </div>
         </section>
 
