@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKW会議：2026年8月18日</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif; background-color: #ffffff; color: #1f2937; line-height: 1.8; font-size: 15px; }
+        .layout { display: flex; min-height: 100vh; }
+        .sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; background-color: #f9fafb; border-right: 1px solid #e5e7eb; display: flex; flex-direction: column; padding: 2rem 0 3rem 0; }
+        .sidebar-label { font-size: 0.7rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; padding: 0 1.5rem; margin-bottom: 1rem; }
+        .sidebar-links { display: flex; flex-direction: column; }
+        .sidebar-link { display: block; padding: 0.45rem 1.5rem; font-size: 0.8rem; color: #6b7280; text-decoration: none; border-radius: 0.5rem; margin: 0.1rem 0.5rem; transition: background 0.18s, color 0.18s; }
+        .sidebar-link:hover { background-color: #e5e7eb; color: #111827; }
+        .sidebar-link.active { background-color: #ecfdf5; color: #065f46; font-weight: 700; }
+        .sidebar-link.active-red { background-color: #fef2f2; color: #991b1b; font-weight: 700; }
+        .sidebar-link.active-blue { background-color: #eff6ff; color: #1d4ed8; font-weight: 700; }
+        .sidebar-link.active-purple { background-color: #f5f3ff; color: #6d28d9; font-weight: 700; }
+        .sidebar-link.active-gray { background-color: #f3f4f6; color: #374151; font-weight: 700; }
+        .sidebar-card { margin: 1.5rem 1rem 0 1rem; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.25rem; font-size: 0.75rem; color: #6b7280; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .sidebar-card-title { font-weight: 700; color: #1f2937; font-size: 0.85rem; margin-bottom: 0.6rem; }
+        .sidebar-card-row { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
+        .sidebar-card-row span:last-child { font-weight: 700; color: #1f2937; }
+        .sidebar-card-row .status { color: #92400e; }
+        .main { flex: 1; padding: 0 4rem 4rem 4rem; background: #ffffff; min-width: 0; }
+        .page-header { padding: 3.5rem 0 2.5rem 0; margin-bottom: 2.5rem; border-bottom: 1px solid #e5e7eb; }
+        .badge { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 9999px; font-size: 0.78rem; font-weight: 600; background: #f3f4f6; color: #4b5563; margin-bottom: 1rem; letter-spacing: 0.04em; }
+        .page-title { font-size: 2.2rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.75rem; }
+        .page-subtitle { color: #6b7280; font-size: 1rem; font-weight: 500; }
+        .section-card { background: #ffffff; border-radius: 1rem; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 2rem; padding: 2.5rem; transition: box-shadow 0.25s; }
+        .section-card:hover { box-shadow: 0 10px 20px -3px rgba(0,0,0,0.09); }
+        .section-card.purple-card { background-color: #faf5ff; border: 1px solid #e9d5ff; }
+        .section-card.gray-card { background-color: #f9fafb; border: 1px solid #e5e7eb; }
+        .section-head { display: flex; align-items: center; margin-bottom: 1.75rem; }
+        .section-bar { width: 6px; height: 2rem; border-radius: 9999px; margin-right: 1rem; flex-shrink: 0; }
+        .bar-green { background: #059669; }
+        .bar-blue { background: #2563eb; }
+        .bar-red { background: #dc2626; }
+        .bar-purple { background: #7c3aed; }
+        .bar-gray { background: #6b7280; }
+        .section-title { font-size: 1.35rem; font-weight: 700; color: #111827; }
+        .section-title.blue { color: #1d4ed8; }
+        .section-title.green { color: #065f46; }
+        .section-title.red { color: #dc2626; }
+        .section-title.purple { color: #6d28d9; }
+        .section-title.gray { color: #374151; }
+        .section-intro { color: #6b7280; margin-bottom: 1.5rem; line-height: 1.8; }
+        .sub-heading { font-size: 1rem; font-weight: 700; color: #1f2937; margin: 1.75rem 0 0.75rem 0; }
+        ul.dot-list { list-style: disc; padding-left: 1.5rem; color: #4b5563; }
+        ul.dot-list li { margin-bottom: 0.6rem; line-height: 1.75; }
+        ul.dot-list li::marker { color: #10b981; }
+        ul.dot-list.blue-markers li::marker { color: #2563eb; }
+        ul.dot-list.red-markers li::marker { color: #ef4444; }
+        ul.dot-list.purple-markers li::marker { color: #8b5cf6; }
+        ul.dot-list.gray-markers li::marker { color: #6b7280; }
+        ul.dot-list li strong { color: #111827; }
+        .box-green { border-left: 4px solid #10b981; background: #f0fdf4; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-green .box-label { font-size: 0.8rem; font-weight: 700; color: #065f46; margin-bottom: 0.5rem; }
+        .box-blue { border-left: 4px solid #2563eb; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-blue .box-label { font-size: 0.8rem; font-weight: 700; color: #1d4ed8; margin-bottom: 0.5rem; }
+        .box-red { border-left: 4px solid #ef4444; background: #fef2f2; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-red .box-label { font-size: 0.8rem; font-weight: 700; color: #991b1b; margin-bottom: 0.5rem; }
+        .box-gray { border-left: 4px solid #9ca3af; background: #f9fafb; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-gray .box-label { font-size: 0.8rem; font-weight: 700; color: #374151; margin-bottom: 0.5rem; }
+        .box-purple { border-left: 4px solid #7c3aed; background: #faf5ff; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-purple .box-label { font-size: 0.8rem; font-weight: 700; color: #6d28d9; margin-bottom: 0.5rem; }
+        .reporter-badge { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.6rem; border-radius: 9999px; margin-right: 0.4rem; vertical-align: middle; }
+        .reporter-badge.nigo { background: #ecfdf5; color: #065f46; }
+        .reporter-badge.takada { background: #eff6ff; color: #1d4ed8; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1rem 0; }
+        .data-table thead th { background: #f9fafb; padding: 0.6rem 1rem; text-align: left; font-weight: 700; color: #374151; border-bottom: 2px solid #e5e7eb; font-size: 0.75rem; letter-spacing: 0.04em; }
+        .data-table tbody td { padding: 0.6rem 1rem; border-bottom: 1px solid #f3f4f6; color: #4b5563; vertical-align: top; }
+        .data-table tbody tr:hover { background: #f9fafb; }
+        .page-footer { margin-top: 4rem; padding: 2.5rem 0; border-top: 1px solid #e5e7eb; text-align: center; font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; }
+        @media (max-width: 768px) {
+            .layout { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid #e5e7eb; padding: 1.25rem 0 1rem 0; }
+            .sidebar-card { display: none; }
+            .main { padding: 0 1.25rem 3rem 1.25rem; }
+            .page-header { padding: 2rem 0 1.5rem 0; }
+            .page-title { font-size: 1.5rem; }
+            .section-card { padding: 1.5rem; }
+            .sidebar-links { flex-direction: row; flex-wrap: wrap; padding: 0 0.75rem; gap: 0.25rem; }
+            .sidebar-link { margin: 0; padding: 0.3rem 0.7rem; font-size: 0.72rem; }
+            .sidebar-label { padding: 0 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+    <aside class="sidebar">
+        <p class="sidebar-label">INDEX / 目次</p>
+        <div class="sidebar-links">
+            <a href="#s1" class="sidebar-link">1. Mooovi　請求トラブルと移行スケジュール逆算</a>
+            <a href="#s2" class="sidebar-link">2. ボーネルンド　精算差異と交渉戦略</a>
+            <a href="#s3" class="sidebar-link">3. LINE広告　自動化稼働と掘り起こしキャンペーン</a>
+            <a href="#s4" class="sidebar-link">4. 広告商品開発</a>
+            <a href="#s5" class="sidebar-link">5. CODATI　アカデミー機能デモと自動化営業戦略</a>
+            <a href="#s6" class="sidebar-link">6. その他・組織運営</a>
+            <a href="#s7" class="sidebar-link">7. アクションアイテム（TODO）</a>
+        </div>
+        <div class="sidebar-card">
+            <p class="sidebar-card-title">会議情報</p>
+            <div class="sidebar-card-row"><span>会議名:</span><span>TKW定例会議</span></div>
+            <div class="sidebar-card-row"><span>日時:</span><span>2026年8月18日</span></div>
+            <div class="sidebar-card-row"><span>形式:</span><span>原文保存版</span></div>
+            <div class="sidebar-card-row"><span>状態:</span><span class="status">初稿（未確認）</span></div>
+        </div>
+    </aside>
+
+    <div class="main">
+        <header class="page-header">
+            <span class="badge">MEETING MINUTES</span>
+            <h1 class="page-title">TKW会議：2026年8月18日</h1>
+            <p class="page-subtitle">Mooovi請求トラブル対応・戸田競艇移行スケジュール逆算 / ボーネルンド精算差異 / LINE広告自動化稼働 / CODATIアカデミー機能デモ　詳細記録</p>
+        </header>
+
+        <div style="display:flex; gap:0.5rem; margin-bottom:2rem; flex-wrap:wrap;">
+            <span class="reporter-badge nigo">新後 報告</span>
+            <span class="reporter-badge takada">高田 報告</span>
+            <span style="font-size:0.78rem; color:#6b7280;">各セクションの情報源を示します（バッジなしは会議本体の記録）</span>
+        </div>
+
+        <!-- 1 Mooovi -->
+        <section id="s1" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">1. Mooovi　請求トラブルと移行スケジュール逆算</h2>
+            </div>
+
+            <p class="sub-heading">戸田競艇企業団　5月請求ミス</p>
+            <ul class="dot-list">
+                <li>5月に戸田ボートレース企業団に対して行った請求で、サンクスフェスタの追加配信分の請求先を誤るトラブルが発生した。本来は通常の月額利用料と、追加配信分（別会社である「ボートレース総合管理株式会社」宛て）の2箇所に宛先を分けて、それぞれ1枚ずつ（計2枚）の請求書を出さなければならなかった。しかし、これらをまとめて1枚の請求書として戸田ボートレース企業団に送付してしまい、そのまま全額が支払われてしまった。</li>
+                <li>担当者は先方に状況を一度報告・説明し、先方側でどのような対処（返金や処理）が必要かつ望ましいか、お伺いを立てて回答を待っている状況であると報告した。</li>
+            </ul>
+
+            <div class="box-red">
+                <p class="box-label">【会議における指摘・大至急の指示】</p>
+                <ul class="dot-list red-markers" style="margin-bottom:0;">
+                    <li>「今月内とかじゃ困るぐらい急いで欲しい」「そんな悠長な感じでやってほしくない」と、迅速な処理を強く求められた。</li>
+                    <li>先方の出方をただ待つのではなく、こちらから具体的な事実関係を整理した提案を行うべきであると指示された。</li>
+                    <li>本件においては、戸田ボートレース企業団が支払っていない「未納分（2つ）」がそもそも存在している。単に「誤請求分をどう返金するか」だけを考えるのではなく、未納分も含めて「プラスマイナス（行って来い）」の相殺処理を整理し、どちらが多いかを把握した上で話をまとめる必要がある。</li>
+                    <li>具体的には、「これが未納で、これが過重（過多）で、差し引きの差分はこれだけマイナス（あるいはプラス）である」という事実を明確にまとめた事実整理メモを作成する。</li>
+                    <li>こちら側で状況をすべて整理し、先方には「差分をどう処理するか（返金か追加徴収か）」を判断してもらうだけの状態にして大至急連絡を取ること、そしてこうしたトラブル時にすぐに判断して動かせる能力を身につけることが指示された。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">埼玉県都市ボートレース企業団（埼玉都市）の重複入金トラブル</p>
+            <ul class="dot-list">
+                <li>埼玉都市についても、何月であるかは現在詳細を調査中であるが、同じ金額を重複して2回入金（過剰に入金）している月があることが判明した。事実関係を確認した上で、過剰に受け取っている分について適切な対処と報告を行う。</li>
+            </ul>
+
+            <p class="sub-heading">Mooovi内製顧客管理システム　開発進捗</p>
+            <ul class="dot-list">
+                <li>担当者の手元環境での稼働再現は完了しており、現在はNFC（近距離無線通信）の入場判定部分の作り込みを行っている。最終的には「本人認証」と「NFC」を掛け合わせた入場判定を実装する必要があるが、順序としてはまずNFCタグの機能開発を先行させ、その後に本人認証等の機能をまとめて組み込んでいく計画。</li>
+                <li>残りタスク：各機能のレイアウトデザイン調整、表示情報・文言の整理、データベースの構築判断、リッチメニューの整理、サービス内メッセージ送信・リマインダー機能、実機テスト、審査準備。</li>
+                <li>開発担当者の見込みでは、審査前の段階まで持っていくのに「3週間から4週間（10月中）」を想定していた。</li>
+            </ul>
+
+            <div class="box-red">
+                <p class="box-label">【デッドラインの指摘】</p>
+                <ul class="dot-list red-markers" style="margin-bottom:0;">
+                    <li>「10月の完成で本当に間に合うのか」という点について厳しい指摘がなされた。今回の移行判断を下す決済者は自社ではなく「各都道府県（自治体）」であり、自治体の意思決定には一番時間がかかる。</li>
+                    <li>10月に完成し、そこから資料を作成して営業を始めると、アプローチは11月になってしまい、完全に時期を逸して間に合わなくなる。</li>
+                    <li>実際、顧客（自治体）側ではすでに「来期の見積もり」に関する具体的な話が出始めており、現在はその見積もり提出をなんとか保留（ペンディング）にさせているギリギリの状態である。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">「逆算」によるリリーススケジュールの再構築</p>
+            <ul class="dot-list">
+                <li>「開発部署的な発想（これがこうだから何週間かかる）」ではなく、「いつまでに入れ替えを完了させるか」から逆算しなければならない。全体的な移行スケジュールを間に合わせるためには、<strong>9月中にアナウンス（リリース）を開始しなければならない</strong>という見立てが示された。</li>
+                <li>以前、ウェブサイトを未完成状態から先行させてアップさせ、営業時には完成したウェブサイトを見せられるようにした事例と同様の動き方が求められる。システムが100%完成していなくても、実装される機能（NFCタグや本人認証などを掛け合わせた入場判定など）は頭で理解できているため、それをベースにお客さまと話を始めるべきである。</li>
+                <li>打ち合わせで実践画面を見せる際も、完成版である必要はなく、「動いてイメージがちゃんと伝わる状態」であれば、入れ替え（移行）までの猶予を獲得する「第1関門」を突破できる。</li>
+                <li>自治体（意思決定に一番時間がかかる決済者）に対していつアプローチを開始するかについて、明日中（翌日）に日程を決定する方針となった。</li>
+            </ul>
+
+            <div style="margin: 1.5rem 0;">
+                <svg viewBox="0 0 900 220" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family:'Noto Sans JP',sans-serif;">
+                    <text x="0" y="18" font-size="13" font-weight="700" fill="#374151">移行スケジュール　逆算イメージ</text>
+
+                    <text x="0" y="55" font-size="11.5" font-weight="700" fill="#991b1b">開発視点（このままだと間に合わない）</text>
+                    <rect x="0" y="65" width="220" height="40" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+                    <text x="110" y="90" font-size="11" fill="#991b1b" text-anchor="middle">開発継続（3〜4週間）</text>
+                    <path d="M223 85 L253 85" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow0818r)"/>
+                    <rect x="256" y="65" width="140" height="40" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+                    <text x="326" y="90" font-size="11" fill="#991b1b" text-anchor="middle">10月完成</text>
+                    <path d="M399 85 L429 85" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow0818r)"/>
+                    <rect x="432" y="65" width="140" height="40" rx="8" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+                    <text x="502" y="90" font-size="11" fill="#991b1b" text-anchor="middle">11月営業開始</text>
+                    <path d="M575 85 L605 85" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow0818r)"/>
+                    <rect x="608" y="65" width="180" height="40" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+                    <text x="698" y="85" font-size="11" font-weight="700" fill="#991b1b" text-anchor="middle">自治体の判断が</text>
+                    <text x="698" y="99" font-size="11" font-weight="700" fill="#991b1b" text-anchor="middle">間に合わない</text>
+
+                    <text x="0" y="150" font-size="11.5" font-weight="700" fill="#065f46">逆算視点（採用する方針）</text>
+                    <rect x="0" y="160" width="180" height="40" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+                    <text x="90" y="185" font-size="11" fill="#065f46" text-anchor="middle">9月中アナウンス開始</text>
+                    <path d="M183 180 L213 180" stroke="#10b981" stroke-width="2" marker-end="url(#arrow0818g)"/>
+                    <rect x="216" y="160" width="220" height="40" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+                    <text x="326" y="180" font-size="10.5" fill="#065f46" text-anchor="middle">未完成でもイメージで</text>
+                    <text x="326" y="194" font-size="10.5" fill="#065f46" text-anchor="middle">第1関門突破</text>
+                    <path d="M439 180 L469 180" stroke="#10b981" stroke-width="2" marker-end="url(#arrow0818g)"/>
+                    <rect x="472" y="160" width="200" height="40" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+                    <text x="572" y="180" font-size="10.5" fill="#065f46" text-anchor="middle">自治体の意思決定</text>
+                    <text x="572" y="194" font-size="10.5" fill="#065f46" text-anchor="middle">猶予を確保</text>
+                    <path d="M675 180 L705 180" stroke="#10b981" stroke-width="2" marker-end="url(#arrow0818g)"/>
+                    <rect x="708" y="160" width="180" height="40" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="2"/>
+                    <text x="798" y="185" font-size="11" font-weight="700" fill="#065f46" text-anchor="middle">開発は並行して継続</text>
+
+                    <defs>
+                        <marker id="arrow0818r" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#ef4444"/></marker>
+                        <marker id="arrow0818g" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#10b981"/></marker>
+                    </defs>
+                </svg>
+            </div>
+
+            <p class="sub-heading">戸田競艇の背景と提案シナリオ</p>
+            <ul class="dot-list">
+                <li>戸田がなぜ古いシステムを使い続けているのかという背景には、「戸田競艇」「埼玉都市」「ボートレース総合管理株式会社（管理会社）」の3者が絡んでいる複雑さがある。普段からシステムを直接使っているのは「管理会社」であり、彼らに「良いね」と思わせることが最も重要である。</li>
+                <li>その上で、この入れ替え（移行）は自治体（戸田競艇・埼玉都市）にとって「金額が安くなる」というメリットがある。顧客との間で支払いトラブルなどの影響により提案が受け入れがたくなってしまうのを防ぐため、請求ミスの対応は早急に整理・解決させ、こっちはこっちで良い話として提案する。</li>
+                <li>今回の移行は、顧客にとっては費用が大幅に下がる（半期で500万、年間で2,000万規模の売上・利益インパクトに相当する削減）一方で、自社にとっても「利益率が上がる」という、双方にとって不思議なほど良い取引である。この「安くなること」「機能が向上して自分たちも顧客も劇的に楽になること」を熱く伝える提案書を相手に渡してアプローチする。</li>
+                <li>本案件を来期の業績における最大の目玉として位置づけ、スピード感を持って取り組むことが決定した。</li>
+            </ul>
+        </section>
+
+        <!-- 2 ボーネルンド -->
+        <section id="s2" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">2. ボーネルンド　精算差異と交渉戦略</h2>
+            </div>
+
+            <p class="sub-heading">初期稼働状況と発生した課題</p>
+            <ul class="dot-list">
+                <li>リリース日からの数日間において、システム自体の稼働自体には全く問題は発生しなかった。</li>
+                <li>初日のレジ締めにおいて、基幹システム（オービック）の集計、スマレジのデータ、および予約システムの数が合わない不一致が発生し、店舗側での日締めに非常に長い時間を要する事態となった。</li>
+                <li>原因はエラー要因と、要件定義不足（仕様不足）の2つに大別される。エラーに関しては、現時点までにほぼすべての問題が改修・解消されている。</li>
+            </ul>
+
+            <div class="box-red">
+                <p class="box-label">【未解決の課題：数量変更の同期問題】</p>
+                <p style="color:#4b5563; font-size:0.9rem;">現場で精算する際、システムから送られた精算内容を、スタッフが手動で商品の数量を変更（増減）してスマレジで精算を行うケースが想定できていなかった。そのため、数量変更の結果が予約システム側に返されず、スマレジと予約システムの間で商品数に差が出てしまい、最終的にオービックへ登録する集計データにも差が生じている。主に延長料金で発生している。</p>
+            </div>
+
+            <p class="sub-heading">課題解決の見積もりと請求・利益調整</p>
+            <ul class="dot-list">
+                <li>本件のシステム的な解決（改修）に対し、開発ベンダーから「14営業日程度、開発原価28万円（税抜き）」という見積もりが提示されている。データの持ち方を大きく変更する必要がある改修とのこと。</li>
+                <li>担当者自身も含め、クライアント側、ベンダー側の「3者3様」に要件定義不足があったと認識している。クライアント側も初日・2日目の立ち合いを経て「想定が甘かった」と自認している。</li>
+                <li>まず、ベンダー側に対して開発見積もり（28万円）の「減額調整」の交渉をかける。その上で、最終的な金額をクライアントに提示・提案する。</li>
+                <li>今月（8月）中に納品する場合は、今週から来週にかけて早急に決着させる必要があるが、無理に今期の締めに押し込まず、クライアントの要望によっては請求を翌月以降にずらす（来期の売上とする）対応で問題ない。</li>
+                <li>利益の上乗せ（マークアップ）は難しく、28万円の原価がそのまま重くなる形になるため、赤字（ゼロ）を避けるために35万円程度で提示するなどのイメージを持ちつつ、回収方針の日程（例：9月中旬目指し等）を立てておく。</li>
+            </ul>
+
+            <p class="sub-heading">毎日19時の店舗締め作業サポートからの「引き際」</p>
+            <ul class="dot-list">
+                <li>毎日19時に行っている店舗の締め作業（付き合わせ作業）の手伝いについて、エラーは解消され、店舗側だけでも完結できるレクチャーおよび安定稼働の状況まで持ってこられたため、サポートから手を引く旨をクライアントに説明してよいか相談があった。</li>
+            </ul>
+
+            <div class="box-purple">
+                <p class="box-label">【トラブルをチャンスに変える営業戦略】</p>
+                <ul class="dot-list purple-markers" style="margin-bottom:0;">
+                    <li>現状、サポートを続けないと最終的な集計結果が出ないという初期のエラー状態は解消されており、付き合わせ作業をこちらがやらなくても、本来は向こうの人間が自分たちで行うべき業務である。作業自体を一旦やめて、今後は何かあれば都度対応（スポット対応）にする形で現場から引くことは可能。</li>
+                    <li><strong>しかし、これを交渉の「カード（恩）」として使う戦略が提示された。</strong>トラブルはトラブルではなく、関係構築の「最大のチャンス」である。</li>
+                    <li>サポートを「水に切り捨てて」引き上げるのではなく、あえて最後まで親身に付き合う（付き合わせ作業を継続する）、あるいは直接の付き合わせをせずとも毎日19時には必ず「今日も問題なさそうでしたね」と気配りの連絡を1本入れるなど、徹底的に「恩を売る」行動を取る。</li>
+                    <li>これにより関係を強固にし、先方から「ここまでやってくれたのだから」と感謝され、開発費用の支払い（28万の改修費等）をスムーズに承諾してもらえる（かつ将来的に適正な利益を取れる見積もりを出せる）関係性を作るための営業戦略として、自分で考えて活用すべきであると指導された。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 3 LINE広告 -->
+        <section id="s3" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">3. LINE広告　自動化稼働と掘り起こしキャンペーン</h2>
+            </div>
+
+            <div class="box-gray">
+                <p class="box-label">【継続課題】<span class="reporter-badge takada">高田 報告</span></p>
+                <p style="color:#4b5563; font-size:0.9rem;">全体の売上の底上げのための策および今後の売上傾向としての見極めを情報収集。独占販売の解除などダイナミックな戦略が望まれる。そのための動きとして一広側とのヒアリングやその他販売ルートや広告商品について検討が必要（他メディア展開・他の販売ルート開拓など）。キャンペーンでの件数増でもアカウントおよびキャンペーン単価（50,000円/案件）。</p>
+            </div>
+
+            <p class="sub-heading">8月実績 <span class="reporter-badge takada">高田 報告</span></p>
+            <ul class="dot-list">
+                <li>受注件数：166件（前月比13件増）。売上予測515万円でほぼ確定（前回540万円からは微減）。8月の配信の上積みはなさそう。</li>
+                <li>お盆休み前に発注が集中、休み明けは受注も落ち着き、9月へ向けた営業活動を開始。</li>
+            </ul>
+
+            <p class="sub-heading">GASによる自動化システムの独立化 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li>LINE広告の入稿とレポート生成について、外部ツールを介さずにGoogle Apps Script（GAS）を用いた独立システムを構築し、案件情報取得からオーディエンス設定、自動入稿、レポート作成・格納まで、一連の処理が稼働する段階に達した。生成AIには依存していない。</li>
+                <li>今後はエラー対応や、人間が操作する際の見え方（UI・配置・レイアウト・配色・文言）の最適化を進めていく。</li>
+            </ul>
+
+            <p class="sub-heading">新プラットフォーム・kintone連携</p>
+            <ul class="dot-list">
+                <li>9月に予定されている新プラットフォームへの切り替えに合わせ、この独立したGASで入稿等の運用を行えるよう開発を進めている。</li>
+                <li>発注用のkintoneシステムもテストが完了（貫通）しており、9月中旬の本稼働を目指して8月後半から一部店舗で先行テストを開始する（古い発注フォームとの並行稼働も設計に組み込み）。</li>
+                <li>配信中のデータを監視し、改善の余地を自動判別しながら配信効率を上げる「配信中調整機能」の導入を目指す。ビーコンや新規設置の運用における人の手による確認ミスを防ぐため、自動化への移行調整を昨日から開始している。</li>
+            </ul>
+
+            <p class="sub-heading">原価半額キャンペーンを活用した掘り起こし営業</p>
+            <ul class="dot-list">
+                <li>LINE側との協議により、6月以降に新規開設した約287アカウントを対象に、9月配信分の原価実績（最大4万円分など）に応じて、10月分の配信原価が約50%減額（実質半額還元）されるキャンペーンが適用されることになった。</li>
+                <li>毎月安定して配信している既存アクティブアカウントは約80件、そのうち8割（約64件）が毎月継続している。それ以外の「9月・10月に稼働予定のない未稼働・休眠アカウント（約200以上）」に向けてアプローチを行う。</li>
+                <li>通常の平均的な配信額は1アカウントあたり月2万5,000円程度のため、10月に2万5,000円分を配信した場合、前月の配信実績に基づき4万円を上限とするクーポンが適用され、10月分は実質「無料（100%オフ）」となる仕組み。</li>
+                <li>「9月に配信すれば、翌月（10月）分が実質無料（または半額）になる」というメリットを強く打ち出して営業（掘り起こし）を行う方針。早急に対象リストを整理し、来週中にはアナウンスのタイミングや詳細条件（ディスカウント率など、杉山氏等と相談）を決定してキャンペーンを開始する。</li>
+            </ul>
+
+            <p class="sub-heading">BWとの取り組み・一広側との取り組み <span class="reporter-badge takada">高田 報告</span></p>
+            <ul class="dot-list">
+                <li>運用面確認：リタゲ用リストの費用交渉については、取り急ぎの案件については増額なしで実施、以降件数（需要飲み込み）動向を見て再考。新規および追加設置の登録運用について再確認。広告商品や新規営業先への取り組みなど杉山氏とディスカッションを予定（8月25日）。</li>
+                <li>一広側常駐に伴う、相談件数により新規営業および既存掘り起こしなどへの活動啓もう。担当者退職による引継ぎなどのサポート。</li>
+                <li>新発注システムは8月下旬から一部店舗（二次代理店含む）でテスト運用開始→9月中旬から移行予定。運用フローの再確認とフォームの文言変更（今週中）。</li>
+                <li>LYD担当者（専任）：新PF「アカウント開設キャンペーン」。8月に新規アカウント開設に伴うキャンペーンクーポン。新規アカウント開設一つに対して、9月末までに配信およびクリック発生で翌月末にそのアカウントで利用できる40,000円分のクーポンを発行（次回の配信費用として利用できるクーポン）。既に開設したアカウント（287アカウント）も対象可能。</li>
+            </ul>
+        </section>
+
+        <!-- 4 広告商品開発 -->
+        <section id="s4" class="section-card gray-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title gray">4. 広告商品開発</h2>
+            </div>
+
+            <p class="sub-heading">来季に向けた検討 <span class="reporter-badge takada">高田 報告</span></p>
+            <ul class="dot-list gray-markers">
+                <li>新たな環境（効率化による空いた時間）を踏まえて何をしていくか、来季に向けて考慮する。</li>
+                <li>案件増のため、バックアップ。営業活動の効率が上がらない理由、案件受注が伸びない理由（実質）、その理由に対する施策再考。</li>
+            </ul>
+
+            <p class="sub-heading">テクノブラッド（蔵前） <span class="reporter-badge takada">高田 報告</span></p>
+            <ul class="dot-list gray-markers">
+                <li>ネットカフェ（ランチャー80%）広告メディアとして施設の中のメディア化（メーカー出稿実績あり）。5,000店舗（広告メディア化）Beaconなど。7月〜9月のターンでの売上獲得に向けて動き（一広）。</li>
+            </ul>
+
+            <p class="sub-heading">広告商品開発 <span class="reporter-badge takada">高田 報告</span></p>
+            <ul class="dot-list gray-markers">
+                <li>送客：Beacon（パチンコホールへの広告商品）。</li>
+                <li>SNWへの商品化（ダッシュボード）。</li>
+            </ul>
+        </section>
+
+        <!-- 5 CODATI -->
+        <section id="s5" class="section-card purple-card">
+            <div class="section-head">
+                <div class="section-bar bar-purple"></div>
+                <h2 class="section-title purple">5. CODATI　アカデミー機能デモと自動化営業戦略</h2>
+            </div>
+            <p class="section-intro">CODATI（瑞鳳向けAI社員プラットフォーム）の新機能デモと、社内AI自動化システムを営業ツール化する戦略が議論された。</p>
+
+            <p class="sub-heading">CODATIアカデミー（イーラーニングシステム）のデモ</p>
+            <ul class="dot-list purple-markers">
+                <li>プロンプト（指示文）を入力することなく、直感的な操作だけで研修プログラムを瞬時に作成できるビルダー機能が紹介された。</li>
+                <li>教材の自動登録：PDF、動画、YouTube URLなどをドラッグ＆ドロップするだけで、AIが教材（ナレッジ）として学習する。</li>
+                <li>テストの自動生成：対象者（店長、営業、新人、管理職など）や難易度（初級・中級・上級）を指定するだけで、AIが丸バツ、記述、複数選択形式のテスト問題を自動で組み立てる。</li>
+                <li>受講状況の確認から、最終的には人的評価までをワンストップで管理できる仕組み。</li>
+                <li>通常の組織であれば、研修プログラムの作成、テストの調整、受講スケジュールの調整などに1年以上かかる業務が、このビルダーを使えばわずか5分で構築できてしまう画期的なシステムであると絶賛された。</li>
+                <li>出来上がったデモを引っ提げ、経営層（ボス）自らが木下氏（瑞鳳のキーマン）のところへ説明に行き、直接提案を行うことが決定した。</li>
+            </ul>
+
+            <p class="sub-heading">サンプル手配業務自動化デモ（飯田氏の業務）</p>
+            <ul class="dot-list purple-markers">
+                <li>これまで手動で行われていた、非常に煩雑なサンプル手配業務をほぼ完全に自動化するシステムがデモされた。</li>
+                <li>在庫と発注の自動照合：各部署からバラバラに入力されるエクセルデータの発注内容と、リアルタイムの在庫CSVデータを自動で付き合わせる。在庫があれば「センター手配」、なければ「メーカー手配」とシステムが自動判断する。</li>
+                <li>ステータス可視化と自動メール生成：画面上でサマリー（依頼数36件、センター手配14件、自動化可能率68.6%など）がリアルタイムに可視化される。自動判断された手配内容は、承認ボタンを押すだけで送信メールが自動生成される。</li>
+                <li>Outlook連携によるステータス自動更新：先方からの「数が足りない」「手配完了」といった返信メールの内容をシステムが自動で読み取り、ステータス（返信待ち、手配済みなど）を自動で更新・管理する。</li>
+                <li>差分取り込み機能：1日1回などのタイミングで、前回からの差分データだけを取り込んで処理することも可能。担当者が1日中画面に張り付く必要がなくなり、作業負荷が劇的に削減される。</li>
+            </ul>
+
+            <div style="margin: 1.5rem 0;">
+                <svg viewBox="0 0 940 210" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family:'Noto Sans JP',sans-serif;">
+                    <text x="0" y="18" font-size="13" font-weight="700" fill="#374151">サンプル手配業務　自動化フロー</text>
+
+                    <rect x="15" y="50" width="150" height="70" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+                    <text x="90" y="80" font-size="12" font-weight="700" fill="#6d28d9" text-anchor="middle">エクセル発注</text>
+                    <text x="90" y="98" font-size="11" font-weight="700" fill="#6d28d9" text-anchor="middle">データ入力</text>
+                    <path d="M168 85 L192 85" stroke="#c4b5fd" stroke-width="1.5" marker-end="url(#arrow0818p)"/>
+
+                    <rect x="195" y="50" width="150" height="70" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+                    <text x="270" y="80" font-size="12" font-weight="700" fill="#6d28d9" text-anchor="middle">在庫CSVと</text>
+                    <text x="270" y="98" font-size="12" font-weight="700" fill="#6d28d9" text-anchor="middle">自動照合</text>
+                    <path d="M348 85 L372 85" stroke="#c4b5fd" stroke-width="1.5" marker-end="url(#arrow0818p)"/>
+
+                    <rect x="375" y="50" width="150" height="70" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+                    <text x="450" y="75" font-size="11.5" font-weight="700" fill="#6d28d9" text-anchor="middle">自動振分</text>
+                    <text x="450" y="93" font-size="10.5" fill="#7c3aed" text-anchor="middle">センター/</text>
+                    <text x="450" y="108" font-size="10.5" fill="#7c3aed" text-anchor="middle">メーカー手配</text>
+                    <path d="M528 85 L552 85" stroke="#c4b5fd" stroke-width="1.5" marker-end="url(#arrow0818p)"/>
+
+                    <rect x="555" y="50" width="150" height="70" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+                    <text x="630" y="80" font-size="12" font-weight="700" fill="#6d28d9" text-anchor="middle">承認ボタン→</text>
+                    <text x="630" y="98" font-size="12" font-weight="700" fill="#6d28d9" text-anchor="middle">メール自動生成</text>
+                    <path d="M708 85 L732 85" stroke="#c4b5fd" stroke-width="1.5" marker-end="url(#arrow0818p)"/>
+
+                    <rect x="735" y="50" width="190" height="70" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+                    <text x="830" y="75" font-size="12" font-weight="700" fill="#4c1d95" text-anchor="middle">Outlook連携</text>
+                    <text x="830" y="93" font-size="10.5" fill="#7c3aed" text-anchor="middle">返信メールから</text>
+                    <text x="830" y="108" font-size="10.5" fill="#7c3aed" text-anchor="middle">ステータス自動更新</text>
+
+                    <rect x="15" y="150" width="910" height="40" rx="8" fill="#faf5ff" stroke="#7c3aed" stroke-width="1"/>
+                    <text x="30" y="174" font-size="11.5" fill="#4c1d95">差分取り込み機能：1日1回、前回からの差分データのみ処理。依頼数36件／センター手配14件／自動化可能率68.6%（画面上でリアルタイム可視化）</text>
+
+                    <defs><marker id="arrow0818p" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a78bfa"/></marker></defs>
+                </svg>
+            </div>
+
+            <p class="sub-heading">システム（デモ画面）自体を「最強の営業ツール」にする戦略</p>
+            <ul class="dot-list purple-markers">
+                <li>CODATIのトレーニングセンターや自動化システムのヒアリング・ビルダー機能を、そのまま営業活動（商談）用のツールとして移植する。</li>
+                <li>顧客との打ち合わせの席で、営業担当者が顧客に「どのような業務を行っているか」「どんなことに困っているか」を質問し、その場で顧客が使っている実際のエクセルシートを取り込んだり、課題を入力したりする。すると、その場でAIが「このシステムを使えば、あなたの業務はこれだけ自動化できます」という具体的な解決策を瞬時に回答・提示する実演型デモを行う。</li>
+                <li>多くの企業が「AIナレッジセンター」や「AI社員」を導入しているが、それはデータを検索するだけの「静的なナレッジセンター」に過ぎず、業務自体は何も変わっていないという不満を抱えている。当社のシステムは「裏側で実際にメールやデータが自動で動きを伴ってタスクを完結させる」点で競合とは全く異なる。</li>
+                <li>中小企業の社長（決済者）は「AIを会社にどう還元すればいいか」「プロンプトを学ばせないといけないのか」と悩んでいる。そこへ「従業員は誰一人プロンプトを打てなくていい（AIを使えなくていい）。裏側でAIが勝手に動いて業務が完結する」というAI活用の真の本質を社長に説明する。その上で、現場の担当者にデモを触らせる。現場が「嘘でしょう、こんなに楽になるのか」と体感すれば、その担当者が社内の熱心なプレゼンター（味方）となり、売り込まなくても勝手に社内決済を通して売り上げが上がっていく仕組みを作る。</li>
+                <li>他社のナレッジセンターを既に導入している企業に対して、この仕組みをぶつけて「乗り換え（リプレイス）戦略」を積極的に仕掛ける。</li>
+            </ul>
+
+            <div class="box-gray">
+                <p class="box-label">【kintone発注システムの不要化（驚きの予見）】</p>
+                <p style="color:#4b5563; font-size:0.9rem;">この自動化システムが本格導入され、外部とのコミュニケーション（メールのやり取りや差分確認など）がすべてAIの裏側で処理されるようになれば、現在導入しようとしている発注用kintoneシステム自体がそもそも不要になる（メールとAIだけで手配が完結するため）という予言が示された。すでに発注用システム開発としてkintoneの導入費用を一部もらっているため、まずは一度稼働させて本番運用を行うが、将来的には「これ、AI自動化にすればkintone自体が不要になってさらに安く運用できますよ」と顧客側に気づかせる形で、当社の自動化システムへの切り替えを促していく。</p>
+            </div>
+        </section>
+
+        <!-- 6 その他・組織運営 -->
+        <section id="s6" class="section-card gray-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title gray">6. その他・組織運営</h2>
+            </div>
+
+            <p class="sub-heading">8月期（今期）の業績着地見込み</p>
+            <ul class="dot-list gray-markers">
+                <li>売上高は前年並み、利益は半分程度（前年比大幅減）となる見込み。赤字ではないものの、決して良かったと言える着地ではない。</li>
+                <li>減益の要因は、利益率の高い「利益商品」が今年はなかったため。前年は担当者自身が1発で700万円ほどの荒利を稼ぐ特殊案件があったが、今年はベース（基礎売上）は上がっているものの、そのような特殊案件がなかったため利益がガクッと落ちている。</li>
+            </ul>
+
+            <p class="sub-heading">今期（1年）の振り返りと自己分析の指示</p>
+            <ul class="dot-list gray-markers">
+                <li>来週（今期最終週）の定例会議に向け、各自「この1年、やろうとしていたことが本当にできていたか」「胸を張って『これが成果である』と言えるものがどこまであるか」という自己分析を考えておくこと。</li>
+                <li>新後くんが以前に比べて成長し、前に出てきていることについては「本当に嬉しい」と経営層から評価・言及があった。</li>
+            </ul>
+
+            <p class="sub-heading">商品アップデートと自社ホームページのリニューアル</p>
+            <ul class="dot-list gray-markers">
+                <li>自社商品の価値が「チープ（陳腐化）」化するのを防ぐため、経営層主導でホームページのリニューアル制作を数週間前から開始している。</li>
+                <li>商品（AIシステムなど）は非常に早いスピードでアップデートされていくため、全員が中身の脳みそ（知識）を常に共有・アップデートし続けなければ、似たような競合商品が出てきた際に説明がつかなくなり、機会損失に繋がる。</li>
+                <li>自動化というテーマとは真逆だが、会話や情報共有を密に行い、分からないことは素直に「教えてほしい」と教えを乞う姿勢を持たなければ、取り残されてしまうという危機感を持つべきであると指摘された。</li>
+            </ul>
+        </section>
+
+        <!-- 7 TODO -->
+        <section id="s7" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">7. アクションアイテム（TODO）</h2>
+            </div>
+            <div style="overflow-x:auto;">
+                <table class="data-table">
+                    <thead><tr><th>担当</th><th>タスク内容</th><th>期限</th></tr></thead>
+                    <tbody>
+                        <tr><td>新後</td><td>Mooovi：戸田競艇企業団から請求処理方法の回答を回収し、正しい宛先で処理する</td><td>回答待ち・8月中</td></tr>
+                        <tr><td>新後</td><td>Mooovi：4月分・6月分の未入金状況を確認する</td><td>8月中</td></tr>
+                        <tr><td>新後</td><td>Mooovi：埼玉都市の重複入金について事実関係を確認し対処する</td><td>確認中</td></tr>
+                        <tr><td>新後</td><td>Mooovi：NFC入退場判定のテスト後、本人認証を含むLIFF実装を確認する</td><td>初回目標8/19</td></tr>
+                        <tr><td>新後</td><td>Mooovi：進行管理表を作成し、審査提出までの工程と担当を明確にする（逆算方針で）</td><td>要設定・急ぎ</td></tr>
+                        <tr><td>新後</td><td>Mooovi：自治体への提案アプローチ開始日を決定する</td><td>翌日中</td></tr>
+                        <tr><td>新後</td><td>ボーネルンド：ベンダーへ改修原価（28万円）の減額を交渉する</td><td>クライアント説明前</td></tr>
+                        <tr><td>新後</td><td>ボーネルンド：要件確認の経緯、改修内容、費用負担案を整理してクライアントへ説明する</td><td>交渉結果確認後</td></tr>
+                        <tr><td>新後</td><td>ボーネルンド：毎日19時の集計報告を店舗側で完結できる運用へ切り替える</td><td>今週中に提案</td></tr>
+                        <tr><td>新後</td><td>ボーネルンド：スマレジサポートプランを再提案する</td><td>要設定</td></tr>
+                        <tr><td>新後</td><td>LINE広告：GASのエラーケースと案件別パターンへの最適化を進める</td><td>継続</td></tr>
+                        <tr><td>新後</td><td>LINE広告：管理シートの配置・レイアウト・配色・文言を改善する</td><td>8月中</td></tr>
+                        <tr><td>新後</td><td>LINE広告：新配信プラットフォーム切り替えに向けた本稼働調整を完了する</td><td>8月中</td></tr>
+                        <tr><td>新後</td><td>LINE広告：kintone実店舗テストの対象、確認項目、合格条件を定めて開始する</td><td>8月中</td></tr>
+                        <tr><td>高田</td><td>LINE広告：杉山氏と広告商品・新規営業先についてディスカッション</td><td>8月25日</td></tr>
+                        <tr><td>高田</td><td>LINE広告：未稼働アカウントの掘り起こしリスト整理とキャンペーン詳細条件の決定</td><td>来週中</td></tr>
+                        <tr><td>高田</td><td>LINE広告：新発注システムのテスト運用（二次代理店含む）フォーム文言変更</td><td>今週中</td></tr>
+                        <tr><td>全員</td><td>今期の振り返り・自己分析を来週の定例会議までに考えておく</td><td>来週の定例まで</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="box-green" style="margin-top:1.5rem;">
+                <p class="box-label">【今週の重点】<span class="reporter-badge nigo">新後 報告</span></p>
+                <ul class="dot-list" style="margin-bottom:0;">
+                    <li>Mooovi：5月分請求の処理方法と4月分・6月分の未入金状況を確定し、8月中の処理完了へ進める。</li>
+                    <li>ボーネルンド：ベンダー原価の減額交渉、クライアント説明案、日次集計の店舗移管を進める。</li>
+                    <li>LINE広告：GASの例外処理と管理シート改善を進め、kintone実店舗テストを開始する。</li>
+                </ul>
+            </div>
+
+            <div class="box-gray" style="margin-top:1rem;">
+                <p class="box-label">【補足メモ】<span class="reporter-badge nigo">新後 報告</span></p>
+                <ul class="dot-list gray-markers" style="margin-bottom:0;">
+                    <li>要確認：ボーネルンドの正しい本番リリース日（今回の記載が7月3日、前回7/28のノートが8月4日予定となっており不一致）。</li>
+                    <li>要確認：Moooviの請求処理方法、4月分・6月分の未入金状況。</li>
+                    <li>要確認：ボーネルンド追加改修の原価交渉結果、クライアント提示額、受注時期。</li>
+                    <li>次回確認：Mooovi内製システムの工程表と審査提出予定。</li>
+                    <li>次回確認：LINE広告のkintone実店舗テスト結果と例外処理状況。</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="page-footer">
+            <p>&copy; 2026 TKW Project Team. All Rights Reserved.</p>
+        </footer>
+    </div>
+</div>
+
+<script>
+    const links = document.querySelectorAll('.sidebar-link');
+    const sections = document.querySelectorAll('section[id]');
+    const purpleSections = ['s5'];
+    const graySections = ['s4', 's6'];
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                links.forEach(link => {
+                    link.classList.remove('active', 'active-red', 'active-blue', 'active-purple', 'active-gray');
+                    if (link.getAttribute('href') === '#' + id) {
+                        if (purpleSections.includes(id)) link.classList.add('active-purple');
+                        else if (graySections.includes(id)) link.classList.add('active-gray');
+                        else link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.2 });
+    sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
