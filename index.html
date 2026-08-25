@@ -3,181 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TKW　ドキュメントハブ</title>
+    <title>TKW　企画・提案一覧</title>
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif; background-color: #f9fafb; color: #1f2937; line-height: 1.8; min-height: 100vh; }
-
         .site-header { background: #ffffff; border-bottom: 1px solid #e5e7eb; padding: 2rem 3rem; }
-        .site-header .badge { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 9999px; font-size: 0.72rem; font-weight: 700; background: #ecfdf5; color: #065f46; letter-spacing: 0.06em; margin-bottom: 0.6rem; }
+        .site-header .back-link { display: inline-block; font-size: 0.78rem; color: #6b7280; text-decoration: none; margin-bottom: 0.75rem; }
+        .site-header .back-link:hover { color: #111827; }
+        .site-header .badge { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 9999px; font-size: 0.72rem; font-weight: 700; background: #f5f3ff; color: #6d28d9; letter-spacing: 0.06em; margin-bottom: 0.6rem; margin-left: 0.5rem; }
         .site-header h1 { font-size: 1.8rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; }
         .site-header p { color: #6b7280; font-size: 0.88rem; margin-top: 0.3rem; }
-
         .container { max-width: 860px; margin: 0 auto; padding: 2.5rem 2rem 5rem 2rem; }
-
-        /* カテゴリボタン */
-        .category-bar { display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
-        .category-btn { display: flex; align-items: center; justify-content: center; padding: 0.8rem 1.6rem; border-radius: 0.875rem; font-size: 1.45rem; font-weight: 800; text-decoration: none; border: 2px solid; transition: background 0.18s, color 0.18s, transform 0.15s, box-shadow 0.2s; letter-spacing: -0.02em; flex: 1; min-width: 160px; }
-        .category-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 20px -4px rgba(0,0,0,0.12); }
-        .category-btn.partners { border-color: #2563eb; color: #1d4ed8; background: #ffffff; }
-        .category-btn.partners:hover { background: #2563eb; color: #ffffff; }
-        .category-btn.kikaku { border-color: #7c3aed; color: #6d28d9; background: #ffffff; }
-        .category-btn.kikaku:hover { background: #7c3aed; color: #ffffff; }
-        .category-btn.archive { border-color: #6b7280; color: #374151; background: #ffffff; }
-        .category-btn.archive:hover { background: #6b7280; color: #ffffff; }
-
-        .month-label { font-size: 0.72rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; padding-left: 0.25rem; }
         .minutes-list { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2.5rem; }
-
         .minutes-card { display: flex; align-items: center; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.875rem; padding: 1.25rem 1.5rem; text-decoration: none; color: inherit; transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s; gap: 1.25rem; }
-        .minutes-card:hover { box-shadow: 0 8px 20px -4px rgba(0,0,0,0.1); border-color: #10b981; transform: translateY(-1px); }
-        .minutes-card.latest { border: 2px solid #10b981; background: #ecfdf5; }
-
-        .card-date { flex-shrink: 0; width: 3.5rem; text-align: center; }
-        .card-date .month { font-size: 0.7rem; font-weight: 700; color: #10b981; text-transform: uppercase; }
-        .card-date .day { font-size: 1.75rem; font-weight: 800; color: #111827; line-height: 1; }
-        .card-divider { width: 1px; height: 2.5rem; background: #e5e7eb; flex-shrink: 0; }
+        .minutes-card:hover { box-shadow: 0 8px 20px -4px rgba(0,0,0,0.1); border-color: #7c3aed; transform: translateY(-1px); }
+        .minutes-card.latest { border: 2px solid #7c3aed; background: #f5f3ff; }
         .card-body { flex: 1; min-width: 0; }
         .card-title { font-size: 0.95rem; font-weight: 700; color: #111827; }
         .card-meta { font-size: 0.78rem; color: #6b7280; margin-top: 0.2rem; }
         .card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
         .tag { font-size: 0.68rem; font-weight: 600; padding: 0.15rem 0.55rem; border-radius: 9999px; background: #f3f4f6; color: #4b5563; }
-        .tag.green { background: #ecfdf5; color: #065f46; }
-        .tag.blue { background: #eff6ff; color: #1d4ed8; }
         .tag.purple { background: #f5f3ff; color: #6d28d9; }
         .tag.red { background: #fef2f2; color: #991b1b; }
+        .tag.green { background: #ecfdf5; color: #065f46; }
         .card-arrow { flex-shrink: 0; color: #d1d5db; font-size: 1.1rem; transition: color 0.2s; }
-        .minutes-card:hover .card-arrow { color: #10b981; }
-        .latest-badge { flex-shrink: 0; font-size: 0.68rem; font-weight: 700; background: #10b981; color: #ffffff; padding: 0.2rem 0.6rem; border-radius: 9999px; letter-spacing: 0.04em; }
-
-        .empty-card { background: #ffffff; border: 1px dashed #d1d5db; border-radius: 0.875rem; padding: 1.75rem 1.5rem; display: flex; align-items: center; gap: 1.25rem; color: #9ca3af; }
-        .empty-date { flex-shrink: 0; width: 3.5rem; text-align: center; }
-        .empty-day { font-size: 1.75rem; font-weight: 800; color: #d1d5db; line-height: 1; }
-        .empty-month { font-size: 0.7rem; font-weight: 700; color: #d1d5db; }
-        .empty-text { font-size: 0.85rem; }
-
+        .minutes-card:hover .card-arrow { color: #7c3aed; }
+        .latest-badge { flex-shrink: 0; font-size: 0.68rem; font-weight: 700; background: #7c3aed; color: #ffffff; padding: 0.2rem 0.6rem; border-radius: 9999px; letter-spacing: 0.04em; }
+        .section-label { font-size: 0.72rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; padding-left: 0.25rem; }
         footer { text-align: center; font-size: 0.72rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; padding: 2rem 0; border-top: 1px solid #e5e7eb; margin-top: 2rem; }
-
         @media (max-width: 600px) {
             .site-header { padding: 1.5rem 1.25rem; }
             .site-header h1 { font-size: 1.3rem; }
             .container { padding: 1.5rem 1rem 4rem 1rem; }
-            .minutes-card { padding: 1rem 1.1rem; gap: 0.9rem; }
-            .card-date .day { font-size: 1.4rem; }
-            .category-btn { font-size: 1.1rem; padding: 0.7rem 1rem; }
         }
     </style>
 </head>
 <body>
 <header class="site-header">
-    <span class="badge">MEETING MINUTES</span>
-    <h1>TKW会議　議事録</h1>
-    <p>毎週の定例会議の記録です。タイトルをクリックして各議事録を開いてください。</p>
+    <div>
+        <a href="../" class="back-link">← トップへ戻る</a>
+        <span class="badge">KIKAKU</span>
+    </div>
+    <h1>企画・提案　一覧</h1>
+    <p>企画書・提案資料の記録です。タイトルをクリックして各資料を開いてください。</p>
 </header>
 
 <div class="container">
-
-    <div class="category-bar">
-        <a href="./partners/" class="category-btn partners">パートナー会議</a>
-        <a href="./kikaku/" class="category-btn kikaku">企画・提案</a>
-        <a href="./archive/" class="category-btn archive">会議アーカイブ</a>
-    </div>
-
-    <p class="month-label">2026年8月</p>
-
+    <p class="section-label">2026年</p>
     <div class="minutes-list">
-
-        <a href="./0818/" class="minutes-card latest" target="_blank" rel="noopener">
-            <div class="card-date"><div class="month">Aug</div><div class="day">18</div></div>
-            <div class="card-divider"></div>
+        <a href="./codati-kenshu.html" class="minutes-card latest" target="_blank" rel="noopener">
             <div class="card-body">
-                <div class="card-title">TKW会議：2026年8月18日</div>
-                <div class="card-meta">Mooovi請求トラブル対応・戸田競艇移行スケジュール逆算 / ボーネルンド精算差異 / LINE広告自動化稼働 / CODATIアカデミー機能デモ</div>
+                <div class="card-title">CODATI解説</div>
+                <div class="card-meta">AIエージェント管理プラットフォームの仕組みとユースケースを、技術解説と8/18デモ記録から整理</div>
                 <div class="card-tags">
-                    <span class="tag green">LINE広告 166件</span>
-                    <span class="tag" style="background:#f5f3ff;color:#6d28d9;">CODATIアカデミー機能デモ</span>
+                    <span class="tag purple">技術アーキテクチャ</span>
+                    <span class="tag green">デモ記録あり</span>
                 </div>
             </div>
             <span class="latest-badge">LATEST</span>
             <span class="card-arrow">›</span>
         </a>
 
-        <div class="empty-card">
-            <div class="empty-date"><div class="empty-month">Aug</div><div class="empty-day">25</div></div>
-            <div class="card-divider" style="background:#f3f4f6;"></div>
-            <div class="empty-text">次回会議の議事録がここに追加されます</div>
-        </div>
-
-    </div>
-
-    <p class="month-label">2026年7月</p>
-
-    <div class="minutes-list">
-
-        <a href="./0728/" class="minutes-card" target="_blank" rel="noopener">
-            <div class="card-date"><div class="month">Jul</div><div class="day">28</div></div>
-            <div class="card-divider"></div>
+        <a href="./codati-kensho.html" class="minutes-card" target="_blank" rel="noopener">
             <div class="card-body">
-                <div class="card-title">TKW会議：2026年7月28日</div>
-                <div class="card-meta">ボーネルンド本番研修完了・8/4本番リリース決定 / 瑞鳳ABP新DB基盤整備 / LINE広告過去最高実績 / AI社員制度「こだち」始動</div>
+                <div class="card-title">CODATI検証</div>
+                <div class="card-meta">公式デックの資料解説に加え、数字の矛盾・構造説明の不一致・スクリーンショットの食い違いを検証</div>
                 <div class="card-tags">
-                    <span class="tag green">LINE広告 168件 過去最多</span>
-                    <span class="tag" style="background:#f5f3ff;color:#6d28d9;">AI社員制度「こだち」新規始動</span>
+                    <span class="tag red">デック不整合の指摘あり</span>
+                    <span class="tag purple">修正提案付き</span>
                 </div>
             </div>
             <span class="card-arrow">›</span>
         </a>
 
-        <a href="./0721/" class="minutes-card" target="_blank" rel="noopener">
-            <div class="card-date"><div class="month">Jul</div><div class="day">21</div></div>
-            <div class="card-divider"></div>
+        <a href="./codati.html" class="minutes-card" target="_blank" rel="noopener">
             <div class="card-body">
-                <div class="card-title">TKW会議：2026年7月21日</div>
-                <div class="card-meta">ボーネルンド本番検収 / 瑞鳳ABP DB整備 / LINE広告自動化完成 / ホールカレンダーミニアプリ構想</div>
+                <div class="card-title">CODATI（AI Business Platform）資料まとめ</div>
+                <div class="card-meta">TOKIWAGI提供　AI社員プラットフォームの説明会議をもとにした資料解説</div>
                 <div class="card-tags">
-                    <span class="tag green">LINE広告 153件 過去最多</span>
-                    <span class="tag blue">LINE広告自動化 貫通テスト完了</span>
+                    <span class="tag purple">AI社員 / AI Business Platform</span>
+                    <span class="tag">料金体系・未解決事項あり</span>
                 </div>
             </div>
             <span class="card-arrow">›</span>
         </a>
 
-        <a href="./0714/" class="minutes-card" target="_blank" rel="noopener">
-            <div class="card-date"><div class="month">Jul</div><div class="day">14</div></div>
-            <div class="card-divider"></div>
+        <a href="./osakado.html" class="minutes-card" target="_blank" rel="noopener">
             <div class="card-body">
-                <div class="card-title">TKW会議：2026年7月14日</div>
-                <div class="card-meta">MID反省と終了 / Mooovi / ボーネルンド本番検収へ / 瑞鳳ABP進捗 / ペット新事業 / AI社員制度</div>
+                <div class="card-title">広告予算の転用について</div>
+                <div class="card-meta">個人輸入代行事業における広告予算の転用先について　2026年7月2日</div>
                 <div class="card-tags">
-                    <span class="tag green">LINE広告 135件</span>
-                    <span class="tag blue">瑞鳳ABP 専務説明へ</span>
-                    <span class="tag" style="background:#f5f3ff;color:#6d28d9;">ペット新事業 始動</span>
+                    <span class="tag purple">ヘルスケアIT参入</span>
+                    <span class="tag">物流・検品強化</span>
+                    <span class="tag red">薬機法対応</span>
                 </div>
             </div>
             <span class="card-arrow">›</span>
         </a>
-
-        <a href="./0709/" class="minutes-card" target="_blank" rel="noopener">
-            <div class="card-date"><div class="month">Jul</div><div class="day">09</div></div>
-            <div class="card-divider"></div>
-            <div class="card-body">
-                <div class="card-title">TKW会議：2026年7月9日</div>
-                <div class="card-meta">LINE広告新環境移行 / ボーネルンドスマレジ導入 / 瑞鳳ABP方針転換 / AI社員制度（ECOちゃん）</div>
-                <div class="card-tags">
-                    <span class="tag green">LINE広告 月初最高102件</span>
-                    <span class="tag blue">瑞鳳 ABP方針転換</span>
-                    <span class="tag purple">AI社員 ECOちゃん</span>
-                </div>
-            </div>
-            <span class="card-arrow">›</span>
-        </a>
-
-        <div class="empty-card">
-            <div class="empty-date"><div class="empty-month">Aug</div><div class="empty-day">04</div></div>
-            <div class="card-divider" style="background:#f3f4f6;"></div>
-            <div class="empty-text">次回会議の議事録がここに追加されます</div>
-        </div>
-
     </div>
 </div>
 
