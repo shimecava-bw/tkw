@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CODATI解説</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif; background-color: #ffffff; color: #1f2937; line-height: 1.85; font-size: 16.5px; }
+        .layout { display: flex; min-height: 100vh; }
+        .sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; background-color: #f9fafb; border-right: 1px solid #e5e7eb; display: flex; flex-direction: column; padding: 2rem 0 3rem 0; }
+        .sidebar-back { display: block; font-size: 0.85rem; color: #6b7280; text-decoration: none; padding: 0 1.5rem; margin-bottom: 1.5rem; }
+        .sidebar-back:hover { color: #111827; }
+        .sidebar-label { font-size: 0.75rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; padding: 0 1.5rem; margin-bottom: 1rem; }
+        .sidebar-links { display: flex; flex-direction: column; }
+        .sidebar-link { display: block; padding: 0.45rem 1.5rem; font-size: 0.86rem; color: #6b7280; text-decoration: none; border-radius: 0.5rem; margin: 0.1rem 0.5rem; transition: background 0.18s, color 0.18s; line-height: 1.4; }
+        .sidebar-link:hover { background-color: #e5e7eb; color: #111827; }
+        .sidebar-link.active { background-color: #f5f3ff; color: #6d28d9; font-weight: 700; }
+        .sidebar-link.active-blue { background-color: #eff6ff; color: #1d4ed8; font-weight: 700; }
+        .sidebar-link.active-gray { background-color: #f3f4f6; color: #374151; font-weight: 700; }
+        .main { flex: 1; min-width: 0; padding: 0 4rem 5rem 4rem; }
+        .page-header { padding: 3.5rem 0 2.5rem 0; border-bottom: 1px solid #e5e7eb; margin-bottom: 2.5rem; }
+        .badge { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 9999px; font-size: 0.84rem; font-weight: 600; background: #f5f3ff; color: #6d28d9; margin-bottom: 1rem; letter-spacing: 0.04em; }
+        .page-title { font-size: 2.1rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; line-height: 1.25; margin-bottom: 0.75rem; }
+        .page-subtitle { color: #6b7280; font-size: 1.05rem; }
+        .source-note { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.25rem; font-size: 0.8rem; }
+        .src-badge { padding: 0.2rem 0.7rem; border-radius: 9999px; font-weight: 700; }
+        .src-badge.training { background: #f5f3ff; color: #6d28d9; }
+        .src-badge.minutes { background: #ecfdf5; color: #065f46; }
+        .section-card { margin-bottom: 2.5rem; }
+        .section-head { display: flex; align-items: center; margin-bottom: 1.5rem; }
+        .section-bar { width: 6px; height: 2rem; border-radius: 9999px; margin-right: 1rem; flex-shrink: 0; }
+        .bar-purple { background: #7c3aed; }
+        .bar-blue { background: #2563eb; }
+        .bar-gray { background: #6b7280; }
+        .bar-green { background: #059669; }
+        .section-title { font-size: 1.4rem; font-weight: 700; color: #111827; }
+        .section-title.purple { color: #6d28d9; }
+        .section-title.blue { color: #1d4ed8; }
+        .section-title.gray { color: #374151; }
+        .section-title.green { color: #065f46; }
+        .section-lead { color: #6b7280; margin-bottom: 1.25rem; }
+        .card { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 1rem; padding: 1.75rem; margin-bottom: 1.25rem; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+        .card.purple-card { background: #faf5ff; border-color: #e9d5ff; }
+        .card.gray-card { background: #f9fafb; }
+        .sub-heading { font-size: 1.08rem; font-weight: 700; color: #1f2937; margin: 1.4rem 0 0.7rem 0; }
+        .sub-heading:first-child { margin-top: 0; }
+        ul.dot-list { list-style: disc; padding-left: 1.5rem; color: #4b5563; }
+        ul.dot-list li { margin-bottom: 0.6rem; line-height: 1.8; }
+        ul.dot-list li::marker { color: #8b5cf6; }
+        ul.dot-list.gray-markers li::marker { color: #6b7280; }
+        ul.dot-list.blue-markers li::marker { color: #2563eb; }
+        ul.dot-list.green-markers li::marker { color: #059669; }
+        .box-purple { border-left: 4px solid #7c3aed; background: #faf5ff; padding: 1.1rem 1.4rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-blue { border-left: 4px solid #2563eb; background: #eff6ff; padding: 1.1rem 1.4rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-gray { border-left: 4px solid #9ca3af; background: #f9fafb; padding: 1.1rem 1.4rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-green { border-left: 4px solid #10b981; background: #f0fdf4; padding: 1.1rem 1.4rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-label { font-size: 0.86rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .box-purple .box-label { color: #6d28d9; }
+        .box-blue .box-label { color: #1d4ed8; }
+        .box-gray .box-label { color: #374151; }
+        .box-green .box-label { color: #065f46; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; margin: 0.75rem 0; }
+        .data-table thead th { background: #f9fafb; padding: 0.6rem 0.9rem; text-align: left; font-weight: 700; color: #374151; border-bottom: 2px solid #e5e7eb; font-size: 0.8rem; }
+        .data-table tbody td { padding: 0.6rem 0.9rem; border-bottom: 1px solid #f3f4f6; color: #4b5563; vertical-align: top; }
+        .diagram-wrap { margin: 1.5rem 0; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.25rem; overflow-x: auto; }
+        .divider-label { font-size: 0.78rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.12em; margin: 3rem 0 1.5rem 0; padding-top: 2rem; border-top: 2px dashed #e5e7eb; }
+        footer { text-align: center; font-size: 0.78rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; padding: 2.5rem 0; border-top: 1px solid #e5e7eb; margin-top: 3rem; }
+        @media (max-width: 900px) {
+            .layout { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid #e5e7eb; padding: 1.25rem 0 1rem 0; }
+            .sidebar-links { flex-direction: row; flex-wrap: wrap; padding: 0 0.75rem; gap: 0.25rem; }
+            .sidebar-link { margin: 0; padding: 0.3rem 0.7rem; font-size: 0.75rem; }
+            .sidebar-label, .sidebar-back { padding: 0 1rem; }
+            .main { padding: 0 1.25rem 4rem 1.25rem; }
+            .page-title { font-size: 1.5rem; }
+            .card { padding: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+    <aside class="sidebar">
+        <a href="./" class="sidebar-back">← 企画・提案一覧へ戻る</a>
+        <p class="sidebar-label">INDEX / 目次</p>
+        <div class="sidebar-links">
+            <a href="#s1" class="sidebar-link">1. コンセプト</a>
+            <a href="#s2" class="sidebar-link">2. 設計思想</a>
+            <a href="#s3" class="sidebar-link">3. 技術アーキテクチャ</a>
+            <a href="#s4" class="sidebar-link">4. 外部システム連携</a>
+            <a href="#s5" class="sidebar-link">5. ユースケース：サンプル手配業務の自動化</a>
+            <a href="#s6" class="sidebar-link">6. ユースケース：eラーニング・研修コース自動生成</a>
+            <a href="#s7" class="sidebar-link">7. ユースケース：法改正自動対応・個人AI統合</a>
+            <a href="#s8" class="sidebar-link">8. 導入アプローチ</a>
+            <a href="#s9" class="sidebar-link">9. 営業戦略・事業への示唆</a>
+        </div>
+    </aside>
+
+    <div class="main">
+        <header class="page-header">
+            <span class="badge">CODATI TRAINING</span>
+            <h1 class="page-title">CODATI解説</h1>
+            <p class="page-subtitle">AIエージェント管理プラットフォームの仕組みとユースケースを、技術解説と実際のデモ記録から整理</p>
+            <div class="source-note">
+                <span class="src-badge training">CODATI_研修（音声起こし）</span>
+                <span class="src-badge minutes">8/18 TKW議事録</span>
+            </div>
+        </header>
+
+        <!-- 1 コンセプト -->
+        <section id="s1" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-purple"></div>
+                <h2 class="section-title purple">1. コンセプト</h2>
+            </div>
+            <div class="card purple-card">
+                <p class="sub-heading">AIエージェント管理プラットフォームとは</p>
+                <p style="color:#4b5563;">単なる個別対応の「RAGモデル」や「生成AIツール」ではなく、社内に配置された複数のAIエージェント（AI社員）を統括・管理するプラットフォーム。</p>
+                <ul class="dot-list" style="margin-top:1rem;">
+                    <li><strong>部署ごとの配置：</strong>「経理には経理の、営業には営業のAIエージェント」というように、事業部や業務ごとに専用のエージェントを「カード（管理項目）」として追加し、それぞれに異なる役割や指示を与えて稼働させる。</li>
+                    <li><strong>能動的な業務理解：</strong>一方的に指示を待つだけでなく、会社や業務の仕組みを能動的に理解し、全体の業務プロセスの中で機能するように設計されている。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2 設計思想 -->
+        <section id="s2" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-purple"></div>
+                <h2 class="section-title purple">2. 設計思想：業務定義が先、AIの設定は後</h2>
+            </div>
+            <div class="card">
+                <p style="color:#4b5563;">AIがゼロから能動的に仕事を探して勝手に動くわけではない。自動化を設計する際は、まず人間側が「何をしたいか」という業務フローを明確に決める必要がある。</p>
+                <ul class="dot-list" style="margin-top:1rem;">
+                    <li><strong>役割のカード化（AI社員の配置）：</strong>部署や業務ごとに「カード」を追加し、1事業部に1人（または複数）のAIエージェントを割り当て、それぞれに異なる指示（プロンプト）やナレッジを与えて役割を完結させる。</li>
+                    <li><strong>ナレッジの設計：</strong>業務が決まったら、それに合わせて「何を学習（勉強）させればそのエージェントが動けるか」を人間側が事前に設計してセットアップする。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 3 技術アーキテクチャ -->
+        <section id="s3" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-blue"></div>
+                <h2 class="section-title blue">3. 技術アーキテクチャ</h2>
+            </div>
+
+            <div class="card">
+                <p class="sub-heading">トークン消費を最小化するアーキテクチャ</p>
+                <p style="color:#4b5563;">複数のエージェントを常にAIだけで直接連携させたり、すべてのメールやスケジュールを常にAIに監視・処理させたりすると、トークン消費が莫大になり実用的なコストで収まらない。</p>
+                <ul class="dot-list blue-markers" style="margin-top:1rem;">
+                    <li><strong>データサーバーを介した間接連携：</strong>エージェント間やシステム間のデータ連携にはAIを直接使わず、裏側のデータサーバーを経由させて連携させる。</li>
+                    <li><strong>トリガー駆動型のRAG探索：</strong>普段はAIを動かさず、データサーバーにデータを置く際のルールをあらかじめ決めておく。「タスクのステータスを確認したい」といった特定のトリガーや必要性が発生したタイミングで初めて、AIがルールに基づいてデータサーバーへ必要な情報だけを探索しに行く設計。これにより、AIが「あたかも覚えている」かのように動きつつ、コストを極限まで抑えている。</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <p class="sub-heading">表記ゆれ（名寄せ）の自動吸収</p>
+                <p style="color:#4b5563;">従来のシステム開発（データベース設計）において最大の障壁となる「半角・全角の違い」や「店舗名の略称」などの表記ゆれは、事前の中間データ整備（名寄せ作業）が一切不要。AI（LLM）が文脈や会話としてそのまま表記ゆれを高度に理解できるため、データが多少不揃いであっても自動で意味を解釈し、正しいデータと突き合わせることができる。これにより、導入時のデータクレンジングの手間が劇的に削減される。</p>
+            </div>
+
+            <div class="card gray-card">
+                <p class="sub-heading">ファイルの取り込み方法</p>
+                <ul class="dot-list gray-markers">
+                    <li><strong>手動アップロード：</strong>管理画面から、就業規則や業務マニュアルなどのPDF、Excelファイルをユーザーが直接選択してアップロードする。</li>
+                    <li><strong>ローカルファイルの自動同期は未対応：</strong>「自分のローカルファイルを取りに行く（自動で同期して読み込むような機能）」は、現時点ではまだできていないと明言されている。</li>
+                    <li><strong>CSVファイルによるデータ更新：</strong>在庫管理システムや介護の個人情報管理システムなど、既存の外部システムと直接API連携が難しい、あるいは情報をプラットフォーム側に永続保持させたくない場合は、CSVファイルを吐き出して取り込むことで最新の動的ナレッジ（在庫の差分情報など）をAIに把握させる。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 4 外部システム連携 -->
+        <section id="s4" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-blue"></div>
+                <h2 class="section-title blue">4. 外部システム連携</h2>
+            </div>
+
+            <div class="card">
+                <p class="sub-heading">標準で対応している主要ツールとの連携</p>
+                <ul class="dot-list blue-markers">
+                    <li><strong>Google＆LINE WORKS連携：</strong>カレンダー（スケジュール）や社内メール、チャットツールの「LINE WORKS」の内容を、AIが直接読み込むことができる。</li>
+                    <li><strong>チャットからタスクへ自動抽出：</strong>LINE WORKSで業務の指示ややり取りが投げられると、AIがその会話から「何月何日にどうしたい」という内容を自動で判別し、プラットフォーム内の「タスク」に自動追加・ステータス管理する。</li>
+                    <li><strong>メールの双方向連携：</strong>単にメールを監視するだけでなく、Outlookなどとの連携を視野に入れ、AIが自動生成した手配メールを「承認ボタン」一つで外部に送信するステップまでシステム内で完結させる。</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <p class="sub-heading">API連携が難しい場合の現実的な解決策（CSV連携）</p>
+                <ul class="dot-list blue-markers">
+                    <li><strong>在庫CSV差分取り込み：</strong>相手先の在庫管理システムと直接APIで繋げるか分からない場合、日々の実務では「CSVで前回からの差分データだけを取り込む」という連携方法をとる。</li>
+                    <li><strong>個人情報保護のための一時CSV取り込み：</strong>介護分野などのデリケートな個人情報連携では、顧客の個人情報をプラットフォーム側やAI側に永続保持せず、既存の専用管理ツールから「CSVで一時的に吐き出して、この環境内で取り込んで参照しているだけ」という設計にする。これにより、Pマークを無理に取得せずとも、安全に外部データと連携して運用できる。</li>
+                </ul>
+            </div>
+
+            <div class="box-gray">
+                <p class="box-label">【将来像】外部APIへの「指示出し」と双方向連携</p>
+                <p style="color:#4b5563;">厚生労働省などのサイトを巡回して法改正（サブロック協定や労働法など）を検知すると、プラットフォームが「就業規則の変更が必要」とアラートを出す。そこから、連携している外部の編集ツールやシステムへAPI経由で「このように変更してください」と指示を出し、変更完了の信号をまたプラットフォーム側で受け取る、といった双方向のシステム間連携も、モデル（設計）次第で構築可能とされている。</p>
+            </div>
+        </section>
+
+        <!-- 5 ユースケース：サンプル手配業務 -->
+        <section id="s5" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">5. ユースケース：サンプル手配業務の自動化</h2>
+            </div>
+
+            <div class="card">
+                <p class="sub-heading">寿司チェーン（スシロー）の事例</p>
+                <ul class="dot-list green-markers">
+                    <li>毎日何百件も届く依頼メールや、関係者がランダムに書き込む共有Excelシートの情報をAIが自動解析する。</li>
+                    <li>入力のタイムラグと在庫データの整合性担保：参照タイミングによって在庫数にタイムラグ（揺れ）が生じ整合性が合わなくなる課題に対し、最新の「在庫表CSV（前回からの差分データ）」をプラットフォームに取り込み、AIが最新在庫と依頼データを突き合わせる設計で整合性を担保している。</li>
+                    <li>在庫表をもとに「センターに在庫があるものはセンター手配、ないものはメーカー手配」とAIが自動的に仕分ける。</li>
+                    <li>「承認ボタン（ポチ）」による人間とAIのハイブリッド運用：手配用のメール本文をAIが自動生成するが、勝手に送信するのではなく、人間が最終確認して「承認」ボタンを押すことで初めて送信されるステップを挟むことで、業務の安全性を100%に近づけている。</li>
+                    <li>曖昧な返信メールの解釈：メーカーから戻ってきた「希望通りの納品は難しい」「メーカーに在庫がない」といった曖昧なニュアンスもAIが自動で読み取り、次の適切なステータスへと分類する。</li>
+                </ul>
+            </div>
+
+            <div class="box-purple">
+                <p class="box-label">【8/18 TKW議事録より】飯田氏の業務を対象にした自動化デモ</p>
+                <ul class="dot-list" style="margin-bottom:0;">
+                    <li>これまで手動で行われていた、非常に煩雑なサンプル手配業務をほぼ完全に自動化するシステムがデモされた。</li>
+                    <li>ステータス可視化と自動メール生成：画面上でサマリー（依頼数36件、センター手配14件、自動化可能率68.6%など）がリアルタイムに可視化される。</li>
+                    <li>Outlook連携によるステータス自動更新：先方からの返信メールの内容をシステムが自動で読み取り、ステータス（返信待ち、手配済みなど）を自動で更新・管理する。</li>
+                    <li>差分取り込み機能：1日1回などのタイミングで、前回からの差分データだけを取り込んで処理することも可能。担当者が1日中画面に張り付く必要がなくなり、作業負荷が劇的に削減される。</li>
+                </ul>
+            </div>
+
+            <div class="diagram-wrap">
+                <svg viewBox="0 0 1060 250" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family:'Noto Sans JP',sans-serif;">
+                    <text x="0" y="22" font-size="16" font-weight="700" fill="#374151">サンプル手配業務　自動化フロー</text>
+
+                    <rect x="15" y="58" width="170" height="88" rx="10" fill="#f0fdf4" stroke="#059669" stroke-width="1.5"/>
+                    <text x="100" y="96" font-size="13.5" font-weight="700" fill="#065f46" text-anchor="middle">エクセル発注</text>
+                    <text x="100" y="118" font-size="12.5" font-weight="700" fill="#065f46" text-anchor="middle">データ入力</text>
+                    <path d="M188 102 L212 102" stroke="#6ee7b7" stroke-width="1.5" marker-end="url(#arrowtr1)"/>
+
+                    <rect x="215" y="58" width="170" height="88" rx="10" fill="#f0fdf4" stroke="#059669" stroke-width="1.5"/>
+                    <text x="300" y="96" font-size="13.5" font-weight="700" fill="#065f46" text-anchor="middle">在庫CSVと</text>
+                    <text x="300" y="118" font-size="13.5" font-weight="700" fill="#065f46" text-anchor="middle">自動照合</text>
+                    <path d="M388 102 L412 102" stroke="#6ee7b7" stroke-width="1.5" marker-end="url(#arrowtr1)"/>
+
+                    <rect x="415" y="58" width="170" height="88" rx="10" fill="#f0fdf4" stroke="#059669" stroke-width="1.5"/>
+                    <text x="500" y="90" font-size="13" font-weight="700" fill="#065f46" text-anchor="middle">自動振分</text>
+                    <text x="500" y="111" font-size="12" fill="#059669" text-anchor="middle">センター/</text>
+                    <text x="500" y="129" font-size="12" fill="#059669" text-anchor="middle">メーカー手配</text>
+                    <path d="M588 102 L612 102" stroke="#6ee7b7" stroke-width="1.5" marker-end="url(#arrowtr1)"/>
+
+                    <rect x="615" y="58" width="170" height="88" rx="10" fill="#f0fdf4" stroke="#059669" stroke-width="1.5"/>
+                    <text x="700" y="96" font-size="13.5" font-weight="700" fill="#065f46" text-anchor="middle">承認ボタン→</text>
+                    <text x="700" y="118" font-size="13.5" font-weight="700" fill="#065f46" text-anchor="middle">メール自動生成</text>
+                    <path d="M788 102 L812 102" stroke="#6ee7b7" stroke-width="1.5" marker-end="url(#arrowtr1)"/>
+
+                    <rect x="815" y="58" width="230" height="88" rx="10" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+                    <text x="930" y="90" font-size="13.5" font-weight="700" fill="#065f46" text-anchor="middle">Outlook連携</text>
+                    <text x="930" y="111" font-size="12" fill="#059669" text-anchor="middle">返信メールから</text>
+                    <text x="930" y="129" font-size="12" fill="#059669" text-anchor="middle">ステータス自動更新</text>
+
+                    <rect x="15" y="175" width="1030" height="55" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="1"/>
+                    <text x="30" y="197" font-size="12.5" fill="#065f46">差分取り込み機能：1日1回、前回からの差分データのみ処理。</text>
+                    <text x="30" y="217" font-size="12.5" fill="#065f46">依頼数36件／センター手配14件／自動化可能率68.6%（画面上でリアルタイム可視化）</text>
+
+                    <defs><marker id="arrowtr1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#059669"/></marker></defs>
+                </svg>
+            </div>
+        </section>
+
+        <!-- 6 ユースケース：eラーニング -->
+        <section id="s6" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-purple"></div>
+                <h2 class="section-title purple">6. ユースケース：eラーニング・研修コース自動生成</h2>
+            </div>
+
+            <div class="card">
+                <p class="sub-heading">仕組み</p>
+                <p style="color:#4b5563;">就業規則やマニュアル（PDF、Excelなど）をナレッジとして読み込ませるだけで、「新人向け」「店長向け」といった対象者や、「初級」「上級」といったレベルに合わせた研修コースや、記述式を含む20問程度のテストをAIが自動生成・構築する。会社のルールに完全に準拠した社内教育コンテンツが、マニュアルを1枚読み込ませるだけで一瞬で構築される。</p>
+            </div>
+
+            <div class="box-purple">
+                <p class="box-label">【8/18 TKW議事録より】CODATIアカデミーのデモ</p>
+                <ul class="dot-list" style="margin-bottom:0;">
+                    <li>プロンプト（指示文）を入力することなく、直感的な操作だけで研修プログラムを瞬時に作成できるビルダー機能が紹介された。</li>
+                    <li>教材の自動登録：PDF、動画、YouTube URLなどをドラッグ＆ドロップするだけで、AIが教材（ナレッジ）として学習する。</li>
+                    <li>テストの自動生成：対象者（店長、営業、新人、管理職など）や難易度（初級・中級・上級）を指定するだけで、AIが丸バツ、記述、複数選択形式のテスト問題を自動で組み立てる。</li>
+                    <li>受講状況の確認から、最終的には人的評価までをワンストップで管理できる仕組み。</li>
+                    <li>通常の組織であれば1年以上かかる業務が、このビルダーを使えばわずか5分で構築できてしまう画期的なシステムであると絶賛された。</li>
+                    <li>出来上がったデモを引っ提げ、経営層自らが木下氏（瑞鳳のキーマン）のところへ説明に行き、直接提案を行うことが決定した。</li>
+                </ul>
+            </div>
+
+            <div class="diagram-wrap">
+                <svg viewBox="0 0 1060 180" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family:'Noto Sans JP',sans-serif;">
+                    <text x="0" y="22" font-size="16" font-weight="700" fill="#374151">CODATIアカデミー　教材登録からテスト生成まで</text>
+
+                    <rect x="15" y="55" width="230" height="88" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+                    <text x="130" y="90" font-size="13.5" font-weight="700" fill="#6d28d9" text-anchor="middle">教材D&amp;D登録</text>
+                    <text x="130" y="112" font-size="12" fill="#7c3aed" text-anchor="middle">PDF・動画・YouTube</text>
+                    <path d="M248 99 L278 99" stroke="#c4b5fd" stroke-width="1.5" marker-end="url(#arrowtr2)"/>
+
+                    <rect x="281" y="55" width="230" height="88" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+                    <text x="396" y="90" font-size="13.5" font-weight="700" fill="#6d28d9" text-anchor="middle">AIが学習</text>
+                    <text x="396" y="112" font-size="12" fill="#7c3aed" text-anchor="middle">ナレッジ化</text>
+                    <path d="M514 99 L544 99" stroke="#c4b5fd" stroke-width="1.5" marker-end="url(#arrowtr2)"/>
+
+                    <rect x="547" y="55" width="250" height="88" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+                    <text x="672" y="82" font-size="13.5" font-weight="700" fill="#6d28d9" text-anchor="middle">対象者・難易度を指定</text>
+                    <text x="672" y="103" font-size="12" fill="#7c3aed" text-anchor="middle">店長/営業/新人/管理職</text>
+                    <text x="672" y="122" font-size="12" fill="#7c3aed" text-anchor="middle">初級/中級/上級</text>
+                    <path d="M800 99 L830 99" stroke="#c4b5fd" stroke-width="1.5" marker-end="url(#arrowtr2)"/>
+
+                    <rect x="833" y="55" width="215" height="88" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+                    <text x="940" y="82" font-size="13.5" font-weight="700" fill="#4c1d95" text-anchor="middle">テスト自動生成</text>
+                    <text x="940" y="103" font-size="12" fill="#7c3aed" text-anchor="middle">丸バツ/記述/複数選択</text>
+                    <text x="940" y="122" font-size="12" fill="#7c3aed" text-anchor="middle">→受講管理・人的評価へ</text>
+
+                    <defs><marker id="arrowtr2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a78bfa"/></marker></defs>
+                </svg>
+            </div>
+        </section>
+
+        <!-- 7 ユースケース：法改正・個人AI -->
+        <section id="s7" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title gray">7. ユースケース：法改正自動対応・個人AI統合</h2>
+            </div>
+
+            <div class="card gray-card">
+                <p class="sub-heading">法改正への自動対応モデル</p>
+                <p style="color:#4b5563;">特定のサイトなどを1日1回巡回させ、例えば労働法などの法改正があった場合に、「就業規則のこの部分の変更が必要です」というアラートを通知し、改訂案を作成するようなモデルを組むことも可能。</p>
+            </div>
+
+            <div class="card gray-card">
+                <p class="sub-heading">個人用AIツールの統合</p>
+                <p style="color:#4b5563;">会社全体のナレッジとは別に、個人が契約しているAI（GeminiやChatGPTなど）をプラットフォーム上で連携させ、他者には共有されないプライベートな環境で自身の資料作成や画像生成に役立てることもできる。</p>
+            </div>
+        </section>
+
+        <!-- 8 導入アプローチ -->
+        <section id="s8" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-purple"></div>
+                <h2 class="section-title purple">8. 導入アプローチ</h2>
+            </div>
+            <p class="section-lead">一般のクライアントは「AIで何ができるか」を具体的にイメージできない。そのため、システム全体をいきなり設計・開発する手法は取らず、以下のような段階的なステップが推奨されている。</p>
+
+            <div class="card purple-card">
+                <ul class="dot-list">
+                    <li><strong>① ヒアリング：</strong>現状の業務で何に困っているか、どのような課題があるかを丁寧に聞き取る。</li>
+                    <li><strong>② 核心部分のモックアップ作成：</strong>課題の最も「肝（ボトルネック）」になっている部分を、まずモック（デモ画面）として作成して見せ、AIでどのように解決できるかを視覚的に理解してもらう。</li>
+                    <li><strong>③ 段階的な機能追加：</strong>理解を得られた後に、GoogleやLINE WORKSなどの社内システムと連携させ、エージェントを徐々に拡張していく。</li>
+                </ul>
+            </div>
+
+            <div class="box-gray">
+                <p class="box-label">【コンサルティングでの武器として】</p>
+                <p style="color:#4b5563;">最初は事業部ごとに「カード（エージェント）」を増やし、それぞれに必要な指示（プロンプト）や個別のナレッジをセットして「AI社員」を1人ずつ配属していくような感覚で拡張できる。特定の業界（例：パチンコ、飲食、印刷など）で一度ナレッジ構築と自動化のパターン（ひな形）を作ってしまえば、それがプラットフォーム全体の知見となり、他社へパッケージ化して横展開しやすくなる。</p>
+            </div>
+        </section>
+
+        <p class="divider-label">ここから8/18 TKW議事録より（営業戦略・事業への示唆）</p>
+
+        <!-- 9 営業戦略 -->
+        <section id="s9" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">9. 営業戦略・事業への示唆</h2>
+            </div>
+
+            <div class="card">
+                <p class="sub-heading">システム（デモ画面）自体を「最強の営業ツール」にする戦略</p>
+                <ul class="dot-list green-markers">
+                    <li>CODATIのトレーニングセンターや自動化システムのヒアリング・ビルダー機能を、そのまま営業活動（商談）用のツールとして移植する。</li>
+                    <li>顧客との打ち合わせの席で、営業担当者が顧客に「どのような業務を行っているか」「どんなことに困っているか」を質問し、その場で顧客が使っている実際のエクセルシートを取り込んだり、課題を入力したりする。すると、その場でAIが「このシステムを使えば、あなたの業務はこれだけ自動化できます」という具体的な解決策を瞬時に回答・提示する実演型デモを行う。</li>
+                    <li>多くの企業が導入している「AIナレッジセンター」は、データを検索するだけの「静的なナレッジセンター」に過ぎず、業務自体は何も変わっていないという不満を抱えている。当社のシステムは「裏側で実際にメールやデータが自動で動きを伴ってタスクを完結させる」点で競合とは全く異なる。</li>
+                    <li>中小企業の社長（決済者）は「AIを会社にどう還元すればいいか」「プロンプトを学ばせないといけないのか」と悩んでいる。そこへ「従業員は誰一人プロンプトを打てなくていい（AIを使えなくていい）。裏側でAIが勝手に動いて業務が完結する」というAI活用の真の本質を社長に説明する。その上で、現場の担当者にデモを触らせる。現場が「嘘でしょう、こんなに楽になるのか」と体感すれば、その担当者が社内の熱心なプレゼンター（味方）となり、売り込まなくても勝手に社内決済を通して売り上げが上がっていく仕組みを作る。</li>
+                    <li>他社のナレッジセンターを既に導入している企業に対して、この仕組みをぶつけて「乗り換え（リプレイス）戦略」を積極的に仕掛ける。</li>
+                </ul>
+            </div>
+
+            <div class="box-gray">
+                <p class="box-label">【kintone発注システムの不要化（驚きの予見）】</p>
+                <p style="color:#4b5563;">この自動化システムが本格導入され、外部とのコミュニケーション（メールのやり取りや差分確認など）がすべてAIの裏側で処理されるようになれば、現在導入しようとしている発注用kintoneシステム自体がそもそも不要になる（メールとAIだけで手配が完結するため）という予言が示された。すでに発注用システム開発としてkintoneの導入費用を一部もらっているため、まずは一度稼働させて本番運用を行うが、将来的には「これ、AI自動化にすればkintone自体が不要になってさらに安く運用できますよ」と顧客側に気づかせる形で、当社の自動化システムへの切り替えを促していく。</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 TKW Project Team. All Rights Reserved.</p>
+        </footer>
+    </div>
+</div>
+
+<script>
+    const links = document.querySelectorAll('.sidebar-link');
+    const sections = document.querySelectorAll('section[id]');
+    const blueSections = ['s3', 's4'];
+    const graySections = ['s7'];
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                links.forEach(link => {
+                    link.classList.remove('active', 'active-blue', 'active-gray');
+                    if (link.getAttribute('href') === '#' + id) {
+                        if (blueSections.includes(id)) link.classList.add('active-blue');
+                        else if (graySections.includes(id)) link.classList.add('active-gray');
+                        else link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.15 });
+    sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
