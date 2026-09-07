@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKW会議：2026年8月25日</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif; background-color: #ffffff; color: #1f2937; line-height: 1.8; font-size: 15px; }
+        .layout { display: flex; min-height: 100vh; }
+        .sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; background-color: #f9fafb; border-right: 1px solid #e5e7eb; display: flex; flex-direction: column; padding: 2rem 0 3rem 0; }
+        .sidebar-label { font-size: 0.7rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; padding: 0 1.5rem; margin-bottom: 1rem; }
+        .sidebar-links { display: flex; flex-direction: column; }
+        .sidebar-link { display: block; padding: 0.45rem 1.5rem; font-size: 0.8rem; color: #6b7280; text-decoration: none; border-radius: 0.5rem; margin: 0.1rem 0.5rem; transition: background 0.18s, color 0.18s; }
+        .sidebar-link:hover { background-color: #e5e7eb; color: #111827; }
+        .sidebar-link.active { background-color: #ecfdf5; color: #065f46; font-weight: 700; }
+        .sidebar-link.active-red { background-color: #fef2f2; color: #991b1b; font-weight: 700; }
+        .sidebar-link.active-blue { background-color: #eff6ff; color: #1d4ed8; font-weight: 700; }
+        .sidebar-link.active-purple { background-color: #f5f3ff; color: #6d28d9; font-weight: 700; }
+        .sidebar-card { margin: 1.5rem 1rem 0 1rem; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.25rem; font-size: 0.75rem; color: #6b7280; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .sidebar-card-title { font-weight: 700; color: #1f2937; font-size: 0.85rem; margin-bottom: 0.6rem; }
+        .sidebar-card-row { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
+        .sidebar-card-row span:last-child { font-weight: 700; color: #1f2937; }
+        .sidebar-card-row .status { color: #065f46; }
+        .main { flex: 1; padding: 0 4rem 4rem 4rem; background: #ffffff; min-width: 0; }
+        .page-header { padding: 3.5rem 0 2.5rem 0; margin-bottom: 2.5rem; border-bottom: 1px solid #e5e7eb; }
+        .badge { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 9999px; font-size: 0.78rem; font-weight: 600; background: #f3f4f6; color: #4b5563; margin-bottom: 1rem; letter-spacing: 0.04em; }
+        .page-title { font-size: 2.2rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.75rem; }
+        .page-subtitle { color: #6b7280; font-size: 1rem; font-weight: 500; }
+        .section-card { background: #ffffff; border-radius: 1rem; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 2rem; padding: 2.5rem; transition: box-shadow 0.25s; }
+        .section-card:hover { box-shadow: 0 10px 20px -3px rgba(0,0,0,0.09); }
+        .section-card.red-card { background-color: #fff5f5; border: 1px solid #fecaca; }
+        .section-card.purple-card { background-color: #f5f3ff; border: 2px solid #7c3aed; }
+        .section-head { display: flex; align-items: center; margin-bottom: 1.75rem; }
+        .section-bar { width: 6px; height: 2rem; border-radius: 9999px; margin-right: 1rem; flex-shrink: 0; }
+        .bar-green { background: #059669; }
+        .bar-blue { background: #2563eb; }
+        .bar-red { background: #dc2626; }
+        .bar-gray { background: #6b7280; }
+        .bar-purple { background: #7c3aed; }
+        .section-title { font-size: 1.35rem; font-weight: 700; color: #111827; }
+        .section-title.blue { color: #1d4ed8; }
+        .section-title.green { color: #065f46; }
+        .section-title.red { color: #dc2626; }
+        .section-title.purple { color: #6d28d9; }
+        .section-intro { color: #6b7280; margin-bottom: 1.5rem; line-height: 1.8; }
+        .sub-heading { font-size: 1rem; font-weight: 700; color: #1f2937; margin: 1.75rem 0 0.75rem 0; }
+        ul.dot-list { list-style: disc; padding-left: 1.5rem; color: #4b5563; }
+        ul.dot-list li { margin-bottom: 0.6rem; line-height: 1.75; }
+        ul.dot-list li::marker { color: #10b981; }
+        ul.dot-list.blue-markers li::marker { color: #2563eb; }
+        ul.dot-list.red-markers li::marker { color: #ef4444; }
+        ul.dot-list.gray-markers li::marker { color: #6b7280; }
+        ul.dot-list.purple-markers li::marker { color: #7c3aed; }
+        ul.dot-list li strong { color: #111827; }
+        .box-green { border-left: 4px solid #10b981; background: #f0fdf4; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-green .box-label { font-size: 0.8rem; font-weight: 700; color: #065f46; margin-bottom: 0.5rem; }
+        .box-green ul.dot-list li::marker { color: #10b981; }
+        .box-blue { border-left: 4px solid #2563eb; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-blue .box-label { font-size: 0.8rem; font-weight: 700; color: #1d4ed8; margin-bottom: 0.5rem; }
+        .box-blue ul.dot-list li::marker { color: #2563eb; }
+        .box-red { border-left: 4px solid #ef4444; background: #fef2f2; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-red .box-label { font-size: 0.8rem; font-weight: 700; color: #991b1b; margin-bottom: 0.5rem; }
+        .box-red ul.dot-list li::marker { color: #ef4444; }
+        .box-purple { border-left: 4px solid #7c3aed; background: #f5f3ff; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-purple .box-label { font-size: 0.8rem; font-weight: 700; color: #6d28d9; margin-bottom: 0.5rem; }
+        .box-purple ul.dot-list li::marker { color: #7c3aed; }
+        .reporter-badge { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.6rem; border-radius: 9999px; margin-right: 0.4rem; vertical-align: middle; }
+        .reporter-badge.nigo { background: #ecfdf5; color: #065f46; }
+        .reporter-badge.takada { background: #eff6ff; color: #1d4ed8; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1rem 0; }
+        .data-table thead th { background: #f9fafb; padding: 0.6rem 1rem; text-align: left; font-weight: 700; color: #374151; border-bottom: 2px solid #e5e7eb; font-size: 0.75rem; letter-spacing: 0.04em; }
+        .data-table tbody td { padding: 0.6rem 1rem; border-bottom: 1px solid #f3f4f6; color: #4b5563; vertical-align: top; }
+        .data-table tbody tr:hover { background: #f9fafb; }
+        .note { font-size: 0.8rem; color: #6b7280; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 0.5rem; padding: 0.6rem 1rem; margin-top: 0.5rem; }
+        .page-footer { margin-top: 4rem; padding: 2.5rem 0; border-top: 1px solid #e5e7eb; text-align: center; font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; }
+        @media (max-width: 768px) {
+            .layout { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid #e5e7eb; padding: 1.25rem 0 1rem 0; }
+            .sidebar-card { display: none; }
+            .main { padding: 0 1.25rem 3rem 1.25rem; }
+            .page-header { padding: 2rem 0 1.5rem 0; }
+            .page-title { font-size: 1.5rem; }
+            .section-card { padding: 1.5rem; }
+            .sidebar-links { flex-direction: row; flex-wrap: wrap; padding: 0 0.75rem; gap: 0.25rem; }
+            .sidebar-link { margin: 0; padding: 0.3rem 0.7rem; font-size: 0.72rem; }
+            .sidebar-label { padding: 0 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+    <aside class="sidebar">
+        <p class="sidebar-label">INDEX / 目次</p>
+        <div class="sidebar-links">
+            <a href="#s1" class="sidebar-link">1. MID　三井氏との再接触</a>
+            <a href="#s2" class="sidebar-link">2. Mooovi　内製化・全施設提案開始</a>
+            <a href="#s3" class="sidebar-link">3. ボーネルンド　改修・切替対応</a>
+            <a href="#s4" class="sidebar-link">4. 瑞鳳</a>
+            <a href="#s5" class="sidebar-link">5. LINE広告　自動化最終調整</a>
+            <a href="#s6" class="sidebar-link">6. CODATI　補助金・営業方針</a>
+            <a href="#s7" class="sidebar-link">7. 来季戦略・全体総括</a>
+            <a href="#s8" class="sidebar-link">8. アクションアイテム（TODO）</a>
+        </div>
+        <div class="sidebar-card">
+            <p class="sidebar-card-title">会議情報</p>
+            <div class="sidebar-card-row"><span>会議名:</span><span>TKW定例会議</span></div>
+            <div class="sidebar-card-row"><span>日時:</span><span>2026年8月25日</span></div>
+            <div class="sidebar-card-row"><span>形式:</span><span>原文保存版</span></div>
+            <div class="sidebar-card-row"><span>状態:</span><span class="status">チェック完了</span></div>
+        </div>
+    </aside>
+
+    <div class="main">
+        <header class="page-header">
+            <span class="badge">MEETING MINUTES</span>
+            <h1 class="page-title">TKW会議：2026年8月25日</h1>
+            <p class="page-subtitle">Mooovi全施設提案開始 / ボーネルンド改修切替 / LINE広告自動化最終調整 / CODATI補助金 / 来季戦略総括　詳細記録</p>
+        </header>
+
+        <div style="display:flex; gap:0.5rem; margin-bottom:2rem; flex-wrap:wrap;">
+            <span class="reporter-badge nigo">新後 報告</span>
+            <span class="reporter-badge takada">高田 報告</span>
+            <span style="font-size:0.78rem; color:#6b7280;">各セクションの情報源を示します</span>
+        </div>
+
+        <!-- 1 MID -->
+        <section id="s1" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title">1. MID　三井氏との再接触</h2>
+            </div>
+            <ul class="dot-list gray-markers">
+                <li>三井氏から入電があり、長期間停滞していた状況が動き出した。三井氏は「時間が空いてしまい申し訳ない」「提案を無視したわけではない。色々やりたい気持ちは変わっていない」と語った。</li>
+                <li>日本保育サービスとの連携強化を主軸に、現場の改善状況に基づいたレクチャー実施を合意。最新情報を再送付し、三井氏から「ぜひ」と前向きな反応を得た。</li>
+                <li>来週当たりで一度顔合わせできるよう調整中。</li>
+            </ul>
+        </section>
+
+        <!-- 2 Mooovi -->
+        <section id="s2" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">2. Mooovi　内製化・全施設提案開始</h2>
+            </div>
+            <p class="section-intro">2027年4月の全施設稼働に向け、システム完成を待たず9月7日週から全施設・市区町村への導入提案を開始する。請求面では戸田との相殺案を提案済みで先方回答待ち。</p>
+
+            <p class="sub-heading">提案・開発統合スケジュール <span class="reporter-badge nigo">新後 報告</span></p>
+
+            <!-- スケジュール表 -->
+            <div style="margin:1.25rem 0;">
+                <div style="display:grid; grid-template-columns: 110px 1fr 1fr; gap:4px; font-size:0.82rem;">
+                    <div style="padding:0.5rem 0.75rem; font-weight:700; color:#6b7280; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.05em;">期間</div>
+                    <div style="padding:0.5rem 0.75rem; font-weight:700; color:#065f46; background:#f0fdf4; border-radius:0.4rem 0.4rem 0 0; border:1px solid #10b981; border-bottom:none;">提案・見積</div>
+                    <div style="padding:0.5rem 0.75rem; font-weight:700; color:#1d4ed8; background:#eff6ff; border-radius:0.4rem 0.4rem 0 0; border:1px solid #2563eb; border-bottom:none;">システム構築</div>
+                    <div style="padding:0.6rem 0.75rem; background:#f9fafb; border:1px solid #e5e7eb; font-weight:700; color:#374151; font-size:0.8rem;">8/25〜28</div>
+                    <div style="padding:0.6rem 0.75rem; background:#f0fdf4; border:1px solid #10b981; color:#065f46;">提案方針・費用構成・見積手順を確定</div>
+                    <div style="padding:0.6rem 0.75rem; background:#eff6ff; border:1px solid #bfdbfe; color:#1d4ed8;">NFC・LIFF要件・DB方針・本番基盤を決定</div>
+                    <div style="padding:0.6rem 0.75rem; background:#f9fafb; border:1px solid #e5e7eb; border-top:none; font-weight:700; color:#374151; font-size:0.8rem;">8/31〜9/4</div>
+                    <div style="padding:0.6rem 0.75rem; background:#f0fdf4; border:1px solid #10b981; border-top:none; color:#065f46;">提案書・デモ・見積ひな形を完成</div>
+                    <div style="padding:0.6rem 0.75rem; background:#eff6ff; border:1px solid #bfdbfe; border-top:none; color:#1d4ed8;">LIFF・NFC・DB基盤・画面・自動テスト環境を構築</div>
+                    <div style="padding:0.6rem 0.75rem; background:#fef2f2; border:2px solid #dc2626; border-top:none; font-weight:700; color:#dc2626; font-size:0.8rem;">9/7〜11<br><span style="font-size:0.72rem;">★提案開始</span></div>
+                    <div style="padding:0.6rem 0.75rem; background:#fef2f2; border:2px solid #dc2626; border-top:none; border-left:none; color:#dc2626; font-weight:700;">第1陣へ提案・見積作成開始</div>
+                    <div style="padding:0.6rem 0.75rem; background:#fef2f2; border:2px solid #dc2626; border-top:none; border-left:none; color:#991b1b;">LIFF・NFC入退場・リッチメニュー・画面デザイン完成</div>
+                    <div style="padding:0.6rem 0.75rem; background:#f9fafb; border:1px solid #e5e7eb; border-top:none; font-weight:700; color:#374151; font-size:0.8rem;">9/14〜18</div>
+                    <div style="padding:0.6rem 0.75rem; background:#f0fdf4; border:1px solid #10b981; border-top:none; color:#065f46;">第2陣へ提案・第1陣へ見積提出</div>
+                    <div style="padding:0.6rem 0.75rem; background:#eff6ff; border:1px solid #bfdbfe; border-top:none; color:#1d4ed8;">メッセージ・本番基盤・監視・バックアップを実装</div>
+                    <div style="padding:0.6rem 0.75rem; background:#f9fafb; border:1px solid #e5e7eb; border-top:none; font-weight:700; color:#374151; font-size:0.8rem;">9/21〜10/2</div>
+                    <div style="padding:0.6rem 0.75rem; background:#f0fdf4; border:1px solid #10b981; border-top:none; color:#065f46;">全施設への初回提案完了・見積を順次提出</div>
+                    <div style="padding:0.6rem 0.75rem; background:#eff6ff; border:1px solid #bfdbfe; border-top:none; color:#1d4ed8;">共通機能完成・自動テスト・データ移行リハーサル</div>
+                    <div style="padding:0.6rem 0.75rem; background:#f9fafb; border:1px solid #e5e7eb; border-top:none; border-radius:0 0 0 0.4rem; font-weight:700; color:#374151; font-size:0.8rem;">10/5〜30<br><span style="font-size:0.72rem; color:#059669;">完成目標</span></div>
+                    <div style="padding:0.6rem 0.75rem; background:#f0fdf4; border:1px solid #10b981; border-top:none; border-radius:0 0 0.4rem 0; color:#065f46;">予算・採否見込みを整理。全施設の見積・次回対応を整理。</div>
+                    <div style="padding:0.6rem 0.75rem; background:#eff6ff; border:1px solid #bfdbfe; border-top:none; border-radius:0 0 0.4rem 0; color:#1d4ed8;">施設別設定・移行手順・全場展開パッケージ完成。2027年1〜3月の展開計画確定。</div>
+                </div>
+            </div>
+
+            <p class="sub-heading">請求・相殺処理 <span class="reporter-badge nigo">新後 報告</span></p>
+            <table class="data-table">
+                <thead><tr><th>対象月</th><th>内容</th><th>金額（税込）</th></tr></thead>
+                <tbody>
+                    <tr><td>4月分</td><td>通常利用料の未払い。請求書 INV-0000000618-6、支払期日2026年5月31日。</td><td>113,740円</td></tr>
+                    <tr><td>5月分</td><td>追加配信関係のみが誤請求対象。通常利用料等113,740円は対象外。</td><td>返還・相殺対象 203,643円</td></tr>
+                    <tr><td>6月分</td><td>未払い請求書 INV-0000000659-6。</td><td>318,280円</td></tr>
+                    <tr><td>未払い合計</td><td>4月分113,740円＋6月分318,280円</td><td>432,020円</td></tr>
+                    <tr><td>相殺案</td><td>未払い合計432,020円－5月誤請求対象203,643円</td><td>支払残額 228,377円</td></tr>
+                </tbody>
+            </table>
+            <ul class="dot-list" style="margin-top:0.75rem;">
+                <li>相殺案は先方（戸田ボートレース企業団）へ提案済み・回答待ち。合意形成と年内の処理完了を急ぐ。</li>
+                <li>ボートレース総合管理株式会社への正規請求203,643円について、宛名・請求日・支払期日を発行前に確認する。</li>
+            </ul>
+
+            <p class="sub-heading">提案の説得ストーリー（施設向け）</p>
+            <ul class="dot-list">
+                <li><strong>LINEミニアプリ化の価値：</strong>リッチメニューから外部に遷移する従来仕様から、アプリを実装する形に変わることで、顧客・運営双方にどれだけ大きなメリットがあるかをまず理解してもらう。</li>
+                <li><strong>LINEタッチの導入メリット：</strong>ミニアプリ化によってLINEタッチが使用可能になり、入場処理がどのようにスムーズになるかを説明する。</li>
+                <li><strong>予約機能の改善：</strong>施設側の最大の負担となっている予約機能（重複防止などの要望対応）がどう解決されるかを示す。</li>
+                <li>デモは「仮のイメージ」では人は動かないため、UIデザインを本番同様に作り込み、「これなら変えたい」と感じさせるレベルまで仕上げることを最優先とする。</li>
+            </ul>
+
+            <p class="sub-heading">自治体向けの提案（費用・安全面）</p>
+            <ul class="dot-list">
+                <li>「支払いを減らし、利益を上げ、各所の負担を減らす」という3つの軸が成り立つ落としどころを提示する。</li>
+                <li>現状の数値（売上・原価・粗利）と比較し、新システム導入によってどのように粗利が確保できるかを一目で判断できるシミュレーションを作成して相談を進める。</li>
+            </ul>
+
+            <p class="sub-heading">施設別対応方針 <span class="reporter-badge nigo">新後 報告</span></p>
+            <table class="data-table">
+                <thead><tr><th>施設</th><th>対応方針</th></tr></thead>
+                <tbody>
+                    <tr><td>芦屋・浜名湖</td><td>優先度高。早急な調整が必要。浜名湖は浜名湖に直接話せばよい。</td></tr>
+                    <tr><td>常滑</td><td>いつもの常滑担当者に話せばよい。</td></tr>
+                    <tr><td>戸田</td><td>リザエン（<a href="https://www.riza-en.jp/" target="_blank" rel="noopener" style="color:#2563eb;">riza-en.jp</a>）からの説明が必要。</td></tr>
+                    <tr><td>下関</td><td>予約システムなし。Liny継続パターンも最悪許容の方針で検討中。</td></tr>
+                    <tr><td>尼崎</td><td>対応方針確認中。</td></tr>
+                </tbody>
+            </table>
+
+            <p class="sub-heading">CODATI連携（Moooviへの展開）</p>
+            <div class="box-purple">
+                <p class="box-label">【今期目標】内製Mooovi導入 ＋ ボーネルンドへのCODATI導入計画</p>
+                <ul class="dot-list">
+                    <li>MoooviはCODATI（トキワギのメインプロジェクト）との連携を前提に内製化を進める。詳細はCODATI章を参照。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 3 ボーネルンド -->
+        <section id="s3" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">3. ボーネルンド　改修・切替対応</h2>
+            </div>
+            <p class="section-intro">スマレジ精算時の商品数変更を予約システムへ連携する改修について、クライアントから追加負担が難しいとの意向が示された。ベンダーへ減額を依頼済みで原価回答待ち。10月1日の川崎ルフロン店稼働に向けた工程余裕が小さく、切替手順と障害時対応の整理が急務。</p>
+
+            <p class="sub-heading">進捗サマリー <span class="reporter-badge nigo">新後 報告</span></p>
+            <table class="data-table">
+                <thead><tr><th>項目</th><th>状況</th></tr></thead>
+                <tbody>
+                    <tr><td>数量変更連携</td><td>スマレジ側で変更した商品数を予約システムへ返す改修が必要。</td></tr>
+                    <tr><td>費用調整</td><td>ベンダーへ減額を依頼済み。調整後原価の回答待ち。回答受領後に見積を作成する。作業明細の見せ方を工夫し、必要に応じて他案件での費用吸収も検討する。</td></tr>
+                    <tr><td>テラスモール湘南店</td><td>残課題の早期解決が必要。</td></tr>
+                    <tr><td>川崎ルフロン店</td><td>10月1日からスマレジ稼働予定。旧POSライセンス未更新のため、日程変更は難しい見込み。</td></tr>
+                    <tr><td>後続店舗</td><td>川崎ルフロン店の稼働確認後、グランフロント大阪店・さいたま新都心店を年内展開したい意向。</td></tr>
+                </tbody>
+            </table>
+
+            <p class="sub-heading">来期の重点戦略（ボーネルンドのプラットフォーム化）</p>
+            <div class="box-blue">
+                <p class="box-label">【インフラへの食い込みとプラットフォーム化】</p>
+                <ul class="dot-list">
+                    <li>これまでのデータ収集・スマレジ導入サポートなど「手足として動く業務」から脱却し、自社プラットフォームをボーネルンド内の各システムを繋ぐ「ハブ」として真ん中に据える構造改革を来期の最重要目標として位置づける。</li>
+                    <li>Salesforce等の外部ツールと連携し、自社システムを顧客データの中心に据える「インフラ占有戦略」を1年かけて描き、販売・提案していく。</li>
+                    <li>10万・20万の目先の改修ではなく、大規模なコミットメントを創出するインテグレーションハブへの転換を宣言。</li>
+                </ul>
+            </div>
+
+            <div class="box-red">
+                <p class="box-label">【リスク】10月1日稼働までの工程余裕</p>
+                <ul class="dot-list">
+                    <li>10月1日稼働から逆算すると工程余裕が小さい。見積と並行して開発・検証・切替計画を固める必要がある。</li>
+                    <li>川崎ルフロン店の切替手順と問題発生時の対応方法の整理は未着手のため、早期確定が必要。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 4 瑞鳳 -->
+        <section id="s4" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-blue"></div>
+                <h2 class="section-title blue">4. 瑞鳳</h2>
+            </div>
+            <ul class="dot-list blue-markers">
+                <li>今週の報告内容なし。CODATI補助金（埼玉県DX導入支援補助金・9月30日締め切り）の申請準備を進めること。詳細はCODATI章を参照。</li>
+            </ul>
+        </section>
+
+        <!-- 5 LINE広告 -->
+        <section id="s5" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">5. LINE広告　自動化最終調整と営業活動</h2>
+            </div>
+
+            <p class="sub-heading">8月度売上実績 <span class="reporter-badge takada">高田 報告</span></p>
+            <div class="box-green">
+                <p class="box-label">【8月度確定見込み】</p>
+                <ul class="dot-list">
+                    <li>受注件数：<strong>170件</strong>（前月比17件増）</li>
+                    <li>売上予測：<strong>520万円</strong>でほぼ確定。今週中に確定させるよう一広側と調整中。</li>
+                    <li>今季予測：<strong>5,800万円</strong>（前期比9.9%増）見込み。</li>
+                    <li>9月：新PFでの配信に受注見込み<strong>140件</strong>見込み。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">GAS自動化システムの最終調整 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li>案件情報取得・自動入稿・オーディエンス設定・レポート作成の基盤は構築済み。8月25日週から9月4日までに本格稼働へ向けた最終調整を行う。</li>
+                <li>旧広告PFのレポート作成は現在金子さんが対応しているが、9月中に自動化へ置き換える想定で説明済み。9月中に全案件のレポートを自動化対応に置き換え、業務を完全に巻き取る計画。</li>
+                <li>ATOMの契約は9月末で終了。8月中に契約更新打ち切りの連絡を行う。</li>
+            </ul>
+
+            <p class="sub-heading">新規・進行案件 <span class="reporter-badge nigo">新後 報告</span></p>
+            <table class="data-table">
+                <thead><tr><th>案件</th><th>状況</th><th>次の確認</th></tr></thead>
+                <tbody>
+                    <tr><td>ボートレース平和島<br>オールスターファン投票サイト広告</td><td>提案採択。</td><td>採択範囲・契約・発注状況・正式予算・期間・媒体配分・計測条件。<a href="https://docs.google.com/presentation/d/1_rsZqa89t6pMfWm9VQq2Z1ioHsZSF5zWyhb1dnYkky4/edit?slide=id.p1" target="_blank" rel="noopener" style="color:#2563eb; font-size:0.8rem;">提案資料を開く</a></td></tr>
+                    <tr><td>餃子フェス広告</td><td>実施の連絡あり。</td><td>予算・期間・媒体・発注・契約状況。</td></tr>
+                    <tr><td>平和島通常広告</td><td>詳細記載なし。</td><td>案件内容・予算・期間・実施条件。</td></tr>
+                </tbody>
+            </table>
+
+            <p class="sub-heading">平和島ファン投票案件 詳細</p>
+            <table class="data-table">
+                <thead><tr><th>項目</th><th>提案資料の記載</th></tr></thead>
+                <tbody>
+                    <tr><td>期間</td><td>2027年1月中旬から約1か月。正式日は要確認。</td></tr>
+                    <tr><td>総予算</td><td>400万円（税抜）。最終承認額・費目内訳は要確認。</td></tr>
+                    <tr><td>媒体案</td><td>LINE広告を主軸に、Yahoo!ディスプレイ・Yahoo!検索・X広告・Instagram・TikTokの6媒体。</td></tr>
+                    <tr><td>配信対象</td><td>全国のボートレース場来訪者を主軸に、公営競技関心層・検索・動画反応層へ拡張。</td></tr>
+                    <tr><td>シミュレーション</td><td>4,405,000インプレッション・30,739クリック（効果保証値ではない）。</td></tr>
+                </tbody>
+            </table>
+
+            <p class="sub-heading">新プラットフォーム移行と発注システム <span class="reporter-badge takada">高田 報告</span></p>
+            <ul class="dot-list">
+                <li>9月配信分より新PFでの配信開始予定（クーポンキャンペーン対象月）。すでに3件受注予定。</li>
+                <li>新発注システム（kintone）は8月下旬から一部店舗（二次代理店含む）でテスト運用開始。9月中旬から移行予定。</li>
+                <li>運用フローの再確認とフォームの文言変更を今週中に実施。</li>
+                <li>MYPAGEの記載が表示されず（発注時および修正後含めて）。修正が必要。</li>
+            </ul>
+
+            <p class="sub-heading">クーポンキャンペーン活用 <span class="reporter-badge takada">高田 報告</span></p>
+            <div class="box-green">
+                <p class="box-label">【キャンペーン内容】</p>
+                <ul class="dot-list">
+                    <li>9月末までに配信・クリック発生で翌月末に40,000円分のクーポンを発行（10月以降も継続予定・年内継続可能性あり）。</li>
+                    <li>既に開設した287アカウントも対象可能。新規取り込みキャンペーンとして一広側へ説明済み。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">来期の自動化構想と経営陣からの指摘</p>
+            <ul class="dot-list">
+                <li>新後から、来期中に「配信中の広告改善（最適化）の自動化」や「前回の結果を踏まえた最適な配信設計を自動提案する仕組み」を構築したいという提案があった。</li>
+                <li>清から「機能として便利なのはわかるが、本当に売上や利益に大きく貢献するものなのか、高田氏にとって営業の武器として不可欠かどうかを社内で共有された価値観として合意した上で実装の優先度を判断すべき」とのフィードバックがあり、今後の社内検討課題となった。</li>
+            </ul>
+
+            <p class="sub-heading">一広側との取り組み <span class="reporter-badge takada">高田 報告</span></p>
+            <ul class="dot-list">
+                <li>常駐に伴う相談件数増により新規営業および既存掘り起こしへの活動が活発化（新任担当者へのレクチャ含む）。</li>
+                <li>二次代理店案件の取り込みを推進。一広から「次のステップの売上商品を一緒に考えたい」との意向あり。具体的提案内容として提示すること。</li>
+            </ul>
+
+            <p class="sub-heading">BW（ブログウォッチャー）との取り組み <span class="reporter-badge takada">高田 報告</span></p>
+            <ul class="dot-list">
+                <li>リタゲ用リストの費用交渉：取り急ぎの案件については増額なしで実施。以降は件数動向を見て再考。</li>
+                <li>広告商品や新規営業先への取り組みなど杉山氏とディスカッション予定（8月25日）。</li>
+            </ul>
+        </section>
+
+        <!-- 6 CODATI -->
+        <section id="s6" class="section-card purple-card">
+            <div class="section-head">
+                <div class="section-bar bar-purple"></div>
+                <h2 class="section-title purple">6. CODATI　補助金調査・営業方針</h2>
+            </div>
+            <p class="section-intro">CODATIはトキワギのメインプロジェクト。今回は補助金調査と営業展開の方針が報告された。Mooovi内製化・瑞鳳ABPいずれもCODATI連携を前提に進んでいる。</p>
+
+            <p class="sub-heading">補助金・助成金調査 <span class="reporter-badge takada">高田 報告</span></p>
+            <table class="data-table">
+                <thead><tr><th>補助金・助成金</th><th>内容</th><th>状況</th></tr></thead>
+                <tbody>
+                    <tr><td>第3期埼玉県DX導入支援補助金</td><td>補助対象経費の4分の3以内・上限300万円以内</td><td>9月30日締め切り。瑞鳳向けに申請準備を進めること。</td></tr>
+                    <tr><td>IT導入（AI）補助金</td><td>支援事業者登録について事務局確認済。導入実績があれば法人個別登録で申請可能。導入前はコンソーシアム登録となる。</td><td>IT補助金の支援事業者登録が一番ベター。</td></tr>
+                    <tr><td>省力化投資補助金</td><td>—</td><td>活用可能。</td></tr>
+                    <tr><td>小規模事業者持続化補助金</td><td>—</td><td>活用可能。</td></tr>
+                </tbody>
+            </table>
+
+            <p class="sub-heading">各案件とのCODATI連携進捗</p>
+            <div class="box-purple">
+                <p class="box-label">【連携状況】</p>
+                <ul class="dot-list">
+                    <li><strong>Mooovi：</strong>内製版への移行とCODATI連携を並行して推進。今期目標として「内製Mooovi導入＋ボーネルンドへのCODATI導入計画」が掲げられている。</li>
+                    <li><strong>瑞鳳：</strong>第3期埼玉県DX補助金の申請準備を進める。CODATIのABP機能を活用した分析基盤の整備が目標。</li>
+                    <li><strong>ボーネルンド：</strong>CODATI導入計画を策定中。来期の最重要目標として明示されている。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 7 来季戦略 -->
+        <section id="s7" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-blue"></div>
+                <h2 class="section-title blue">7. 来季戦略・全体総括</h2>
+            </div>
+
+            <p class="sub-heading">今季業績着地見込み</p>
+            <ul class="dot-list blue-markers">
+                <li>今季予測：<strong>5,800万円（前期比9.9%増）</strong>見込み。売上高は前年並みだが利益は半分程度となる見込み。</li>
+                <li>減益の要因：利益率の高い特殊案件が今年はなく、ベースは上がっているものの大型荒利を稼ぐ案件がなかった。</li>
+            </ul>
+
+            <p class="sub-heading">来期目標（Followa事業：1億円へ）</p>
+            <table class="data-table">
+                <thead><tr><th>担当</th><th>来期目標</th></tr></thead>
+                <tbody>
+                    <tr><td>高田</td><td>LINE広告：売上5,500万円→7,000万円 / 位置情報広告：2,000万円 / 新サービス（OPTIMIZ代替）：1,000万円</td></tr>
+                    <tr><td>新後</td><td>Mooovi新プラットフォームへの完全移行完了 / ボーネルンドのインフラへの食い込み（ハブ化提案・構築）</td></tr>
+                    <tr><td>清</td><td>AIプラットフォーム10〜20社への導入 / 年末の展示会（幕張メッセ等）へのブース出展</td></tr>
+                </tbody>
+            </table>
+
+            <p class="sub-heading">熱量・当事者意識についての議論</p>
+            <ul class="dot-list blue-markers">
+                <li>会議参加者から、利益減という経営課題が前回提示されていたにもかかわらず、今回の発表で自発的な解決策が持ち込まれていないことへの厳しい指摘があった。</li>
+                <li>清から、これまで熱量の差を伝えることを遠慮していたが、来期は立ち止まればシェアを奪われる競争環境のため、本気でぶつかり合う姿勢に切り替えると共有された。</li>
+                <li>高田：目の前のタスクを理由に宿題をこなせなかったことを反省。対面コミュニケーション増加による緊張感を活かし、熱量を引き上げていくと語った。</li>
+                <li>新後：信頼に対して具体的な回答を返せなかったことを深く反省し、必ず形にして成果を返すと語った。</li>
+            </ul>
+
+            <p class="sub-heading">来季重点施策</p>
+            <ul class="dot-list blue-markers">
+                <li><strong>CODATI：</strong>オセロゲームへの戦略（他社からのリプレイスを積極的に仕掛ける）。AI単体ではなく、会社として進むべき指標が見えるシステムとして提案していく。</li>
+                <li><strong>縦盛り（深掘り）の徹底：</strong>横に広げるだけでなく、個々が担当領域を極限まで掘り下げる知性を求める。</li>
+                <li><strong>スカラー：</strong>障害者支援・東京都の助成金・外部人脈（兵さん）とのリソース結合を視野に入れて推進。</li>
+                <li>広告商品開発：テクノブラッド（蔵前）×ネットカフェ広告メディア化（ランチャー80%・全国5,000店舗・Beacon活用）の進行継続。</li>
+                <li>PRJ単位で案件を増やしていく必要がある。既存事業に対する「知恵」を使うプラスαの業務（売上）を意識する。</li>
+            </ul>
+        </section>
+
+        <!-- 8 TODO -->
+        <section id="s8" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">8. アクションアイテム（TODO）</h2>
+            </div>
+            <div style="overflow-x:auto;">
+                <table class="data-table">
+                    <thead><tr><th>担当</th><th>タスク内容</th><th>期限</th></tr></thead>
+                    <tbody>
+                        <tr><td>新後</td><td>Mooovi：提案方針・費用構成・見積承認手順を確定する</td><td>8月28日</td></tr>
+                        <tr><td>新後</td><td>Mooovi：DB方式・テスト場・LINEミニアプリ体制を決定する</td><td>8月中</td></tr>
+                        <tr><td>新後</td><td>Mooovi：提案書・デモ・見積ひな形を完成させる</td><td>9月4日</td></tr>
+                        <tr><td>新後</td><td>Mooovi：第1陣への提案を開始する</td><td>9月7日週</td></tr>
+                        <tr><td>新後</td><td>Mooovi：戸田ボートレース企業団から相殺方法・金額への回答を得る</td><td>回答待ち</td></tr>
+                        <tr><td>新後</td><td>ボーネルンド：ベンダーから調整後原価を回収し、クライアント向け見積を作成する</td><td>回答受領後</td></tr>
+                        <tr><td>新後</td><td>ボーネルンド：数量変更連携の改修範囲・受入条件・検証日程を確定する</td><td>10月1日稼働前</td></tr>
+                        <tr><td>新後</td><td>ボーネルンド：川崎ルフロン店の切替手順と問題発生時の対応方法を整理する</td><td>10月1日稼働前</td></tr>
+                        <tr><td>新後</td><td>LINE広告：GAS自動化の最終調整と例外・復旧テストを完了する</td><td>9月4日まで</td></tr>
+                        <tr><td>新後</td><td>LINE広告：ATOMへ契約更新打ち切りを連絡する</td><td>8月中</td></tr>
+                        <tr><td>新後</td><td>LINE広告：旧広告PFのレポート作成を自動化へ移管する</td><td>9月中</td></tr>
+                        <tr><td>高田</td><td>LINE広告：8月度売上を今週中に確定させるよう一広側と調整する</td><td>今週中</td></tr>
+                        <tr><td>高田</td><td>LINE広告：平和島ファン投票案件の採択範囲・契約・発注状況・正式条件を確認する</td><td>要確認</td></tr>
+                        <tr><td>高田</td><td>LINE広告：発注システムのMYPAGE表示不具合を修正する</td><td>今週中</td></tr>
+                        <tr><td>高田</td><td>CODATI：瑞鳳向け埼玉県DX導入支援補助金の申請準備を進める</td><td>9月30日締め切り</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="box-green" style="margin-top:1.5rem;">
+                <p class="box-label">【次回確認事項】</p>
+                <ul class="dot-list">
+                    <li>Mooovi：提案書・デモの完成状況・戸田相殺案への先方回答</li>
+                    <li>ボーネルンド：ベンダー調整後原価の回収状況・10月1日稼働前の工程確認</li>
+                    <li>LINE広告：GAS自動化の最終調整完了状況・ATOM解約連絡の実施</li>
+                    <li>MID：三井氏との面談日程の確定状況</li>
+                    <li>CODATI：瑞鳳向け補助金申請準備の進捗</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="page-footer">
+            <p>&copy; 2026 TKW Project Team. All Rights Reserved.</p>
+        </footer>
+    </div>
+</div>
+
+<script>
+    const links = document.querySelectorAll('.sidebar-link');
+    const sections = document.querySelectorAll('section[id]');
+    const purpleSections = ['s6'];
+    const blueSections = ['s4', 's7'];
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                links.forEach(link => {
+                    link.classList.remove('active', 'active-red', 'active-blue', 'active-purple');
+                    if (link.getAttribute('href') === '#' + id) {
+                        if (purpleSections.includes(id)) link.classList.add('active-purple');
+                        else if (blueSections.includes(id)) link.classList.add('active-blue');
+                        else link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.2 });
+    sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
