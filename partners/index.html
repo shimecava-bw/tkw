@@ -30,6 +30,7 @@
         .tag { font-size: 0.68rem; font-weight: 600; padding: 0.15rem 0.55rem; border-radius: 9999px; background: #f3f4f6; color: #4b5563; }
         .tag.blue { background: #eff6ff; color: #1d4ed8; }
         .tag.red { background: #fef2f2; color: #991b1b; }
+        .tag.purple { background: #f5f3ff; color: #6d28d9; }
         .card-arrow { flex-shrink: 0; color: #d1d5db; font-size: 1.1rem; transition: color 0.2s; }
         .minutes-card:hover .card-arrow { color: #2563eb; }
         .latest-badge { flex-shrink: 0; font-size: 0.68rem; font-weight: 700; background: #2563eb; color: #ffffff; padding: 0.2rem 0.6rem; border-radius: 9999px; letter-spacing: 0.04em; }
@@ -54,9 +55,28 @@
 
 <div class="container">
 
+    <p class="section-label">株式会社FISH&amp;CO</p>
+    <div class="minutes-list">
+        <a href="./fishco/0903/" class="minutes-card latest" target="_blank" rel="noopener">
+            <div class="card-date"><div class="month">Sep</div><div class="day">03</div></div>
+            <div class="card-divider"></div>
+            <div class="card-body">
+                <div class="card-title">株式会社FISH&amp;CO様 お打ち合わせ：2026年9月3日</div>
+                <div class="card-meta">外食チェーン向け業務のAI自動化と一元管理システム構築</div>
+                <div class="card-tags">
+                    <span class="tag purple">CODATI</span>
+                    <span class="tag blue">業務自動化</span>
+                    <span class="tag blue">一元管理</span>
+                </div>
+            </div>
+            <span class="latest-badge">LATEST</span>
+            <span class="card-arrow">›</span>
+        </a>
+    </div>
+
     <p class="section-label">Aurora Mobile</p>
     <div class="minutes-list">
-        <a href="./aurora/0702/" class="minutes-card latest" target="_blank" rel="noopener">
+        <a href="./aurora/0702/" class="minutes-card" target="_blank" rel="noopener">
             <div class="card-date"><div class="month">Jul</div><div class="day">02</div></div>
             <div class="card-divider"></div>
             <div class="card-body">
@@ -68,7 +88,6 @@
                     <span class="tag blue">AI活用検討</span>
                 </div>
             </div>
-            <span class="latest-badge">LATEST</span>
             <span class="card-arrow">›</span>
         </a>
     </div>
