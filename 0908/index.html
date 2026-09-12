@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKW会議：2026年9月8日</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif; background-color: #ffffff; color: #1f2937; line-height: 1.8; font-size: 15px; }
+        .layout { display: flex; min-height: 100vh; }
+        .sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; background-color: #f9fafb; border-right: 1px solid #e5e7eb; display: flex; flex-direction: column; padding: 2rem 0 3rem 0; }
+        .sidebar-label { font-size: 0.7rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; padding: 0 1.5rem; margin-bottom: 1rem; }
+        .sidebar-links { display: flex; flex-direction: column; }
+        .sidebar-link { display: block; padding: 0.45rem 1.5rem; font-size: 0.8rem; color: #6b7280; text-decoration: none; border-radius: 0.5rem; margin: 0.1rem 0.5rem; transition: background 0.18s, color 0.18s; }
+        .sidebar-link:hover { background-color: #e5e7eb; color: #111827; }
+        .sidebar-link.active { background-color: #ecfdf5; color: #065f46; font-weight: 700; }
+        .sidebar-link.active-red { background-color: #fef2f2; color: #991b1b; font-weight: 700; }
+        .sidebar-link.active-blue { background-color: #eff6ff; color: #1d4ed8; font-weight: 700; }
+        .sidebar-link.active-purple { background-color: #f5f3ff; color: #6d28d9; font-weight: 700; }
+        .sidebar-card { margin: 1.5rem 1rem 0 1rem; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.25rem; font-size: 0.75rem; color: #6b7280; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .sidebar-card-title { font-weight: 700; color: #1f2937; font-size: 0.85rem; margin-bottom: 0.6rem; }
+        .sidebar-card-row { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
+        .sidebar-card-row span:last-child { font-weight: 700; color: #1f2937; }
+        .sidebar-card-row .status { color: #065f46; }
+        .main { flex: 1; padding: 0 4rem 4rem 4rem; background: #ffffff; min-width: 0; }
+        .page-header { padding: 3.5rem 0 2.5rem 0; margin-bottom: 2.5rem; border-bottom: 1px solid #e5e7eb; }
+        .badge { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 9999px; font-size: 0.78rem; font-weight: 600; background: #f3f4f6; color: #4b5563; margin-bottom: 1rem; letter-spacing: 0.04em; }
+        .page-title { font-size: 2.2rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.75rem; }
+        .page-subtitle { color: #6b7280; font-size: 1rem; font-weight: 500; }
+        .section-card { background: #ffffff; border-radius: 1rem; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 2rem; padding: 2.5rem; transition: box-shadow 0.25s; }
+        .section-card:hover { box-shadow: 0 10px 20px -3px rgba(0,0,0,0.09); }
+        .section-card.purple-card { background-color: #f5f3ff; border: 2px solid #7c3aed; }
+        .section-head { display: flex; align-items: center; margin-bottom: 1.75rem; }
+        .section-bar { width: 6px; height: 2rem; border-radius: 9999px; margin-right: 1rem; flex-shrink: 0; }
+        .bar-green { background: #059669; }
+        .bar-gray { background: #6b7280; }
+        .bar-purple { background: #7c3aed; }
+        .section-title { font-size: 1.35rem; font-weight: 700; color: #111827; }
+        .section-title.green { color: #065f46; }
+        .section-title.purple { color: #6d28d9; }
+        .section-intro { color: #6b7280; margin-bottom: 1.5rem; line-height: 1.8; }
+        .sub-heading { font-size: 1rem; font-weight: 700; color: #1f2937; margin: 1.75rem 0 0.75rem 0; }
+        ul.dot-list { list-style: disc; padding-left: 1.5rem; color: #4b5563; }
+        ul.dot-list li { margin-bottom: 0.6rem; line-height: 1.75; }
+        ul.dot-list li::marker { color: #10b981; }
+        ul.dot-list.purple-markers li::marker { color: #7c3aed; }
+        ul.dot-list.gray-markers li::marker { color: #6b7280; }
+        ul.dot-list li strong { color: #111827; }
+        .box-green { border-left: 4px solid #10b981; background: #f0fdf4; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-green .box-label { font-size: 0.8rem; font-weight: 700; color: #065f46; margin-bottom: 0.5rem; }
+        .box-blue { border-left: 4px solid #2563eb; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-blue .box-label { font-size: 0.8rem; font-weight: 700; color: #1d4ed8; margin-bottom: 0.5rem; }
+        .box-red { border-left: 4px solid #ef4444; background: #fef2f2; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-red .box-label { font-size: 0.8rem; font-weight: 700; color: #991b1b; margin-bottom: 0.5rem; }
+        .box-purple { border-left: 4px solid #7c3aed; background: #f5f3ff; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-purple .box-label { font-size: 0.8rem; font-weight: 700; color: #6d28d9; margin-bottom: 0.5rem; }
+        .box-gray { border-left: 4px solid #9ca3af; background: #f9fafb; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-gray .box-label { font-size: 0.8rem; font-weight: 700; color: #374151; margin-bottom: 0.5rem; }
+        .reporter-badge { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.6rem; border-radius: 9999px; margin-right: 0.4rem; vertical-align: middle; }
+        .reporter-badge.nigo { background: #ecfdf5; color: #065f46; }
+        .reporter-badge.neutral { background: #f3f4f6; color: #4b5563; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1rem 0; }
+        .data-table thead th { background: #f9fafb; padding: 0.6rem 1rem; text-align: left; font-weight: 700; color: #374151; border-bottom: 2px solid #e5e7eb; font-size: 0.75rem; letter-spacing: 0.04em; }
+        .data-table tbody td { padding: 0.6rem 1rem; border-bottom: 1px solid #f3f4f6; color: #4b5563; vertical-align: top; }
+        .data-table tbody tr:hover { background: #f9fafb; }
+        .note { font-size: 0.8rem; color: #6b7280; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 0.5rem; padding: 0.6rem 1rem; margin-top: 0.5rem; }
+        .page-footer { margin-top: 4rem; padding: 2.5rem 0; border-top: 1px solid #e5e7eb; text-align: center; font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; }
+        @media (max-width: 768px) {
+            .layout { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid #e5e7eb; padding: 1.25rem 0 1rem 0; }
+            .sidebar-card { display: none; }
+            .main { padding: 0 1.25rem 3rem 1.25rem; }
+            .page-header { padding: 2rem 0 1.5rem 0; }
+            .page-title { font-size: 1.5rem; }
+            .section-card { padding: 1.5rem; }
+            .sidebar-links { flex-direction: row; flex-wrap: wrap; padding: 0 0.75rem; gap: 0.25rem; }
+            .sidebar-link { margin: 0; padding: 0.3rem 0.7rem; font-size: 0.72rem; }
+            .sidebar-label { padding: 0 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+    <aside class="sidebar">
+        <p class="sidebar-label">INDEX / 目次</p>
+        <div class="sidebar-links">
+            <a href="#s1" class="sidebar-link">1. MID　新店長との調整</a>
+            <a href="#s2" class="sidebar-link">2. Mooovi　LINEタッチ検証・開発進捗</a>
+            <a href="#s3" class="sidebar-link">3. ボーネルンド　改修・費用交渉</a>
+            <a href="#s4" class="sidebar-link">4. LINE広告　運用状況</a>
+            <a href="#s5" class="sidebar-link">5. CODATI　導入・展開進捗</a>
+            <a href="#s6" class="sidebar-link">6. 助成金システムについて</a>
+            <a href="#s7" class="sidebar-link">7. その他・組織・運営</a>
+            <a href="#s8" class="sidebar-link">8. アクションアイテム（TODO）</a>
+        </div>
+        <div class="sidebar-card">
+            <p class="sidebar-card-title">会議情報</p>
+            <div class="sidebar-card-row"><span>会議名:</span><span>TKW社内定例MTG</span></div>
+            <div class="sidebar-card-row"><span>日時:</span><span>2026年9月8日</span></div>
+            <div class="sidebar-card-row"><span>形式:</span><span>原文保存版</span></div>
+            <div class="sidebar-card-row"><span>状態:</span><span class="status">チェック完了</span></div>
+        </div>
+    </aside>
+
+    <div class="main">
+        <header class="page-header">
+            <span class="badge">MEETING MINUTES</span>
+            <h1 class="page-title">TKW会議：2026年9月8日</h1>
+            <p class="page-subtitle">MID進捗 / Mooovi LINEタッチ検証・開発進捗 / ボーネルンド改修交渉 / LINE広告運用 / CODATI導入進捗 / 助成金システム　詳細記録</p>
+        </header>
+
+        <div style="display:flex; gap:0.5rem; margin-bottom:2rem; flex-wrap:wrap; align-items:center;">
+            <span class="reporter-badge nigo">新後 報告</span>
+            <span style="font-size:0.78rem; color:#6b7280;">各セクションの情報源を示します（今回、高田報告書の提出なし）</span>
+        </div>
+
+        <!-- 1 MID -->
+        <section id="s1" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title">1. MID　新店長との調整</h2>
+            </div>
+            <p class="section-intro">新店長との調整を進めており、催促の連絡を入れた段階。9月はシフト調整が厳しいとの回答があり、先方が落ち着き次第の連絡再開待ち。</p>
+
+            <p class="sub-heading">調整状況 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list gray-markers">
+                <li><strong>前回の状況と催促：</strong>前回の打ち合わせを踏まえて調整を進めており、催促の連絡を入れた段階である。</li>
+                <li><strong>先方（MID）からの回答：</strong>「9月はシフト調整がかなり厳しい」との連絡があり、向こう側の状況が落ち着いてから改めて連絡させてほしい旨が伝えられている。</li>
+                <li><strong>今後の対応：</strong>先方の状況が落ち着くのを待って連絡を再開することとし、進捗は追って報告・共有を行う予定である。</li>
+            </ul>
+        </section>
+
+        <!-- 2 Mooovi -->
+        <section id="s2" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">2. Mooovi　LINEタッチ検証・開発進捗</h2>
+            </div>
+            <p class="section-intro">各施設への案内を完了し明日から電話催促。LINEタッチは認証マーク必須の仕様が判明し、来店証明としての限界とリスクが明らかに。QRコードを主軸とした代替案の検討へ。</p>
+
+            <p class="sub-heading">(1) 各施設への連絡・進捗状況 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li><strong>連絡状況：</strong>先週送れていなかった各施設への連絡について、今週全施設（担当者の担当箇所等を除く）へ連絡を実施した。</li>
+                <li><strong>追跡・催促：</strong>明日電話で早急に催促を入れ、手応えや感触を伺いながら日程調整を進める予定である。</li>
+                <li><strong>提案内容・訴求点：</strong>来年度向けのシステムアップデートにより、ユーザーおよび現場スタッフの日々の業務負担が大幅に軽減される点や、年間費用が最大で約3割安くなる見込みであることを説明している。</li>
+                <li><strong>指示事項：</strong>10月に入るため急ぎで電話連絡を行うこと、またTwitter（X）等の展開も含めて遅れが出ないよう迅速に対応するよう指示が出された。</li>
+            </ul>
+
+            <p class="sub-heading">(2) LINEタッチの検証状況および技術的課題 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li><strong>検証環境の確保：</strong>LINEタッチのアクション登録には「認証マーク」付きアカウントが必須となるため、検証環境としてBORODOのアカウントを一部仮環境として切り出して検証を進めた。</li>
+                <li><strong>事前確認との相違：</strong>LINE側の担当者（ミニアプリ担当）からは以前「認証がなくてもテスト可能」「どのアカウントから購入しても関係ない（認証のあるアカウントに紐づくわけではない）」と説明されていたが、実際には認証がないとアクション登録画面すら進めない仕様であった。</li>
+            </ul>
+
+            <div class="box-red">
+                <p class="box-label">「来店証明」としての限界と不正リスク</p>
+                <ul class="dot-list" style="margin-bottom:0;">
+                    <li>LINEタッチを現場への来店証明として活用する想定であったが、LINEタッチ側には「現場でタッチした」という証明ステータスやデータ自体が存在しないことが判明した。</li>
+                    <li>LINEタッチはあらかじめ登録されたアクションを発動させるトリガーに過ぎず、タッチしたという事実自体はデータとして保持されない。</li>
+                    <li>タッチ後に起動する入場判定用URL（ミニアプリ）は固定であり、画面上の操作でURLがコピーできてしまうため、URLを入手したユーザーが自宅等から不正に入場判定やポイント取得を行えてしまうリスクがある。</li>
+                    <li>発動するアクションやURLを動的に変化させる（認証用IDを含める等）仕様にすることは困難である。</li>
+                </ul>
+            </div>
+
+            <div class="box-blue">
+                <p class="box-label">現在の対応と代替策</p>
+                <ul class="dot-list" style="margin-bottom:0;">
+                    <li>仕様や取得可能データについてLINE側へ問い合わせを行っており、回答待ちの状況である。課題箇所を箇条書きで整理して送付するよう指示された。</li>
+                    <li>来店証明の代替案として、位置情報はデータのズレやユーザーの許可設定への抵抗感があるため「QRコード」が最有力とされる。従来のQRコード運用を引き継ぎつつ、LINEタッチをプラスアルファの機能として位置付ける方針が共有された。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">(3) 旧システムからのデータ移行・引き継ぎロジック <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li><strong>データ引き継ぎ方法の確立：</strong>旧顧客管理システムの友だち情報に対し、新環境移行用のユニークコードを含むURLを一括でユーザーごとに登録しておき、ユーザーにそのURLを踏ませる手法を取りまとめた。</li>
+                <li><strong>認証と自動入力：</strong>ユーザーがURLを踏むことで新環境でのユーザー認証が行われ、同時にアンケートフォームへユニークコードが自動入力される。</li>
+                <li><strong>データ突合：</strong>フォーム登録により新環境にIDが引き継がれ、データを突合することでデータ移行が完了する。機能的・技術的な検証は完了している。</li>
+            </ul>
+
+            <p class="sub-heading">(4) 画面設計・リッチメニュー・本人認証 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li><strong>管理画面・本人認証：</strong>管理画面のリデザインは大型の整理が完了しており、本人認証機能の実装も完了している。</li>
+                <li><strong>リッチメニューの課題：</strong>構成は作成できたものの、画像生成AIによる画像作成が難航しており、生成画像のクオリティが下がって沼にハマる状態（ループ）となっている。8割方とぼけた画像が出力され期待値に届かないためAI作成を断念し、手動制作も含めて枚数を絞って作成する方針に変更した。</li>
+                <li><strong>目標：</strong>デモ準備や引き継ぎ作業に時間を要したため、今週木曜日までに資料およびデモンストレーション用機能を整理・完了させる予定である。</li>
+            </ul>
+
+            <p class="sub-heading">(5) 費用調整（相殺案の見直しと精算スキーム） <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li><strong>決定事項：</strong>当初検討していた相殺案は見送り、「管理株式会社へイベント費用を直接請求」し、「企業団へは既払いイベント分を差し引いた未払い分を再確認して支払いいただく」形で話がまとまった。</li>
+            </ul>
+            <div class="box-red">
+                <p class="box-label">報告の遅れに対する叱責</p>
+                <p style="margin:0; color:#374151;">昨日決定したお金に関する重要事項を今日まで報告しなかったことに対し、奥様や税理士、コメント提出のために全員が待っている内容であるとして早急かつ正確に報告するよう強く注意された。</p>
+            </div>
+        </section>
+
+        <!-- 3 ボーネルンド -->
+        <section id="s3" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">3. ボーネルンド　改修・費用交渉</h2>
+            </div>
+            <p class="section-intro">オービック集計データ改修は、ショップ側データも取得可能な仕様に拡大。ベンダー原価は37万→10万円まで削減、クライアントへは15万円程度での着地を目指す。交渉プロセスでは直接対話不足への指摘あり。</p>
+
+            <p class="sub-heading">(1) 改修内容と費用削減の成果 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li><strong>対象範囲の拡大：</strong>当初課題であった「遊び場側」のオービック集計データ取得にとどまらず、今回の改修手法により「ショップ側」のデータも併せて取得できる仕様を取りまとめた。</li>
+                <li><strong>ベンダーとの費用交渉：</strong>当初ベンダーから限界（原価）で37万円かかると提示されていた改修費用について、代替案の検討や値引き交渉を重ね、最終的に原価約10万円まで大幅に削減・着地させた。</li>
+            </ul>
+
+            <div class="box-green">
+                <p class="box-label">改修費用の推移</p>
+                <table class="data-table" style="margin:0;">
+                    <thead><tr><th>段階</th><th>原価</th></tr></thead>
+                    <tbody>
+                        <tr><td>ベンダー当初提示</td><td>37万円</td></tr>
+                        <tr><td>交渉後 最終着地</td><td>10万円</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="sub-heading">(2) クライアント（早川氏）への提案・費用構造 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li><strong>費用負担：</strong>遊び場側の改修費用はベンダーと弊社で負担する形とし、クライアント側には「ショップ側の追加改修」として同時発注を提案している。</li>
+                <li><strong>提示金額：</strong>クライアントへの提案金額としては、追加費用15万円程度での着地を目指している。現在は回答の確認・追及を進めている段階である。</li>
+            </ul>
+
+            <p class="sub-heading">(3) 交渉プロセスとコミュニケーションの反省・指示 <span class="reporter-badge nigo">新後 報告</span></p>
+            <div class="box-red">
+                <ul class="dot-list" style="margin-bottom:0;">
+                    <li><strong>遅れと説明不足：</strong>ベンダーとの交渉にデッドラインを設定しなかったことでやり取りが長引き、クライアントへの報告期日に遅れが生じた。また、メール中心の連絡となったことで直接の説明不足となり、早川氏から怒られる場面があった。</li>
+                    <li><strong>立ち回りへの指摘：</strong>交渉や関係構築においては、机で待つのではなく直接会いに行く（捕まえに行く）スタンスや感覚値が不可欠であり、メール任せにせず電話や直接の面談（直談）で熱意と経緯を誠実に説明して話をまとめるよう強く指導された。進捗遅延が判明した時点で事前に状況を伝えておくべきだった、という反省も共有された。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 4 LINE広告 -->
+        <section id="s4" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">4. LINE広告　運用状況</h2>
+            </div>
+            <p class="section-intro">自動入稿のクラウド移植により処理時間を1時間超から5〜7分へ大幅短縮。10月配信の谷間リスクへの対応と、各クライアントの横展開を並行して推進。</p>
+
+            <p class="sub-heading">(1) 自動入稿レポートのクラウド移植と高速化 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li><strong>課題：</strong>スプレッドシート（GAS）で稼働していた自動入稿レポートは、安全性を重視して判定処理を多く入れていたため、緊急案件等の同時発注が集中した際に1件あたり1時間以上かかる処理限界が生じていた。</li>
+                <li><strong>成果：</strong>処理の一部をクラウドに移植・最適化した結果、1件あたり5分〜7分に大幅短縮され、手作業を超える処理速度と安定稼働を実現した。</li>
+            </ul>
+
+            <p class="sub-heading">(2) メーカー機器不具合と10月配信スケジュールの懸念 <span class="reporter-badge nigo">新後 報告</span></p>
+            <div class="box-red">
+                <ul class="dot-list" style="margin-bottom:0;">
+                    <li><strong>状況：</strong>メーカーから新台（機械）が出ない等の問題により、月初の配信に波（谷間）が生じている。</li>
+                    <li><strong>懸念と指示：</strong>8月・9月のイベント（夏休み・シルバーウィーク等）に対して10月の配信量が大幅に落ち込むリスクがあるため、メーカーの新台スケジュールや配信予定を早期に確認し、10月以降の対策を講じるよう指示された。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">(3) 各クライアントの運用動向 <span class="reporter-badge nigo">新後 報告</span></p>
+            <table class="data-table">
+                <thead><tr><th>クライアント</th><th>状況</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>ダイナム</strong></td><td>社内運用によるコスト削減効果を確認済み。全社的なCV検証と効果検証を再実施し、LINEおよびX（旧Twitter）広告に集中する方針。X広告も取り扱い可能であるため、レポート共通化やデータ連携を進める。</td></tr>
+                    <tr><td><strong>日の丸</strong></td><td>全24店舗で運用を継続・拡大中。友だち獲得やID活用で成果が出ている。10月は創業記念月であり、大型キャンペーンの受注を予定している。</td></tr>
+                    <tr><td><strong>夢や</strong></td><td>既存IDの活用、ビコン設置やGPSを含めた提案・説明を進める。</td></tr>
+                    <tr><td><strong>プレモ（二次代理店）</strong></td><td>プラットフォーム変更に伴い再数値化を行い、約10店舗の再受注・横展開を推進する。</td></tr>
+                    <tr><td><strong>名古屋案件</strong></td><td>新発注システムの稼働に伴い案件が流れてくる見込みである。</td></tr>
+                </tbody>
+            </table>
+            <p class="note">見通し：85件中30件ほどの再受注・プラットフォーム調整を進めており、年内（12月まで）に向けて受注・配信の拡大が見込まれている。</p>
+
+            <p class="sub-heading">(4) 発注システム <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li>フォームブリッジの文言修正および反映が完了している。</li>
+            </ul>
+        </section>
+
+        <!-- 5 CODATI -->
+        <section id="s5" class="section-card purple-card">
+            <div class="section-head">
+                <div class="section-bar bar-purple"></div>
+                <h2 class="section-title purple">5. CODATI　導入・展開進捗</h2>
+            </div>
+            <p class="section-intro">CODATIはトキワギのメインプロジェクト。自社パッケージとして各クライアント向けに個別開発を行いつつ、汎用機能を「CODATIコア」に集約・拡張し展開中。</p>
+
+            <p class="sub-heading">(1) 背景とコンセプト</p>
+            <ul class="dot-list purple-markers">
+                <li><strong>背景：</strong>冠婚葬祭事業（瑞鳳等）においてKintone等を試したが、顧客管理・売上管理・受注管理が噛み合わなかった課題を解決するために開発された。</li>
+                <li><strong>CODATIコア：</strong>各クライアント向けの個別開発を行いつつ、汎用的に使える機能を「CODATIコア」に集約・拡張し、汎用パッケージとして展開していく。</li>
+            </ul>
+
+            <p class="sub-heading">(2) 各導入案件の進捗状況</p>
+            <table class="data-table">
+                <thead><tr><th>案件</th><th>進捗</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>瑞鳳（冠婚葬祭系）</strong></td><td>データベース連携（イノミ氏調整中）を進めており、AWSを経由せず軽量なサーバー等で直接ダッシュボード表示・確認できる仕組みを構築中。Pブレイン等とのデータ連携も考慮している。</td></tr>
+                    <tr><td><strong>長井デザイン（印刷・デザイン系）</strong></td><td>スプレッドシートやメールからのデータ取り込み・受注システムの連携を完了した。明日上村氏と確認を行い運用に入る。</td></tr>
+                    <tr><td><strong>FISH&amp;CO（飲食系）</strong></td><td>自社でのデータ制御・実店舗運用のために早めの導入を調整中。飯田氏と連携し、確認事項4項目を進める。</td></tr>
+                    <tr><td><strong>上村氏（イベント・広告系）</strong></td><td>瑞鳳・長井デザイン・FISH&amp;COの構築完了後に順次導入する。</td></tr>
+                </tbody>
+            </table>
+
+            <div class="box-purple">
+                <p class="box-label">(3) 展開ロードマップ</p>
+                <ul class="dot-list" style="margin-bottom:0;">
+                    <li><strong>短期目標：</strong>年内に4アカウント（瑞鳳、長井デザイン、FISH&amp;CO、上村氏等）の稼働完了を目指す。</li>
+                    <li><strong>中期目標：</strong>来年8月までにさらに10アカウントを追加展開する計画（葬儀、印刷、飲食、イベント等の業界キーマン・パートナーを通じて横展開を進める）。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 6 助成金システムについて -->
+        <section id="s6" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title">6. 助成金システムについて</h2>
+            </div>
+            <p class="section-intro">中小企業省力化投資補助金など主要3〜4種に絞って初期リリースし、10月のお披露目を目指す。課金は申請書出力の手前で発生させ、企業直接利用・士業ルート・金融機関経由等、複数チャネルで展開する構想。</p>
+
+            <p class="sub-heading">(1) リリース対象と開発スケジュール</p>
+            <ul class="dot-list gray-markers">
+                <li><strong>対象補助金の絞り込み：</strong>地方自治体の助成金まで網羅すると対応に時間がかかるため、まずは需要が大きく申請数の多い国の主要補助金（中小企業省力化投資補助金、持続化補助金、IT/AI補助金の3〜4種類）に絞って初期リリースを行う。</li>
+                <li><strong>スケジュール：</strong>ビジネスモデルと対象補助金を整理して全員で共有できる図解を作成し、来週までにスタート準備を整え、10月のお披露目・公開を目指す。</li>
+            </ul>
+
+            <p class="sub-heading">(2) 課金モデルと価格設定</p>
+            <ul class="dot-list gray-markers">
+                <li><strong>課金ポイント：</strong>システム内の制度閲覧や情報検索、試算段階は無料で提供し、「最終的な申請書を作成・出力する直前の段階」で課金を行う仕組み（法務局申請ツールや契約書レビューツールと同様のモデル）を採用する。</li>
+                <li><strong>自力完結（セルフ申請）：</strong>1発あたり2万〜5万円のショット課金。</li>
+                <li><strong>専門家レビュー付き：</strong>申請書の監修・チェックを入れる場合は1発10万円程度。</li>
+            </ul>
+
+            <p class="sub-heading">(3) ビジネスモデルと展開スキーム</p>
+            <ul class="dot-list gray-markers">
+                <li><strong>企業直接利用：</strong>自社で補助金申請を行いたい事業者が直接システムを利用して完結させるルート。</li>
+                <li><strong>士業ルート（行政書士・税理士・中小企業診断士・財務コンサル等）：</strong>士業がクライアントとの面談時に目の前で対象補助金を可視化・提案するためのサポート・営業ツールとして活用する。成功報酬のキックバック（バックマージン）還元は法的リスク（NG）があるため、士業側がシステム利用料（月額等）を支払う形にするか、あるいは申請書の専門家レビュー・チェックに対する「業務委託料」として正当に対価を支払うスキームを構築する。</li>
+                <li><strong>金融機関・パートナールート：</strong>地方銀行等の金融機関や情報システム会社を通じて顧客企業へ展開する。</li>
+                <li><strong>既存コミュニティへの横展開：</strong>相談の多い小電力・エネルギー関連、新設法人、障害者スポーツ関係（スポーツオブハート等）、サンライズ等の既存チャネルへ提案を行う。</li>
+            </ul>
+
+            <div class="box-gray">
+                <p class="box-label">(4) 開発費用の特徴</p>
+                <p style="margin:0; color:#374151;">社内開発により初期投資（社内原価）が非常に低く抑えられており、回収のリスクが少ないため事業化・モデル検証を進めやすいアドバンテージがある。</p>
+            </div>
+        </section>
+
+        <!-- 7 その他・組織・運営 -->
+        <section id="s7" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title">7. その他・組織・運営</h2>
+            </div>
+
+            <div class="box-red">
+                <p class="box-label">前回コミット確認</p>
+                <p style="margin:0; color:#374151;">前回の価格表は、現行価格・Liny原価・現在粗利益の計算前提が一致しない行がある。価格案を承認する前に、粗利益へ含める原価の範囲を確認すること。</p>
+            </div>
+        </section>
+
+        <!-- 8 TODO -->
+        <section id="s8" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">8. アクションアイテム（TODO）</h2>
+            </div>
+            <div style="overflow-x:auto;">
+                <table class="data-table">
+                    <thead><tr><th>担当</th><th>タスク内容</th><th>期限</th></tr></thead>
+                    <tbody>
+                        <tr><td>新後</td><td>MID：先方（新店長）が落ち着き次第、連絡を再開する</td><td>先方連絡待ち</td></tr>
+                        <tr><td>新後</td><td>Mooovi：明日、電話で各施設へ早急に催促。10月に入るため急ぎ対応</td><td>明日</td></tr>
+                        <tr><td>新後</td><td>Mooovi：LINE側からの仕様回答を待ちつつ、課題箇所を箇条書きで整理して送付する</td><td>回答待ち</td></tr>
+                        <tr><td>新後</td><td>Mooovi：QRコードを主軸とした代替案の検討を並行して進める</td><td>並行対応</td></tr>
+                        <tr><td>新後</td><td>Mooovi：資料およびデモンストレーション用機能を整理・完了させる。リッチメニューは手動制作で枚数を絞って対応</td><td>今週木曜日まで</td></tr>
+                        <tr><td>新後</td><td>ボーネルンド：早川氏からの回答を確認・追及する</td><td>確認中</td></tr>
+                        <tr><td>新後</td><td>ボーネルンド：今後はメール任せにせず、電話・直接面談（直談）で経緯と熱意を誠実に説明する</td><td>継続対応</td></tr>
+                        <tr><td>新後</td><td>LINE広告：クラウド移管後の同時処理安定性・成功率・エラー内容・重複防止の運用状況を継続監視する</td><td>継続</td></tr>
+                        <tr><td>新後</td><td>LINE広告：メーカー新台・配信スケジュールを早期確認し、10月配信の谷間リスクへの対策を講じる</td><td>早期に</td></tr>
+                        <tr><td>新後</td><td>助成金：ビジネスモデルと対象補助金を整理し、共有用の図解・フローを準備する</td><td>来週まで</td></tr>
+                        <tr><td>新後</td><td>CODATI：長井デザインは明日上村氏と確認を行い運用開始</td><td>明日</td></tr>
+                        <tr><td>新後</td><td>CODATI：FISH&amp;COは飯田氏と連携し確認事項4項目を進める</td><td>調整中</td></tr>
+                        <tr><td>全体</td><td>前回価格表の原価・粗利益計算の前提不一致を確認し、価格案承認前に整合を取る</td><td>承認前に必須</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer class="page-footer">
+            <p>&copy; 2026 TKW Project Team. All Rights Reserved.</p>
+        </footer>
+    </div>
+</div>
+
+<script>
+    const links = document.querySelectorAll('.sidebar-link');
+    const sections = document.querySelectorAll('section[id]');
+    const purpleSections = ['s5'];
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                links.forEach(link => {
+                    link.classList.remove('active', 'active-red', 'active-blue', 'active-purple');
+                    if (link.getAttribute('href') === '#' + id) {
+                        if (purpleSections.includes(id)) link.classList.add('active-purple');
+                        else link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.2 });
+    sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
