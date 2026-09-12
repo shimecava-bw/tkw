@@ -64,6 +64,28 @@
         .data-table tbody td { padding: 0.6rem 1rem; border-bottom: 1px solid #f3f4f6; color: #4b5563; vertical-align: top; }
         .data-table tbody tr:hover { background: #f9fafb; }
         .note { font-size: 0.8rem; color: #6b7280; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 0.5rem; padding: 0.6rem 1rem; margin-top: 0.5rem; }
+        .diagram-wrap { margin: 1.5rem 0; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.25rem; overflow-x: auto; }
+        .diagram-title { font-size: 0.85rem; font-weight: 700; color: #374151; margin-bottom: 0.9rem; }
+        .flow-row { display: flex; align-items: stretch; gap: 0.5rem; flex-wrap: wrap; }
+        .flow-box { flex: 1 1 150px; border: 1.5px solid #2563eb; background: #eff6ff; border-radius: 0.6rem; padding: 0.75rem 0.9rem; }
+        .flow-box.red { border-color: #ef4444; background: #fef2f2; }
+        .flow-box.green { border-color: #059669; background: #f0fdf4; }
+        .flow-box h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.3rem; color: #1f2937; }
+        .flow-box p { font-size: 0.76rem; color: #4b5563; line-height: 1.5; margin: 0; }
+        .flow-arrow { display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 1.2rem; flex: 0 0 auto; padding: 0 0.15rem; }
+        .compare-wrap { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin: 1rem 0; }
+        .compare-box { flex: 1 1 160px; border-radius: 0.6rem; padding: 1rem 1.1rem; text-align: center; }
+        .compare-box.before { border: 1.5px solid #ef4444; background: #fef2f2; }
+        .compare-box.after { border: 1.5px solid #10b981; background: #f0fdf4; }
+        .compare-box .compare-label { font-size: 0.74rem; color: #6b7280; margin-bottom: 0.4rem; }
+        .compare-box .compare-value { font-size: 1.2rem; font-weight: 800; color: #111827; }
+        .compare-arrow { font-size: 1.3rem; color: #9ca3af; flex: 0 0 auto; }
+        @media (max-width: 720px) {
+            .flow-row { flex-direction: column; }
+            .flow-arrow { transform: rotate(90deg); padding: 0.2rem 0; }
+            .compare-wrap { flex-direction: column; }
+            .compare-arrow { transform: rotate(90deg); }
+        }
         .page-footer { margin-top: 4rem; padding: 2.5rem 0; border-top: 1px solid #e5e7eb; text-align: center; font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; }
         @media (max-width: 768px) {
             .layout { flex-direction: column; }
@@ -170,6 +192,31 @@
                 </ul>
             </div>
 
+            <div class="diagram-wrap">
+                <p class="diagram-title">LINEタッチ　検証フロー</p>
+                <div class="flow-row">
+                    <div class="flow-box">
+                        <h4>検証環境</h4>
+                        <p>BORODOのアカウントを仮環境として切り出し</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box red">
+                        <h4>アクション登録</h4>
+                        <p>事前説明と異なり、認証マークがないと画面が先に進まない</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box red">
+                        <h4>来店証明としての限界</h4>
+                        <p>タッチ事実は非保持／URL固定で不正入場リスク／動的変更も困難</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box green">
+                        <h4>代替策</h4>
+                        <p>QRコードを主軸に、LINEタッチはプラスアルファ機能</p>
+                    </div>
+                </div>
+            </div>
+
             <p class="sub-heading">(3) 旧システムからのデータ移行・引き継ぎロジック <span class="reporter-badge nigo">新後 報告</span></p>
             <ul class="dot-list">
                 <li><strong>データ引き継ぎ方法の確立：</strong>旧顧客管理システムの友だち情報に対し、新環境移行用のユニークコードを含むURLを一括でユーザーごとに登録しておき、ユーザーにそのURLを踏ませる手法を取りまとめた。</li>
@@ -208,15 +255,24 @@
                 <li><strong>ベンダーとの費用交渉：</strong>当初ベンダーから限界（原価）で37万円かかると提示されていた改修費用について、代替案の検討や値引き交渉を重ね、最終的に原価約10万円まで大幅に削減・着地させた。</li>
             </ul>
 
-            <div class="box-green">
-                <p class="box-label">改修費用の推移</p>
-                <table class="data-table" style="margin:0;">
-                    <thead><tr><th>段階</th><th>原価</th></tr></thead>
-                    <tbody>
-                        <tr><td>ベンダー当初提示</td><td>37万円</td></tr>
-                        <tr><td>交渉後 最終着地</td><td>10万円</td></tr>
-                    </tbody>
-                </table>
+            <div class="diagram-wrap">
+                <p class="diagram-title">OBIC集計データ改修費用の推移</p>
+                <div class="compare-wrap">
+                    <div class="compare-box before">
+                        <div class="compare-label">ベンダー当初提示（原価）</div>
+                        <div class="compare-value">37万円</div>
+                    </div>
+                    <div class="compare-arrow">→</div>
+                    <div class="compare-box after">
+                        <div class="compare-label">交渉後 最終着地（原価）</div>
+                        <div class="compare-value">10万円</div>
+                    </div>
+                    <div class="compare-arrow">→</div>
+                    <div class="compare-box" style="border:1.5px solid #2563eb; background:#eff6ff;">
+                        <div class="compare-label">クライアント提示金額</div>
+                        <div class="compare-value">15万円程度</div>
+                    </div>
+                </div>
             </div>
 
             <p class="sub-heading">(2) クライアント（早川氏）への提案・費用構造 <span class="reporter-badge nigo">新後 報告</span></p>
@@ -247,6 +303,21 @@
                 <li><strong>課題：</strong>スプレッドシート（GAS）で稼働していた自動入稿レポートは、安全性を重視して判定処理を多く入れていたため、緊急案件等の同時発注が集中した際に1件あたり1時間以上かかる処理限界が生じていた。</li>
                 <li><strong>成果：</strong>処理の一部をクラウドに移植・最適化した結果、1件あたり5分〜7分に大幅短縮され、手作業を超える処理速度と安定稼働を実現した。</li>
             </ul>
+
+            <div class="diagram-wrap">
+                <p class="diagram-title">自動入稿処理時間の変化</p>
+                <div class="compare-wrap">
+                    <div class="compare-box before">
+                        <div class="compare-label">移管前（案件集中時）</div>
+                        <div class="compare-value">1時間以上</div>
+                    </div>
+                    <div class="compare-arrow">→</div>
+                    <div class="compare-box after">
+                        <div class="compare-label">クラウド移管後</div>
+                        <div class="compare-value">約5〜7分</div>
+                    </div>
+                </div>
+            </div>
 
             <p class="sub-heading">(2) メーカー機器不具合と10月配信スケジュールの懸念 <span class="reporter-badge nigo">新後 報告</span></p>
             <div class="box-red">
