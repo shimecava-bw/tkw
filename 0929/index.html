@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKW会議：2026年9月29日</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif; background-color: #ffffff; color: #1f2937; line-height: 1.8; font-size: 15px; }
+        .layout { display: flex; min-height: 100vh; }
+        .sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; background-color: #f9fafb; border-right: 1px solid #e5e7eb; display: flex; flex-direction: column; padding: 2rem 0 3rem 0; }
+        .sidebar-label { font-size: 0.7rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; padding: 0 1.5rem; margin-bottom: 1rem; }
+        .sidebar-links { display: flex; flex-direction: column; }
+        .sidebar-link { display: block; padding: 0.42rem 1.5rem; font-size: 0.78rem; color: #6b7280; text-decoration: none; border-radius: 0.5rem; margin: 0.1rem 0.5rem; transition: background 0.18s, color 0.18s; }
+        .sidebar-link:hover { background-color: #e5e7eb; color: #111827; }
+        .sidebar-link.active { background-color: #ecfdf5; color: #065f46; font-weight: 700; }
+        .sidebar-link.active-purple { background-color: #f5f3ff; color: #6d28d9; font-weight: 700; }
+        .sidebar-card { margin: 1.5rem 1rem 0 1rem; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.25rem; font-size: 0.75rem; color: #6b7280; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .sidebar-card-title { font-weight: 700; color: #1f2937; font-size: 0.85rem; margin-bottom: 0.6rem; }
+        .sidebar-card-row { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
+        .sidebar-card-row span:last-child { font-weight: 700; color: #1f2937; }
+        .main { flex: 1; padding: 0 4rem 4rem 4rem; background: #ffffff; min-width: 0; }
+        .page-header { padding: 3.5rem 0 2.5rem 0; margin-bottom: 2.5rem; border-bottom: 1px solid #e5e7eb; }
+        .badge { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 9999px; font-size: 0.78rem; font-weight: 600; background: #f3f4f6; color: #4b5563; margin-bottom: 1rem; letter-spacing: 0.04em; }
+        .page-title { font-size: 2.2rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.75rem; }
+        .page-subtitle { color: #6b7280; font-size: 1rem; font-weight: 500; }
+        .section-card { background: #ffffff; border-radius: 1rem; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 2rem; padding: 2.5rem; }
+        .section-card.purple-card { background-color: #f5f3ff; border: 2px solid #7c3aed; }
+        .section-head { display: flex; align-items: center; margin-bottom: 1.75rem; }
+        .section-bar { width: 6px; height: 2rem; border-radius: 9999px; margin-right: 1rem; flex-shrink: 0; }
+        .bar-green { background: #059669; }
+        .bar-gray { background: #6b7280; }
+        .bar-purple { background: #7c3aed; }
+        .section-title { font-size: 1.35rem; font-weight: 700; color: #111827; }
+        .section-title.green { color: #065f46; }
+        .section-title.purple { color: #6d28d9; }
+        .section-intro { color: #6b7280; margin-bottom: 1.5rem; line-height: 1.8; }
+        .sub-heading { font-size: 1rem; font-weight: 700; color: #1f2937; margin: 1.75rem 0 0.75rem 0; }
+        ul.dot-list { list-style: disc; padding-left: 1.5rem; color: #4b5563; }
+        ul.dot-list li { margin-bottom: 0.6rem; line-height: 1.75; }
+        ul.dot-list li::marker { color: #10b981; }
+        ul.dot-list.purple-markers li::marker { color: #7c3aed; }
+        ul.dot-list.gray-markers li::marker { color: #6b7280; }
+        ul.dot-list li strong { color: #111827; }
+        .box-green { border-left: 4px solid #10b981; background: #f0fdf4; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-green .box-label { font-size: 0.8rem; font-weight: 700; color: #065f46; margin-bottom: 0.5rem; }
+        .box-blue { border-left: 4px solid #2563eb; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-blue .box-label { font-size: 0.8rem; font-weight: 700; color: #1d4ed8; margin-bottom: 0.5rem; }
+        .box-red { border-left: 4px solid #ef4444; background: #fef2f2; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-red .box-label { font-size: 0.8rem; font-weight: 700; color: #991b1b; margin-bottom: 0.5rem; }
+        .box-purple { border-left: 4px solid #7c3aed; background: #f5f3ff; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-purple .box-label { font-size: 0.8rem; font-weight: 700; color: #6d28d9; margin-bottom: 0.5rem; }
+        .box-gray { border-left: 4px solid #9ca3af; background: #f9fafb; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-gray .box-label { font-size: 0.8rem; font-weight: 700; color: #374151; margin-bottom: 0.5rem; }
+        .reporter-badge { display: inline-block; font-size: 0.66rem; font-weight: 700; padding: 0.14rem 0.55rem; border-radius: 9999px; margin-right: 0.4rem; vertical-align: middle; }
+        .reporter-badge.nigo { background: #ecfdf5; color: #065f46; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; margin: 1rem 0; }
+        .data-table thead th { background: #f9fafb; padding: 0.55rem 0.9rem; text-align: left; font-weight: 700; color: #374151; border-bottom: 2px solid #e5e7eb; font-size: 0.73rem; letter-spacing: 0.03em; }
+        .data-table tbody td { padding: 0.55rem 0.9rem; border-bottom: 1px solid #f3f4f6; color: #4b5563; vertical-align: top; }
+        .note { font-size: 0.8rem; color: #6b7280; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 0.5rem; padding: 0.6rem 1rem; margin-top: 0.5rem; }
+        .diagram-wrap { margin: 1.5rem 0; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.1rem; overflow-x: auto; }
+        .diagram-title { font-size: 0.85rem; font-weight: 700; color: #374151; margin-bottom: 0.9rem; }
+        .flow-row { display: flex; align-items: stretch; gap: 0.5rem; flex-wrap: wrap; }
+        .flow-box { flex: 1 1 140px; border: 1.5px solid #2563eb; background: #eff6ff; border-radius: 0.6rem; padding: 0.7rem 0.85rem; }
+        .flow-box.red { border-color: #ef4444; background: #fef2f2; }
+        .flow-box.green { border-color: #059669; background: #f0fdf4; }
+        .flow-box.gray { border-color: #9ca3af; background: #f9fafb; }
+        .flow-box.purple { border-color: #7c3aed; background: #faf5ff; }
+        .flow-box h4 { font-size: 0.83rem; font-weight: 700; margin-bottom: 0.3rem; color: #1f2937; }
+        .flow-box p { font-size: 0.74rem; color: #4b5563; line-height: 1.5; margin: 0; }
+        .flow-arrow { display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 1.15rem; flex: 0 0 auto; padding: 0 0.15rem; }
+        .flow-plus { display: flex; align-items: center; justify-content: center; color: #6b7280; font-size: 1.1rem; font-weight: 700; flex: 0 0 auto; padding: 0 0.15rem; }
+        .compare-wrap { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin: 1rem 0; }
+        .compare-box { flex: 1 1 150px; border-radius: 0.6rem; padding: 0.9rem 1rem; text-align: center; }
+        .compare-box.low { border: 1.5px solid #9ca3af; background: #f9fafb; }
+        .compare-box.high { border: 1.5px solid #10b981; background: #f0fdf4; }
+        .compare-box .compare-label { font-size: 0.72rem; color: #6b7280; margin-bottom: 0.4rem; }
+        .compare-box .compare-value { font-size: 1.15rem; font-weight: 800; color: #111827; }
+        .compare-arrow { font-size: 1.3rem; color: #9ca3af; flex: 0 0 auto; }
+        .facility-row { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+        .facility-box { flex: 1 1 150px; border: 1.5px solid #e5e7eb; border-radius: 0.6rem; padding: 0.75rem 0.9rem; }
+        .facility-box.done { border-color: #10b981; background: #f0fdf4; }
+        .facility-box.pending { border-color: #b45309; background: #fffbeb; }
+        .facility-box.wait { border-color: #9ca3af; background: #f9fafb; }
+        .facility-box h4 { font-size: 0.82rem; font-weight: 700; color: #1f2937; margin-bottom: 0.3rem; }
+        .facility-box p { font-size: 0.72rem; color: #4b5563; margin: 0; line-height: 1.5; }
+        .page-footer { margin-top: 4rem; padding: 2.5rem 0; border-top: 1px solid #e5e7eb; text-align: center; font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; }
+        @media (max-width: 720px) {
+            .flow-row { flex-direction: column; }
+            .flow-arrow, .flow-plus { transform: rotate(90deg); padding: 0.2rem 0; }
+            .compare-wrap { flex-direction: column; }
+            .compare-arrow { transform: rotate(90deg); }
+        }
+        @media (max-width: 768px) {
+            .layout { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid #e5e7eb; padding: 1.25rem 0 1rem 0; }
+            .sidebar-card { display: none; }
+            .main { padding: 0 1.25rem 3rem 1.25rem; }
+            .page-header { padding: 2rem 0 1.5rem 0; }
+            .page-title { font-size: 1.5rem; }
+            .section-card { padding: 1.5rem; }
+            .sidebar-links { flex-direction: row; flex-wrap: wrap; padding: 0 0.75rem; gap: 0.25rem; }
+            .sidebar-link { margin: 0; padding: 0.3rem 0.7rem; font-size: 0.7rem; }
+            .sidebar-label { padding: 0 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="layout">
+    <aside class="sidebar">
+        <p class="sidebar-label">INDEX / 目次</p>
+        <div class="sidebar-links">
+            <a href="#s1" class="sidebar-link">1. MID</a>
+            <a href="#s2" class="sidebar-link">2. Mooovi</a>
+            <a href="#s3" class="sidebar-link">3. ボーネルンド</a>
+            <a href="#s4" class="sidebar-link">4. 瑞鳳ABP</a>
+            <a href="#s5" class="sidebar-link">5. LINE広告</a>
+            <a href="#s6" class="sidebar-link">6. CODATI</a>
+            <a href="#s7" class="sidebar-link">7. 広告商品</a>
+            <a href="#s8" class="sidebar-link">8. 新規案件</a>
+            <a href="#s9" class="sidebar-link">9. AI社員制度</a>
+            <a href="#s10" class="sidebar-link">10. 来季戦略・全体総括</a>
+            <a href="#s11" class="sidebar-link">11. その他・組織・運営</a>
+            <a href="#s12" class="sidebar-link">12. アクションアイテム</a>
+            <a href="#s13" class="sidebar-link">13. 参考情報</a>
+            <a href="#s14" class="sidebar-link">別枠　本日別に上がった内容</a>
+        </div>
+        <div class="sidebar-card">
+            <p class="sidebar-card-title">会議情報</p>
+            <div class="sidebar-card-row"><span>会議名:</span><span>TKW社内定例MTG</span></div>
+            <div class="sidebar-card-row"><span>日時:</span><span>2026年9月29日</span></div>
+            <div class="sidebar-card-row"><span>形式:</span><span>原文保存版</span></div>
+        </div>
+    </aside>
+
+    <div class="main">
+        <header class="page-header">
+            <span class="badge">MEETING MINUTES</span>
+            <h1 class="page-title">TKW会議：2026年9月29日</h1>
+            <p class="page-subtitle">MID / Mooovi基準版確定・NFC検証 / ボーネルンド改修費精算方針 / LINE広告・BM連携 / CODATI GPT-Botsパッケージ / 新規コンペ案件　詳細記録</p>
+        </header>
+
+        <div style="display:flex; gap:0.5rem; margin-bottom:2rem; flex-wrap:wrap; align-items:center;">
+            <span class="reporter-badge nigo">新後 報告</span>
+            <span style="font-size:0.78rem; color:#6b7280;">各セクションの情報源を示します</span>
+        </div>
+
+        <!-- 1 MID -->
+        <section id="s1" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title">1. MID</h2>
+            </div>
+            <p class="section-intro"><strong style="color:#111827;">状況：対応予定</strong>　新店長への再連絡は9月30日に実施予定。<span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list gray-markers">
+                <li>新店長への再連絡は未実施。9月30日に連絡する。</li>
+                <li>これまでは先方からの連絡・返答を待つ状態にとどまっていた。月末の区切りであり、来月に向けて、新後から新店長へ改めて連絡し、今後の予定と運用体制の擦り合わせを行う（音声データより）。</li>
+                <li><strong>決定事項：</strong>来月に向け、新後から新店長へ連絡し、予定の擦り合わせを実施する（音声データより）。</li>
+                <li><strong>残課題：</strong>先方からの連絡・反応待ちの状況を解消し、推進体制を確立する（音声データより）。</li>
+            </ul>
+        </section>
+
+        <!-- 2 Mooovi -->
+        <section id="s2" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">2. Mooovi</h2>
+            </div>
+            <p class="section-intro"><strong style="color:#111827;">状況：開発・提案進行中</strong>　戸田を除く各施設へのデモ・プレゼンが進み、システム入れ替えへの大きな抵抗は見られない。開発面では基準版と構築方針を確定し、10月30日の最終受入確認に向けた工程を設定した。</p>
+
+            <p class="sub-heading">(1) 各施設への提案・見積状況 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li>戸田を除く各施設へのデモ・プレゼンを実施済み。残りは戸田のみで、10月2日に予定している（音声データより）。</li>
+                <li>現時点で、システム入れ替えに抵抗を示す施設はなく、全体として感触は良好。</li>
+                <li>複数施設から見積提出の依頼が出ており、順次対応する。</li>
+                <li>施設ごとの状況、温度感、要望、確認事項は、Notionの進捗管理シートに集約済み。</li>
+                <li>集約した各施設のニーズを反映した形で、最終的に本番リリースを行う運用体制を整えている（音声データより）。</li>
+            </ul>
+
+            <div class="diagram-wrap">
+                <p class="diagram-title">各施設への提案状況</p>
+                <div class="facility-row">
+                    <div class="facility-box done">
+                        <h4>戸田を除く各施設</h4>
+                        <p>デモ・プレゼン実施済み。抵抗を示す施設はなく、感触は良好。複数施設から見積提出の依頼あり。</p>
+                    </div>
+                    <div class="facility-box pending">
+                        <h4>戸田</h4>
+                        <p>デモ・プレゼンは10月2日に予定（音声データより）。</p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="sub-heading">(2) 本番化に向けた基準版と構築方針の確定 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li>分散していた変更を統合し、今後の開発基準となる版を確定した。</li>
+                <li>構築方針として、次の3点を文書化した：PostgreSQLへの保存統一／施設掲示QRを利用者が読み取る受付方式／自動利用終了・ポイント付与のルール。</li>
+                <li>一般会員のLINE認証やセキュリティ対応についても、担当と作業場所を整理した。</li>
+                <li>デモ版として作成していた基本機能は概ね完成している（音声データより）。</li>
+            </ul>
+
+            <div class="box-red">
+                <p class="box-label">本番化に向けて残る主な作業</p>
+                <p style="margin:0 0 0.6rem 0; color:#374151;">通常画面は現時点でもJSON保存であり、本番移行は完了していない。</p>
+                <ul class="dot-list" style="margin-bottom:0;">
+                    <li>PostgreSQLへの業務処理の接続</li>
+                    <li>一般会員向けLINE認証</li>
+                    <li>QR受付、自動利用終了、ポイント管理</li>
+                    <li>タッチ認証機能の開発（音声データより）</li>
+                    <li>配信・通知の実接続</li>
+                    <li>総合試験、実機試験、負荷試験、バックアップ復元試験</li>
+                    <li>10月30日の最終受入確認までの工程</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">(3) 10月30日の最終受入確認までの工程 <span class="reporter-badge nigo">新後 報告</span></p>
+            <div class="diagram-wrap">
+                <p class="diagram-title">Mooovi　10月の工程</p>
+                <div class="flow-row">
+                    <div class="flow-box">
+                        <h4>DB設計・担当範囲の確定</h4>
+                        <p>10月2日まで</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box">
+                        <h4>全機能の実装・機能別テスト・結合</h4>
+                        <p>10月16日まで</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box">
+                        <h4>総合・実機・負荷・復元テスト</h4>
+                        <p>10月19日〜10月23日</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box">
+                        <h4>不具合修正・再テスト</h4>
+                        <p>10月26日〜10月29日</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box green">
+                        <h4>最終受入確認</h4>
+                        <p>10月30日</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box-gray">
+                <p class="box-label">社内の優先度（音声データより）</p>
+                <p style="margin:0; color:#374151;">Webサイト改修や新規集客などの次の施策へ進むためにも、まずは1日も早くMoooviシステムを完成・稼働させることが、社内の最優先事項である。</p>
+            </div>
+
+            <p class="sub-heading">(4) NFCによるタッチ入場（仕様確認中） <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li>暗号署名発行機能付きNFCの採用可否を確認するため、国内販売元のイーガルド社へ「NTAG 424 DNA」の仕様を問い合わせ済み。現在は回答待ち。</li>
+                <li>技術仕様の照会、サンプル送付の可否、見積もりを問い合わせている（音声データより）。</li>
+                <li>確認事項：発行された暗号キーをサーバー側で認証するにあたり、別途システムの提供やランニングコストが必要か、自社システム単体で完結できるか。Web上に十分な情報がなかったため、費用感を含めて同社へ一括して確認している（音声データより）。</li>
+                <li>必要に応じて、小規模調達に対応している海外販売サイトからの購入も検討する（音声データより）。</li>
+            </ul>
+
+            <div class="diagram-wrap">
+                <p class="diagram-title">NFCタッチ入場　検証の流れ</p>
+                <div class="flow-row">
+                    <div class="flow-box gray">
+                        <h4>調査</h4>
+                        <p>必要な仕様を満たすNFCタグを国内で取り扱う事業者は、確認できた限りイーガルド社の1社のみ（音声データより）</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box">
+                        <h4>問い合わせ</h4>
+                        <p>「NTAG 424 DNA」の仕様、サンプル送付の可否、見積もり。回答待ち</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box red">
+                        <h4>確認事項</h4>
+                        <p>サーバー側認証のシステム提供・ランニングコストの要否／自社システム単体での完結可否</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box green">
+                        <h4>調達ルートの決定</h4>
+                        <p>国内（イーガルド社）または海外販売サイトからの小規模調達</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box-blue">
+                <p class="box-label">決定事項・残課題（音声データより）</p>
+                <ul class="dot-list" style="margin-bottom:0;">
+                    <li><strong>決定事項：</strong>イーガルド社への技術要件・費用感の確認を進めると同時に、システム本体の構築を予定通り推進する。</li>
+                    <li><strong>残課題：</strong>認証システムに伴うランニングコストの有無の確定、および国内（イーガルド社）または海外調達ルートの最終決定。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">(5) 継続確認 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li>戸田へのデモ・プレゼン実施日</li>
+                <li>施設ごとの見積提出状況</li>
+                <li>戸田向け請求書の発行状況と入金予定</li>
+            </ul>
+        </section>
+
+        <!-- 3 ボーネルンド -->
+        <section id="s3" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">3. ボーネルンド</h2>
+            </div>
+            <p class="section-intro"><strong style="color:#111827;">状況：発注条件調整中</strong>　スマレジと予約システムの最終取引結果を一致させる当初案で進める。改修費は単独請求せず、クライアントに有用な追加機能と一体で提案・発注する方針をベンダーと合意。川崎ルフロン店は9月30日の営業終了後に切り替え、10月1日に現地立ち会いを行う。</p>
+
+            <p class="sub-heading">(1) スマレジと予約システムの連携 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li>店舗で会計内容を変更した際に、スマレジと予約システムの売上結果に差異が生じる課題について、スマレジの最終取引結果を1取引ごとに予約システムへ連携する当初案で解決する。</li>
+                <li>費用を抑える代替案として、スマレジの取引履歴を参照し、OBICデータのみを正しく作成する方式も提案したが、クライアントは採用しなかった。</li>
+                <li>不採用の理由：予約システムの売上データを今後の施策にも利用すること、OBIC登録は現行の管理手段にすぎず本質的な改善にならないこと。</li>
+                <li>クライアントは、旧POSと同等の業務を行えることが当初の発注要件だったと認識しており、本件単独での追加費用負担には同意していない。</li>
+            </ul>
+
+            <p class="sub-heading">(2) 追加機能と一体で提案し、改修費を精算する <span class="reporter-badge nigo">新後 報告</span></p>
+            <p style="color:#4b5563; margin-bottom:0.6rem;">ベンダーとは、次の進め方で合意した。</p>
+            <ul class="dot-list">
+                <li>スマレジ連携改修のみを単独で発注・精算しない。</li>
+                <li>クーポン機能や団体利用受付機能など、クライアントに有用な追加改修を提案する。</li>
+                <li>追加改修とスマレジ連携改修を同時に発注し、その中で連携改修費も精算する。</li>
+            </ul>
+
+            <div class="diagram-wrap">
+                <p class="diagram-title">ボーネルンド　改修費の精算スキーム</p>
+                <div class="flow-row">
+                    <div class="flow-box red">
+                        <h4>単独発注・精算</h4>
+                        <p>スマレジ連携改修のみ。クライアントは単独での追加費用負担に同意していない</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box">
+                        <h4>追加機能の提案</h4>
+                        <p>クーポン機能・団体利用受付機能など、クライアントに有用な追加改修</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box">
+                        <h4>同時発注</h4>
+                        <p>追加改修とスマレジ連携改修を同時に発注。連携改修費もその中で精算</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box green">
+                        <h4>三者合意で着地</h4>
+                        <p>売上差異を解消。本件単独の追加負担は求めない</p>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="dot-list">
+                <li>この進め方は、クライアントの早川氏から提案されたもの。方向性は合意済みだが、正式発注には至っていない。</li>
+                <li>現在、スマレジ連携改修の工数・費用をベンダーへ再確認している。また、追加機能の要件を提示し、見積回答を待っている。</li>
+                <li>ベンダーへは、クーポン機能、団体利用機能、スマレジ連携改修の最終費用の3点について見積を依頼している（音声データより）。</li>
+                <li>会議の時点では、判断用の金額データが一部揃っていなかったため、速やかに資料を整えて、社内報告・判断を行う（音声データより）。</li>
+                <li>最終的には、スマレジと予約システムの売上差異を解消しながら、クライアントへ本件単独の追加負担を求めず、追加機能の価値と合わせて三者が合意できる形で着地させる。</li>
+            </ul>
+
+            <p class="sub-heading">(3) 川崎ルフロン店の切替・現地立ち会い <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li>事前確認と情報共有は完了済み。9月30日の営業終了後に、本番環境をスマレジ連携システムへ切り替え、10月1日に現地立ち会いを行う予定。</li>
+                <li>運用はテラスモール湘南店ですでに確立している。また、予約システムに詳しい酒巻氏が川崎店の店長であるため、現時点では大きな問題が起きる可能性は低いと見込んでいる。</li>
+                <li>ただし、切替後の稼働確認と問題発生時の対応方法は、当日確認する。</li>
+                <li>現場立ち会いは川崎ルフロン店のみ。同店での立ち会いを最後とし、以降の店舗でのシステム入れ替えにおける現場立ち会いは行わない。以降は、確立された手順で展開する予定（音声データより）。</li>
+                <li>10月1日以降、本質的な運用改善が定着・確認されるまで、対象2店舗に関する日次・定期報告を約1か月間継続する（音声データより）。</li>
+                <li>スマレジの運用手順はすでに確立され、ケーススタディ（ナレッジ）も十分に集まっている。予約システムとスマレジ連携に必要な各種情報やスケジュールも、事前にベンダー側と合意・共有が完了している（音声データより）。</li>
+            </ul>
+
+            <div class="diagram-wrap">
+                <p class="diagram-title">川崎ルフロン店　切替スケジュール</p>
+                <div class="flow-row">
+                    <div class="flow-box">
+                        <h4>9月30日 営業終了後</h4>
+                        <p>本番環境をスマレジ連携システムへ切り替え</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box green">
+                        <h4>10月1日</h4>
+                        <p>現地立ち会い。切替後の稼働確認と問題発生時の対応方法を確認</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box gray">
+                        <h4>10月1日以降</h4>
+                        <p>以降の店舗は現場立ち会いなしで、確立された手順で展開。対象2店舗の日次・定期報告を約1か月継続</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4 瑞鳳ABP -->
+        <section id="s4" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">4. 瑞鳳ABP</h2>
+            </div>
+            <p class="section-intro"><strong style="color:#111827;">状況：更新なし</strong>　本日の記載なし。<span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li>前回からの課題は完了扱いにせず、継続確認とする。</li>
+                <li>CODATI連携：GPT-Botsワークフロー（見積作成、受注処理、スケジュール管理、納品手続き、受領書発行）の構築を、瑞鳳・永井デザインを対象に進めている。Pブレインとの連携開発も含む。詳細はCODATI章を参照。</li>
+            </ul>
+        </section>
+
+        <!-- 5 LINE広告 -->
+        <section id="s5" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">5. LINE広告</h2>
+            </div>
+            <p class="section-intro"><strong style="color:#111827;">状況：稼働中</strong>　自動入稿・自動レポートともに稼働中。自動入稿の精度調整を続けながら、LINEビジネスマネージャーの説明を10月中旬までに全クライアントへ実施する。過渡期の一過性のイレギュラー処理は、システム改修を中止し手動対応とする。</p>
+
+            <p class="sub-heading">(1) 自動入稿・自動レポートの稼働状況 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li>自動入稿は精度調整を続けているものの、基本的には稼働している。</li>
+                <li>自動レポートにも大きな問題は発生しておらず、非常に順調に運用できている。</li>
+                <li>過渡期特有の一時的な例外処理については一部手動対応を行っているが、kintoneを用いた新環境への完全移行後は、さらに簡潔な形で自動稼働する見込み（音声データより）。</li>
+            </ul>
+
+            <p class="sub-heading">(2) kintone新環境への移行（音声データより）</p>
+            <ul class="dot-list">
+                <li>10月入稿案件からの運用移行を目指している。</li>
+                <li>フォーム（FormBridge）送信メールの宛名変更等に関する、社内確認事項が残っている。具体的には、入稿完了後に自動送信されるサンクスメール本文の宛名表記（「〜様」などの形式）を、システム上で変更できるかどうかの仕様確認。</li>
+                <li>過去に清が当該設定を自ら調整しようとした際に、仕様上の不具合や課題が生じた経緯がある。高田側では現状の設定仕様が未確認であったため、高田が状況を調査し、清へ確認・報告した上で、早急に本番稼働へ移行する。</li>
+            </ul>
+
+            <p class="sub-heading">(3) LINEビジネスマネージャー連携 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li>高田に各担当者との調整を依頼し、ダイナムや夢屋グループなどへの働きかけを進めている。10月中旬までに、全クライアントへの声掛けと説明を終える予定。</li>
+                <li>ダイナムと夢屋グループには打診済みで、両社からポジティブな合意を得ており、現在は具体的な切替・連携タイミングの調整段階にある（音声データより）。</li>
+                <li>新後が作成した管理シートで、連携の進捗を可視化している（音声データより）。</li>
+            </ul>
+
+            <div class="diagram-wrap">
+                <p class="diagram-title">ビジネスマネージャー連携　進捗</p>
+                <div class="facility-row">
+                    <div class="facility-box done">
+                        <h4>ダイナム</h4>
+                        <p>打診済み。ポジティブな合意を得て、切替・連携タイミングを調整中。</p>
+                    </div>
+                    <div class="facility-box done">
+                        <h4>夢屋グループ</h4>
+                        <p>打診済み。ポジティブな合意を得て、切替・連携タイミングを調整中。</p>
+                    </div>
+                    <div class="facility-box pending">
+                        <h4>フランチャイズ・大型グループ企業</h4>
+                        <p>店舗単位でのBM作成は技術的に可能だが、運営元の本部側で一括集約管理したいという要望が出て、確認作業の連絡先が複雑化し調整が難航するケースあり。</p>
+                    </div>
+                    <div class="facility-box wait">
+                        <h4>その他のクライアント</h4>
+                        <p>10月中旬までに、全クライアントへ声掛けと説明を完了する予定。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box-gray">
+                <p class="box-label">大手代理店の特別権限について（音声データより）</p>
+                <ul class="dot-list" style="margin-bottom:0;">
+                    <li>年間億単位（4億円規模等）の広告取扱高を持つ大手代理店には、媒体側から「代理店特別権限」が付与される傾向がある。</li>
+                    <li>この権限を保有する場合、ビジネスマネージャー連携で代理運用が可能になるほか、LINE公式アカウントの管理権限に関連して、代理店名義でクライアント店舗の店舗認証申請を代行・完結できるため、クライアント側の作業負担を軽減できる。</li>
+                    <li>自社でも特別権限の獲得可能性を媒体側に打診・交渉し、社内検討に回されたが、取扱高の要件等から、現時点での権限付与の獲得は難易度が高い。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">(4) 過渡期のイレギュラー処理と開発対応の方針（音声データより）</p>
+            <div class="diagram-wrap">
+                <p class="diagram-title">過渡期イレギュラー処理　対応方針の変更</p>
+                <div class="flow-row">
+                    <div class="flow-box gray">
+                        <h4>発生した事象</h4>
+                        <p>新旧プラットフォームの移行期に、旧環境と新環境にまたがる特定案件（複数期間にわたる配信、レポート集計のためのグループ化処理など）が10数件発生</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box red">
+                        <h4>これまでの対応</h4>
+                        <p>手動で高田が1件ずつフォローするより、新後がシステム側を改修して自動で流れるようにする方が効率的と判断し、コード改修を進めていた</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box green">
+                        <h4>決定</h4>
+                        <p>システム改修・コード修正は即時中止。例外対応は高田等の手動フォローと現場運用でカバーし、システム肥大化を防止する</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box-blue">
+                <p class="box-label">決定事項・残課題（音声データより）</p>
+                <ul class="dot-list" style="margin-bottom:0;">
+                    <li><strong>決定事項：</strong>kintone移行に伴うサンクスメール宛名表記の現状を高田が調査・確認し、清へ報告の上、10月入稿案件からの本番運用を開始する。全クライアントに対するビジネスマネージャー連携の説明・手続は、高田主導で継続する。</li>
+                    <li><strong>残課題：</strong>大手グループ企業等における、本部と店舗間の確認ルートおよび承認連絡先の整理。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">(5) 継続確認 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list">
+                <li>自動入稿の精度、処理時間、成功率、例外・エラーの状況</li>
+                <li>ATOM停止と代替レポート運用の完了状況</li>
+                <li>Beacon・GPSデータの直接連携要件、最終成果物、完了条件</li>
+                <li>BM連携後の営業方針と、10月配信分の新発注システム入力テスト</li>
+                <li>AdvertisementMindのデータ利用終了後の対応、サミー、SDK、リアルタイムプッシュの方針</li>
+            </ul>
+        </section>
+
+        <!-- 6 CODATI -->
+        <section id="s6" class="section-card purple-card">
+            <div class="section-head">
+                <div class="section-bar bar-purple"></div>
+                <h2 class="section-title purple">6. CODATI</h2>
+            </div>
+            <p class="section-intro">CODATIはトキワギのメインプロジェクト。今回は、GPT-Botsを活用した業務自動化パッケージの構築状況と料金構造、FISH&amp;COのRPA・物流データ連携構想が共有された。</p>
+
+            <p class="sub-heading">(1) CODATIの状況（報告書末尾メモより）</p>
+            <ul class="dot-list purple-markers">
+                <li>導入して、事業継承に使いたいという意見も出ている。</li>
+                <li>7クライアントほどが、現時点で見えている。</li>
+            </ul>
+
+            <p class="sub-heading">(2) GPT-Bots・ワークフローを活用した業務自動化パッケージ（音声データより）</p>
+            <ul class="dot-list purple-markers">
+                <li>瑞鳳・永井デザインを対象に、システム構築を進めている。</li>
+                <li>自動化する業務フロー：見積作成、受注処理、10週間にわたるスケジュール管理、納品手続き、受領書発行まで。この仕様はほぼ完成した。</li>
+                <li>Google連携、IP制限によるセキュリティ強化、APIを介したPブレインとの連携開発を進めている。会議翌日（9月30日）以降に動作確認と環境引き継ぎを予定している。</li>
+                <li>GPT-Botsの保守運用体制：プロンプトの調整や、複雑化したワークフローの最適化のため、定例相談を通じたプロンプト・ワークフロー構成のレベリング体制が構築されており、サポート品質が維持されている。</li>
+            </ul>
+
+            <div class="diagram-wrap">
+                <p class="diagram-title">GPT-Bots　料金・仕入れ構造</p>
+                <div class="compare-wrap">
+                    <div class="compare-box low">
+                        <div class="compare-label">基本購入（1組織）</div>
+                        <div class="compare-value">10枠</div>
+                    </div>
+                    <div class="compare-arrow">→</div>
+                    <div class="compare-box low">
+                        <div class="compare-label">枠追加の仕入れ（1枠）</div>
+                        <div class="compare-value">年額10万円</div>
+                    </div>
+                    <div class="compare-arrow">→</div>
+                    <div class="compare-box high">
+                        <div class="compare-label">クライアントへの販売価格（1枠）</div>
+                        <div class="compare-value">20万〜30万円</div>
+                    </div>
+                </div>
+                <p style="font-size:0.78rem; color:#4b5563; margin:0;">枠追加は、代理店・仕入れ構造として年額10万円（月額約9,000円程度、40%オフ適用）。追加1枠あたり10万円の仕入れに対し、クライアントへは20万円〜30万円のパッケージ価格で販売・導入する。</p>
+            </div>
+
+            <ul class="dot-list purple-markers">
+                <li>初年度の目標は10社への導入。達成の確信が得られている。</li>
+                <li>展開先・パイプライン：瑞鳳、永井デザイン、飯田氏の関連先、上村氏の案件、高田の知人の印刷会社（自社導入の意向あり）、パチンコ業界向けの展開先法人。</li>
+            </ul>
+
+            <p class="sub-heading">(3) FISH&amp;CO　RPA・物流データ連携構想（音声データより）</p>
+            <ul class="dot-list purple-markers">
+                <li>FISH&amp;COは、外食チェーン「レッドロブスター」と同一グループに属する物流部門。</li>
+                <li>データ連携上の課題：e-winds からの「CSVデータ」と、店舗システムからの「Googleスプレッドシートデータ」という、2つの異なるデータソースが存在する。</li>
+                <li>提案：担当者の個人PCに依存せず、専用の「RPA専用PC」を設置し、定期的にデータ（CSVおよびスプレッドシート）を自動ダウンロードさせる仕組みを導入する。</li>
+            </ul>
+
+            <div class="diagram-wrap">
+                <p class="diagram-title">FISH&amp;CO　RPA・物流データ連携の構図</p>
+                <div class="flow-row">
+                    <div class="flow-box purple">
+                        <h4>e-winds</h4>
+                        <p>CSVデータ</p>
+                    </div>
+                    <div class="flow-plus">＋</div>
+                    <div class="flow-box purple">
+                        <h4>店舗システム</h4>
+                        <p>Googleスプレッドシートデータ</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box green">
+                        <h4>RPA専用PC</h4>
+                        <p>担当者の個人PCに依存せず、定期的にデータを自動ダウンロード</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box green">
+                        <h4>FISH&amp;CO向けデータ連携フロー</h4>
+                        <p>まずここを確実に構築する</p>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="dot-list purple-markers">
+                <li>戦略的価値：大手ベンダー（日本アクセス等）へ直接提案・交渉するのではなく、メーカー側視点に立った受発注システムや、「季節変動指数を踏まえた飲食店向け自動提案ツール」としてパッケージ化する方針。他社との摩擦を避けながら高収益化を図れる。</li>
+                <li>横展開：同一グループのレッドロブスターをはじめ、同様の課題を抱える他社物流企業や食品メーカーにも展開できる。</li>
+                <li>まずは、e-winds側のデータサンプル（CSV等）およびGoogleスプレッドシートの仕様確認を進め、FISH&amp;CO向けのデータ連携フローを確実に構築することで合意した。</li>
+            </ul>
+
+            <div class="box-purple">
+                <p class="box-label">決定事項</p>
+                <ul class="dot-list purple-markers" style="margin-bottom:0;">
+                    <li>e-winds側のデータサンプル（CSV）およびスプレッドシート仕様を飯田氏より受領し、データ構造と連携仕様を確認する。</li>
+                    <li>他社物流やメーカーへの横展開を見据え、まずはFISH&amp;CO向けのRPAデータ連携フローを確実に完成させる。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 7 広告商品 -->
+        <section id="s7" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title">7. 広告商品</h2>
+            </div>
+            <p style="color:#9ca3af; margin:0;">進捗なし</p>
+        </section>
+
+        <!-- 8 新規案件 -->
+        <section id="s8" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title">8. 新規案件</h2>
+            </div>
+            <p class="section-intro">75周年ボートレースの大規模コンペ案件（音声データより）。</p>
+            <ul class="dot-list gray-markers">
+                <li>上村氏経由で提案を進めている、「75周年ボートレース」の大規模コンペ案件。</li>
+                <li>年間13レース分に及ぶ、デジタル施策および抽選施策を一括して担当するもの。</li>
+                <li>受注した場合は非常に高い収益をもたらす一方、張り付きでの制作・運用リソースが必要となる大規模プロジェクト。</li>
+            </ul>
+        </section>
+
+        <!-- 9 AI社員制度 -->
+        <section id="s9" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title">9. AI社員制度</h2>
+            </div>
+            <p style="color:#9ca3af; margin:0;">該当なし</p>
+        </section>
+
+        <!-- 10 来季戦略・全体総括 -->
+        <section id="s10" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title">10. 来季戦略・全体総括</h2>
+            </div>
+            <p class="section-intro">9月度は好調。10月度は案件の動きが一時的に鈍化している。</p>
+
+            <p class="sub-heading">業績動向（音声データより）</p>
+            <ul class="dot-list gray-markers">
+                <li>9月度は、シルバーウィーク等の繁忙期需要が寄与し、非常に好調な業績を記録した。</li>
+                <li>10月度の案件着地見込みは、現時点で案件の動きが一時的に鈍化しており、売上着地予想は約100万円規模（音声データより）で、前期同等の推移にとどまる見通し。</li>
+                <li>10月度の業績の底上げに向けた案件獲得が課題。</li>
+            </ul>
+
+            <p class="sub-heading">全体総括（報告書末尾メモより）</p>
+            <ul class="dot-list gray-markers">
+                <li>前年比トントン。利益率は悪いけど。</li>
+                <li>今年度は一気に伸ばしたい。今期のステップアップを確実なものにしていく。</li>
+            </ul>
+        </section>
+
+        <!-- 11 その他・組織・運営 -->
+        <section id="s11" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title">11. その他・組織・運営</h2>
+            </div>
+
+            <p class="sub-heading">開発リソースの優先順位（音声データより）</p>
+            <div class="box-blue">
+                <p class="box-label">決定事項</p>
+                <ul class="dot-list" style="margin-bottom:0;">
+                    <li>新後の開発リソースは、「Mooovi（新モビーシステム）の完成と10月末稼働」と「自社Webサイトの改修・集客施策」の2点に、最優先で集中する。</li>
+                    <li>現在、自社Webサイトのアクセス数が急増している。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">自社サイトの修正作業（報告書末尾メモより）</p>
+            <ul class="dot-list gray-markers">
+                <li>新後のタスク：TOKIWAGIサイトの修正作業。SEOやブラッシュアップについての調整等を行う。計画とポイントを整理する。</li>
+            </ul>
+
+            <p class="sub-heading">その他案件の状況 <span class="reporter-badge nigo">新後 報告</span></p>
+            <ul class="dot-list gray-markers">
+                <li><strong>状況：更新なし</strong>（本日の記載なし）。前回からの課題は完了扱いにせず、継続確認とする。</li>
+            </ul>
+
+            <p class="sub-heading">補足 <span class="reporter-badge nigo">新後 報告</span></p>
+            <div class="box-gray">
+                <p style="margin:0; color:#374151;">各アクションの担当者は、明示されているLINEビジネスマネージャー対応を除き、要確認。</p>
+            </div>
+        </section>
+
+        <!-- 12 アクションアイテム -->
+        <section id="s12" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">12. アクションアイテム（TODO）</h2>
+            </div>
+            <div style="overflow-x:auto;">
+                <table class="data-table">
+                    <thead><tr><th>案件</th><th>タスク内容</th><th>担当</th><th>期限</th></tr></thead>
+                    <tbody>
+                        <tr><td>ボーネルンド</td><td>川崎ルフロン店の本番切替を実施し、現地立ち会いで稼働を確認する。</td><td>要確認</td><td>切替：9月30日営業終了後／立ち会い：10月1日</td></tr>
+                        <tr><td>Mooovi</td><td>DB設計と担当範囲を確定する。</td><td>要確認</td><td>10月2日</td></tr>
+                        <tr><td>ボーネルンド</td><td>スマレジ連携改修の工数・費用・対応範囲と、追加機能（クーポン機能・団体利用受付機能）の要件・見積を揃える。</td><td>要確認</td><td>至急（ベンダー回答待ち）</td></tr>
+                        <tr><td>ボーネルンド</td><td>判断用の金額資料を整え、社内報告・判断を行う。</td><td>新後</td><td>速やかに</td></tr>
+                        <tr><td>MID</td><td>新店長へ打ち合わせ日程を再連絡する。</td><td>新後</td><td>9月30日</td></tr>
+                        <tr><td>LINE広告</td><td>BM連携の説明・声掛けを全クライアントへ行う。</td><td>高田と各担当者</td><td>10月中旬</td></tr>
+                        <tr><td>Mooovi</td><td>戸田へデモ・プレゼンを実施する。</td><td>要確認</td><td>10月2日（音声データより）</td></tr>
+                        <tr><td>Mooovi</td><td>イーガルド社へ問い合わせたNFC仕様・サンプル・見積の回答を受け、調達ルートを決定する。</td><td>新後</td><td>回答待ち</td></tr>
+                        <tr><td>ボーネルンド</td><td>対象2店舗の日次・定期報告を約1か月継続する。</td><td>要確認</td><td>10月1日以降、約1か月</td></tr>
+                        <tr><td>LINE広告</td><td>kintone移行に伴うサンクスメール宛名表記の現状を調査し、清へ報告する。確認後、10月入稿案件から本番運用を開始する。</td><td>高田</td><td>早急（10月入稿案件から）</td></tr>
+                        <tr><td>LINE広告</td><td>過渡期イレギュラー処理のシステム改修を中止し、手動フォローで対応する。</td><td>高田等</td><td>即時</td></tr>
+                        <tr><td>LINE広告</td><td>自動入稿の精度・処理時間・成功率・エラー状況、ATOM停止と代替レポート運用の完了状況を継続確認する。</td><td>要確認</td><td>継続</td></tr>
+                        <tr><td>CODATI</td><td>GPT-Botsワークフロー（瑞鳳・永井デザイン）の動作確認と環境引き継ぎを行う。</td><td>要確認</td><td>会議翌日（9月30日）以降</td></tr>
+                        <tr><td>CODATI</td><td>e-winds側のデータサンプル（CSV）とスプレッドシート仕様を飯田氏より受領し、データ構造と連携仕様を確認する。</td><td>要確認</td><td>要確認</td></tr>
+                        <tr><td>自社サイト</td><td>TOKIWAGIサイトの修正作業（SEO・ブラッシュアップの調整、計画とポイントの整理）。</td><td>新後</td><td>要確認</td></tr>
+                        <tr><td>全体</td><td>月末のため、報告書等を提出する。</td><td>要確認</td><td>月末</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 13 参考情報 -->
+        <section id="s13" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title">13. 参考情報</h2>
+            </div>
+            <p style="color:#9ca3af; margin:0;">該当なし</p>
+        </section>
+
+        <!-- 別枠 -->
+        <section id="s14" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title">別枠　本日別に上がった内容</h2>
+            </div>
+            <p class="section-intro">議題とは別に、会議の中で出た指導・フィードバックの要点。</p>
+
+            <p class="sub-heading">開発リソースの優先順位について</p>
+            <ul class="dot-list gray-markers">
+                <li>代表者より：今しか起きない、限定的なイレギュラー処理のために開発リソースを使い、システムを複雑化させることは避けること。</li>
+                <li>代表者より：自社Webサイトは集客の窓口である。優先順位を取り違えないこと。</li>
+                <li>社員は、指摘を受けて、開発リソースの配置を見直す方針を確認した。</li>
+            </ul>
+
+            <p class="sub-heading">報告・判断のタイミングについて</p>
+            <ul class="dot-list gray-markers">
+                <li>代表者より：定期会議での報告タイミングを待たず、情報が整い次第、前倒しで進めて構わない。</li>
+                <li>代表者より：提出が遅れていたMooovi報告書を、速やかに提出すること。社員は、夜間に作成・提出する予定と回答した。</li>
+            </ul>
+
+            <p class="sub-heading">コミュニケーションについて</p>
+            <ul class="dot-list gray-markers">
+                <li>評価された点：先日の金子氏（永井デザイン・瑞鳳関連）とのやり取りは、相手への配慮と優しさが表れた良い着地だった。少し硬い部分はあったが、相手を思った話し方ができていた。</li>
+                <li>課題：日常のクライアント対応や社内ミーティングで、発言や文章が「AIやマニュアルのオペレーターと話しているようだ」「資料と対話しているように聞こえる」と受け取られることがある。論理が整理されすぎ、綺麗すぎて、言葉がすんなり入ってこない。ボーネルンドと話している時と、他の顧客と話している時で、話し方に違いがある。</li>
+                <li>オペレーター的な会話になる原因として挙がった3点：相手や状況に対するイライラやストレス／業務への慣れや惰性／自分の中に正解が固まっていて、相手の言葉を受け止めずに回答してしまう状態。</li>
+                <li>方向性：正論で「説得」するのではなく、相手が腹落ちする「納得」を引き出すこと。「なるほど」よりも「確かに」と言ってもらえる話し方を目指す。綺麗に話そうとしすぎず、自分の言葉で、その人らしさを前面に出して、相手に信頼してもらう（ファンをつくる）こと。過去に、クライアントの担当者が社員の人柄に信頼を寄せた例が挙げられた。</li>
+                <li>方向性の一つとして：自分の優しさを武器にしつつ、代表者の強さも持てるようにする。</li>
+            </ul>
+        </section>
+
+        <div class="note" style="margin-top:1.5rem;">今回、高田は休みのため、高田報告書はありません。</div>
+
+        <footer class="page-footer">
+            <p>&copy; 2026 TKW Project Team. All Rights Reserved.</p>
+        </footer>
+    </div>
+</div>
+
+<script>
+    const links = document.querySelectorAll('.sidebar-link');
+    const sections = document.querySelectorAll('section[id]');
+    const purpleSections = ['s6'];
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                links.forEach(link => {
+                    link.classList.remove('active', 'active-purple');
+                    if (link.getAttribute('href') === '#' + id) {
+                        if (purpleSections.includes(id)) link.classList.add('active-purple');
+                        else link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.2 });
+    sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
