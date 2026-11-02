@@ -3,1068 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TKW会議：2026年10月27日</title>
+    <title>TKW　ドキュメントハブ</title>
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif; background-color: #ffffff; color: #1f2937; line-height: 1.8; font-size: 16.5px; }
-        .layout { display: flex; min-height: 100vh; }
-        .sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; background-color: #f9fafb; border-right: 1px solid #e5e7eb; display: flex; flex-direction: column; padding: 2rem 0 3rem 0; }
-        .sidebar-label { font-size: 0.7rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; padding: 0 1.5rem; margin-bottom: 1rem; }
-        .sidebar-links { display: flex; flex-direction: column; }
-        .sidebar-link { display: block; padding: 0.42rem 1.5rem; font-size: 0.78rem; color: #6b7280; text-decoration: none; border-radius: 0.5rem; margin: 0.1rem 0.5rem; transition: background 0.18s, color 0.18s; }
-        .sidebar-link:hover { background-color: #e5e7eb; color: #111827; }
-        .sidebar-link.active { background-color: #ecfdf5; color: #065f46; font-weight: 700; }
-        .sidebar-link.active-purple { background-color: #f5f3ff; color: #6d28d9; font-weight: 700; }
-        .sidebar-card { margin: 1.5rem 1rem 0 1rem; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.25rem; font-size: 0.75rem; color: #6b7280; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
-        .sidebar-card-title { font-weight: 700; color: #1f2937; font-size: 0.85rem; margin-bottom: 0.6rem; }
-        .sidebar-card-row { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
-        .sidebar-card-row span:last-child { font-weight: 700; color: #1f2937; }
-        .main { flex: 1; padding: 0 4rem 4rem 4rem; background: #ffffff; min-width: 0; }
-        .page-header { padding: 3.5rem 0 2.5rem 0; margin-bottom: 2.5rem; border-bottom: 1px solid #e5e7eb; }
-        .badge { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 9999px; font-size: 0.78rem; font-weight: 600; background: #f3f4f6; color: #4b5563; margin-bottom: 1rem; letter-spacing: 0.04em; }
-        .page-title { font-size: 2.2rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.75rem; }
-        .page-subtitle { color: #6b7280; font-size: 1rem; font-weight: 500; }
-        .section-card { background: #ffffff; border-radius: 1rem; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 2rem; padding: 2.5rem; }
-        .section-card.purple-card { background-color: #f5f3ff; border: 2px solid #7c3aed; }
-        .section-head { display: flex; align-items: center; margin-bottom: 1.75rem; }
-        .section-bar { width: 6px; height: 2rem; border-radius: 9999px; margin-right: 1rem; flex-shrink: 0; }
-        .bar-green { background: #059669; }
-        .bar-gray { background: #6b7280; }
-        .bar-purple { background: #7c3aed; }
-        .section-title { font-size: 1.35rem; font-weight: 700; color: #111827; }
-        .section-title.green { color: #065f46; }
-        .section-title.purple { color: #6d28d9; }
-        .section-intro { color: #6b7280; margin-bottom: 1.5rem; line-height: 1.8; }
-        .sub-heading { font-size: 1rem; font-weight: 700; color: #1f2937; margin: 1.75rem 0 0.75rem 0; }
-        ul.dot-list { list-style: disc; padding-left: 1.5rem; color: #4b5563; }
-        ul.dot-list li { margin-bottom: 0.6rem; line-height: 1.75; }
-        ul.dot-list li::marker { color: #10b981; }
-        ul.dot-list.purple-markers li::marker { color: #7c3aed; }
-        ul.dot-list.gray-markers li::marker { color: #6b7280; }
-        ul.dot-list li strong { color: #111827; }
-        .box-green { border-left: 4px solid #10b981; background: #f0fdf4; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
-        .box-green .box-label { font-size: 0.8rem; font-weight: 700; color: #065f46; margin-bottom: 0.5rem; }
-        .box-blue { border-left: 4px solid #2563eb; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
-        .box-blue .box-label { font-size: 0.8rem; font-weight: 700; color: #1d4ed8; margin-bottom: 0.5rem; }
-        .box-red { border-left: 4px solid #ef4444; background: #fef2f2; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
-        .box-red .box-label { font-size: 0.8rem; font-weight: 700; color: #991b1b; margin-bottom: 0.5rem; }
-        .box-purple { border-left: 4px solid #7c3aed; background: #f5f3ff; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
-        .box-purple .box-label { font-size: 0.8rem; font-weight: 700; color: #6d28d9; margin-bottom: 0.5rem; }
-        .box-gray { border-left: 4px solid #9ca3af; background: #f9fafb; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
-        .box-gray .box-label { font-size: 0.8rem; font-weight: 700; color: #374151; margin-bottom: 0.5rem; }
-        .reporter-badge { display: inline-block; font-size: 0.66rem; font-weight: 700; padding: 0.14rem 0.55rem; border-radius: 9999px; margin-right: 0.4rem; vertical-align: middle; }
-        .reporter-badge.nigo { background: #ecfdf5; color: #065f46; }
-        .reporter-badge.takada { background: #eff6ff; color: #1d4ed8; }
-        .data-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; margin: 1rem 0; }
-        .data-table thead th { background: #f9fafb; padding: 0.55rem 0.9rem; text-align: left; font-weight: 700; color: #374151; border-bottom: 2px solid #e5e7eb; font-size: 0.73rem; letter-spacing: 0.03em; }
-        .data-table tbody td { padding: 0.55rem 0.9rem; border-bottom: 1px solid #f3f4f6; color: #4b5563; vertical-align: top; }
-        .note { font-size: 0.8rem; color: #6b7280; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 0.5rem; padding: 0.6rem 1rem; margin-top: 0.5rem; }
-        .diagram-wrap { margin: 1.5rem 0; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.1rem; overflow-x: auto; }
-        .diagram-title { font-size: 0.85rem; font-weight: 700; color: #374151; margin-bottom: 0.9rem; }
-        .flow-row { display: flex; align-items: stretch; gap: 0.5rem; flex-wrap: wrap; }
-        .flow-box { flex: 1 1 140px; border: 1.5px solid #2563eb; background: #eff6ff; border-radius: 0.6rem; padding: 0.7rem 0.85rem; }
-        .flow-box.red { border-color: #ef4444; background: #fef2f2; }
-        .flow-box.green { border-color: #059669; background: #f0fdf4; }
-        .flow-box.gray { border-color: #9ca3af; background: #f9fafb; }
-        .flow-box.purple { border-color: #7c3aed; background: #faf5ff; }
-        .flow-box h4 { font-size: 0.83rem; font-weight: 700; margin-bottom: 0.3rem; color: #1f2937; }
-        .flow-box p { font-size: 0.74rem; color: #4b5563; line-height: 1.5; margin: 0; }
-        .flow-arrow { display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 1.15rem; flex: 0 0 auto; padding: 0 0.15rem; }
-        .flow-plus { display: flex; align-items: center; justify-content: center; color: #6b7280; font-size: 1.1rem; font-weight: 700; flex: 0 0 auto; padding: 0 0.15rem; }
-        .compare-wrap { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin: 1rem 0; }
-        .compare-box { flex: 1 1 150px; border-radius: 0.6rem; padding: 0.9rem 1rem; text-align: center; }
-        .compare-box.low { border: 1.5px solid #9ca3af; background: #f9fafb; }
-        .compare-box.high { border: 1.5px solid #10b981; background: #f0fdf4; }
-        .compare-box .compare-label { font-size: 0.72rem; color: #6b7280; margin-bottom: 0.4rem; }
-        .compare-box .compare-value { font-size: 1.15rem; font-weight: 800; color: #111827; }
-        .compare-arrow { font-size: 1.3rem; color: #9ca3af; flex: 0 0 auto; }
-        .facility-row { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-        .facility-box { flex: 1 1 150px; border: 1.5px solid #e5e7eb; border-radius: 0.6rem; padding: 0.75rem 0.9rem; }
-        .facility-box.done { border-color: #10b981; background: #f0fdf4; }
-        .facility-box.pending { border-color: #b45309; background: #fffbeb; }
-        .facility-box.wait { border-color: #9ca3af; background: #f9fafb; }
-        .facility-box h4 { font-size: 0.82rem; font-weight: 700; color: #1f2937; margin-bottom: 0.3rem; }
-        .facility-box p { font-size: 0.72rem; color: #4b5563; margin: 0; line-height: 1.5; }
-        .page-footer { margin-top: 4rem; padding: 2.5rem 0; border-top: 1px solid #e5e7eb; text-align: center; font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; }
-        @media (max-width: 720px) {
-            .flow-row { flex-direction: column; }
-            .flow-arrow, .flow-plus { transform: rotate(90deg); padding: 0.2rem 0; }
-            .compare-wrap { flex-direction: column; }
-            .compare-arrow { transform: rotate(90deg); }
-        }
-        @media (max-width: 768px) {
-            .layout { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid #e5e7eb; padding: 1.25rem 0 1rem 0; }
-            .sidebar-card { display: none; }
-            .main { padding: 0 1.25rem 3rem 1.25rem; }
-            .page-header { padding: 2rem 0 1.5rem 0; }
-            .page-title { font-size: 1.5rem; }
-            .section-card { padding: 1.5rem; }
-            .sidebar-links { flex-direction: row; flex-wrap: wrap; padding: 0 0.75rem; gap: 0.25rem; }
-            .sidebar-link { margin: 0; padding: 0.3rem 0.7rem; font-size: 0.7rem; }
-            .sidebar-label { padding: 0 1rem; }
-        }
+        body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif; background-color: #f9fafb; color: #1f2937; line-height: 1.8; min-height: 100vh; }
 
-        .src-voice { font-size: 0.74rem; color: #6b7280; font-weight: 600; margin-left: 0.3rem; white-space: nowrap; }
-        .bar-row { display: flex; align-items: center; gap: 0.75rem; margin: 0.5rem 0; }
-        .bar-label { flex: 0 0 190px; font-size: 0.78rem; color: #374151; }
-        .bar-track { flex: 1; background: #f3f4f6; border-radius: 0.4rem; height: 1.6rem; }
-        .bar-fill { height: 100%; border-radius: 0.4rem; background: #2563eb; }
-        .bar-fill.green { background: #10b981; }
-        .bar-fill.red { background: #ef4444; }
-        .bar-fill.gray { background: #9ca3af; }
-        .bar-val { flex: 0 0 170px; font-size: 0.78rem; font-weight: 700; color: #111827; }
-        .tl { border-left: 3px solid #d1d5db; margin: 1rem 0 1rem 0.5rem; padding-left: 1.4rem; }
-        .tl-item { position: relative; margin-bottom: 0.95rem; }
-        .tl-item::before { content: ""; position: absolute; left: -1.95rem; top: 0.5rem; width: 0.75rem; height: 0.75rem; border-radius: 50%; background: #10b981; }
-        .tl-item.red::before { background: #ef4444; }
-        .tl-item.gray::before { background: #9ca3af; }
-        .tl-date { font-weight: 700; font-size: 0.86rem; color: #111827; }
-        .tl-text { font-size: 0.8rem; color: #4b5563; line-height: 1.6; }
-        @media (max-width: 720px) { .bar-row { flex-wrap: wrap; } .bar-label, .bar-val { flex: 1 1 100%; } }
+        .site-header { background: #ffffff; border-bottom: 1px solid #e5e7eb; padding: 2rem 3rem; }
+        .site-header .badge { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 9999px; font-size: 0.72rem; font-weight: 700; background: #ecfdf5; color: #065f46; letter-spacing: 0.06em; margin-bottom: 0.6rem; }
+        .site-header h1 { font-size: 1.8rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; }
+        .site-header p { color: #6b7280; font-size: 0.88rem; margin-top: 0.3rem; }
 
-        .sidebar-sublink { display: block; padding: 0.3rem 1.5rem 0.3rem 2.6rem; font-size: 0.72rem; color: #6b7280; text-decoration: none; border-radius: 0.5rem; margin: 0.05rem 0.5rem; transition: background 0.18s, color 0.18s; }
-        .sidebar-sublink:hover { background-color: #f5f3ff; color: #6d28d9; }
-        .jump-link { display: inline-block; font-size: 0.74rem; font-weight: 700; color: #6d28d9; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 9999px; padding: 0.12rem 0.7rem; text-decoration: none; margin-left: 0.4rem; white-space: nowrap; }
-        .jump-link:hover { background: #7c3aed; color: #ffffff; }
-        .change-line { font-size: 0.82rem; font-weight: 700; color: #374151; background: #ffffff; border: 1px solid #ddd6fe; border-radius: 0.5rem; padding: 0.45rem 0.9rem; margin: 0.5rem 0 0.9rem 0; }
-        .client-block { background: #ffffff; border: 1px solid #ddd6fe; border-radius: 0.75rem; padding: 0.4rem 1.25rem 0.9rem 1.25rem; margin: 1rem 0; }
-        .client-block .sub-heading { margin-top: 0.9rem; }
-        .step-label { font-size: 0.8rem; font-weight: 700; color: #6d28d9; margin: 0.9rem 0 0.3rem 0; }
-        @media (max-width: 768px) { .sidebar-sublink { margin: 0; padding: 0.3rem 0.7rem; font-size: 0.7rem; } }
+        .container { max-width: 860px; margin: 0 auto; padding: 2.5rem 2rem 5rem 2rem; }
+
+        /* カテゴリボタン */
+        .category-bar { display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+        .category-btn { display: flex; align-items: center; justify-content: center; padding: 0.8rem 1.6rem; border-radius: 0.875rem; font-size: 1.45rem; font-weight: 800; text-decoration: none; border: 2px solid; transition: background 0.18s, color 0.18s, transform 0.15s, box-shadow 0.2s; letter-spacing: -0.02em; flex: 1; min-width: 160px; }
+        .category-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 20px -4px rgba(0,0,0,0.12); }
+        .category-btn.partners { border-color: #2563eb; color: #1d4ed8; background: #ffffff; }
+        .category-btn.partners:hover { background: #2563eb; color: #ffffff; }
+        .category-btn.kikaku { border-color: #7c3aed; color: #6d28d9; background: #ffffff; }
+        .category-btn.kikaku:hover { background: #7c3aed; color: #ffffff; }
+        .category-btn.archive { border-color: #6b7280; color: #374151; background: #ffffff; }
+        .category-btn.archive:hover { background: #6b7280; color: #ffffff; }
+
+        .month-label { font-size: 0.72rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; padding-left: 0.25rem; }
+        .minutes-list { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2.5rem; }
+
+        .minutes-card { display: flex; align-items: center; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.875rem; padding: 1.25rem 1.5rem; text-decoration: none; color: inherit; transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s; gap: 1.25rem; }
+        .minutes-card:hover { box-shadow: 0 8px 20px -4px rgba(0,0,0,0.1); border-color: #10b981; transform: translateY(-1px); }
+        .minutes-card.latest { border: 2px solid #10b981; background: #ecfdf5; }
+
+        .card-date { flex-shrink: 0; width: 3.5rem; text-align: center; }
+        .card-date .month { font-size: 0.7rem; font-weight: 700; color: #10b981; text-transform: uppercase; }
+        .card-date .day { font-size: 1.75rem; font-weight: 800; color: #111827; line-height: 1; }
+        .card-divider { width: 1px; height: 2.5rem; background: #e5e7eb; flex-shrink: 0; }
+        .card-body { flex: 1; min-width: 0; }
+        .card-title { font-size: 0.95rem; font-weight: 700; color: #111827; }
+        .card-meta { font-size: 0.78rem; color: #6b7280; margin-top: 0.2rem; }
+        .card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+        .tag { font-size: 0.68rem; font-weight: 600; padding: 0.15rem 0.55rem; border-radius: 9999px; background: #f3f4f6; color: #4b5563; }
+        .tag.green { background: #ecfdf5; color: #065f46; }
+        .tag.blue { background: #eff6ff; color: #1d4ed8; }
+        .tag.purple { background: #f5f3ff; color: #6d28d9; }
+        .tag.red { background: #fef2f2; color: #991b1b; }
+        .card-arrow { flex-shrink: 0; color: #d1d5db; font-size: 1.1rem; transition: color 0.2s; }
+        .minutes-card:hover .card-arrow { color: #10b981; }
+        .latest-badge { flex-shrink: 0; font-size: 0.68rem; font-weight: 700; background: #10b981; color: #ffffff; padding: 0.2rem 0.6rem; border-radius: 9999px; letter-spacing: 0.04em; }
+
+        .empty-card { background: #ffffff; border: 1px dashed #d1d5db; border-radius: 0.875rem; padding: 1.75rem 1.5rem; display: flex; align-items: center; gap: 1.25rem; color: #9ca3af; }
+        .empty-date { flex-shrink: 0; width: 3.5rem; text-align: center; }
+        .empty-day { font-size: 1.75rem; font-weight: 800; color: #d1d5db; line-height: 1; }
+        .empty-month { font-size: 0.7rem; font-weight: 700; color: #d1d5db; }
+        .empty-text { font-size: 0.85rem; }
+
+        footer { text-align: center; font-size: 0.72rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; padding: 2rem 0; border-top: 1px solid #e5e7eb; margin-top: 2rem; }
+
+        @media (max-width: 600px) {
+            .site-header { padding: 1.5rem 1.25rem; }
+            .site-header h1 { font-size: 1.3rem; }
+            .container { padding: 1.5rem 1rem 4rem 1rem; }
+            .minutes-card { padding: 1rem 1.1rem; gap: 0.9rem; }
+            .card-date .day { font-size: 1.4rem; }
+            .category-btn { font-size: 1.1rem; padding: 0.7rem 1rem; }
+        }
     </style>
 </head>
 <body>
-<div class="layout">
-    <aside class="sidebar">
-        <p class="sidebar-label">INDEX / 目次</p>
-        <div class="sidebar-links">
-            <a href="#s1" class="sidebar-link">1. MID</a>
-            <a href="#s2" class="sidebar-link">2. Mooovi</a>
-            <a href="#s3" class="sidebar-link">3. ボーネルンド</a>
-            <a href="#s4" class="sidebar-link">4. 瑞鳳ABP</a>
-            <a href="#s5" class="sidebar-link">5. LINE広告</a>
-            <a href="#s6" class="sidebar-link">6. CODATI</a>
-            <a href="#s6-1" class="sidebar-sublink">6-1 CODATI概要（AI社員）</a>
-            <a href="#s6-2" class="sidebar-sublink">6-2 クライアント別の進捗</a>
-            <a href="#s7" class="sidebar-link">7. 広告商品</a>
-            <a href="#s8" class="sidebar-link">8. 新規案件</a>
-            <a href="#s9" class="sidebar-link">9. AI社員制度</a>
-            <a href="#s10" class="sidebar-link">10. 来季戦略・全体総括</a>
-            <a href="#s11" class="sidebar-link">11. その他・組織・運営</a>
-            <a href="#s12" class="sidebar-link">12. アクションアイテム</a>
-            <a href="#s13" class="sidebar-link">13. 参考情報</a>
-        </div>
-        <div class="sidebar-card">
-            <p class="sidebar-card-title">会議情報</p>
-            <div class="sidebar-card-row"><span>会議名:</span><span>TKW社内定例MTG</span></div>
-            <div class="sidebar-card-row"><span>日時:</span><span>2026年10月27日 15:08〜</span></div>
-            <div class="sidebar-card-row"><span>形式:</span><span>原文保存版</span></div>
-        </div>
-    </aside>
+<header class="site-header">
+    <span class="badge">MEETING MINUTES</span>
+    <h1>TKW会議　議事録</h1>
+    <p>毎週の定例会議の記録です。タイトルをクリックして各議事録を開いてください。</p>
+</header>
 
-    <div class="main">
-        <header class="page-header">
-            <span class="badge">MEETING MINUTES</span>
-            <h1 class="page-title">TKW会議：2026年10月27日</h1>
-            <p class="page-subtitle">MID Linyレクチャー / Mooovi全パターン検証・Nタグ印刷費 / ボーネルンド追加改修見積・価格交渉 / LINE広告・kintone切替・キャンペーン営業 / 瑞鳳新PC環境 / CODATI AI社員システム刷新 / PHP脆弱性対応　詳細記録</p>
-        </header>
+<div class="container">
 
-        <div style="display:flex; gap:0.5rem; margin-bottom:2rem; flex-wrap:wrap; align-items:center;">
-            <span class="reporter-badge nigo">新後 報告</span>
-            <span class="reporter-badge takada">高田 報告</span>
-            <span style="font-size:0.78rem; color:#6b7280;">今回提出された報告書です。バッジも注記もない項目は、音声データと報告書の両方にある内容です。音声データにだけある内容は「（音声データより）」、メモにだけある内容は「（メモより）」と示します。</span>
+    <div class="category-bar">
+        <a href="./partners/" class="category-btn partners">パートナー会議</a>
+        <a href="./kikaku/" class="category-btn kikaku">企画・提案</a>
+        <a href="./archive/" class="category-btn archive">会議アーカイブ</a>
+    </div>
+
+    <p class="month-label">2026年11月</p>
+
+    <div class="minutes-list">
+
+        <div class="empty-card">
+            <div class="empty-date"><div class="empty-month">Nov</div><div class="empty-day">03</div></div>
+            <div class="card-divider" style="background:#f3f4f6;"></div>
+            <div class="empty-text">次回会議の議事録がここに追加されます</div>
         </div>
 
-        <!-- 1 MID -->
-        <section id="s1" class="section-card">
-            <div class="section-head">
-                <div class="section-bar bar-gray"></div>
-                <h2 class="section-title">1. MID</h2>
-            </div>
-            <p class="section-intro"><strong style="color:#111827;">状況：Linyレクチャーを実施。店長・運用担当者ともに活用意欲が高い。</strong><span class="reporter-badge nigo">新後 報告</span></p>
+    </div>
 
-            <p class="sub-heading">(1) Linyのタグ・配信設定のレクチャー</p>
-            <ul class="dot-list gray-markers">
-                <li>店長・運用担当者ともにLinyの活用意欲が高く、タグの作成・付与、URLクリック測定、テンプレート作成、ユーザーの絞り込みなどを説明した。<span class="reporter-badge nigo">新後 報告</span></li>
-                <li>先方では、カルーセル配信を丁寧に設定し、LINE公式アカウント側で反応率のよいユーザーへの配信も行っていた。一方で、Linyでのタグ付けの方法が分からなかったため、今回のレクチャーで実践できるレベルまで解説した。<span class="reporter-badge nigo">新後 報告</span></li>
-                <li>新店長および運用担当者と面談した。前任者が、配信後の社内システムでの検証・分析のノウハウを蓄積・活用していたものの、引き継ぎがされておらず、担当者がLinyの操作や活用方法を把握できていない状態だった。<span class="src-voice">（音声データより）</span></li>
-                <li>レクチャーの内容は、顧客データの蓄積とセグメント配信の効果向上を目的にした基礎で、「タグの作成方法」「URLのクリック測定」「配信効率を上げるテンプレート作成」などを行った。<span class="src-voice">（音声データより）</span></li>
-                <li>次回は11月後半に、運用状況・進捗を確認する。再度レクチャーの場を設定し、関係構築と運用支援を続ける。</li>
-            </ul>
+    <p class="month-label" style="margin-top:2rem;">2026年10月</p>
 
-            <p class="sub-heading">(2) 前回からの確認事項 <span class="reporter-badge nigo">新後 報告</span></p>
-            <div style="overflow-x:auto;">
-                <table class="data-table">
-                    <thead><tr><th>案件</th><th>前回からの確認事項</th><th>今回の報告・残課題</th></tr></thead>
-                    <tbody>
-                        <tr><td>MID</td><td>10月22日のレクチャー・課題ヒアリング</td><td>レクチャー実施済み。タグの作成・付与等を実践できるレベルまで説明。本部の動向は今回記載なし</td></tr>
-                    </tbody>
-                </table>
-            </div>
+    <div class="minutes-list">
 
-            <div class="box-gray">
-                <p class="box-label">補足（メモより）</p>
-                <p style="margin:0; color:#4b5563;">担当者がLinyへの活用意欲が高い。タグの作成やクリックに対してなどをレクチャーした。再度、レクチャーを行う。三井さんにも再度提案する。</p>
-            </div>
-        </section>
-
-        <!-- 2 Mooovi -->
-        <section id="s2" class="section-card">
-            <div class="section-head">
-                <div class="section-bar bar-green"></div>
-                <h2 class="section-title green">2. Mooovi</h2>
-            </div>
-            <p class="section-intro"><strong style="color:#111827;">状況：不具合修正と全パターン検証が進行。管理画面のメール認証を実装し、簡易実機確認を実施。</strong><span class="reporter-badge nigo">新後 報告</span></p>
-
-            <p class="sub-heading">(1) テストの進め方と今後の工程</p>
-            <ul class="dot-list">
-                <li>会議週内（10月30日まで）にテストケースの検証を完了し、その後、Railway上で負荷テストを行う。<span class="reporter-badge nigo">新後 報告</span></li>
-                <li>テスト・実機確認でバグや不具合の発見が進み、メニュー切替・表示・誕生日特典の不備をローカルで修正している。検証環境の認証付き入口、データ保存、停止制御の部品も実装した。現在は全パターンの検証を進めている。<span class="reporter-badge nigo">新後 報告</span></li>
-                <li>主要な確認ポイント・ステータスに絞ったユーザーパターンの検証を進めている。テストケースの検証を完了したあと、Railway環境で全負荷テストを行い、最終的な検証を終える。<span class="src-voice">（音声データより）</span></li>
-            </ul>
-            <div class="box-gray">
-                <p class="box-label">補足（メモより）</p>
-                <p style="margin:0; color:#4b5563;">検証を終了して、Railwayで全負荷テストを行う。Nタグの印刷費の問題は解決。デモ版を渡して、使用確認をしてもらう。資料は作成済み。PHPの脆弱性を伝えた（PHPの件は第11章）。</p>
-            </div>
-
-            <div class="diagram-wrap">
-                <p class="diagram-title">検証の規模と結果（新後の報告書。ローカル試験の結果）</p>
-                <div class="compare-wrap">
-                    <div class="compare-box low"><div class="compare-label">対象施設</div><div class="compare-value">10施設</div></div>
-                    <div class="compare-box low"><div class="compare-label">棚卸ししたアクション</div><div class="compare-value">421件</div></div>
-                    <div class="compare-box low"><div class="compare-label">棚卸しした動作</div><div class="compare-value">1,948動作</div></div>
-                    <div class="compare-box high"><div class="compare-label">10月27日の隔離PostgreSQL環境</div><div class="compare-value">1,645成功／失敗0／skip0</div></div>
-                </div>
-                <p class="note">クラウド・実端末・全施設の移行合格は未確認。資料不足は143動作、尼崎の過去単発設定1件は条件が読み取れない。</p>
-            </div>
-
-            <div class="diagram-wrap">
-                <p class="diagram-title">今後の工程（資料に日付のあるもの以外は日付未定）</p>
-                <div class="flow-row">
-                    <div class="flow-box green">
-                        <h4>テストケース検証の完了</h4>
-                        <p>会議週内（10月30日まで）。前回の最終受入目標は10月30日</p>
-                    </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-box">
-                        <h4>Railwayで負荷テスト</h4>
-                        <p>開始日は要確認。負荷・復元試験、実端末・施設別シナリオの受入</p>
-                    </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-box purple">
-                        <h4>各施設へデモ版を配布</h4>
-                        <p>実際に触ってもらい、機能の過不足や導入の障壁を確認</p>
-                    </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-box gray">
-                        <h4>年明けのテスト運用導入</h4>
-                        <p>各施設の予算確定時期（年末や1月など）に合わせて、スケジュールを再構築</p>
-                    </div>
+        <a href="./1027/" class="minutes-card latest" target="_blank" rel="noopener">
+            <div class="card-date"><div class="month">Oct</div><div class="day">27</div></div>
+            <div class="card-divider"></div>
+            <div class="card-body">
+                <div class="card-title">TKW会議：2026年10月27日</div>
+                <div class="card-meta">MID Linyレクチャー / Mooovi全パターン検証・Nタグ印刷費 / ボーネルンド追加改修見積 / LINE広告・キャンペーン営業 / 瑞鳳新PC環境 / CODATI AI社員UI刷新 / PHP脆弱性対応</div>
+                <div class="card-tags">
+                    <span class="tag green">LINE広告 10月累計129件</span>
+                    <span class="tag red">ボーネルンド 改修原価合計1,020,338円</span>
+                    <span class="tag" style="background:#f5f3ff;color:#6d28d9;">CODATI 管理センター・オフィスUI</span>
                 </div>
             </div>
+            <span class="latest-badge">LATEST</span>
+            <span class="card-arrow">›</span>
+        </a>
 
-            <p class="sub-heading">(2) 開発・検証の進捗 <span class="reporter-badge nigo">新後 報告</span></p>
-            <div style="overflow-x:auto;">
-                <table class="data-table">
-                    <thead><tr><th>項目</th><th>確認できた進捗</th><th>残課題・次工程</th></tr></thead>
-                    <tbody>
-                        <tr><td>現行運用との照合</td><td>全10施設421アクション・1,948動作を棚卸しし、新旧差分を整理</td><td>尼崎の過去単発設定1件の条件は読取不能。資料不足143動作、施設別画像・例外条件の照合が残る</td></tr>
-                        <tr><td>メニュー切替・表示</td><td>自動利用終了後に入場中メニューが残る問題、最終クール前の18時に通常メニューへ戻る問題などをローカル修正・再検証</td><td>統合後、実LINE上の画像・遷移先・保存状態を確認</td></tr>
-                        <tr><td>誕生日特典</td><td>対象・受取済み・残人数の表示、履歴を保持した取消・再受取、二重適用防止をローカル実装・検証</td><td>旧会員情報と受取履歴の移行方針、施設別の例外運用を確認</td></tr>
-                        <tr><td>全体試験</td><td>10月27日の隔離PostgreSQL環境で1,645成功・失敗0・skip0。認証付き入口、管理画面との接続、停止記録の保存も検証</td><td>ローカル試験の結果。クラウド・実端末・全施設の移行合格は未確認</td></tr>
-                        <tr><td>管理画面ログイン・2段階認証</td><td>ログインとメール確認コードによる認証機能を実装。簡易的な実機確認済み</td><td>総合試験・受入結果を確認</td></tr>
-                        <tr><td>Nタグのタッチ入場・実LINE通知</td><td>前回は個別接続と本人限定通知試験まで確認</td><td>実カード・実LINE・予約照合・入場・ポイント付与を通した結果を確認</td></tr>
-                        <tr><td>負荷・復元・施設別受入</td><td>ローカル回帰試験とデータ保持の確認は進行</td><td>Railway上の負荷・復元試験、実端末・施設別シナリオの受入を実施</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <p class="sub-heading">(3) Nタグの印刷先と費用</p>
-            <p style="color:#4b5563; margin-bottom:0.75rem;">前回（10月20日）は、印刷費1回15,000円（枚数にかかわらず一式）の一律案が撤回になり、安い印刷方法の確認と再試算が宿題になっていた。今回は次の報告があった。</p>
-            <div style="overflow-x:auto;">
-                <table class="data-table">
-                    <thead><tr><th>項目</th><th>今回の状況</th><th>確認すること</th></tr></thead>
-                    <tbody>
-                        <tr><td>印刷先候補</td><td>同一デザインを少量追加する際の固定費を抑える方向で調査</td><td>持ち込みNTAG 424 DNAの受付条件、初回・追加注文の適用条件</td></tr>
-                        <tr><td>印刷単価</td><td>サイトは550円／枚〜。初回手数料14300円、毎回5000円手数料必要</td><td>入稿から納品までの期間</td></tr>
-                        <tr><td>総原価・提供価格</td><td>前回の価格は草案。印刷方法を見直して再確認中</td><td>カード・印刷・ケース・送料・作業工数を含め、初回／追加注文の価格を確定</td></tr>
-                        <tr><td>各施設への案内</td><td>前回は説明資料を作成済み</td><td>送付先・送付日・施設の反応、必要枚数の回収状況</td></tr>
-                    </tbody>
-                </table>
-            </div>
-            <ul class="dot-list">
-                <li>印刷先はビーム・エイ・ティ社が有力。1〜5枚の場合、印刷単価は1,540円／枚〜との報告。総原価・提供価格は未確定。<span class="reporter-badge nigo">新後 報告</span></li>
-                <li>1枚から印刷できる業者を調べた結果、1枚あたり550円（持ち込み可能）で調達できるサイトを確認した。初回の入稿設定費は1万円（または1万5,000円）に手数料5,000円、以降は毎回手数料5,000円となる。具体的な価格の比較資料をまとめて、最終決定を行う。<span class="src-voice">（音声データより）</span></li>
-            </ul>
-
-            <div class="diagram-wrap">
-                <p class="diagram-title">Nタグの印刷費：資料ごとの数字</p>
-                <div style="overflow-x:auto;">
-                    <table class="data-table">
-                        <thead><tr><th>項目</th><th>前回（10月20日）</th><th>報告書（前回確認の表）</th><th>報告書（今回の表）</th><th>音声データ（今回）</th></tr></thead>
-                        <tbody>
-                            <tr><td>印刷先</td><td>外部の印刷サービスの確認・検証が宿題</td><td>ビーム・エイ・ティ社が有力</td><td>印刷先候補を調査中</td><td>1枚から印刷できる業者を調査</td></tr>
-                            <tr><td>印刷単価</td><td>記載なし</td><td>1〜5枚の場合、1,540円／枚〜</td><td>550円／枚〜（サイト）</td><td>1枚あたり550円（持ち込み可能）</td></tr>
-                            <tr><td>初回の手数料</td><td>印刷費15,000円（一式）</td><td>記載なし</td><td>14,300円</td><td>初回入稿設定費1万円（または1万5,000円）＋手数料5,000円</td></tr>
-                            <tr><td>追加注文の手数料</td><td>印刷費15,000円（一式）</td><td>記載なし</td><td>毎回5,000円</td><td>毎回5,000円</td></tr>
-                            <tr><td>位置づけ</td><td>一律15,000円の案は撤回</td><td>総原価・提供価格は未確定</td><td>前回の価格は草案。再確認中</td><td>価格比較資料をまとめて最終決定</td></tr>
-                        </tbody>
-                    </table>
+        <a href="./1020/" class="minutes-card" target="_blank" rel="noopener">
+            <div class="card-date"><div class="month">Oct</div><div class="day">20</div></div>
+            <div class="card-divider"></div>
+            <div class="card-body">
+                <div class="card-title">TKW会議：2026年10月20日</div>
+                <div class="card-meta">MID / Mooovi・NFCタグ料金 / ボーネルンド団体受付 / LINE広告・kintone切替 / 瑞鳳浦和店NAS / CODATI営業会社活用</div>
+                <div class="card-tags">
+                    <span class="tag green">LINE広告 10月累計123件</span>
+                    <span class="tag red">ボーネルンド 団体受付 顧客提示額1,000万円規模</span>
+                    <span class="tag" style="background:#f5f3ff;color:#6d28d9;">CODATI 営業会社活用へ</span>
                 </div>
             </div>
-            <div class="box-red">
-                <p class="box-label">要確認：Nタグの印刷費の数字、メモの「解決」</p>
-                <ul class="dot-list" style="margin-bottom:0;">
-                    <li>印刷単価は、報告書の前回確認の表が1,540円／枚〜、今回の表が550円／枚〜で、報告書の中で食い違っている。</li>
-                    <li>初回の手数料は、報告書が14,300円、音声データが1万円（または1万5,000円）＋5,000円。</li>
-                    <li>メモは「Nタグの印刷費の問題は解決」としているが、報告書は「総原価・提供価格は未確定」「印刷方法を見直して再確認中」としている。</li>
-                </ul>
-            </div>
+            <span class="card-arrow">›</span>
+        </a>
 
-            <p class="sub-heading">(4) 各施設への案内・デモ版の配布</p>
-            <ul class="dot-list">
-                <li>各施設への案内は、前回の時点で説明資料を作成済み。送付先・送付日・施設の反応、必要枚数の回収状況は要確認。<span class="reporter-badge nigo">新後 報告</span></li>
-                <li>営業の手順を修正した。タッチ入場の資料を送って電話で確認するだけでなく、先に各施設へデモ版を配布し、実際に触ってもらったうえで、機能の過不足や導入の角度、障壁になるポイントを確認する。<span class="src-voice">（音声データより）</span></li>
-                <li>各施設の予算が確定する時期（年末や1月など）に合わせて、年明けのテスト運用導入に向けた詳細なスケジュールを組み直す。<span class="src-voice">（音声データより）</span></li>
-            </ul>
-
-            <p class="sub-heading">(5) 戸田</p>
-            <ul class="dot-list">
-                <li><strong>請求・入金：</strong>前回は、再発行請求書の受領済み・10月末振込予定。今回の入金の更新は記載なし。<span class="reporter-badge nigo">新後 報告</span></li>
-                <li><strong>システムの乗り換え：</strong>乗り換えの意欲は高いが、現行システム「リザエン」の顧客データがIDと紐付いていない特殊な仕様になっている。データ連携の方法、引き継ぎの手順、旧システムを終了する段取りを早急に確認・確定し、年内のスケジュールに組み込む。<span class="src-voice">（音声データより）</span></li>
-            </ul>
-            <div class="box-gray">
-                <p class="box-label">新後 報告内の会議メモ（原文のまま）</p>
-                <p style="margin:0; color:#4b5563;">戸田のリザエンとの引き継ぎが可能か確認。デモ版のリリース提供も。</p>
-            </div>
-
-            <p class="sub-heading">(6) 工程上の確認事項 <span class="reporter-badge nigo">新後 報告</span></p>
-            <ul class="dot-list">
-                <li>前回の最終受入目標は2026年10月30日。今回の「会議週内のテストケース検証完了」と、その後の負荷テストを含む完了日を確認する。</li>
-                <li>前回の記録にあったRailwayプロジェクト作成拒否の解消状況と、負荷テストの開始日を確認する。</li>
-                <li>芦屋の先行導入、導入日・請求開始時期、戸田の月末入金は、今回更新なし。継続して確認する。</li>
-            </ul>
-        </section>
-
-        <!-- 3 ボーネルンド -->
-        <section id="s3" class="section-card">
-            <div class="section-head">
-                <div class="section-bar bar-green"></div>
-                <h2 class="section-title green">3. ボーネルンド</h2>
-            </div>
-            <p class="section-intro"><strong style="color:#111827;">状況：DIPROから見積を受領。3改修の原価合計は1,020,338円。</strong><span class="reporter-badge nigo">新後 報告</span></p>
-
-            <p class="sub-heading">(1) 追加改修の見積（DIPRO）</p>
-            <ul class="dot-list">
-                <li>早川氏への提案に向け、DIPROから追加改修の見積を受領した。カレンダー表示の折り畳みと、法人向け商品だけを掲載する限定公開ページに、スマレジ連携改修を含めて一体で進める案。<span class="reporter-badge nigo">新後 報告</span></li>
-            </ul>
-            <div style="overflow-x:auto;">
-                <table class="data-table">
-                    <thead><tr><th>改修項目</th><th>原価</th><th>音声データでの位置づけ</th></tr></thead>
-                    <tbody>
-                        <tr><td>①事前購入ページのカレンダー表示を折り畳む機能</td><td>83,400円</td><td>カレンダー表示切り替え。優先度が低く、発注から漏れる可能性がある仮相談案件</td></tr>
-                        <tr><td>②法人向け商品のみを限定公開ページに掲載する設定・機能</td><td>570,638円</td><td>法人向け限定公開ページの作成（原価約57万円）。発注の角度が高い主力の改修機能</td></tr>
-                        <tr><td>③スマレジ連携機能</td><td>366,300円</td><td>原価36万円。裏で控えている改修機能</td></tr>
-                        <tr><td><strong>原価合計</strong></td><td><strong>1,020,338円</strong></td><td>3機能合計で102万円</td></tr>
-                    </tbody>
-                </table>
-            </div>
-            <ul class="dot-list">
-                <li>②の概算内訳は、基本システム構築（表示クエリ・デザイン等）が約20万円、運営管理画面の設定が約26万円、施設管理画面の設定が約8万円、DB設計・改修が約3万円。概算内訳と正式見積の総額は分けて扱う。<span class="reporter-badge nigo">新後 報告</span></li>
-            </ul>
-
-            <div class="diagram-wrap">
-                <p class="diagram-title">改修原価の積み上げと提示価格案（110万円前後を100%とした比較）</p>
-                <div class="bar-row"><div class="bar-label">①カレンダー表示の折り畳み</div><div class="bar-track"><div class="bar-fill gray" style="width:7.6%;"></div></div><div class="bar-val">83,400円</div></div>
-                <div class="bar-row"><div class="bar-label">②法人向け限定公開ページ</div><div class="bar-track"><div class="bar-fill" style="width:51.9%;"></div></div><div class="bar-val">570,638円</div></div>
-                <div class="bar-row"><div class="bar-label">③スマレジ連携</div><div class="bar-track"><div class="bar-fill gray" style="width:33.3%;"></div></div><div class="bar-val">366,300円</div></div>
-                <div class="bar-row"><div class="bar-label">原価合計</div><div class="bar-track"><div class="bar-fill red" style="width:92.8%;"></div></div><div class="bar-val">1,020,338円</div></div>
-                <div class="bar-row"><div class="bar-label">顧客提示価格の案</div><div class="bar-track"><div class="bar-fill green" style="width:100%;"></div></div><div class="bar-val">110万円前後（未確定）</div></div>
-                <p class="note">原価と提示価格の案の差は79,662円。この差額は、報告書の数字から算出した値で、資料にはない。</p>
-            </div>
-
-            <div class="diagram-wrap">
-                <p class="diagram-title">②の概算内訳（新後の報告書）</p>
-                <div class="facility-row">
-                    <div class="facility-box done"><h4>基本システム構築</h4><p>表示クエリ・デザイン等　約20万円</p></div>
-                    <div class="facility-box done"><h4>運営管理画面の設定</h4><p>約26万円</p></div>
-                    <div class="facility-box done"><h4>施設管理画面の設定</h4><p>約8万円</p></div>
-                    <div class="facility-box done"><h4>DB設計・改修</h4><p>約3万円</p></div>
+        <a href="./1013/" class="minutes-card" target="_blank" rel="noopener">
+            <div class="card-date"><div class="month">Oct</div><div class="day">13</div></div>
+            <div class="card-divider"></div>
+            <div class="card-body">
+                <div class="card-title">TKW会議：2026年10月13日</div>
+                <div class="card-meta">MID / Mooovi開発・個別認証試験 / ボーネルンド見積減額・団体受付 / LINE広告・エージェンシー登録 / 瑞鳳浦和店訪問 / CODATI SEO修正案</div>
+                <div class="card-tags">
+                    <span class="tag green">Mooovi 1,055件の自動テスト成功</span>
+                    <span class="tag red">ボーネルンド 見積66,600円減額</span>
+                    <span class="tag" style="background:#f5f3ff;color:#6d28d9;">CODATI ページ別SEO修正案</span>
                 </div>
             </div>
+            <span class="card-arrow">›</span>
+        </a>
 
-            <p class="sub-heading">(2) 提案価格の社内相談と、交渉の方針</p>
-            <ul class="dot-list">
-                <li>今回の提案には③の改修費も含めるため、大きな利益を上乗せすることは難しいと考えている。顧客提示価格を110万円前後とする案について、社内で値付けを相談したい。提示価格は未確定で、税区分・納期・提案日も確認が必要。<span class="reporter-badge nigo">新後 報告</span></li>
-                <li><strong>担当者の提示案：</strong>クライアント（早川氏側）の社内を通しやすくするため、利益を乗せずに、スマレジ連携（36万円）の原価を限定公開ページに裏乗せして提案しようとしていた。会社としての利益確保の努力を怠り、客先に通しやすい簡単な方法を安易に選択している点が、厳しく指摘された。<span class="src-voice">（音声データより）</span></li>
-            </ul>
-            <p class="step-label">経営側の指示（音声データより）</p>
-            <ul class="dot-list">
-                <li><strong>第1段階（利益を乗せたセット提案）：</strong>スマレジ連携を含めたまとめ提案として、110万円規模（例：限定公開ページを70万円、カレンダー側をまとめて40万円台など）で提示する。本来確保すべき利益（15万〜20万円程度）を、最初から諦めずに提示する。</li>
-                <li><strong>第2段階（バーター交渉・見返りの獲得）：</strong>価格で難色を示された場合は、単にディスカウントするのではなく、「他の団体案件の獲得」や「別条件でのバーター（見返り）」を引き出す交渉を行う。</li>
-                <li><strong>交渉の姿勢・マインド：</strong>過去の店舗運営での自腹の補填や、現場での苦労を引き合いに、あらゆる選択肢・知恵を絞って利益を獲得するマインドを身につけるよう、指導された。</li>
-            </ul>
-
-            <div class="diagram-wrap">
-                <p class="diagram-title">価格交渉の2段階（経営側の指示）</p>
-                <div class="flow-row">
-                    <div class="flow-box red">
-                        <h4>当初の提示案</h4>
-                        <p>利益を乗せず、スマレジ連携の原価を限定公開ページに裏乗せ。利益確保の努力が足りないと指摘</p>
-                    </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-box green">
-                        <h4>第1段階</h4>
-                        <p>スマレジ連携を含むまとめ提案を110万円規模で提示。確保すべき利益は15万〜20万円程度</p>
-                    </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-box purple">
-                        <h4>第2段階</h4>
-                        <p>難色を示されたら、ディスカウントではなく、他の団体案件の獲得や別条件でのバーターを引き出す</p>
-                    </div>
+        <a href="./1006/" class="minutes-card" target="_blank" rel="noopener">
+            <div class="card-date"><div class="month">Oct</div><div class="day">06</div></div>
+            <div class="card-divider"></div>
+            <div class="card-body">
+                <div class="card-title">TKW会議：2026年10月6日</div>
+                <div class="card-meta">MID / Mooovi全施設プレゼン完了・開発工程 / ボーネルンド2店舗稼働 / LINE広告・一広 / ボートレースファン投票企画 / CODATI補助金・SEO</div>
+                <div class="card-tags">
+                    <span class="tag green">Mooovi 10月16日 実装・結合完了へ</span>
+                    <span class="tag red">ボーネルンド 追加改修の見積待ち</span>
+                    <span class="tag" style="background:#f5f3ff;color:#6d28d9;">CODATI 補助金申請完了</span>
                 </div>
             </div>
+            <span class="card-arrow">›</span>
+        </a>
 
-            <div class="box-red">
-                <p class="box-label">要確認：提示価格と利益の数字</p>
-                <ul class="dot-list" style="margin-bottom:0;">
-                    <li>報告書は「提示価格は110万円前後。大きな利益を上乗せすることは難しい」。音声データは、経営側が110万円規模で提示し、確保すべき利益は15万〜20万円程度としている。</li>
-                    <li>原価合計1,020,338円との差は79,662円（報告書の数字から算出した値）で、音声データの「15万〜20万円程度」とは合わない。</li>
-                    <li>メモは「担当者（早川氏）本人から金額の相談があって初めて、減額価格対応を行う」としており、報告書・音声データの進め方とは別の書き方になっている。</li>
-                </ul>
-            </div>
-
-            <div class="box-gray">
-                <p class="box-label">補足（メモより）</p>
-                <p style="margin:0; color:#4b5563;">提案が2つある。原価が3桁になるので、利益を乗せるのは厳しそう。カレンダー機能に金額を載せると、クライアントが発注をしない流れになる可能性がある。→ 担当者（早川氏）が行動を起こすべきこと → 本人から金額の相談があって初めて、減額価格対応を行う。※ 事業として、売利をたて利益を取るための見せ方ができるか。ポイント。※ 相手側の視点に立ちぎてる。ミスをカバーするために、どちらにもアピールポイントは作るべきではない。</p>
-                <p style="margin:0.5rem 0 0 0; font-size:0.78rem; color:#6b7280;">「売利をたて」「立ちぎてる」は文意が取れないため、メモのまま載せている。</p>
-            </div>
-
-            <div class="box-gray">
-                <p class="box-label">新後 報告内の会議メモ（人名の表記のみ統一）</p>
-                <ul class="dot-list gray-markers" style="margin-bottom:0;">
-                    <li>①の案件とセットで発注を取れるように、早川氏に交渉 → それが可能かどうかを判断してもらってから、②とのセットを検討。バーターの用意も。</li>
-                    <li>別軸で進めていた団体機能の代替構築については、スマレジとの連携が必要になる筋があり、その点、外部開発が難しいか。最終判断が必要。</li>
-                </ul>
-            </div>
-
-            <p class="sub-heading">(3) 前回からの確認事項 <span class="reporter-badge nigo">新後 報告</span></p>
-            <div style="overflow-x:auto;">
-                <table class="data-table">
-                    <thead><tr><th>案件</th><th>前回からの確認事項</th><th>今回の報告・残課題</th></tr></thead>
-                    <tbody>
-                        <tr><td>ボーネルンド</td><td>限定公開予約ページの見積・再提案</td><td>見積受領済み。関連改修を含む価格案を社内相談する段階。早川氏への再提案結果・納期は未記載</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- 4 瑞鳳ABP -->
-        <section id="s4" class="section-card">
-            <div class="section-head">
-                <div class="section-bar bar-green"></div>
-                <h2 class="section-title green">4. 瑞鳳ABP</h2>
-            </div>
-            <p class="section-intro"><strong style="color:#111827;">状況：新PCでのEXIM取得環境を10月29日午前に構築予定。</strong><span class="reporter-badge nigo">新後 報告</span></p>
-
-            <p class="sub-heading">(1) 新PCでの取得環境の構築</p>
-            <ul class="dot-list">
-                <li>2026年10月29日（木）午前に訪問し、新PCでのEXIMデータ取得環境を構築する予定。飯海氏に、PCの状態とEXIMのログイン設定を確認いただいている。<span class="reporter-badge nigo">新後 報告</span></li>
-                <li>現地での対応後に、新PCで取得できた範囲と残作業を確認する。過去データのNAS格納・日次更新の状況は、今回記載なし。<span class="reporter-badge nigo">新後 報告</span></li>
-                <li>今週木曜日（10月29日）に、本社で新PCでの顧客管理データの取得環境を構築する予定。所要時間は約2時間の見込み。<span class="src-voice">（音声データより）</span></li>
-                <li><strong>データの取り込みルート：</strong>AWSを経由し、従来どおりGoogleドライブへ格納したデータを取り込むルートを維持・確認する。<span class="src-voice">（音声データより）</span></li>
-                <li><strong>遠隔保守の環境：</strong>遠隔操作用にTeamViewerを採用する。Windowsの自動アップデートや再起動で接続が切れるトラブルを防ぐため、自動更新を抑止する設定をして運用する。<span class="src-voice">（音声データより）</span></li>
-                <li><strong>ツールの契約：</strong>Auto-ROは、今回の契約をもって終了し、入れ替えを行う。<span class="src-voice">（音声データより）</span></li>
-            </ul>
-
-            <div class="diagram-wrap">
-                <p class="diagram-title">新PCでの取得環境の構築（10月29日午前）</p>
-                <div class="flow-row">
-                    <div class="flow-box">
-                        <h4>10月29日午前に訪問</h4>
-                        <p>所要約2時間。飯海氏がPCの状態とEXIMのログイン設定を事前に確認</p>
-                    </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-box green">
-                        <h4>EXIM取得環境の構築</h4>
-                        <p>新PCでEXIMデータを取得できる環境を作る</p>
-                    </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-box gray">
-                        <h4>取り込みルートの維持</h4>
-                        <p>AWS経由で、従来どおりGoogleドライブへ格納したデータを取り込む</p>
-                    </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-box purple">
-                        <h4>遠隔保守の設定</h4>
-                        <p>TeamViewerを採用。Windowsの自動更新を抑止して、接続が切れるトラブルを防ぐ</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="box-gray">
-                <p class="box-label">補足（メモより）</p>
-                <p style="margin:0; color:#4b5563;">午前中に訪問して、設定を完了させる。TeamViewerの設定。自動アップデートの停止（エラーを防ぐため）。</p>
-            </div>
-            <div class="box-gray">
-                <p class="box-label">新後 報告内の会議メモ（原文のまま）</p>
-                <p style="margin:0; color:#4b5563;">Cloudeのアカウントは瑞鳳側で</p>
-            </div>
-            <div class="box-red">
-                <p class="box-label">要確認：メモの語句</p>
-                <p style="margin:0; color:#374151;">「Cloude」が何を指すか、資料からは判断できないため、原文のまま載せている。</p>
-            </div>
-
-            <p class="sub-heading">(2) 前回からの確認事項 <span class="reporter-badge nigo">新後 報告</span></p>
-            <div style="overflow-x:auto;">
-                <table class="data-table">
-                    <thead><tr><th>案件</th><th>前回からの確認事項</th><th>今回の報告・残課題</th></tr></thead>
-                    <tbody>
-                        <tr><td>瑞鳳</td><td>新PCへの移行・データ取得</td><td>10月29日午前に新PC環境を構築予定。飯海氏にPC状態・EXIMログイン設定を確認いただいている</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- 5 LINE広告 -->
-        <section id="s5" class="section-card">
-            <div class="section-head">
-                <div class="section-bar bar-green"></div>
-                <h2 class="section-title green">5. LINE広告</h2>
-            </div>
-            <p class="section-intro"><strong style="color:#111827;">状況：10月の累計は129件（前週比6件増）。売上予測は420万円程度で、前週の予測どおり。</strong><span class="reporter-badge takada">高田 報告</span></p>
-
-            <p class="sub-heading">(1) 10月の売上傾向</p>
-            <ul class="dot-list">
-                <li>10月27日現在の累計は129件（前週比6件増）。売上予測は420万円程度で、前週の予測どおり。<span class="reporter-badge takada">高田 報告</span></li>
-                <li>LYプラットフォームへの移行に伴い、ビジネスマネージャー（BM）やアカウントの連携などの影響で、発注件数が減っている。11月配信の案件も入り始めており、次月は獲得を促進している。<span class="reporter-badge takada">高田 報告</span></li>
-                <li>アカウント連携などの影響で発注のペースが落ちており、10月の着地は約420万円の見込み。<span class="src-voice">（音声データより）</span></li>
-            </ul>
-
-            <div class="diagram-wrap">
-                <p class="diagram-title">10月の累計件数（10月20日と10月27日の比較）</p>
-                <div class="compare-wrap">
-                    <div class="compare-box low"><p class="compare-label">10月20日時点の累計</p><p class="compare-value">123件</p></div>
-                    <div class="compare-box high"><p class="compare-label">10月27日時点の累計</p><p class="compare-value">129件（+6件）</p></div>
-                    <div class="compare-box low"><p class="compare-label">10月の売上予測</p><p class="compare-value">420万円程度</p></div>
-                </div>
-                <p class="note">10月20日時点の123件は、前回（10月20日）の議事録の数字。</p>
-            </div>
-
-            <p class="sub-heading">(2) 一広社との取り組み：BM接続（公式アカウントとLY広告アカウント）</p>
-            <ul class="dot-list">
-                <li>次の7つの接続先について、BMの接続作業を進めた。作業にかなりの時間を割くことになったが、ようやく目途が立ち、11月配信に向けて整備中。<span class="reporter-badge takada">高田 報告</span></li>
-            </ul>
-            <div class="diagram-wrap">
-                <p class="diagram-title">BM接続の対象（7グループ）</p>
-                <div class="facility-row">
-                    <div class="facility-box done"><h4>①コンチェルト</h4></div>
-                    <div class="facility-box done"><h4>②ヒノマルグループ</h4></div>
-                    <div class="facility-box done"><h4>③ラ・カータグループ</h4></div>
-                    <div class="facility-box done"><h4>④アスカグループ</h4></div>
-                    <div class="facility-box done"><h4>⑤マルハン西日本</h4></div>
-                    <div class="facility-box done"><h4>⑥夢屋グループ</h4></div>
-                    <div class="facility-box wait"><h4>⑦二次代理店アカウント</h4><p>ZENT、キング観光ほか</p></div>
-                </div>
-            </div>
-            <ul class="dot-list">
-                <li><strong>BM作業の代行：</strong>店舗側の作業を待つのではなく、管理権限を預かって作業を代行することで、登録を一気に進めた。コンチェルトなどは、最終認証・友だち情報の利用の直前まで進んだ。<span class="src-voice">（音声データより）</span></li>
-                <li>11月配信に向けて、マネージャーアカウントの接続と、新プラットフォームへの移転の作業に多くの時間を割いて、環境を整えた。<span class="src-voice">（音声データより）</span></li>
-            </ul>
-            <div class="box-red">
-                <p class="box-label">要確認：店舗名・グループ名の表記</p>
-                <p style="margin:0; color:#374151;">音声データ・メモでは「コンサートホール」と記録されている箇所があり、BM接続の最初の対象である「コンチェルト」を指すと判断して、コンチェルトに統一している。メモの「ラカータ コンサートホール は アカウント」も、同様に扱っている。</p>
-            </div>
-
-            <p class="sub-heading">(3) 発注システム（kintone）への切り替え</p>
-            <ul class="dot-list">
-                <li>kintone発注からの自動入稿は、まだ切り替えていない。11月入稿分からの切り替えを想定し、高田と一広社でタイミングを調整している。<span class="reporter-badge nigo">新後 報告</span></li>
-                <li>新後の協力で修正が完了し、一広側への再説明を実施した。11月配信分から運用を開始する（当面は一広側と弊社のみ）。10月26日の最終説明の後、27日からテスト運用を開始し、11月から運用を開始する予定。<span class="reporter-badge takada">高田 報告</span></li>
-            </ul>
-            <div class="diagram-wrap">
-                <p class="diagram-title">kintone切り替えの流れ（高田の報告書）</p>
-                <div class="flow-row">
-                    <div class="flow-box green"><h4>修正の完了</h4><p>新後の協力で修正を完了</p></div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-box green"><h4>一広側への再説明</h4><p>実施済み</p></div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-box"><h4>10月26日</h4><p>最終説明</p></div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-box"><h4>10月27日</h4><p>テスト運用の開始</p></div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-box purple"><h4>11月</h4><p>運用の開始（当面は一広側と弊社のみ）</p></div>
-                </div>
-            </div>
-            <div class="box-red">
-                <p class="box-label">要確認：切り替えの日程</p>
-                <ul class="dot-list" style="margin-bottom:0;">
-                    <li>新後の報告書は「未切替。11月入稿分からを想定し、調整中」。高田の報告書は「10月26日に最終説明、27日からテスト運用」で、書き方が異なる。実際にテスト運用が始まったか、切り替え日は確定したかは、資料から判断できない。</li>
-                    <li>前回（10月20日）の議事録では、高田の報告書は「11月26日に最終説明、27日に運用開始」、音声データ・メモは「10月26日に完全切り替え」と記録されていた。今回の高田の報告書の日付は、前回の議事録の日付と異なる。</li>
-                </ul>
-            </div>
-
-            <p class="sub-heading">(4) クリックチャージキャンペーン（休眠・新規アカウント）</p>
-            <ul class="dot-list">
-                <li>LY広告のクリックチャージキャンペーンについて、対象店舗を見込みも含めて一広社と調整中。<span class="reporter-badge nigo">新後 報告</span></li>
-                <li>弊社側では、過去に配信の発注があり、その後2か月以上発注のないアカウントを洗い出し済み。営業側の見込み状況・今後の営業計画と照らし合わせ、適切なキャンペーンを設定できるよう検討している。対象店舗・提供条件・開始日は未確定。<span class="reporter-badge nigo">新後 報告</span></li>
-                <li>これまでアカウントがなかった店舗のIDも取得できたため、営業戦略を立てられる。<span class="src-voice">（メモより）</span></li>
-                <li><strong>キャンペーンの案：</strong>直近2か月間発注のない休眠店舗や新規アカウントを対象に、小額でも発注・配信を行えば、翌々月の配信料を割り引く（例：11月に発注→12月末にチャージ確定→1月配信で適用。5万円の発注に対して2.5万円、つまり半額を還元）パッケージを組む。<span class="src-voice">（音声データより）</span></li>
-                <li><strong>新プラットフォームの特典：</strong>新プラットフォームで新規配信を行うアカウント向けに、10万円以上の配信で最大20%が還元される仕組みがあることが分かった。朝倉や夢屋など、継続して利用いただいている顧客が対象になる見込み。<span class="src-voice">（音声データより）</span></li>
-            </ul>
-            <div class="box-red">
-                <p class="box-label">要確認：還元額の説明が資料ごとに異なる</p>
-                <ul class="dot-list" style="margin-bottom:0;">
-                    <li>音声データは、休眠・新規アカウント向けの案（5万円の発注に対して2.5万円を還元）と、新プラットフォームの特典（10万円以上の配信で最大20%還元）の、2つの内容を記録している。</li>
-                    <li>メモには「新規アカウントで広告発信すると 10万円」とだけ記録されている。報告書には、還元額・対象条件の記載がない。</li>
-                    <li>どの条件を、どの顧客に適用するかは、資料から判断できない。</li>
-                    <li>音声データでは、顧客の例が「朝倉や夢など」と記録されている。朝倉は店舗名、夢屋はパチンコ夢屋グループを指すと判断して、本文は朝倉・夢屋としている。</li>
-                </ul>
-            </div>
-
-            <p class="sub-heading">(5) 営業のスピードと提案のタイミング</p>
-            <ul class="dot-list">
-                <li><strong>担当者両名の主張：</strong>10月末の締めのデータを待って対象アカウントを確定させ、11月後半から12月（メインは12月〜1月）にかけて営業を行う計画。<span class="src-voice">（音声データより）</span></li>
-                <li><strong>経営側の指導（音声データより）：</strong>
-                    <ul class="dot-list" style="margin-top:0.4rem; margin-bottom:0;">
-                        <li>11月半ばには11月分の営業枠が埋まっており、11月後半からの提案では遅すぎる。</li>
-                        <li>12月は放置していても需要で売上が上がる時期で、そこに割引キャンペーンをぶつけると、本来取れる利益を削ることになる。</li>
-                        <li>キャンペーンの期限（来年3月まで）があるため、開始を遅らせるほど機会損失になる。</li>
-                        <li>来週月曜日（次回の定例）には、店舗が直感的に理解できる営業トーク・提案資料（そのまま客先へ持って行ける資料）を提出し、すぐに営業を開始すること。</li>
-                    </ul>
-                </li>
-                <li>10月末にクリック数が発生するため、スピード感が必須。季節指数や店舗ごとの売上を把握しているか。掘り起こしの顧客に対して、広告の癖付けをするのか、営業マン教育のためのツールなのか。<span class="src-voice">（メモより）</span></li>
-            </ul>
-            <div class="diagram-wrap">
-                <p class="diagram-title">営業開始の時期：担当者両名の計画と、経営側の指導</p>
-                <div class="compare-wrap">
-                    <div class="compare-box low"><p class="compare-label">担当者両名の計画</p><p class="compare-value">10月末の締めを待つ<br>→ 11月後半〜12月に営業</p></div>
-                    <div class="compare-box high"><p class="compare-label">経営側の指導</p><p class="compare-value">11月半ばには枠が埋まる<br>→ 次回定例に資料を出し、即営業</p></div>
-                </div>
-            </div>
-            <div class="box-red">
-                <p class="box-label">要確認：次回の定例の日付</p>
-                <p style="margin:0; color:#374151;">音声データは「来週月曜日（次回定例）」と記録しているが、この定例は火曜日に開催されている（今回は10月27日・火曜日）。次回は11月3日（火）と判断される。</p>
-            </div>
-
-            <p class="sub-heading">(6) キャンペーン企画の取りまとめ <span class="reporter-badge takada">高田 報告</span></p>
-            <ul class="dot-list">
-                <li>キャンペーン企画を、3月までの分も含めて、早急に取りまとめる。<span class="reporter-badge takada">高田 報告</span></li>
-                <li>展開と営業は急ぎ。年末商戦の戦略なども含める。売上は11月の案件で獲得の目標を立てる。12月の案件のためにも、リリースを早めに展開していく。<span class="reporter-badge takada">高田 報告</span></li>
-                <li><strong>11月1日までに、企画の立案からリリースまでを行う。</strong><span class="reporter-badge takada">高田 報告</span></li>
-            </ul>
-
-            <div class="box-gray">
-                <p class="box-label">新後 報告内の会議メモ（原文のまま）</p>
-                <ul class="dot-list gray-markers" style="margin-bottom:0;">
-                    <li>営業の支援施策として、10月開始できたはずのキャンペーン。</li>
-                    <li>一広のスピード感に呑まれないように。</li>
-                    <li>クリックチャージを原資にする、という考え方も。</li>
-                    <li>新しいキャンペーンも来ている様子。</li>
-                </ul>
-            </div>
-            <div class="box-gray">
-                <p class="box-label">補足（メモより）</p>
-                <p style="margin:0; color:#4b5563;">直近2か月発注がない店舗の洗い出しは終了。ブログウォッチャー（BW）との会議は進んでいない。一広の営業マンは行動のスピード感が遅い。年末商品には使いたくはない。</p>
-            </div>
-
-            <p class="sub-heading">(7) 前回からの確認事項 <span class="reporter-badge nigo">新後 報告</span></p>
-            <div style="overflow-x:auto;">
-                <table class="data-table">
-                    <thead><tr><th>案件</th><th>前回からの確認事項</th><th>今回の報告・残課題</th></tr></thead>
-                    <tbody>
-                        <tr><td>LINE広告</td><td>kintone発注からの自動入稿切替</td><td>未切替。11月入稿分からを想定し、高田と一広社でタイミングを調整中</td></tr>
-                        <tr><td>LINE広告</td><td>クリックチャージキャンペーン</td><td>休眠アカウントの洗い出し済み。一広社の営業見込み・営業計画と照合し、対象と施策を検討中</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- 6 CODATI -->
-        <section id="s6" class="section-card purple-card">
-            <div class="section-head">
-                <div class="section-bar bar-purple"></div>
-                <h2 class="section-title purple">6. CODATI</h2>
-            </div>
-
-            <h3 id="s6-1" class="sub-heading" style="font-size:1.05rem; color:#6d28d9; margin-top:0.4rem;">6-1 CODATI概要（AI社員）</h3>
-            <p class="note" style="margin-bottom:0.8rem;">AI社員は、CODATIの仕組みの一つ。AI社員に関する内容は、今後もこの項に集約する。他の章でCODATIの進捗が出てきた場合は、この項へのリンクを付ける。</p>
-
-            <p class="sub-heading">(1) トップページの刷新：「ホーム」から「オフィス」へ</p>
-            <ul class="dot-list">
-                <li>従来の「ホーム」画面を「オフィス」画面に変更し、デスクに顔アイコン付きのAI社員が配置されるデザインへ刷新した。顔アイコンは約20種類から選択・カスタマイズできる。<span class="src-voice">（音声データより）</span></li>
-                <li><strong>目的と心理的な効果：</strong>デスクが空いていることで「AI社員を増やしたい」という視覚的なきっかけになる。顔があることで愛着が生まれ、解約の防止（やめづらさ）にもつながる。<span class="src-voice">（音声データより）</span></li>
-                <li><strong>設計の方針：</strong>複雑な出勤の演出などは避け、今日やるべきタスクや稼働状況が直感的に分かるUIにした。現在はダークモードで構築している。<span class="src-voice">（音声データより）</span></li>
-                <li>UIは社内風のレイアウトで、「ホーム」ではなく「オフィス」とする。感情移入をしやすいUIで可視化することで、興味を引き出せる。ダークモード・ライトモード・動画にも触れている。<span class="src-voice">（メモより）</span></li>
-            </ul>
-            <div class="diagram-wrap">
-                <p class="diagram-title">「オフィス」画面のイメージ（音声データ・メモの説明にもとづく概念図）</p>
-                <div class="facility-row">
-                    <div class="facility-box done"><h4>デスク（AI社員あり）</h4><p>顔アイコン付き。約20種類から選択でき、稼働状況と今日のタスクが分かる</p></div>
-                    <div class="facility-box done"><h4>デスク（AI社員あり）</h4><p>顔があることで愛着が生まれ、解約防止（やめづらさ）につながる</p></div>
-                    <div class="facility-box wait"><h4>空いているデスク</h4><p>「AI社員を増やしたい」という動機を作る</p></div>
-                    <div class="facility-box wait"><h4>空いているデスク</h4><p>管理センターから、追加のオファー・相談ができる</p></div>
-                </div>
-                <p class="note">実際の画面ではなく、説明の内容を図にしたもの。</p>
-            </div>
-
-            <p class="sub-heading">(2) 「管理センター」を通じた追加導入・拡張</p>
-            <ul class="dot-list">
-                <li>クライアントが他の部署（経理・人事など）へAI社員を拡張・追加したい場合に、システム内の「管理センター」から、オファー・相談・見積の依頼を直接送れる仕組みを作った。<span class="src-voice">（音声データより）</span></li>
-                <li>相談を受けて、開発側がGPTボット連携などの要件定義・見積を行い、伴走しながら追加の構築を進める運用の流れになる。<span class="src-voice">（音声データより）</span></li>
-                <li>AI社員の画面から「どんなAI社員を作ればよいか」を作り、カードから「何をやらせたいか」も選べる。チャットボットからも要望を出せる。社員を作りたい場合は伴走する。GPTボッツとの連携があるため、全自動化はまだできない。<span class="src-voice">（メモより）</span></li>
-            </ul>
-            <div class="diagram-wrap">
-                <p class="diagram-title">AI社員の追加の流れ</p>
-                <div class="flow-row">
-                    <div class="flow-box"><h4>クライアント</h4><p>他の部署へ拡張したい。カードで「やらせたいこと」を選ぶか、チャットボットで要望を出す</p></div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-box purple"><h4>管理センター</h4><p>オファー・相談・見積の依頼を、システム内から直接送る</p></div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-box green"><h4>開発側が伴走</h4><p>要件定義とGPTボット連携の調整を行い、見積を提示</p></div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-box gray"><h4>AI社員の追加</h4><p>全自動化はまだできないため、伴走して構築する</p></div>
-                </div>
-            </div>
-
-            <p class="sub-heading">(3) ナレッジ管理・承認の簡素化</p>
-            <ul class="dot-list">
-                <li>従来のAIによる複雑な自動分岐を廃止した。閲覧・公開の設定は、「管理者のみ」「全員」「個別（役職・個人の指定）」のシンプルな方法に変更し、レビュー承認や情報共有を進めやすくした。<span class="src-voice">（音声データより）</span></li>
-                <li>ナレッジには設定があり、追加もできる。権限設定（誰が見るか）もでき、個別の設定は事業部ごとから個人レベルまで指定できる。<span class="src-voice">（メモより）</span></li>
-            </ul>
-            <div class="diagram-wrap">
-                <p class="diagram-title">ナレッジの閲覧・公開の設定（3つの指定方法）</p>
-                <div class="compare-wrap">
-                    <div class="compare-box low"><p class="compare-label">指定方法1</p><p class="compare-value">管理者のみ</p></div>
-                    <div class="compare-box low"><p class="compare-label">指定方法2</p><p class="compare-value">全員</p></div>
-                    <div class="compare-box high"><p class="compare-label">指定方法3</p><p class="compare-value">個別（役職・個人）</p></div>
-                </div>
-            </div>
-
-            <p class="sub-heading">(4) 実装状況とクライアントの評価</p>
-            <ul class="dot-list">
-                <li>新しいUIは、Web上での実装が完了している。今週中に、第1号クライアントの本番環境へ実装する予定。<span class="src-voice">（音声データより）</span></li>
-                <li>事前に説明したクライアント（川島氏など）からも、「視覚的にわかりやすく、非常に刺さる」と高い評価を得ている。<span class="src-voice">（音声データより）</span></li>
-            </ul>
-            <div class="box-gray">
-                <p class="box-label">補足（メモより）</p>
-                <p style="margin:0; color:#4b5563;">メモの見出しは「コダチ」と記録されているが、内容がCODATIの項と一致するため、CODATIに統一している。</p>
-            </div>
-
-            <h3 id="s6-2" class="sub-heading" style="font-size:1.05rem; color:#6d28d9; margin-top:1.8rem;">6-2 クライアント別の進捗</h3>
-            <p class="note" style="margin-bottom:0.8rem;">各クライアントについて、「前週との変化」を先頭に示し、経緯、今回の進捗、次の一手の順に並べている。</p>
-
-            <div class="client-block">
-                <p class="sub-heading">池田紙工 <span class="reporter-badge takada">高田 報告</span></p>
-                <p class="change-line">前週との変化：変更あり（文中の「辞任削減」が「人員削減」に変わった。そのほかは前週の報告と同じ内容）</p>
-                <p class="step-label">経緯</p>
-                <ul class="dot-list">
-                    <li>トライアルで、年明けの導入に向けて準備を開始した。</li>
-                </ul>
-                <p class="step-label">今回の進捗</p>
-                <ul class="dot-list">
-                    <li>第一回目の面談が終了した。</li>
-                    <li>まずは、人員削減に伴う営業プロセスの改善と効率化を目的に、設計を準備する。</li>
-                </ul>
-                <p class="step-label">次の一手</p>
-                <ul class="dot-list" style="margin-bottom:0;">
-                    <li>現状の業務フロー、関連資料（手続き書類）、ヒアリングシートを更新した後、資料とともに先方から送られてくる予定。</li>
-                </ul>
-                <div class="box-red" style="margin-top:0.8rem;">
-                    <p class="box-label">要確認：文言の変更</p>
-                    <p style="margin:0; color:#374151;">前週の報告では「辞任削減」、今回は「人員削減」。今回は新しい表記を採用している。</p>
-                </div>
-            </div>
-
-            <div class="client-block">
-                <p class="sub-heading">プロシアITマネジメント株式会社（川島氏・副社長） <span class="reporter-badge takada">高田 報告</span></p>
-                <p class="change-line">前週との変化：変更あり（資料送付と「27日説明の機会」は前週の報告と同じ文。AI社員のUIへの評価が、音声データに追加された）</p>
-                <p class="step-label">経緯</p>
-                <ul class="dot-list">
-                    <li>CODATIの導入先の候補として支援している。副社長の川島氏に、資料の送付が完了している。</li>
-                </ul>
-                <p class="step-label">今回の進捗</p>
-                <ul class="dot-list">
-                    <li>資料の送付が完了し、27日に説明の機会がある。<span class="reporter-badge takada">高田 報告</span></li>
-                    <li>事前に説明したクライアントの川島氏などから、新しいAI社員のUIについて、「視覚的にわかりやすく、非常に刺さる」と高い評価を得ている。<span class="src-voice">（音声データより）</span></li>
-                </ul>
-                <p class="step-label">次の一手</p>
-                <ul class="dot-list" style="margin-bottom:0;">
-                    <li>27日の説明の機会に臨む。説明の結果は、今回の資料には記載がない。</li>
-                </ul>
-                <div class="box-red" style="margin-top:0.8rem;">
-                    <p class="box-label">要確認：27日の説明について</p>
-                    <p style="margin:0; color:#374151;">高田の報告書の文は前週と同じで、27日の説明を実施した結果の記載がない。今回の会議の日付も10月27日であり、説明を実施済みか、これからかは資料から判断できない。</p>
-                </div>
-            </div>
-
-            <div class="box-red">
-                <p class="box-label">前回からの未記載事項</p>
-                <p style="margin:0; color:#374151;">前回（10月20日）の議事録にあった、サイトの個別SEO修正（清の承認待ち）は、今週の資料に記載がない。</p>
-            </div>
-        </section>
-
-        <!-- 7 広告商品 -->
-        <section id="s7" class="section-card">
-            <div class="section-head">
-                <div class="section-bar bar-green"></div>
-                <h2 class="section-title green">7. 広告商品</h2>
-            </div>
-            <p class="section-intro"><strong style="color:#111827;">状況：今週は報告なし（進捗なし）。</strong></p>
-            <ul class="dot-list">
-                <li>新後・高田の報告書、音声データのいずれにも、広告商品（Wi-Fiモデル・競合店舗配信など）の進捗の記載はない。</li>
-                <li>BWとの会議が進んでいない点は、第5章のメモの記載を参照。<a class="jump-link" href="#s5">第5章（LINE広告）へ</a></li>
-            </ul>
-        </section>
-
-        <!-- 8 新規案件 -->
-        <section id="s8" class="section-card">
-            <div class="section-head">
-                <div class="section-bar bar-green"></div>
-                <h2 class="section-title green">8. 新規案件</h2>
-            </div>
-
-            <p class="sub-heading">(1) 補助金サービス</p>
-            <p class="note" style="margin-bottom:0.6rem;">高田の報告書では、CODATI関連の項に記載されている。</p>
-            <ul class="dot-list">
-                <li>補助金サービスのスキームまとめを、営業（提案）用の資料に変換している。資料は作成の途中。専門家のメンバー名、または人数などを記載する予定。<span class="reporter-badge takada">高田 報告</span></li>
-                <li>前回のサービススキームの整理にもとづき、クライアント向けの提案・説明資料を作成した。<span class="src-voice">（音声データより）</span></li>
-                <li><strong>記載のポイント：</strong>専門家の体制（人数・名称）に加えて、最初のヒアリングから、画面遷移・申請フローの各ステップまでを、具体的な画面のコピー付きで整理した。<span class="src-voice">（音声データより）</span></li>
-                <li><strong>今後の進め方：</strong>今週中に社内でレビューして内容を確定させ、外部への提案を開始する。<span class="src-voice">（音声データより）</span></li>
-            </ul>
-            <div class="diagram-wrap">
-                <p class="diagram-title">補助金サービスの提案資料：今後の流れ</p>
-                <div class="flow-row">
-                    <div class="flow-box green"><h4>スキームのまとめ</h4><p>作成済み</p></div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-box"><h4>提案資料への変換</h4><p>作成の途中。専門家のメンバー名または人数などを記載予定</p></div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-box purple"><h4>社内レビュー</h4><p>今週中に内容を確定</p></div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-box gray"><h4>外部への提案</h4><p>確定後に開始</p></div>
-                </div>
-            </div>
-
-            <p class="sub-heading">(2) ボートレースのファン投票キャンペーン <span class="reporter-badge takada">高田 報告</span></p>
-            <p class="note" style="margin-bottom:0.6rem;">高田の報告書の文は、前週の報告と同文。</p>
-            <ul class="dot-list">
-                <li><strong>ファン投票の期間：</strong>2027年1月23日〜2月20日（予定）。</li>
-                <li><strong>TOKIWAGIの役割：</strong>ファン投票の投票者を増やすための、事前およびキャンペーン中の配信（2027年1月〜2月末）。</li>
-                <li>提案の草案（セグメントや配信メディア）は、提案のとおりに受注した（予算規模：受注額400万円）。配信の詳細などは、今後あらためて詰めていく。</li>
-                <li><strong>次回の予定：</strong>11月中旬の関係者会議で、詳細を決める。参加者は、事業者、JLC、ANELA、TOKIWAGI（スマイルタンク）。</li>
-            </ul>
-        </section>
-
-        <!-- 9 AI社員制度 -->
-        <section id="s9" class="section-card">
-            <div class="section-head">
-                <div class="section-bar bar-green"></div>
-                <h2 class="section-title green">9. AI社員制度</h2>
-            </div>
-            <p style="font-size:0.95rem; color:#374151; margin:0;">AI社員の内容は第6章（CODATI）に記載しています。 <a class="jump-link" href="#s6-1">第6章 6-1 CODATI概要（AI社員）へ</a></p>
-        </section>
-
-        <!-- 10 来季戦略・全体総括 -->
-        <section id="s10" class="section-card">
-            <div class="section-head">
-                <div class="section-bar bar-green"></div>
-                <h2 class="section-title green">10. 来季戦略・全体総括</h2>
-            </div>
-
-            <p class="sub-heading">(1) 全体所感 <span class="reporter-badge nigo">新後 報告</span></p>
-            <ul class="dot-list">
-                <li>MIDは、店長・運用担当者へのLinyのレクチャーを実施し、タグや絞り込み配信を実践できるよう説明した。</li>
-                <li>Moooviは、テストで見つかった不具合の修正と全パターンの検証を進めている。今週中のテストケース検証の完了と、その後のRailwayでの負荷テストを予定している。</li>
-                <li>ボーネルンドは、追加改修の見積を受領した。スマレジ連携の改修を含む原価の合計は1,020,338円で、顧客提示価格を110万円前後とする案を、社内で相談する。</li>
-                <li>LINE広告は、11月入稿分からのkintoneの切り替えを調整している。瑞鳳は、10月29日の午前に、新PCでのEXIMデータの取得環境を構築する予定。</li>
-            </ul>
-
-            <p class="sub-heading">(2) 案件別サマリー <span class="reporter-badge nigo">新後 報告</span></p>
-            <div style="overflow-x:auto;">
-                <table class="data-table">
-                    <thead><tr><th>案件</th><th>今週の結論</th><th>次の一手</th></tr></thead>
-                    <tbody>
-                        <tr><td>MID</td><td>Linyのレクチャーを実施。店長・運用担当者ともに活用意欲が高い</td><td>11月後半に運用状況を確認</td></tr>
-                        <tr><td>Mooovi関連</td><td>不具合の修正と全パターンの検証が進行。管理画面のメール認証を実装し、簡易的な実機確認を実施</td><td>今週中にテストケース検証を終え、Railwayで負荷テストを実施</td></tr>
-                        <tr><td>ボーネルンド関連</td><td>DIPROから見積を受領。3改修の原価合計は1,020,338円</td><td>提示価格110万円前後の案を社内で相談し、早川氏への提案を準備</td></tr>
-                        <tr><td>LINE広告関連</td><td>kintoneは切り替え前。11月入稿分からの切り替えを調整中</td><td>切り替え日を確定し、営業の見込みに合わせてクリックチャージの施策を検討</td></tr>
-                        <tr><td>瑞鳳関連</td><td>新PCでのEXIM取得環境を、10月29日午前に構築予定</td><td>PC・ログインの設定を確認し、現地で取得環境を構築</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <p class="sub-heading">(3) 補足メモ <span class="reporter-badge nigo">新後 報告</span></p>
-            <div style="overflow-x:auto;">
-                <table class="data-table">
-                    <thead><tr><th>区分</th><th>内容</th></tr></thead>
-                    <tbody>
-                        <tr><td>社内相談</td><td>ボーネルンドの提示価格110万円前後。正式な価格・税区分・納期は未確定。</td></tr>
-                        <tr><td>完了したこと</td><td>MIDのLinyレクチャー。Mooovi管理画面のメール確認コード認証の実装と、簡易的な実機確認。ボーネルンドの見積の受領。LINE広告の、2か月以上発注のないアカウントの洗い出し。</td></tr>
-                        <tr><td>工程確認</td><td>Moooviの10月30日の最終受入目標と、今週中のテストケース検証、その後の負荷テストとの、日程の整合。</td></tr>
-                        <tr><td>継続確認</td><td>戸田の入金、芦屋の先行導入、瑞鳳の過去データの格納。今回は記載がないため、完了とは扱わない。</td></tr>
-                        <tr><td>次回のフォロー</td><td>MIDは、11月後半に運用状況を確認する予定。</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- 11 その他・組織・運営 -->
-        <section id="s11" class="section-card">
-            <div class="section-head">
-                <div class="section-bar bar-gray"></div>
-                <h2 class="section-title">11. その他・組織・運営</h2>
-            </div>
-
-            <p class="sub-heading">(1) PHPの脆弱性：発生の経緯と対応状況 <span class="src-voice">（音声データより）</span></p>
-            <ul class="dot-list">
-                <li><strong>発端：</strong>2024年に公表されたPHPの脆弱性をめぐり、約12年間放置されていた構造的な問題が表面化した。2024年5月に有識者から攻撃の可能性についての見解が示されたことで、攻撃の形跡が多数確認され、各所で急なバージョンアップや緊急停止の対応が発生した。</li>
-                <li><strong>影響の範囲：</strong>自治体（芦屋市、戸田市のボートレース企業団など）、ECサイト、GMOなどの大手事業者を含め、Webサイトの緊急停止や、セキュリティ管理体制の問い合わせ対応が発生した。</li>
-                <li><strong>自治体・クライアントへの対応：</strong>芦屋市や戸田市のボートレース企業団などから問い合わせがあり、電話やメールで対応を完了した。総務省から各自治体へ状況確認の通達が出ており、今後も各施設から順次問い合わせが来る見込みのため、対応を続ける。</li>
-                <li><strong>Grevice関連サイト：</strong>Grevice関連の全ホームページについて、XサーバーでのPHPのバージョンアップと、WordPressの動作確認を実施し、完了した。全社へ「対応済み・監視を継続する」旨の案内メールを送付し、一部の企業からは謝意の返信を受けた。</li>
-                <li>PHPの脆弱性を伝えた（メモのMooovi欄にある記載。伝えた相手は記載なし）。<span class="src-voice">（メモより）</span></li>
-            </ul>
-            <div class="box-red">
-                <p class="box-label">要確認：音声データの年と期間、表記</p>
-                <ul class="dot-list" style="margin-bottom:0;">
-                    <li>音声データの文面は「2024年」「約12年間」「2024年5月」と記録されている。今回の会議は2026年のため、年と期間の記録が正しいかは資料から判断できず、音声データの文面のまま載せている。</li>
-                    <li>音声データの「グレイ関連サイト」はGrevice、「ボットレース企業団」はボートレース企業団に統一している。</li>
-                </ul>
-            </div>
-
-            <p class="sub-heading">(2) Grevice引き継ぎ案件のPHP対応 <span class="reporter-badge takada">高田 報告</span></p>
-            <ul class="dot-list">
-                <li>新後のサポートを受けて、PHP（WordPressを含む）のバージョンアップが完了した。</li>
-                <li>対象の企業には、対応完了のアナウンスを済ませている。</li>
-            </ul>
-            <div class="diagram-wrap">
-                <p class="diagram-title">対応完了のアナウンス済みの企業（5社）</p>
-                <div class="facility-row">
-                    <div class="facility-box done"><h4>イリス</h4></div>
-                    <div class="facility-box done"><h4>GMT</h4></div>
-                    <div class="facility-box done"><h4>アシカメディ工業</h4></div>
-                    <div class="facility-box done"><h4>パトロールサービス</h4></div>
-                    <div class="facility-box done"><h4>エンカフォン</h4></div>
-                </div>
-            </div>
-
-            <p class="sub-heading">(3) PHPの構造的な課題と、AI時代の言語選定の見方 <span class="src-voice">（音声データより）</span></p>
-            <ul class="dot-list">
-                <li><strong>ベンダー依存の課題：</strong>本来は、定期的なバージョンアップや告知・対応は、ベンダー側の責務。それが怠られていたことと、「動いていればよい」というクライアント側の意識が、対応が遅れた原因と指摘された。</li>
-                <li><strong>PHPの「つぎはぎ」の構造：</strong>もともと簡易的な開発用に始まったPHPが、汎用化され、大規模化・機能の拡張を繰り返した結果、一貫性を欠く構造になった。システムのどこでどう使われているかを把握しにくい、複雑な状態になっている。</li>
-                <li><strong>PHP依存の市場背景：</strong>WordPressとPHPさえ扱えれば案件にしやすいため、世界中に「PHPしか使えない」開発者が過剰にいる構造がある。</li>
-                <li><strong>あるべき言語の選定と、AI時代の変化：</strong>本来は、データベースの処理やサーバーの処理など、目的に応じて、Node.jsなどの適した言語を選ぶべき。今後はAIの普及により、特定の言語（PHPなど）に縛られる必要はなくなる。AIが目的に応じて最適な言語や構築の手法を選ぶため、開発の手法そのものが大きく変わっていくという見解が示された。</li>
-            </ul>
-            <div class="diagram-wrap">
-                <p class="diagram-title">開発の言語選定の考え方の変化</p>
-                <div class="compare-wrap">
-                    <div class="compare-box low"><p class="compare-label">これまで</p><p class="compare-value">WordPress・PHPが扱えれば案件になる<br>PHPしか使えない開発者が多い</p></div>
-                    <div class="compare-box high"><p class="compare-label">これから</p><p class="compare-value">AIが目的に応じて最適な言語・手法を選ぶ<br>特定の言語に縛られない</p></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 12 アクションアイテム -->
-        <section id="s12" class="section-card">
-            <div class="section-head">
-                <div class="section-bar bar-green"></div>
-                <h2 class="section-title">12. アクションアイテム（TODO）</h2>
-            </div>
-
-            <div class="diagram-wrap">
-                <p class="diagram-title">会議後の日程</p>
-                <div class="tl">
-                    <div class="tl-item"><div class="tl-date">10月29日（木）午前</div><div class="tl-text">瑞鳳：新PCでのEXIM取得環境の構築（訪問。所要は約2時間）</div></div>
-                    <div class="tl-item"><div class="tl-date">今週中</div><div class="tl-text">Mooovi：テストケースの検証の完了／CODATI：AI社員の新UIを第1号クライアントの本番環境へ実装／補助金サービス：提案資料の社内レビューと内容の確定</div></div>
-                    <div class="tl-item red"><div class="tl-date">10月30日（金）</div><div class="tl-text">Mooovi：前回の最終受入の目標（今回の「今週中のテストケース検証」と、その後の負荷テストを含む完了日との整合は要確認）</div></div>
-                    <div class="tl-item"><div class="tl-date">11月1日（日）まで</div><div class="tl-text">LINE広告：キャンペーンの企画の立案からリリースまで（高田の報告書）</div></div>
-                    <div class="tl-item"><div class="tl-date">11月3日（火）</div><div class="tl-text">次回の定例：LINE広告の営業トーク・提案資料を提出（音声データは「来週月曜日」と記録）</div></div>
-                    <div class="tl-item gray"><div class="tl-date">11月中旬</div><div class="tl-text">ボートレースのファン投票キャンペーン：関係者会議で配信の詳細を決める</div></div>
-                    <div class="tl-item gray"><div class="tl-date">11月後半</div><div class="tl-text">MID：Linyの運用状況の確認・再度のレクチャー</div></div>
-                    <div class="tl-item gray"><div class="tl-date">2027年1月23日〜2月20日</div><div class="tl-text">ボートレースのファン投票の期間（予定）。事前の配信は2027年1月〜2月末</div></div>
-                </div>
-            </div>
-
-            <p class="sub-heading">今週の重点 <span class="reporter-badge nigo">新後 報告</span></p>
-            <div style="overflow-x:auto;">
-                <table class="data-table">
-                    <thead><tr><th>優先</th><th>重点事項</th><th>完了条件</th><th>担当・関係者</th><th>期限・予定</th></tr></thead>
-                    <tbody>
-                        <tr><td>1</td><td>Moooviの全パターン検証と負荷テスト</td><td>テストケース検証を完了し、Railway上の負荷テストの結果と、残った不具合を整理</td><td>担当要確認</td><td>テストケース検証：今週中。負荷テストの日・最終受入日は要確認（前回の目標：10月30日）</td></tr>
-                        <tr><td>2</td><td>ボーネルンドの提案価格を確定</td><td>税区分・提示価格・納期を社内で確認し、早川氏への提案条件を揃える</td><td>社内の値付け担当は要確認／DIPRO</td><td>具体的な日は要確認</td></tr>
-                        <tr><td>3</td><td>瑞鳳の新PCの取得環境を構築</td><td>EXIMへのログインとデータの取得を確認し、残作業を整理</td><td>飯海氏に事前確認を依頼／訪問の担当は要確認</td><td>10月29日午前</td></tr>
-                        <tr><td>4</td><td>kintoneの切り替えと広告キャンペーンを調整</td><td>切り替え日・対象の注文を確定し、対象店舗と施策の条件を整理</td><td>高田・一広社</td><td>11月入稿分からの切り替えを想定</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <p class="sub-heading">TODO一覧</p>
-            <div style="overflow-x:auto;">
-                <table class="data-table">
-                    <thead><tr><th>案件</th><th>タスク内容</th><th>担当</th><th>期限</th></tr></thead>
-                    <tbody>
-                        <tr><td>MID</td><td>11月後半に、Linyの運用状況・進捗を確認する。再度レクチャーを行い、三井さんにも再度提案する。</td><td>要確認</td><td>11月後半</td></tr>
-                        <tr><td>Mooovi</td><td>全パターンの検証を進め、テストケース検証を完了する。完了後、Railway上で負荷テストを実施する。</td><td>要確認</td><td>テストケース検証：今週中。負荷テストの日は要確認</td></tr>
-                        <tr><td>Mooovi</td><td>前回記録のRailwayプロジェクト作成拒否の解消状況と、負荷テストの開始日を確認する。最終受入日（前回の目標：10月30日）との整合を確認する。</td><td>要確認</td><td>要確認</td></tr>
-                        <tr><td>Mooovi</td><td>現行運用との照合で残った、資料不足143動作、施設別画像・例外条件の照合、尼崎の過去単発設定1件（条件が読取不能）に対応する。</td><td>要確認</td><td>要確認</td></tr>
-                        <tr><td>Mooovi</td><td>Nタグの印刷先・単価・初回手数料の条件を整理し、総原価・提供価格（初回／追加注文）を確定する。</td><td>要確認</td><td>要確認</td></tr>
-                        <tr><td>Mooovi</td><td>各施設へデモ版を渡して使用感を確認してもらい、年明けのテスト運用に向けたスケジュールを組み直す。</td><td>要確認</td><td>要確認</td></tr>
-                        <tr><td>Mooovi</td><td>戸田のリザエンとの引き継ぎ（データ連携の方法、引き継ぎの手順、旧システムの終了の段取り）を確認する。戸田の月末入金は継続確認とする。</td><td>要確認</td><td>早急（具体的な日は要確認）</td></tr>
-                        <tr><td>ボーネルンド</td><td>提示価格の案（110万円前後）を社内で相談して確定し、早川氏への提案を準備する。バーターの用意も含める。</td><td>社内の値付け担当は要確認／DIPRO</td><td>要確認</td></tr>
-                        <tr><td>ボーネルンド</td><td>団体機能の代替構築について、スマレジ連携が必要になる点を踏まえ、外部開発の可否を判断する。</td><td>要確認</td><td>要確認</td></tr>
-                        <tr><td>瑞鳳ABP</td><td>新PCでのEXIM取得環境を構築する。飯海氏にPCの状態とEXIMのログイン設定を確認してもらう。</td><td>訪問の担当は要確認／飯海氏（事前確認）</td><td>10月29日（木）午前</td></tr>
-                        <tr><td>LINE広告</td><td>kintoneの切り替え日・対象の注文を確定する（11月入稿分から）。</td><td>高田・一広社</td><td>11月入稿分から（日は要確認）</td></tr>
-                        <tr><td>LINE広告</td><td>休眠アカウントの対象店舗・提供条件・開始日を決め、営業トーク・提案資料を提出して、すぐに営業を開始する。</td><td>担当者両名</td><td>次回の定例（11月3日・火曜日）</td></tr>
-                        <tr><td>LINE広告</td><td>キャンペーン企画の取りまとめ（3月までの分）から、リリースまで行う。</td><td>高田</td><td>11月1日まで</td></tr>
-                        <tr><td>CODATI</td><td>AI社員の新UIを、第1号クライアントの本番環境へ実装する。</td><td>要確認</td><td>今週中</td></tr>
-                        <tr><td>CODATI</td><td>池田紙工から、更新した現状の業務フロー・関連資料・ヒアリングシートの送付を受け、設計を準備する。</td><td>池田紙工（送付）、設計の準備は要確認</td><td>要確認</td></tr>
-                        <tr><td>CODATI</td><td>プロシアITマネジメント（川島氏）への説明の結果を確認する。</td><td>要確認</td><td>27日の説明（結果の記載なし）</td></tr>
-                        <tr><td>新規案件</td><td>補助金サービスの提案資料を社内でレビューして確定し、外部への提案を開始する。専門家のメンバー名または人数などを記載する。</td><td>要確認</td><td>今週中</td></tr>
-                        <tr><td>新規案件</td><td>ボートレースのファン投票キャンペーンについて、関係者会議で配信の詳細を決める。</td><td>要確認</td><td>11月中旬</td></tr>
-                        <tr><td>その他</td><td>PHPの脆弱性について、自治体などからの問い合わせに順次対応する。</td><td>要確認</td><td>継続</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- 13 参考情報 -->
-        <section id="s13" class="section-card">
-            <div class="section-head">
-                <div class="section-bar bar-gray"></div>
-                <h2 class="section-title">13. 参考情報</h2>
-            </div>
-            <ul class="dot-list gray-markers">
-                <li>プロシアITマネジメント株式会社：<a href="https://jpspmo.com/#company" target="_blank" rel="noopener">https://jpspmo.com/#company</a></li>
-                <li>補助金サービスのスキームまとめ：<a href="https://docs.google.com/presentation/d/1XzUywKa4v2VCWVCQLeKtHkeXdFPzmoS_hTgsBPWaEXc/edit?slide=id.p7#slide=id.p7" target="_blank" rel="noopener">https://docs.google.com/presentation/d/1XzUywKa4v2VCWVCQLeKtHkeXdFPzmoS_hTgsBPWaEXc/edit?slide=id.p7#slide=id.p7</a></li>
-                <li>補助金サービスの営業（提案）資料（作成途中）：<a href="https://docs.google.com/presentation/d/1iiVj8e_4F1Hm4kB8ClD7zs_BH5tJr7B9nNJXZsnRKMc/edit?slide=id.p1#slide=id.p1" target="_blank" rel="noopener">https://docs.google.com/presentation/d/1iiVj8e_4F1Hm4kB8ClD7zs_BH5tJr7B9nNJXZsnRKMc/edit?slide=id.p1#slide=id.p1</a></li>
-                <li>音声データ：20261027_150814（本会議の音声）</li>
-            </ul>
-        </section>
-
-        <footer class="page-footer">
-            <p>&copy; 2026 TKW Project Team. All Rights Reserved.</p>
-        </footer>
     </div>
 </div>
-<script>
-    const links = document.querySelectorAll('.sidebar-link');
-    const sections = document.querySelectorAll('section[id]');
-    const purpleSections = ['s6'];
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const id = entry.target.getAttribute('id');
-                links.forEach(link => {
-                    link.classList.remove('active', 'active-purple');
-                    if (link.getAttribute('href') === '#' + id) {
-                        if (purpleSections.includes(id)) link.classList.add('active-purple');
-                        else link.classList.add('active');
-                    }
-                });
-            }
-        });
-    }, { threshold: 0.2 });
-    sections.forEach(s => observer.observe(s));
-</script>
+<footer>&copy; 2026 TKW Project Team. All Rights Reserved.</footer>
 </body>
 </html>
