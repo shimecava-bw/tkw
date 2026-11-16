@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CODATI 資料まとめ・解説</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif; background: #ffffff; color: #1f2937; line-height: 1.85; font-size: 16.5px; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem 5rem 2rem; }
+        .page-header { padding: 3rem 0 2rem 0; border-bottom: 1px solid #e5e7eb; margin-bottom: 2.5rem; }
+        .back-link { display: inline-block; font-size: 0.78rem; color: #6b7280; text-decoration: none; margin-bottom: 1rem; }
+        .badge { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 9999px; font-size: 0.72rem; font-weight: 700; background: #f5f3ff; color: #6d28d9; letter-spacing: 0.06em; margin-bottom: 1rem; }
+        .page-title { font-size: 1.9rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; line-height: 1.3; margin-bottom: 0.75rem; }
+        .page-subtitle { color: #6b7280; font-size: 0.95rem; }
+        .source-note { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.5rem 0 2.5rem 0; font-size: 0.78rem; }
+        .src-badge { padding: 0.2rem 0.7rem; border-radius: 9999px; font-weight: 700; }
+        .src-badge.deck { background: #f5f3ff; color: #6d28d9; }
+        .src-badge.memo { background: #eff6ff; color: #1d4ed8; }
+        .src-badge.web { background: #f3f4f6; color: #4b5563; }
+        .section { margin-bottom: 2.75rem; }
+        .section-head { display: flex; align-items: center; margin-bottom: 1.25rem; }
+        .section-bar { width: 6px; height: 2rem; border-radius: 9999px; margin-right: 1rem; flex-shrink: 0; }
+        .bar-purple { background: #7c3aed; }
+        .bar-blue { background: #2563eb; }
+        .bar-gray { background: #6b7280; }
+        .bar-red { background: #dc2626; }
+        .section-title { font-size: 1.3rem; font-weight: 700; color: #111827; }
+        .section-title.purple { color: #6d28d9; }
+        .section-title.blue { color: #1d4ed8; }
+        .section-title.gray { color: #374151; }
+        .section-lead { color: #6b7280; margin-bottom: 1.25rem; }
+        .card { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 1rem; padding: 1.75rem; margin-bottom: 1.25rem; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+        .card.purple-card { background: #faf5ff; border-color: #e9d5ff; }
+        .card.gray-card { background: #f9fafb; }
+        .sub-heading { font-size: 1rem; font-weight: 700; color: #1f2937; margin: 1.25rem 0 0.6rem 0; }
+        .sub-heading:first-child { margin-top: 0; }
+        ul.dot-list { list-style: disc; padding-left: 1.4rem; color: #4b5563; }
+        ul.dot-list li { margin-bottom: 0.55rem; }
+        ul.dot-list li::marker { color: #8b5cf6; }
+        ul.dot-list.blue-markers li::marker { color: #2563eb; }
+        ul.dot-list.gray-markers li::marker { color: #6b7280; }
+        .pillar-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 1rem 0; }
+        .pillar { background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 0.75rem; padding: 1rem; text-align: center; }
+        .pillar .p-letter { font-size: 1.3rem; font-weight: 800; color: #7c3aed; }
+        .pillar .p-name { font-size: 0.82rem; font-weight: 700; color: #4c1d95; margin: 0.3rem 0 0.15rem 0; }
+        .pillar .p-tag { font-size: 0.68rem; color: #8b5cf6; letter-spacing: 0.04em; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 0.75rem 0; }
+        .data-table thead th { background: #f9fafb; padding: 0.6rem 0.9rem; text-align: left; font-weight: 700; color: #374151; border-bottom: 2px solid #e5e7eb; font-size: 0.75rem; }
+        .data-table tbody td { padding: 0.6rem 0.9rem; border-bottom: 1px solid #f3f4f6; color: #4b5563; vertical-align: top; }
+        .box-purple { border-left: 4px solid #7c3aed; background: #faf5ff; padding: 1rem 1.25rem; border-radius: 0 0.5rem 0.5rem 0; margin: 1rem 0; }
+        .box-blue { border-left: 4px solid #2563eb; background: #eff6ff; padding: 1rem 1.25rem; border-radius: 0 0.5rem 0.5rem 0; margin: 1rem 0; }
+        .box-gray { border-left: 4px solid #9ca3af; background: #f9fafb; padding: 1rem 1.25rem; border-radius: 0 0.5rem 0.5rem 0; margin: 1rem 0; }
+        .box-red { border-left: 4px solid #ef4444; background: #fef2f2; padding: 1rem 1.25rem; border-radius: 0 0.5rem 0.5rem 0; margin: 1rem 0; }
+        .box-label { font-size: 0.78rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .box-purple .box-label { color: #6d28d9; }
+        .box-blue .box-label { color: #1d4ed8; }
+        .box-gray .box-label { color: #374151; }
+        .box-red .box-label { color: #991b1b; }
+        .divider-label { font-size: 0.72rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.12em; margin: 3rem 0 1.25rem 0; padding-top: 2rem; border-top: 2px dashed #e5e7eb; }
+        .compare-3col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin: 1rem 0; }
+        .compare-col { border-radius: 0.75rem; padding: 1rem; font-size: 0.82rem; }
+        .compare-col.dim { background: #f9fafb; border: 1px solid #e5e7eb; color: #6b7280; }
+        .compare-col.win { background: #faf5ff; border: 1px solid #c4b5fd; color: #4c1d95; }
+        .compare-col h4 { font-size: 0.85rem; margin-bottom: 0.5rem; }
+        footer { text-align: center; font-size: 0.72rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; padding: 2.5rem 0; border-top: 1px solid #e5e7eb; margin-top: 3rem; }
+        @media (max-width: 700px) {
+            .container { padding: 0 1.1rem 4rem 1.1rem; }
+            .page-title { font-size: 1.4rem; }
+            .pillar-grid { grid-template-columns: repeat(2, 1fr); }
+            .compare-3col { grid-template-columns: 1fr; }
+            .card { padding: 1.25rem; }
+        }
+
+
+        .section-card { margin-bottom: 2.75rem; }
+        .bar-green { background: #059669; }
+        .section-title.green { color: #065f46; }
+        ul.dot-list.green-markers li::marker { color: #059669; }
+        .src-badge.training { background: #f5f3ff; color: #6d28d9; }
+        .src-badge.minutes { background: #ecfdf5; color: #065f46; }
+        .diagram-wrap { margin: 1.5rem 0; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.25rem; overflow-x: auto; }
+        .sidebar-link.active-green { background-color: #ecfdf5; color: #065f46; font-weight: 700; }
+        .layout { display: flex; min-height: 100vh; }
+        .sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; background-color: #f9fafb; border-right: 1px solid #e5e7eb; display: flex; flex-direction: column; padding: 2rem 0 3rem 0; }
+        .sidebar-label { font-size: 0.7rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; padding: 0 1.5rem; margin-bottom: 1rem; }
+        .sidebar-links { display: flex; flex-direction: column; }
+        .sidebar-link { display: block; padding: 0.45rem 1.5rem; font-size: 0.78rem; color: #6b7280; text-decoration: none; border-radius: 0.5rem; margin: 0.1rem 0.5rem; transition: background 0.18s, color 0.18s; line-height: 1.4; }
+        .sidebar-link:hover { background-color: #e5e7eb; color: #111827; }
+        .sidebar-link.active { background-color: #f5f3ff; color: #6d28d9; font-weight: 700; }
+        .sidebar-link.active-blue { background-color: #eff6ff; color: #1d4ed8; font-weight: 700; }
+        .sidebar-link.active-gray { background-color: #f3f4f6; color: #374151; font-weight: 700; }
+        .sidebar-link.active-red { background-color: #fef2f2; color: #991b1b; font-weight: 700; }
+        .sidebar-back { display: block; font-size: 0.78rem; color: #6b7280; text-decoration: none; padding: 0 1.5rem; margin-bottom: 1.5rem; }
+        .sidebar-back:hover { color: #111827; }
+        .main { flex: 1; min-width: 0; }
+        @media (max-width: 900px) {
+            .layout { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid #e5e7eb; padding: 1.25rem 0 1rem 0; }
+            .sidebar-links { flex-direction: row; flex-wrap: wrap; padding: 0 0.75rem; gap: 0.25rem; }
+            .sidebar-link { margin: 0; padding: 0.3rem 0.7rem; font-size: 0.7rem; }
+            .sidebar-label, .sidebar-back { padding: 0 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="layout">
+    <aside class="sidebar">
+        <div style="margin:0 0 1.2rem 1rem;"><a href="../" style="display:inline-block; padding:0.2rem 0.75rem; border:1.5px solid #7c3aed; border-radius:9999px; background:#f5f3ff; color:#6d28d9; font-size:0.78rem; font-weight:600; letter-spacing:0.04em; text-decoration:none;">戻る</a></div>
+        <p class="sidebar-label">INDEX / 目次</p>
+        <div class="sidebar-links">
+            <a href="#s1" class="sidebar-link">1. コンセプト</a>
+            <a href="#s2" class="sidebar-link">2. プロダクト構成（4つの柱）</a>
+            <a href="#s3" class="sidebar-link">3. 画面詳細</a>
+            <a href="#s4" class="sidebar-link">4. Knowledge Center詳細</a>
+            <a href="#s5" class="sidebar-link">5. Integration Hub詳細</a>
+            <a href="#s6" class="sidebar-link">6. AI Employeesの思想と役割</a>
+            <a href="#s7" class="sidebar-link">7. Technology（技術アーキテクチャ）</a>
+            <a href="#s8" class="sidebar-link">8. 導入ステップ（Adoption）</a>
+            <a href="#s9" class="sidebar-link">9. 他社・他モデルとの違い／優位性</a>
+            <a href="#s10" class="sidebar-link">10. 料金体系</a>
+            <a href="#s11" class="sidebar-link">11. GPTBotsの技術的位置づけ</a>
+            <a href="#s12" class="sidebar-link">12. 導入事例</a>
+            <a href="#s13" class="sidebar-link">13. 営業戦略と今後の展開</a>
+            <a href="#s14" class="sidebar-link">14. 士業関与が必要な論点</a>
+            <a href="#s15" class="sidebar-link">15. 社労士の必要性（人事系サービスとして絶対に必須な理由）</a>
+            <a href="#s16" class="sidebar-link">16. 未解決の疑問点（保留中）</a>
+            <a href="#s17" class="sidebar-link">17. 競合・類似サービスとの比較</a>
+
+            <p class="sidebar-label" style="margin:1rem 0 0.4rem 0;">CODATI解説</p>
+            <a href="#s18" class="sidebar-link">18. コンセプト</a>
+            <a href="#s19" class="sidebar-link">19. 設計思想：業務定義が先、AIの設定は後</a>
+            <a href="#s20" class="sidebar-link">20. 技術アーキテクチャ</a>
+            <a href="#s21" class="sidebar-link">21. 外部システム連携</a>
+            <a href="#s22" class="sidebar-link">22. ユースケース：サンプル手配業務の自動化</a>
+            <a href="#s23" class="sidebar-link">23. ユースケース：eラーニング・研修コース自動生成</a>
+            <a href="#s24" class="sidebar-link">24. ユースケース：法改正自動対応・個人AI統合</a>
+            <a href="#s25" class="sidebar-link">25. 導入アプローチ</a>
+            <a href="#s26" class="sidebar-link">26. 営業戦略・事業への示唆</a>
+        </div>
+    </aside>
+    <div class="main">
+<div class="container">
+    <header class="page-header">
+        <span class="badge">AI BUSINESS PLATFORM</span>
+        <h1 class="page-title">CODATI（コダチ）資料まとめ・解説</h1>
+        <p class="page-subtitle">TOKIWAGI提供　AI Business Platform「CODATI」の説明会議をもとにした資料解説ページ</p>
+        <p class="page-subtitle" style="margin-top:0.4rem;">あわせて、AIエージェント管理プラットフォームの仕組みとユースケースを、技術解説と実際のデモ記録から整理（18章以降）</p>
+        <div class="source-note">
+            <span class="src-badge deck">公式デック（pptx・21枚）</span>
+            <span class="src-badge memo">TOKIWAGIメモ・CODATI.docx</span>
+            <span class="src-badge web">Web調査（参考）</span>
+            <span class="src-badge training">CODATI_研修（音声起こし）</span>
+            <span class="src-badge minutes">8/18 TKW議事録</span>
+        </div>
+    </header>
+
+    <!-- 1 コンセプト -->
+    <section class="section" id="s1">
+        <div class="section-head">
+            <div class="section-bar bar-purple"></div>
+            <h2 class="section-title purple">1. コンセプト</h2>
+        </div>
+        <p class="section-lead">「企業にAIを導入する時代から、AI社員と働く会社へ」</p>
+
+        <div class="card">
+            <p class="sub-heading">The Reality（現状の課題）<span style="font-weight:400;color:#9ca3af;">公式デック</span></p>
+            <p style="color:#4b5563;">生成AIは急速に企業へ普及したが、多くの企業では以下の状況が続いている。</p>
+            <ul class="dot-list">
+                <li>一部の社員しか利用しない</li>
+                <li>質問しなければ、AIは動かない</li>
+                <li>情報だけが、増え続けていく</li>
+                <li>仕事の進め方は、大きく変わっていない</li>
+            </ul>
+            <p style="color:#4b5563; margin-top:0.75rem;">ツールもデータも社内に散在。「AIを入れた」だけでは、会社の動き方は変わらない。</p>
+        </div>
+
+        <div class="card purple-card">
+            <p class="sub-heading">Why CODATI（AI配布モデルとの違い）</p>
+            <div class="compare-3col">
+                <div class="compare-col dim">
+                    <h4>AI DISTRIBUTION（AI配布モデル・多くの企業）</h4>
+                    <ul class="dot-list gray-markers" style="font-size:0.8rem;">
+                        <li>AIを配って、終わり</li>
+                        <li>質問しなければ、AIは動かない</li>
+                        <li>情報だけが、増え続けていく</li>
+                        <li>仕事の進め方は、大きく変わらない</li>
+                    </ul>
+                </div>
+                <div class="compare-col win">
+                    <h4>CODATI（AIが働ける会社）</h4>
+                    <ul class="dot-list" style="font-size:0.8rem;">
+                        <li>AIが、先に働き出す</li>
+                        <li>会社を理解し、AIが自分から動く</li>
+                        <li>全社の情報を横断してつなぐ</li>
+                        <li>人は、判断と対応に集中できる</li>
+                        <li>会社の動き方そのものが変わる</li>
+                    </ul>
+                </div>
+                <div class="compare-col dim">
+                    <h4>目的の違い</h4>
+                    <p style="font-size:0.8rem;">CODATIの目的は「AIを使える社員を増やす」ことではなく、「AIが働ける会社をつくる」こと。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <p class="sub-heading">The Difference（チャット型・RAG型との違い）</p>
+            <div style="overflow-x:auto;">
+                <table class="data-table">
+                    <thead><tr><th></th><th>CHAT AI（チャット型）</th><th>RAG（検索型）</th><th>CODATI</th></tr></thead>
+                    <tbody>
+                        <tr><td>動き方</td><td>質問→回答。人が質問した時だけ動く</td><td>質問→文書検索→回答。人が質問した時だけ動く</td><td>会社を理解→AI社員が先に働く→人に届く。質問を待たずAIから動く</td></tr>
+                        <tr><td>理解の範囲</td><td>その場の会話の中だけ</td><td>ヒットした文書断片のみ。最新版か・承認済みか・担当は誰かは分からない</td><td>全社の文脈（最新版・承認・担当・関係・経緯）を理解する</td></tr>
+                        <tr><td>結果</td><td>使う人しか、使わない</td><td>検索は賢いが、"会社を理解"はしない</td><td>AIが働ける会社になる</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="box-purple">
+            <p class="box-label">【「AIが先に働く」とは、具体的に何をしているか】</p>
+            <p style="color:#4b5563; font-size:0.9rem; margin-bottom:0.75rem;">CODATIは、AIが決まった間隔で業務データやナレッジを継続的に解析・監視し、変化があれば人間側へ自動でプッシュする「監視＋通知」の仕組みで「先に働く」を実現している。人が質問しなくても、次のような形でAIから届く。</p>
+            <ul class="dot-list" style="margin-bottom:0;">
+                <li><strong>例1：AI速報（Daily Briefing）</strong>──AIが業務データを継続的に解析し、稼働集中・売上改善・拠点課題といった「確認すべき変化」を検出すると、毎日レポートとしてプッシュ。人は届いた速報を見るだけで、今日確認すべきことが分かる。</li>
+                <li><strong>例2：AI通知センター</strong>──AIが業務データ・資料を確認したうえで、確認が必要な事象を事業単位で一覧化し、重要度ラベルを付けて通知。異常や見落としがちな変化を、人が探しに行く前に届ける。</li>
+                <li><strong>例3：Knowledge Centerの継続監視</strong>──OneDriveやNASなど社内データを、AIが継続的に監視・学習。マニュアルや規定が更新されれば、Knowledge Lifecycleの「AI Curation」で差分を検出し、レビュー・承認の対象として自動的に浮かび上がらせる。</li>
+            </ul>
+        </div>
+
+        <div class="box-gray">
+            <p class="box-label">【裏側の運用の工夫】<span style="font-weight:400; color:#7c3aed;">TOKIWAGIメモ／CODATI.docx</span></p>
+            <p style="color:#4b5563; font-size:0.9rem;">朝の一斉アクセスに備え、リアルタイム生成ではなく夜間のバッチ処理で事前に結果を作っておく、「昨日の売上」のような定型質問にはAIに生成させずバックエンドから直接データを取得する、といった工夫でRPM・クレジット消費を抑えている。この裏側の設計は公式デックには記載されていない。</p>
+        </div>
+    </section>
+
+    <!-- 2 プロダクト構成 -->
+    <section class="section" id="s2">
+        <div class="section-head">
+            <div class="section-bar bar-purple"></div>
+            <h2 class="section-title purple">2. プロダクト構成（4つの柱）</h2>
+        </div>
+        <p class="section-lead">企業のツールとデータを一つに束ね、正式化された知識を蓄え、AI社員が経営・営業・店舗の判断を支える。すでに稼働しているSaaSプロダクト。</p>
+
+        <div class="pillar-grid">
+            <div class="pillar"><div class="p-letter">P</div><div class="p-name">Portal</div><div class="p-tag">DAILY WORKSPACE</div><p style="font-size:0.78rem; color:#6b7280; margin-top:0.5rem;">経営・現場が毎朝ひらく統合画面。速報、KPI、通知、資料を一望</p></div>
+            <div class="pillar"><div class="p-letter">K</div><div class="p-name">Knowledge Center</div><div class="p-tag">MEMORY</div><p style="font-size:0.78rem; color:#6b7280; margin-top:0.5rem;">散らばる情報をAIが整理し、人が承認して正式知識として公開</p></div>
+            <div class="pillar"><div class="p-letter">I</div><div class="p-name">Integration Hub</div><div class="p-tag">CONNECTIONS</div><p style="font-size:0.78rem; color:#6b7280; margin-top:0.5rem;">freee / Salesforce / kintone / OneDriveなど既存業務と接続</p></div>
+            <div class="pillar"><div class="p-letter">E</div><div class="p-name">AI Employees</div><div class="p-tag">CORE</div><p style="font-size:0.78rem; color:#6b7280; margin-top:0.5rem;">Eco / Analyst / Secretary / Auditor / Knowledge Curatorが稼働中</p></div>
+        </div>
+
+        <div style="margin: 1.5rem 0;">
+            <svg viewBox="0 0 820 200" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family:'Noto Sans JP',sans-serif;">
+                <text x="0" y="18" font-size="13" font-weight="700" fill="#374151">4つの柱　構成イメージ</text>
+                <rect x="15" y="45" width="180" height="120" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+                <text x="105" y="75" font-size="13" font-weight="700" fill="#6d28d9" text-anchor="middle">Portal</text>
+                <text x="105" y="93" font-size="10.5" fill="#8b5cf6" text-anchor="middle">DAILY WORKSPACE</text>
+                <text x="105" y="120" font-size="10.5" fill="#6b7280" text-anchor="middle">毎朝ひらく</text>
+                <text x="105" y="136" font-size="10.5" fill="#6b7280" text-anchor="middle">統合画面</text>
+
+                <rect x="215" y="45" width="180" height="120" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+                <text x="305" y="75" font-size="13" font-weight="700" fill="#6d28d9" text-anchor="middle">Knowledge</text>
+                <text x="305" y="91" font-size="13" font-weight="700" fill="#6d28d9" text-anchor="middle">Center</text>
+                <text x="305" y="108" font-size="10.5" fill="#8b5cf6" text-anchor="middle">MEMORY</text>
+                <text x="305" y="132" font-size="10.5" fill="#6b7280" text-anchor="middle">正式知識の</text>
+                <text x="305" y="148" font-size="10.5" fill="#6b7280" text-anchor="middle">蓄積・承認</text>
+
+                <rect x="415" y="45" width="180" height="120" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+                <text x="505" y="75" font-size="13" font-weight="700" fill="#6d28d9" text-anchor="middle">Integration</text>
+                <text x="505" y="91" font-size="13" font-weight="700" fill="#6d28d9" text-anchor="middle">Hub</text>
+                <text x="505" y="108" font-size="10.5" fill="#8b5cf6" text-anchor="middle">CONNECTIONS</text>
+                <text x="505" y="132" font-size="10.5" fill="#6b7280" text-anchor="middle">既存業務ツールと</text>
+                <text x="505" y="148" font-size="10.5" fill="#6b7280" text-anchor="middle">接続</text>
+
+                <rect x="615" y="45" width="190" height="120" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+                <text x="710" y="75" font-size="13" font-weight="700" fill="#4c1d95" text-anchor="middle">AI Employees</text>
+                <text x="710" y="93" font-size="10.5" fill="#7c3aed" text-anchor="middle">CORE</text>
+                <text x="710" y="118" font-size="10.5" fill="#6b7280" text-anchor="middle">Eco/Analyst/</text>
+                <text x="710" y="134" font-size="10.5" fill="#6b7280" text-anchor="middle">Secretary/Auditor/</text>
+                <text x="710" y="150" font-size="10.5" fill="#6b7280" text-anchor="middle">Curator</text>
+
+                <path d="M198 105 L212 105" stroke="#c4b5fd" stroke-width="2" marker-end="url(#arrowc1)"/>
+                <path d="M398 105 L412 105" stroke="#c4b5fd" stroke-width="2" marker-end="url(#arrowc1)"/>
+                <path d="M598 105 L612 105" stroke="#c4b5fd" stroke-width="2" marker-end="url(#arrowc1)"/>
+                <defs><marker id="arrowc1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a78bfa"/></marker></defs>
+            </svg>
+        </div>
+    </section>
+
+    <!-- 3 画面詳細 -->
+    <section class="section" id="s3">
+        <div class="section-head">
+            <div class="section-bar bar-purple"></div>
+            <h2 class="section-title purple">3. 画面詳細</h2>
+        </div>
+
+        <div class="card">
+            <p class="sub-heading">Portal ─ 毎朝、開くだけで、会社が見える</p>
+            <p style="color:#4b5563;">CODATIの顔。毎日の仕事の入口として、社員が最初に開く画面。今日の重要メール、AI速報、重要通知、最新分析、今日やるべきこと、最新ナレッジを一望。情報を「探しに行く」から、「毎朝届いている」へ。</p>
+        </div>
+        <div class="card">
+            <p class="sub-heading">AI速報（Daily Briefing） ─ 質問しなくても、AIから届く</p>
+            <p style="color:#4b5563;">AIが業務データを継続的に解析し、確認すべき変化と分析レポートを毎日プッシュ。検出された事象を時系列表示（EVENTS：稼働集中・売上改善・拠点課題／REPORTS：AI解析レポート一覧／STATUS：確認待ち・完了ステータス）。</p>
+        </div>
+        <div class="card">
+            <p class="sub-heading">AI通知センター（Notification Center） ─ 見逃さない仕組み</p>
+            <p style="color:#4b5563;">AIが業務データ・資料を確認したうえで、確認が必要な事象を事業単位で一覧化。DETECT（例：ハウコレ書類の要修正を自動抽出）／SEVERITY（重要度ラベル付き）／SCOPE（事業単位でフィルタ）／ACTION（レポート詳細へ直接遷移）。</p>
+        </div>
+        <div class="card">
+            <p class="sub-heading">Analytics ─ 会社全体を、1つのダッシュボードで</p>
+            <p style="color:#4b5563;">事業別の実績をAIが横断的に評価し、経営判断に必要なポイントを提示。事業横断の総合評価、KPI（売上・客数・稼働率など）、AI RATING（総合評価。B+など）、事業詳細へのドリルダウン。</p>
+        </div>
+    </section>
+
+    <!-- 4 Knowledge Center -->
+    <section class="section" id="s4">
+        <div class="section-head">
+            <div class="section-bar bar-purple"></div>
+            <h2 class="section-title purple">4. Knowledge Center詳細</h2>
+        </div>
+
+        <div class="card">
+            <p class="sub-heading">聞けば、根拠つきで返ってくる</p>
+            <p style="color:#4b5563;">社内マニュアル・就業規則・FAQをAIが検索し、根拠つきで回答。自然文で質問を入力（ASK）、よく使われる質問候補（SUGGEST）、店舗運営・就業規則・人事などのカテゴリ分け（CATEGORY）。規模感の例：11店舗12部330件のナレッジ運用。</p>
+        </div>
+
+        <div class="card purple-card">
+            <p class="sub-heading">Knowledge Lifecycle ─ 人が承認して、正式ナレッジになる</p>
+            <p style="color:#4b5563; margin-bottom:1rem;">「集める→整理する→承認する→公開する」の4ステップは、すべて画面として動いている統制されたライフサイクル。</p>
+
+            <div style="margin: 1rem 0;">
+                <svg viewBox="0 0 900 190" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family:'Noto Sans JP',sans-serif;">
+                    <rect x="10" y="45" width="195" height="90" rx="10" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5"/>
+                    <text x="107" y="70" font-size="11.5" font-weight="700" fill="#6d28d9" text-anchor="middle">01 · SOURCES</text>
+                    <text x="107" y="90" font-size="10.5" fill="#4b5563" text-anchor="middle">情報源を接続</text>
+                    <text x="107" y="106" font-size="9.5" fill="#9ca3af" text-anchor="middle">OneDrive・SharePoint・</text>
+                    <text x="107" y="119" font-size="9.5" fill="#9ca3af" text-anchor="middle">Google Drive・NASを継続監視</text>
+
+                    <path d="M208 90 L232 90" stroke="#c4b5fd" stroke-width="2" marker-end="url(#arrowc2)"/>
+
+                    <rect x="235" y="45" width="195" height="90" rx="10" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5"/>
+                    <text x="332" y="70" font-size="11.5" font-weight="700" fill="#6d28d9" text-anchor="middle">02 · AI CURATION</text>
+                    <text x="332" y="90" font-size="10.5" fill="#4b5563" text-anchor="middle">AIが整理・構造化</text>
+                    <text x="332" y="106" font-size="9.5" fill="#9ca3af" text-anchor="middle">差分抽出・旧版比較・</text>
+                    <text x="332" y="119" font-size="9.5" fill="#9ca3af" text-anchor="middle">影響分析を自動処理</text>
+
+                    <path d="M433 90 L457 90" stroke="#c4b5fd" stroke-width="2" marker-end="url(#arrowc2)"/>
+
+                    <rect x="460" y="35" width="205" height="110" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+                    <text x="562" y="60" font-size="11.5" font-weight="700" fill="#991b1b" text-anchor="middle">03 · REVIEW（HUMAN）</text>
+                    <text x="562" y="80" font-size="10.5" fill="#4b5563" text-anchor="middle">人が承認・却下</text>
+                    <text x="562" y="97" font-size="9.5" fill="#9ca3af" text-anchor="middle">変更前後の差分を人が確認し、</text>
+                    <text x="562" y="110" font-size="9.5" fill="#9ca3af" text-anchor="middle">承認・差し戻し・編集で判断</text>
+                    <text x="562" y="128" font-size="9.5" font-weight="700" fill="#dc2626" text-anchor="middle">─ ここが最も重要 ─</text>
+
+                    <path d="M668 90 L692 90" stroke="#c4b5fd" stroke-width="2" marker-end="url(#arrowc2)"/>
+
+                    <rect x="695" y="45" width="195" height="90" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+                    <text x="792" y="70" font-size="11.5" font-weight="700" fill="#065f46" text-anchor="middle">04 · PUBLISHED</text>
+                    <text x="792" y="90" font-size="10.5" fill="#4b5563" text-anchor="middle">正式化・版管理</text>
+                    <text x="792" y="106" font-size="9.5" fill="#9ca3af" text-anchor="middle">Version管理付きで公開、</text>
+                    <text x="792" y="119" font-size="9.5" fill="#9ca3af" text-anchor="middle">AI社員に同期</text>
+
+                    <text x="450" y="175" font-size="10.5" fill="#6d28d9" text-anchor="middle" font-weight="700">HUMAN-IN-THE-LOOP：AIが作成した情報はそのまま利用されない。人によるレビュー・承認を経て初めて企業の正式知識になる</text>
+                    <defs><marker id="arrowc2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a78bfa"/></marker></defs>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5 Integration Hub -->
+    <section class="section" id="s5">
+        <div class="section-head">
+            <div class="section-bar bar-purple"></div>
+            <h2 class="section-title purple">5. Integration Hub詳細</h2>
+        </div>
+        <div class="card">
+            <p class="sub-heading">会社全体を、一つにつなぐ</p>
+            <p style="color:#4b5563; margin-bottom:1rem;">コミュニケーション・知識・業務・AIエンジンまで。既存のツールを置き換えず、そのままつなぐ。「置き換える」のではなく「つなぐ」─4つのカテゴリを横断。既存の業務基盤・データ保管先はそのまま。必要な接続から順に有効化できる。</p>
+            <table class="data-table">
+                <thead><tr><th>カテゴリ</th><th>接続例</th></tr></thead>
+                <tbody>
+                    <tr><td>COMMUNICATION（つながる）</td><td>メール・Teams・LINE WORKS・Slack</td></tr>
+                    <tr><td>KNOWLEDGE（溜まる）</td><td>OneDrive・SharePoint・Google Drive・NAS</td></tr>
+                    <tr><td>BUSINESS（動く）</td><td>POS・販売管理・会計・CRM・勤怠</td></tr>
+                    <tr><td>AI ENGINE（考える）</td><td>OpenAI・Claude・Gemini・Azure OpenAI・Local LLM</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 6 AI Employeesの思想 -->
+    <section class="section" id="s6">
+        <div class="section-head">
+            <div class="section-bar bar-purple"></div>
+            <h2 class="section-title purple">6. AI Employeesの思想と役割</h2>
+        </div>
+
+        <div class="card purple-card">
+            <p class="sub-heading">AI社員は、人を減らすためではない</p>
+            <p style="color:#4b5563;">「AIで人を減らす」「もっと仕事を振る」「AIで1000本ノック」──CODATIは、その発想ではない。AI社員は、人と役割を分担する存在。</p>
+            <div class="compare-3col" style="grid-template-columns:1fr 1fr;">
+                <div class="compare-col win">
+                    <h4>AI EMPLOYEES（AI社員が担当）</h4>
+                    <p style="font-size:0.8rem;">探す・まとめる・比較する・監視する・気づく</p>
+                </div>
+                <div class="compare-col dim">
+                    <h4>PEOPLE（人が集中）</h4>
+                    <p style="font-size:0.8rem;">判断する・相談する（合意形成）・改善する・顧客対応</p>
+                </div>
+            </div>
+            <p style="color:#4b5563; margin-top:1rem;">AIに仕事を奪わせるのではなく、人が本来の仕事に集中できる会社へ。</p>
+        </div>
+
+        <div class="card">
+            <p class="sub-heading">What each AI does（役割ごとに、すでに稼働中）</p>
+            <table class="data-table">
+                <thead><tr><th>AI社員</th><th>役割</th></tr></thead>
+                <tbody>
+                    <tr><td>ECO（経営AI）</td><td>毎朝、経営状況を要約し重要な変化を通知</td></tr>
+                    <tr><td>ANALYST（分析AI）</td><td>売上・KPI・業績を分析し改善点を提示</td></tr>
+                    <tr><td>SECRETARY（秘書AI）</td><td>メール整理・会議要約・ToDo整理</td></tr>
+                    <tr><td>AUDITOR（監査AI）</td><td>社内ルール・業務品質を継続チェック</td></tr>
+                    <tr><td>CURATOR（ナレッジAI）</td><td>社内資料の更新・差分確認・正式化</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="box-gray">
+            <p class="box-label">【提案・補足】役割区分の粒度の違い</p>
+            <p style="color:#4b5563; font-size:0.9rem;">上表は公式デックの「Eco／Analyst／Secretary／Auditor／Knowledge Curator」の5区分ですが、CODATI.docxでは「分析系AI社員」「人事・事務系AI社員」「秘書系AI社員」という3区分での説明になっています。同じ分類を粒度違いで説明しているのか、別の切り口なのか資料からは判断がつかないため、両方併記しています。</p>
+        </div>
+
+        <div class="box-purple">
+            <p class="box-label">【企業の共有資産としての役割】<span style="font-weight:400; color:#7c3aed;">CODATI.docx</span></p>
+            <ul class="dot-list" style="margin-bottom:0;">
+                <li><strong>ナレッジの共有：</strong>個人が持つ知識ではなく、会社全体のナレッジを学習させることで、社員が互いの知見をAI社員を通じて共有・活用できるようになる。</li>
+                <li><strong>組織の風通し：</strong>人間同士では発生しがちな「部署間の情報の囲い込み（政治）」などの壁を越え、AI社員同士が情報をやり取りすることで、組織全体の状況を可視化する。</li>
+                <li>AI社員は「毎年1人ずつ増やしていける賢い仲間」として、企業の成長を支えるパートナーという概念で設計されている。</li>
+            </ul>
+        </div>
+
+        <div class="box-purple">
+            <p class="box-label">【技術的な理由：エージェントを分割する理由】<span style="font-weight:400; color:#7c3aed;">TOKIWAGIメモ／CODATI.docx</span></p>
+            <p style="color:#4b5563; font-size:0.9rem;">技術単位である「1つのエージェント」が生成AIにおける「1つのチャット」に相当する。1つのエージェントに全ての機能を詰め込むと、バックエンドの読み込みが肥大化し、生成AI側の動作が著しく低下する。そのため、カテゴリーごとにエージェントを分け、動作の軽快さと指示の正確性を担保している。</p>
+        </div>
+    </section>
+
+    <!-- 7 Technology -->
+    <section class="section" id="s7">
+        <div class="section-head">
+            <div class="section-bar bar-blue"></div>
+            <h2 class="section-title blue">7. Technology（技術アーキテクチャ）</h2>
+        </div>
+
+        <div class="card">
+            <p class="sub-heading">Positioning ─ 置き換えず、そのまま活かす</p>
+            <p style="color:#4b5563;">CODATIは既存システムを置き換えるサービスではない。企業内のツールとクラウドサービスを接続し、横断的に情報を活用するAIプラットフォーム。「置き換える」のではなく、「つなぐ」。3原則：<strong>置き換えゼロ／横断的な情報活用／段階的な導入</strong>。</p>
+        </div>
+
+        <div class="card">
+            <p class="sub-heading">AI社員が主役 ─ AIエンジンは、交換できる部品</p>
+            <p style="color:#4b5563; margin-bottom:1rem;">CODATIの中心はAI社員。LLMはその下で動く「交換可能な部品」。新しいAIが登場しても、AI社員の仕事や仕組みを変える必要はない。</p>
+            <div style="margin: 1rem 0;">
+                <svg viewBox="0 0 780 260" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family:'Noto Sans JP',sans-serif;">
+                    <rect x="230" y="10" width="320" height="42" rx="8" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+                    <text x="390" y="35" font-size="12" font-weight="700" fill="#6d28d9" text-anchor="middle">01・USER — Portal（利用者が毎日ひらく入口）</text>
+                    <path d="M390 52 L390 68" stroke="#c4b5fd" stroke-width="2" marker-end="url(#arrowc3)"/>
+
+                    <rect x="230" y="70" width="320" height="42" rx="8" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+                    <text x="390" y="95" font-size="12" font-weight="700" fill="#4c1d95" text-anchor="middle">02・CORE — AI Employees（Eco/Analyst/Secretary/Auditor/Curator）</text>
+                    <path d="M390 112 L390 128" stroke="#c4b5fd" stroke-width="2" marker-end="url(#arrowc3)"/>
+
+                    <rect x="230" y="130" width="320" height="42" rx="8" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+                    <text x="390" y="155" font-size="12" font-weight="700" fill="#6d28d9" text-anchor="middle">03・PROCESS — Workflow（業務手順・タスク実行）</text>
+                    <path d="M390 172 L390 188" stroke="#c4b5fd" stroke-width="2" marker-end="url(#arrowc3)"/>
+
+                    <rect x="230" y="190" width="320" height="42" rx="8" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+                    <text x="390" y="215" font-size="12" font-weight="700" fill="#6d28d9" text-anchor="middle">04・MEMORY — Knowledge（正式化された企業ナレッジ）</text>
+                    <path d="M390 232 L390 236" stroke="none"/>
+
+                    <rect x="90" y="235" width="600" height="0" fill="none"/>
+                    <path d="M390 232 L390 244" stroke="#9ca3af" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrowc4)"/>
+                    <rect x="230" y="246" width="320" height="10" fill="none"/>
+                </svg>
+                <svg viewBox="0 0 780 70" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; margin-top:-10px; font-family:'Noto Sans JP',sans-serif;">
+                    <rect x="230" y="5" width="320" height="42" rx="8" fill="#f9fafb" stroke="#9ca3af" stroke-width="1.5" stroke-dasharray="4 3"/>
+                    <text x="390" y="30" font-size="12" font-weight="700" fill="#4b5563" text-anchor="middle">05・SWAPPABLE — AI Engine（GPT/Claude/Gemini/Azure OpenAI/Local LLM/+future）</text>
+                    <defs><marker id="arrowc3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a78bfa"/></marker><marker id="arrowc4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9ca3af"/></marker></defs>
+                </svg>
+            </div>
+        </div>
+
+        <div class="card">
+            <p class="sub-heading">Data Flow ─ データは動かさず、価値だけ活用する</p>
+            <p style="color:#4b5563; margin-bottom:0.75rem;">元データは既存システム（メール・OneDrive・Google Drive・NAS・POS・勤怠・販売管理・会計）に保持されたまま。</p>
+            <p style="color:#4b5563;">フロー：<strong>①KEEP</strong>（元データ保持）→Integration Hub→<strong>②SELECT</strong>（必要情報のみ取得）→AI Curation→Review→Published→<strong>③USE</strong>（承認済み正式ナレッジのみAI社員が利用）→AI Employees→Portal</p>
+            <p style="color:#4b5563; margin-top:0.75rem;">3原則：元データは既存システムに保持／必要な情報のみ取得／正式ナレッジのみAI社員が利用。</p>
+        </div>
+
+        <div class="card">
+            <p class="sub-heading">Enterprise-Ready（情報統制、6項目）</p>
+            <table class="data-table">
+                <thead><tr><th>項目</th><th>内容</th></tr></thead>
+                <tbody>
+                    <tr><td>権限管理</td><td>役職・部署単位のアクセス管理</td></tr>
+                    <tr><td>ナレッジ承認</td><td>Human-in-the-loop。承認された情報だけがAI社員に届く</td></tr>
+                    <tr><td>バージョン管理</td><td>変更履歴・更新履歴、いつ誰が何を更新したか追跡可能</td></tr>
+                    <tr><td>出典管理</td><td>AIの回答は根拠となった元資料を確認可能</td></tr>
+                    <tr><td>テナント分離</td><td>企業ごとにデータを論理分離、他社データと混ざらない</td></tr>
+                    <tr><td>AIエンジン変更</td><td>利用エンジンを柔軟に変更可能、特定ベンダーに縛られない</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 8 Adoption -->
+    <section class="section" id="s8">
+        <div class="section-head">
+            <div class="section-bar bar-purple"></div>
+            <h2 class="section-title purple">8. 導入ステップ（Adoption）</h2>
+        </div>
+        <p class="section-lead">既存システムを置き換える必要はない。必要な連携から始め、段階的にAI社員を増やしていける。すべての画面は現時点で稼働しており、スモールスタートで運用可能。</p>
+
+        <div style="margin: 1rem 0;">
+            <svg viewBox="0 0 900 160" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family:'Noto Sans JP',sans-serif;">
+                <rect x="10" y="30" width="205" height="95" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+                <text x="112" y="55" font-size="11.5" font-weight="700" fill="#6d28d9" text-anchor="middle">STEP 01　まず、つなぐ</text>
+                <text x="112" y="75" font-size="9.5" fill="#6b7280" text-anchor="middle">Integration Hubで既存の会計・</text>
+                <text x="112" y="88" font-size="9.5" fill="#6b7280" text-anchor="middle">人事・CRMを接続</text>
+                <text x="112" y="105" font-size="9.5" fill="#6b7280" text-anchor="middle">1画面で状態を確認</text>
+
+                <path d="M218 77 L232 77" stroke="#c4b5fd" stroke-width="2" marker-end="url(#arrowc5)"/>
+
+                <rect x="235" y="30" width="205" height="95" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+                <text x="337" y="55" font-size="11.5" font-weight="700" fill="#6d28d9" text-anchor="middle">STEP 02　知識を、貯める</text>
+                <text x="337" y="75" font-size="9.5" fill="#6b7280" text-anchor="middle">Sources→Curation→Review→</text>
+                <text x="337" y="88" font-size="9.5" fill="#6b7280" text-anchor="middle">Publishedの4画面</text>
+                <text x="337" y="105" font-size="9.5" fill="#6b7280" text-anchor="middle">正式ナレッジを構築</text>
+
+                <path d="M443 77 L457 77" stroke="#c4b5fd" stroke-width="2" marker-end="url(#arrowc5)"/>
+
+                <rect x="460" y="30" width="205" height="95" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+                <text x="562" y="55" font-size="11.5" font-weight="700" fill="#6d28d9" text-anchor="middle">STEP 03　AI社員を、配属</text>
+                <text x="562" y="75" font-size="9.5" fill="#6b7280" text-anchor="middle">Eco/Analyst/Secretary など、</text>
+                <text x="562" y="88" font-size="9.5" fill="#6b7280" text-anchor="middle">必要な役割から順に稼働</text>
+
+                <path d="M668 77 L682 77" stroke="#c4b5fd" stroke-width="2" marker-end="url(#arrowc5)"/>
+
+                <rect x="685" y="30" width="205" height="95" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+                <text x="787" y="55" font-size="11.5" font-weight="700" fill="#4c1d95" text-anchor="middle">STEP 04　運用を、広げる</text>
+                <text x="787" y="75" font-size="9.5" fill="#6b7280" text-anchor="middle">Portal/Analyticsで運用可視化</text>
+                <text x="787" y="88" font-size="9.5" fill="#6b7280" text-anchor="middle">対象業務・拠点を段階拡大</text>
+                <text x="787" y="105" font-size="9.5" font-weight="700" fill="#7c3aed" text-anchor="middle">→ GOAL：AI社員と働く会社へ</text>
+                <defs><marker id="arrowc5" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a78bfa"/></marker></defs>
+            </svg>
+        </div>
+    </section>
+
+    <!-- 9 優位性 -->
+    <section class="section" id="s9">
+        <div class="section-head">
+            <div class="section-bar bar-purple"></div>
+            <h2 class="section-title purple">9. 他社・他モデルとの違い／優位性</h2>
+        </div>
+        <div class="card purple-card">
+            <ul class="dot-list">
+                <li><strong>vs AI配布モデル：</strong>使う人と使わない人に分断されない。質問を待たずAIから動く。情報が増えるだけで終わらない。仕事の進め方そのものが変わる。</li>
+                <li><strong>vs チャット型AI・RAG：</strong>チャットAIは質問→回答のみ。RAGは検索できるが最新版か・承認済みか・担当者・経緯までは分からない。CODATIは会社を理解した上でAIが先に動き、全社の文脈まで把握する。</li>
+                <li><strong>Enterprise-Ready：</strong>権限管理・ナレッジ承認（Human-in-the-loop）・バージョン管理・出典管理・テナント分離・AIエンジン変更の自由度、6項目が標準装備。</li>
+                <li><strong>GPTBots採用による技術的優位性：</strong>自社でAPI連携するより導入が速い（最短3日）。100種類以上のモデルから用途別選択が可能。自社構築より原価効率が良い（粗利6割超）。<span style="font-weight:400; color:#7c3aed; font-size:0.82rem;">TOKIWAGIメモ／CODATI.docx</span></li>
+                <li><strong>運用戦略上の工夫：</strong>バッチ処理でRPMコストを抑える設計。ノンプロンプト（クリック操作だけで動く）設計。<span style="font-weight:400; color:#7c3aed; font-size:0.82rem;">TOKIWAGIメモ／CODATI.docx</span></li>
+                <li><strong>vs 既存のナレッジベース製品：</strong>多くの製品は「資料を探す・引き出す」だけで終わり、最終的にプロンプト入力を求める。CODATIはタスク作成や業務指示、プロンプト不要のワークフローまで踏み込んでいる点が決定的に異なる（会議内Q&amp;Aより）。<span style="font-weight:400; color:#7c3aed; font-size:0.82rem;">CODATI.docx</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <p class="divider-label">ここから補足資料（社内向け検討メモ）</p>
+
+    <!-- 10 料金体系 -->
+    <section class="section" id="s10">
+        <div class="section-head">
+            <div class="section-bar bar-gray"></div>
+            <h2 class="section-title gray">10. 料金体系</h2>
+        </div>
+        <div class="box-gray">
+            <p class="box-label">※本編（公式デック）には料金・価格スライドは含まれません。以下はTOKIWAGIメモに基づく社内向け検討情報です。</p>
+        </div>
+
+        <div class="card gray-card">
+            <p class="sub-heading">原価構造</p>
+            <ul class="dot-list gray-markers">
+                <li>GPTBots基本利用料：年間約800万円（月額換算で約7万円）</li>
+                <li>クレジット（トークン消費）：基本契約に月間約1万クレジット含む。1クレジット＝約1,000トークン</li>
+                <li>RPM（1分間あたりの同時リクエスト数）：基本パッケージ20 RPM。原価を左右する最大の要因。200 RPMに設定すると月額100万円単位のコストが発生する可能性あり</li>
+                <li>サーバー費用（AWS）：最適化により月額2〜3万円程度の見込み</li>
+                <li>利益率：自社構築により粗利6割超という高い収益性を確保できる設計</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <p class="sub-heading">顧客向け価格（シミュレーション値）</p>
+            <table class="data-table">
+                <thead><tr><th>費用区分</th><th>金額</th></tr></thead>
+                <tbody>
+                    <tr><td>初期：プラットフォーム導入費</td><td>100万円</td></tr>
+                    <tr><td>初期：AI社員導入費</td><td>1人あたり20万円</td></tr>
+                    <tr><td>初期：伴走サポート費</td><td>50万円</td></tr>
+                    <tr><td>月額：基本料金</td><td>10万円</td></tr>
+                    <tr><td>月額：AI社員利用料</td><td>1人あたり2万円</td></tr>
+                    <tr><td>月額：利用者単価（保険）</td><td>1アカウント300円</td></tr>
+                </tbody>
+            </table>
+            <p style="color:#6b7280; font-size:0.82rem; margin-top:0.5rem;">例：AI社員5名、ユーザー50名の場合、月額約25万円＋α</p>
+        </div>
+
+        <div class="card gray-card">
+            <p class="sub-heading">機能の実装区分：エージェントとワークフロー</p>
+            <ul class="dot-list gray-markers">
+                <li><strong>エージェント：</strong>1アカウント10個までがパッケージに含まれる。超過分は追加料金。高度な判断や深いデータ参照が必要な「AI社員の本体」として構築</li>
+                <li><strong>ワークフロー：</strong>作成数に制限なし、追加費用も発生しない。定型的な業務フローに適し、エージェントが実行するタスクの「部品」として活用</li>
+            </ul>
+        </div>
+
+        <div class="box-red">
+            <p class="box-label">【未整理事項】</p>
+            <p style="color:#4b5563; font-size:0.9rem;">エージェント年80万円＋構築年50万円／月1人4万円（最大200人）／利用者単価300円×50名＝15万円の3体系の関係が未整理。販売価格と自社原価が混在した状態で、後日仕分けが必要とされています。</p>
+        </div>
+    </section>
+
+    <!-- 11 GPTBots -->
+    <section class="section" id="s11">
+        <div class="section-head">
+            <div class="section-bar bar-gray"></div>
+            <h2 class="section-title gray">11. GPTBotsの技術的位置づけ</h2>
+        </div>
+        <div class="box-gray">
+            <p class="box-label">※T-goさんの記憶ベースの説明を、ドキュメントの記述に沿って整理したものです</p>
+            <p style="color:#4b5563; font-size:0.9rem;">GPTBotsは、公式デックの「AI Engine（交換可能な部品：GPT/Claude/Gemini/Azure OpenAI/Local LLM）」そのものではなく、<strong>AI社員（エージェント）を実際に構築・運用するための基盤</strong>という位置づけ。その中でどのAIモデルを使うかを、エージェント単位で選択できる。</p>
+        </div>
+
+        <div class="card">
+            <p class="sub-heading">採用理由</p>
+            <ul class="dot-list gray-markers">
+                <li>導入のスピードとUIの優秀さ：非常に優れたUIを備え、設定が容易なため最短3日程度で連携・構築が可能</li>
+                <li>多様なモデルの選択：GPT-4系、Claude、DeepSeekなど100種類以上のAIモデルから、用途や予算に合わせてエージェント単位で最適なものを選択できる</li>
+                <li>コスト効率：自社でシステムを構築・維持する手間や費用を抑えつつ、従量課金ベースで効率的に運用できる</li>
+            </ul>
+        </div>
+
+        <div class="card gray-card">
+            <p class="sub-heading">運用戦略：RPM・クレジット管理</p>
+            <ul class="dot-list gray-markers">
+                <li>朝の出勤時など一斉アクセスが予想される場面では、リアルタイム生成ではなく夜間バックエンドで処理（バッチ処理）した結果を表示し、RPMの増大を防ぐ</li>
+                <li>「昨日の売上」のような定型的な質問は、AIに生成させずバックエンドから直接データを取得し、クレジット消費とRPM使用を回避</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 12 事例 -->
+    <section class="section" id="s12">
+        <div class="section-head">
+            <div class="section-bar bar-gray"></div>
+            <h2 class="section-title gray">12. 導入事例</h2>
+        </div>
+        <div class="card">
+            <p class="sub-heading">分析系AI社員：瑞鳳の例</p>
+            <ul class="dot-list gray-markers">
+                <li>本部・アミューズメント・訪問看護など、部署をまたいだデータ分析を実施</li>
+                <li>経営陣が知りたい横断的なデータを集約し、ボトルネックの抽出から具体的な「対応指示（タスク作成）」までを自動で行う</li>
+                <li>瑞鳳の既存AWS費用：現状月10数万円かかっているものが、月2〜3万円程度まで下がる見込み（根拠となる代替内容は未記載）</li>
+            </ul>
+        </div>
+        <div class="card">
+            <p class="sub-heading">事務・管理系AI社員：デザイン会社の例</p>
+            <ul class="dot-list gray-markers">
+                <li>メール・LINE・Slackなど多岐にわたる入稿連絡を統合監視</li>
+                <li>入稿データの「アウトライン未作成」などの不備をAIが自動チェックし、担当者にレポートを送る</li>
+                <li>人間が1日かけて行っていた差分チェックや整理作業を、AIは1時間以内に完了させる</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 12.5 営業戦略 -->
+    <section class="section" id="s13">
+        <div class="section-head">
+            <div class="section-bar bar-gray"></div>
+            <h2 class="section-title gray">13. 営業戦略と今後の展開</h2>
+        </div>
+        <div class="card gray-card">
+            <p class="sub-heading">次世代営業「ヒアリングアプリ」</p>
+            <p style="color:#4b5563;">商談中、営業担当者の隣でAIアプリを立ち上げ、顧客との会話をリアルタイム分析。その場で「次は何を聞くべきか」を指示し、商談が終わる頃には「デモ（モック版）」が完成しているようなスピード感を目指す。</p>
+        </div>
+        <div class="card gray-card">
+            <p class="sub-heading">伴走の仕方</p>
+            <ul class="dot-list gray-markers">
+                <li>ヒアリングシートを使った事前整理</li>
+                <li>チャットボットを立ち上げながら、その場で診断・簡易的なアドバイジング</li>
+                <li>モック風のデモまで、その場で動かせる</li>
+            </ul>
+        </div>
+        <div class="card gray-card">
+            <p class="sub-heading">SEOと概念の確立</p>
+            <p style="color:#4b5563;">「AI社員」というキーワードで100本の記事を作成し、世界的にまだ確立されていないこの概念でカテゴリーリーダーを狙う。</p>
+        </div>
+        <div class="card gray-card">
+            <p class="sub-heading">代理店戦略</p>
+            <p style="color:#4b5563;">単純なマージン分配では機能しないため、安易な代理店化は避ける。まずは自社で価値を証明し、直接的な引き合いをベースに展開する。</p>
+        </div>
+
+        <div class="box-red">
+            <p class="box-label">【提案・補足】代理店戦略の食い違い</p>
+            <p style="color:#4b5563; font-size:0.9rem;">CODATI.docxでは「安易な代理店化は避け、まず自社で価値を証明する」とされていますが、7/28のTKW議事録の「こだち」章では「代理店制度（2次代理店）の構築を目指す」となっています。時期による方針転換か、両論併記の状態かは確認できていません。</p>
+        </div>
+
+        <div class="card gray-card">
+            <p class="sub-heading">市場ポジショニング・事業モデルの位置づけ</p>
+            <ul class="dot-list gray-markers">
+                <li>今現在、AI社員を実働稼働させている企業は未だかつてない。リーディングカンパニーとしての立ち位置を作ることもできる。</li>
+                <li>「AI」という冠はあるが、俗にいう生成AIをやることとは違う。</li>
+                <li>事業モデルの位置づけ：SaaS販売ではない（未解決事項6参照）。</li>
+                <li>将来展望：いずれはミニマム簡易バージョンのようなものを作って、SaaS的な販売もありという展望もある。</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 14 士業関与が必要な論点 -->
+    <section class="section" id="s14">
+        <div class="section-head">
+            <div class="section-bar bar-blue"></div>
+            <h2 class="section-title blue">14. 士業関与が必要な論点</h2>
+        </div>
+        <div class="box-blue">
+            <p class="box-label">【注記】以下はClaudeによる整理です。Claudeは弁護士・税理士・弁理士ではないため、最終的な要否・内容の適法性は各専門家に確認してください。</p>
+        </div>
+
+        <div class="card">
+            <p class="sub-heading">弁護士が必要／いたほうがいい箇所</p>
+
+            <p style="font-weight:700; color:#1f2937; margin:1rem 0 0.4rem 0; font-size:0.92rem;">① 利用規約・サービス契約書の整備</p>
+            <ul class="dot-list blue-markers">
+                <li>初期費用（プラットフォーム導入費100万円／AI社員導入費20万円／伴走サポート費50万円）と月額費用（基本料金10万円／AI社員利用料2万円）という料金体系を、正式な契約書として落とし込む必要がある</li>
+                <li>特に「AI社員が経営判断・タスク作成の指示まで自動で行う」という機能は、AIの判断ミスで顧客の事業に損害が出た場合の免責・責任限定条項が必須</li>
+            </ul>
+
+            <p style="font-weight:700; color:#1f2937; margin:1rem 0 0.4rem 0; font-size:0.92rem;">② データの取り扱い・個人情報保護法対応</p>
+            <ul class="dot-list blue-markers">
+                <li>OneDrive・NAS・会計・勤怠・CRMなど、顧客企業の内部データ全般にAIがアクセスする設計</li>
+                <li>訪問看護事業の例があり、介護・医療系の情報（要配慮個人情報になりうる）を扱う可能性がある → 個人情報保護法・場合によっては医療/介護分野特有の規制への対応が必要</li>
+                <li>企業の情報をAIが学習・保持する設計上、データの保存場所・第三者提供の有無・削除リクエスト対応などをプライバシーポリシーに明記する必要</li>
+            </ul>
+
+            <p style="font-weight:700; color:#1f2937; margin:1rem 0 0.4rem 0; font-size:0.92rem;">③ GPTBots側との契約審査</p>
+            <ul class="dot-list blue-markers">
+                <li>GPTBotsをエンジンとして利用し、それを「AI社員」として再販（実質的な白ラベル提供）している構造</li>
+                <li>GPTBots側の利用規約で再販・商用転用が許可されているか、料金改定リスク、データ処理委託契約（第三者提供にあたらないかの整理）を確認する必要がある</li>
+            </ul>
+
+            <p style="font-weight:700; color:#1f2937; margin:1rem 0 0.4rem 0; font-size:0.92rem;">④ 代理店契約</p>
+            <ul class="dot-list blue-markers">
+                <li>代理店戦略への言及があるため、今後代理店展開する場合は代理店契約書のドラフトが必要</li>
+            </ul>
+        </div>
+
+        <div class="card gray-card">
+            <p class="sub-heading">税理士が必要／いたほうがいい箇所</p>
+            <p style="font-weight:700; color:#1f2937; margin:1rem 0 0.4rem 0; font-size:0.92rem;">⑤ 収益認識・原価計算</p>
+            <ul class="dot-list gray-markers">
+                <li>初期費用（一括）と月額費用（継続）が混在する料金体系のため、収益認識のタイミング（一括計上か按分か）の整理が必要</li>
+                <li>「粗利6割超」という数字の算出根拠（GPTBots原価800万円/年をどう配賦しているか）を税務上も整合させておいた方がいい</li>
+                <li>消費税の扱い（役務提供のタイミング等）も契約書と連動させる必要がある</li>
+            </ul>
+        </div>
+
+        <div class="card gray-card">
+            <p class="sub-heading">弁理士が必要／いたほうがいい箇所</p>
+            <p style="font-weight:700; color:#1f2937; margin:1rem 0 0.4rem 0; font-size:0.92rem;">⑥ 商標登録</p>
+            <ul class="dot-list gray-markers">
+                <li>「『AI社員』というキーワードで100本の記事を作成し、カテゴリーリーダーを狙う」という戦略が明記されている</li>
+                <li>先行してカテゴリーを取りに行く戦略なら、「AI社員」「Co-Datch」「CODATI」等の商標登録を早めに検討したほうがいい（他社に先に取られるリスク、逆に自社が意図せず他社商標を侵害していないかの調査も含む）</li>
+            </ul>
+        </div>
+
+        <div class="box-gray">
+            <p class="box-label">社労士との連携が望ましい箇所（法的必須ではないが）</p>
+            <p style="font-weight:700; color:#1f2937; margin:0.75rem 0 0.4rem 0; font-size:0.92rem;">⑦ 「AI社員」というマーケティング表現のリスク</p>
+            <ul class="dot-list gray-markers" style="margin-bottom:0;">
+                <li>「新しく社員を1人雇う感覚」という訴求は分かりやすい反面、導入企業側で「AIに仕事を奪われる」という不安が実際の雇用・人員配置の議論に発展する可能性がある</li>
+                <li>直接の法的リスクは薄いが、導入企業の人事・組織設計に関わる話なので、大規模導入案件では社労士的な視点（配置転換・役割再定義のアドバイス）があると提案の説得力が増す。詳細は次項15を参照。</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 15 社労士の必要性 -->
+    <section class="section" id="s15">
+        <div class="section-head">
+            <div class="section-bar bar-red"></div>
+            <h2 class="section-title" style="color:#dc2626;">15. 社労士の必要性（人事系サービスとして絶対に必須な理由）</h2>
+        </div>
+        <div class="box-red">
+            <p class="box-label">【注記】以下はClaudeによる一般的な法令情報に基づく整理です。Claudeは社労士ではないため、個別の適法性判断は必ず社労士・弁護士に確認してください。</p>
+        </div>
+
+        <div class="card">
+            <p class="sub-heading">必須になる根本理由：社会保険労務士法の「独占業務」に抵触するリスク</p>
+            <p style="color:#4b5563;">社労士法には、無資格者が行うと罰則（6ヶ月以下の懲役または30万円以下の罰金）が科される独占業務が定められている（社会保険労務士法第27条、第32条の2）。これは弁護士業界における「非弁行為」と同じ構造。AI社員が実質的にこの独占業務を代行してしまうと、「AIがやっているから」は言い訳にならず、提供事業者側が違法となりうる。</p>
+        </div>
+
+        <div class="card gray-card">
+            <p class="sub-heading">1号業務（独占）</p>
+            <ul class="dot-list gray-markers">
+                <li>労働保険の書類の作成・提出代行、健康保険・雇用保険などへの加入・脱退手続き、給付手続きや助成金の申請など</li>
+                <li>報酬が発生する労働社会保険関連の手続きは、弁護士・社労士のみが可能</li>
+            </ul>
+
+            <p class="sub-heading">2号業務（独占）</p>
+            <ul class="dot-list gray-markers">
+                <li>労働社会保険諸法令に従う帳簿書類の作成、労働者名簿や賃金台帳の作成請負、就業規則や各種労使協定の作成など</li>
+                <li>企業が常時10名以上の従業員を使用する場合は就業規則の作成が義務付けられており、この就業規則の作成も社労士の独占業務</li>
+            </ul>
+
+            <p class="sub-heading">3号業務（独占ではない）</p>
+            <ul class="dot-list gray-markers" style="margin-bottom:0;">
+                <li>労務管理に関する相談・指導やコンサルティング業務。ここはAIが担っても法的な独占業務違反にはならない</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <p class="sub-heading">AI社員の機能別・独占業務リスク一覧</p>
+            <div style="overflow-x:auto;">
+                <table class="data-table">
+                    <thead><tr><th>AI社員の機能例</th><th>独占業務に触れるか</th><th>対応の方向性</th></tr></thead>
+                    <tbody>
+                        <tr><td>「有給申請の方法は？」等のFAQ回答</td><td>セーフ（相談・案内レベル、3号業務相当）</td><td>問題なし</td></tr>
+                        <tr style="background:#fef2f2;"><td>就業規則の内容をAIが自動生成・改定して公開</td><td style="color:#991b1b; font-weight:700;">アウトの可能性大（2号業務）</td><td>社労士の監修・承認フローを必須化</td></tr>
+                        <tr style="background:#fef2f2;"><td>社会保険の加入・脱退手続き書類をAIが作成し提出まで代行</td><td style="color:#991b1b; font-weight:700;">アウト（1号業務）</td><td>社労士法人との提携が必須。AIは下書き作成までに留め、提出行為は必ず有資格者を介す設計にする</td></tr>
+                        <tr style="background:#fef2f2;"><td>助成金の申請書類作成支援</td><td style="color:#991b1b; font-weight:700;">アウトの可能性大（1号業務）</td><td>同上、社労士連携が必須</td></tr>
+                        <tr><td>勤怠データから残業代（割増賃金）を自動計算</td><td>グレー（専門知識が必要、計算ミスは未払い残業代訴訟に直結）</td><td>計算ロジックを社労士に監修させる</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="box-purple">
+            <p class="box-label">解決の方向性：Knowledge Lifecycleの仕組みをそのまま応用する</p>
+            <ul class="dot-list" style="margin-bottom:0;">
+                <li>本資料4章の「人が承認して正式ナレッジになる」というHuman-in-the-loopの設計思想を、労務領域にそのまま適用できる</li>
+                <li>AIは下書き・提案・分析まで（3号業務相当の部分はAIでも可）</li>
+                <li>就業規則の正式版公開、行政への届出書類の最終作成・提出は、必ず社労士がReviewフェーズで承認・実行する、という役割分担をシステム設計・契約書の両方で明文化するのが現実的</li>
+            </ul>
+        </div>
+
+        <div class="card gray-card">
+            <p class="sub-heading">社労士が絶対に必要な理由（まとめ）</p>
+            <ul class="dot-list gray-markers" style="margin-bottom:0;">
+                <li><strong>法律上の必須：</strong>独占業務（1号・2号業務）に該当する機能を提供する以上、社労士（個人または社労士法人）との提携なしでは違法になりうる</li>
+                <li><strong>リスク管理上の必須：</strong>就業規則は労働契約の内容を規律する法的効力を持つ重要な文書で、法改正のたびに見直しが必要。AIが古い法令基準のまま回答し続けると、クライアント企業が労基署の是正勧告や未払い残業代請求を受けるリスクに直結する</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 16 未解決事項 -->
+    <section class="section" id="s16">
+        <div class="section-head">
+            <div class="section-bar bar-red"></div>
+            <h2 class="section-title" style="color:#dc2626;">16. 未解決の疑問点（保留中）</h2>
+        </div>
+        <div style="overflow-x:auto;">
+            <table class="data-table">
+                <thead><tr><th>#</th><th>論点</th><th>内容</th></tr></thead>
+                <tbody>
+                    <tr><td>1</td><td>料金体系の関係性</td><td>エージェント年80万円＋構築年50万円／月1人4万円（最大200人）／利用者単価300円×50名＝15万円の3体系の関係が未整理。販売価格と自社原価が混在した状態</td></tr>
+                    <tr><td>2</td><td>カード＝事業部の課金単位</td><td>カード数増加による費用感と、エージェント単位の課金（80万円/年）が独立軸か連動軸か不明瞭</td></tr>
+                    <tr><td>3</td><td>クレジット規模感</td><td>「10000クレジットで十分」＝1000万トークン相当という計算になるが、月間／年間の別、200人規模稼働時の妥当性は未確認</td></tr>
+                    <tr><td>4</td><td>RPMとバルク単位</td><td>「RPM20に収める」方針と「200RPMで100万単位」の数字の関係、バルク単位の正式名称が未確定</td></tr>
+                    <tr><td>5</td><td>瑞鳳AWS費用削減の前提</td><td>月10数万円→月2〜3万円に下がる見込みの根拠（何を代替するか）が未記載</td></tr>
+                    <tr><td>6</td><td>「SaaS販売ではない」の定義</td><td>契約形態（受託開発／ライセンス／成果報酬型等）としての位置づけが未定義</td></tr>
+                    <tr><td>7</td><td>CODATI資料との関係</td><td>TOKIWAGI提供のCODATI資料と、これまでの料金メモ（GPTBots・瑞鳳等）が同一案件か別案件か未確認</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="box-gray" style="margin-top:1rem;">
+            <p class="box-label">【参考URL・未確認】</p>
+            <p style="color:#4b5563; font-size:0.9rem;">TOKIWAGIメモに記載のあったモック画面URL：<code style="background:#f3f4f6;padding:0.1rem 0.4rem;border-radius:4px;">https://abp-mock.verced.app/amusement/dashboard</code>（外部からのfetchは不可。認証等で開けない可能性あり、内容未確認）</p>
+        </div>
+    </section>
+
+    <p class="divider-label">ここから参考：外部調査（ソース外の情報）</p>
+
+    <!-- 14 競合比較 -->
+    <section class="section" id="s17">
+        <div class="section-head">
+            <div class="section-bar bar-gray"></div>
+            <h2 class="section-title gray">17. 競合・類似サービスとの比較</h2>
+        </div>
+        <div class="box-gray">
+            <p class="box-label">【注記】ここから先はWeb調査に基づく参考情報です。TOKIWAGIメモ・公式デックには含まれていません。金額・仕様は変更される可能性があります。</p>
+        </div>
+
+        <div style="overflow-x:auto;">
+            <table class="data-table">
+                <thead><tr><th>サービス</th><th>提供元</th><th>ポジショニング</th></tr></thead>
+                <tbody>
+                    <tr><td>Glean（Work AI Platform）</td><td>Glean Technologies（米国。国内はクラウドエース・アシスト・丸紅ITソリューションズ等が代理店販売）</td><td>100以上のSaaSを横断検索＋AIアシスタント＋自律エージェント。エンタープライズ向けの「検索起点」プラットフォーム</td></tr>
+                    <tr><td>AISAKU（アイサク）</td><td>WHITE株式会社</td><td>月額5万円〜、AI社員6体をテンプレート化された「仕事メニュー」から即日利用。低価格・定型業務特化</td></tr>
+                    <tr><td>JAPAN AI AGENT</td><td>株式会社JAPAN AI</td><td>日本企業特化、ノーコードでAI社員（エージェント）を作成</td></tr>
+                    <tr><td>AI EMPLOYEE STUDIO（AI社員総合センター）</td><td>要確認</td><td>貴社専属のAI社員をオーダーメイドで受託製作。個別見積もり</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card purple-card" style="margin-top:1rem;">
+            <p class="sub-heading">CODATIとの比較で見えてくる違い</p>
+            <ul class="dot-list">
+                <li><strong>Glean：</strong>横断検索の網羅性は圧倒的だが、「AI社員」という人格化された役割設計（Eco/Analyst/Secretary等）や、Knowledge Lifecycleのような統制されたナレッジ承認フローは前面に出していない。海外製・エンタープライズ価格帯。</li>
+                <li><strong>AISAKU：</strong>低価格・即日導入は強みだが、テンプレート化された定型業務メニューが中心で、CODATIのような「会社を理解して先に動く」統合基盤としての設計思想は薄い。</li>
+                <li><strong>JAPAN AI AGENT／AI EMPLOYEE STUDIO：</strong>ノーコード構築・受託製作型で、CODATIのようなPortal/Knowledge Center/Integration Hub/AI Employeesの4層構成を持つ「プラットフォーム」というより、個別エージェント構築の色が強い。</li>
+            </ul>
+            <p style="color:#4b5563; margin-top:0.75rem;">CODATIの立ち位置は、「AI社員」という分かりやすい概念＋Human-in-the-loopのナレッジ統制＋4層構成の統合プラットフォームという組み合わせが、他社にあまり見られない差別化ポイントとして整理できる。</p>
+        </div>
+    </section>
+
+    <p class="divider-label">ここから CODATI解説（研修の音声起こし・8/18 TKW議事録）</p>
+
+    <!-- 1 コンセプト -->
+        <section id="s18" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-purple"></div>
+                <h2 class="section-title purple">18. コンセプト</h2>
+            </div>
+            <div class="card purple-card">
+                <p class="sub-heading">AIエージェント管理プラットフォームとは</p>
+                <p style="color:#4b5563;">単なる個別対応の「RAGモデル」や「生成AIツール」ではなく、社内に配置された複数のAIエージェント（AI社員）を統括・管理するプラットフォーム。</p>
+                <ul class="dot-list" style="margin-top:1rem;">
+                    <li><strong>部署ごとの配置：</strong>「経理には経理の、営業には営業のAIエージェント」というように、事業部や業務ごとに専用のエージェントを「カード（管理項目）」として追加し、それぞれに異なる役割や指示を与えて稼働させる。</li>
+                    <li><strong>能動的な業務理解：</strong>一方的に指示を待つだけでなく、会社や業務の仕組みを能動的に理解し、全体の業務プロセスの中で機能するように設計されている。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2 設計思想 -->
+        <section id="s19" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-purple"></div>
+                <h2 class="section-title purple">19. 設計思想：業務定義が先、AIの設定は後</h2>
+            </div>
+            <div class="card">
+                <p style="color:#4b5563;">AIがゼロから能動的に仕事を探して勝手に動くわけではない。自動化を設計する際は、まず人間側が「何をしたいか」という業務フローを明確に決める必要がある。</p>
+                <ul class="dot-list" style="margin-top:1rem;">
+                    <li><strong>役割のカード化（AI社員の配置）：</strong>部署や業務ごとに「カード」を追加し、1事業部に1人（または複数）のAIエージェントを割り当て、それぞれに異なる指示（プロンプト）やナレッジを与えて役割を完結させる。</li>
+                    <li><strong>ナレッジの設計：</strong>業務が決まったら、それに合わせて「何を学習（勉強）させればそのエージェントが動けるか」を人間側が事前に設計してセットアップする。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 3 技術アーキテクチャ -->
+        <section id="s20" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-blue"></div>
+                <h2 class="section-title blue">20. 技術アーキテクチャ</h2>
+            </div>
+
+            <div class="card">
+                <p class="sub-heading">トークン消費を最小化するアーキテクチャ</p>
+                <p style="color:#4b5563;">複数のエージェントを常にAIだけで直接連携させたり、すべてのメールやスケジュールを常にAIに監視・処理させたりすると、トークン消費が莫大になり実用的なコストで収まらない。</p>
+                <ul class="dot-list blue-markers" style="margin-top:1rem;">
+                    <li><strong>データサーバーを介した間接連携：</strong>エージェント間やシステム間のデータ連携にはAIを直接使わず、裏側のデータサーバーを経由させて連携させる。</li>
+                    <li><strong>トリガー駆動型のRAG探索：</strong>普段はAIを動かさず、データサーバーにデータを置く際のルールをあらかじめ決めておく。「タスクのステータスを確認したい」といった特定のトリガーや必要性が発生したタイミングで初めて、AIがルールに基づいてデータサーバーへ必要な情報だけを探索しに行く設計。これにより、AIが「あたかも覚えている」かのように動きつつ、コストを極限まで抑えている。</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <p class="sub-heading">表記ゆれ（名寄せ）の自動吸収</p>
+                <p style="color:#4b5563;">従来のシステム開発（データベース設計）において最大の障壁となる「半角・全角の違い」や「店舗名の略称」などの表記ゆれは、事前の中間データ整備（名寄せ作業）が一切不要。AI（LLM）が文脈や会話としてそのまま表記ゆれを高度に理解できるため、データが多少不揃いであっても自動で意味を解釈し、正しいデータと突き合わせることができる。これにより、導入時のデータクレンジングの手間が劇的に削減される。</p>
+            </div>
+
+            <div class="card gray-card">
+                <p class="sub-heading">ファイルの取り込み方法</p>
+                <ul class="dot-list gray-markers">
+                    <li><strong>手動アップロード：</strong>管理画面から、就業規則や業務マニュアルなどのPDF、Excelファイルをユーザーが直接選択してアップロードする。</li>
+                    <li><strong>ローカルファイルの自動同期は未対応：</strong>「自分のローカルファイルを取りに行く（自動で同期して読み込むような機能）」は、現時点ではまだできていないと明言されている。</li>
+                    <li><strong>CSVファイルによるデータ更新：</strong>在庫管理システムや介護の個人情報管理システムなど、既存の外部システムと直接API連携が難しい、あるいは情報をプラットフォーム側に永続保持させたくない場合は、CSVファイルを吐き出して取り込むことで最新の動的ナレッジ（在庫の差分情報など）をAIに把握させる。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 4 外部システム連携 -->
+        <section id="s21" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-blue"></div>
+                <h2 class="section-title blue">21. 外部システム連携</h2>
+            </div>
+
+            <div class="card">
+                <p class="sub-heading">標準で対応している主要ツールとの連携</p>
+                <ul class="dot-list blue-markers">
+                    <li><strong>Google＆LINE WORKS連携：</strong>カレンダー（スケジュール）や社内メール、チャットツールの「LINE WORKS」の内容を、AIが直接読み込むことができる。</li>
+                    <li><strong>チャットからタスクへ自動抽出：</strong>LINE WORKSで業務の指示ややり取りが投げられると、AIがその会話から「何月何日にどうしたい」という内容を自動で判別し、プラットフォーム内の「タスク」に自動追加・ステータス管理する。</li>
+                    <li><strong>メールの双方向連携：</strong>単にメールを監視するだけでなく、Outlookなどとの連携を視野に入れ、AIが自動生成した手配メールを「承認ボタン」一つで外部に送信するステップまでシステム内で完結させる。</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <p class="sub-heading">API連携が難しい場合の現実的な解決策（CSV連携）</p>
+                <ul class="dot-list blue-markers">
+                    <li><strong>在庫CSV差分取り込み：</strong>相手先の在庫管理システムと直接APIで繋げるか分からない場合、日々の実務では「CSVで前回からの差分データだけを取り込む」という連携方法をとる。</li>
+                    <li><strong>個人情報保護のための一時CSV取り込み：</strong>介護分野などのデリケートな個人情報連携では、顧客の個人情報をプラットフォーム側やAI側に永続保持せず、既存の専用管理ツールから「CSVで一時的に吐き出して、この環境内で取り込んで参照しているだけ」という設計にする。これにより、Pマークを無理に取得せずとも、安全に外部データと連携して運用できる。</li>
+                </ul>
+            </div>
+
+            <div class="box-gray">
+                <p class="box-label">【将来像】外部APIへの「指示出し」と双方向連携</p>
+                <p style="color:#4b5563;">厚生労働省などのサイトを巡回して法改正（サブロック協定や労働法など）を検知すると、プラットフォームが「就業規則の変更が必要」とアラートを出す。そこから、連携している外部の編集ツールやシステムへAPI経由で「このように変更してください」と指示を出し、変更完了の信号をまたプラットフォーム側で受け取る、といった双方向のシステム間連携も、モデル（設計）次第で構築可能とされている。</p>
+            </div>
+        </section>
+
+        <!-- 5 ユースケース：サンプル手配業務 -->
+        <section id="s22" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">22. ユースケース：サンプル手配業務の自動化</h2>
+            </div>
+
+            <div class="card">
+                <p class="sub-heading">寿司チェーン（スシロー）の事例</p>
+                <ul class="dot-list green-markers">
+                    <li>毎日何百件も届く依頼メールや、関係者がランダムに書き込む共有Excelシートの情報をAIが自動解析する。</li>
+                    <li>入力のタイムラグと在庫データの整合性担保：参照タイミングによって在庫数にタイムラグ（揺れ）が生じ整合性が合わなくなる課題に対し、最新の「在庫表CSV（前回からの差分データ）」をプラットフォームに取り込み、AIが最新在庫と依頼データを突き合わせる設計で整合性を担保している。</li>
+                    <li>在庫表をもとに「センターに在庫があるものはセンター手配、ないものはメーカー手配」とAIが自動的に仕分ける。</li>
+                    <li>「承認ボタン（ポチ）」による人間とAIのハイブリッド運用：手配用のメール本文をAIが自動生成するが、勝手に送信するのではなく、人間が最終確認して「承認」ボタンを押すことで初めて送信されるステップを挟むことで、業務の安全性を100%に近づけている。</li>
+                    <li>曖昧な返信メールの解釈：メーカーから戻ってきた「希望通りの納品は難しい」「メーカーに在庫がない」といった曖昧なニュアンスもAIが自動で読み取り、次の適切なステータスへと分類する。</li>
+                </ul>
+            </div>
+
+            <div class="box-purple">
+                <p class="box-label">【8/18 TKW議事録より】飯田氏の業務を対象にした自動化デモ</p>
+                <ul class="dot-list" style="margin-bottom:0;">
+                    <li>これまで手動で行われていた、非常に煩雑なサンプル手配業務をほぼ完全に自動化するシステムがデモされた。</li>
+                    <li>ステータス可視化と自動メール生成：画面上でサマリー（依頼数36件、センター手配14件、自動化可能率68.6%など）がリアルタイムに可視化される。</li>
+                    <li>Outlook連携によるステータス自動更新：先方からの返信メールの内容をシステムが自動で読み取り、ステータス（返信待ち、手配済みなど）を自動で更新・管理する。</li>
+                    <li>差分取り込み機能：1日1回などのタイミングで、前回からの差分データだけを取り込んで処理することも可能。担当者が1日中画面に張り付く必要がなくなり、作業負荷が劇的に削減される。</li>
+                </ul>
+            </div>
+
+            <div class="diagram-wrap">
+                <svg viewBox="0 0 1060 250" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family:'Noto Sans JP',sans-serif;">
+                    <text x="0" y="22" font-size="16" font-weight="700" fill="#374151">サンプル手配業務　自動化フロー</text>
+
+                    <rect x="15" y="58" width="170" height="88" rx="10" fill="#f0fdf4" stroke="#059669" stroke-width="1.5"/>
+                    <text x="100" y="96" font-size="13.5" font-weight="700" fill="#065f46" text-anchor="middle">エクセル発注</text>
+                    <text x="100" y="118" font-size="12.5" font-weight="700" fill="#065f46" text-anchor="middle">データ入力</text>
+                    <path d="M188 102 L212 102" stroke="#6ee7b7" stroke-width="1.5" marker-end="url(#arrowtr1)"/>
+
+                    <rect x="215" y="58" width="170" height="88" rx="10" fill="#f0fdf4" stroke="#059669" stroke-width="1.5"/>
+                    <text x="300" y="96" font-size="13.5" font-weight="700" fill="#065f46" text-anchor="middle">在庫CSVと</text>
+                    <text x="300" y="118" font-size="13.5" font-weight="700" fill="#065f46" text-anchor="middle">自動照合</text>
+                    <path d="M388 102 L412 102" stroke="#6ee7b7" stroke-width="1.5" marker-end="url(#arrowtr1)"/>
+
+                    <rect x="415" y="58" width="170" height="88" rx="10" fill="#f0fdf4" stroke="#059669" stroke-width="1.5"/>
+                    <text x="500" y="90" font-size="13" font-weight="700" fill="#065f46" text-anchor="middle">自動振分</text>
+                    <text x="500" y="111" font-size="12" fill="#059669" text-anchor="middle">センター/</text>
+                    <text x="500" y="129" font-size="12" fill="#059669" text-anchor="middle">メーカー手配</text>
+                    <path d="M588 102 L612 102" stroke="#6ee7b7" stroke-width="1.5" marker-end="url(#arrowtr1)"/>
+
+                    <rect x="615" y="58" width="170" height="88" rx="10" fill="#f0fdf4" stroke="#059669" stroke-width="1.5"/>
+                    <text x="700" y="96" font-size="13.5" font-weight="700" fill="#065f46" text-anchor="middle">承認ボタン→</text>
+                    <text x="700" y="118" font-size="13.5" font-weight="700" fill="#065f46" text-anchor="middle">メール自動生成</text>
+                    <path d="M788 102 L812 102" stroke="#6ee7b7" stroke-width="1.5" marker-end="url(#arrowtr1)"/>
+
+                    <rect x="815" y="58" width="230" height="88" rx="10" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+                    <text x="930" y="90" font-size="13.5" font-weight="700" fill="#065f46" text-anchor="middle">Outlook連携</text>
+                    <text x="930" y="111" font-size="12" fill="#059669" text-anchor="middle">返信メールから</text>
+                    <text x="930" y="129" font-size="12" fill="#059669" text-anchor="middle">ステータス自動更新</text>
+
+                    <rect x="15" y="175" width="1030" height="55" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="1"/>
+                    <text x="30" y="197" font-size="12.5" fill="#065f46">差分取り込み機能：1日1回、前回からの差分データのみ処理。</text>
+                    <text x="30" y="217" font-size="12.5" fill="#065f46">依頼数36件／センター手配14件／自動化可能率68.6%（画面上でリアルタイム可視化）</text>
+
+                    <defs><marker id="arrowtr1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#059669"/></marker></defs>
+                </svg>
+            </div>
+        </section>
+
+        <!-- 6 ユースケース：eラーニング -->
+        <section id="s23" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-purple"></div>
+                <h2 class="section-title purple">23. ユースケース：eラーニング・研修コース自動生成</h2>
+            </div>
+
+            <div class="card">
+                <p class="sub-heading">仕組み</p>
+                <p style="color:#4b5563;">就業規則やマニュアル（PDF、Excelなど）をナレッジとして読み込ませるだけで、「新人向け」「店長向け」といった対象者や、「初級」「上級」といったレベルに合わせた研修コースや、記述式を含む20問程度のテストをAIが自動生成・構築する。会社のルールに完全に準拠した社内教育コンテンツが、マニュアルを1枚読み込ませるだけで一瞬で構築される。</p>
+            </div>
+
+            <div class="box-purple">
+                <p class="box-label">【8/18 TKW議事録より】CODATIアカデミーのデモ</p>
+                <ul class="dot-list" style="margin-bottom:0;">
+                    <li>プロンプト（指示文）を入力することなく、直感的な操作だけで研修プログラムを瞬時に作成できるビルダー機能が紹介された。</li>
+                    <li>教材の自動登録：PDF、動画、YouTube URLなどをドラッグ＆ドロップするだけで、AIが教材（ナレッジ）として学習する。</li>
+                    <li>テストの自動生成：対象者（店長、営業、新人、管理職など）や難易度（初級・中級・上級）を指定するだけで、AIが丸バツ、記述、複数選択形式のテスト問題を自動で組み立てる。</li>
+                    <li>受講状況の確認から、最終的には人的評価までをワンストップで管理できる仕組み。</li>
+                    <li>通常の組織であれば1年以上かかる業務が、このビルダーを使えばわずか5分で構築できてしまう画期的なシステムであると絶賛された。</li>
+                    <li>出来上がったデモを引っ提げ、経営層自らが木下氏（瑞鳳のキーマン）のところへ説明に行き、直接提案を行うことが決定した。</li>
+                </ul>
+            </div>
+
+            <div class="diagram-wrap">
+                <svg viewBox="0 0 1060 180" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family:'Noto Sans JP',sans-serif;">
+                    <text x="0" y="22" font-size="16" font-weight="700" fill="#374151">CODATIアカデミー　教材登録からテスト生成まで</text>
+
+                    <rect x="15" y="55" width="230" height="88" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+                    <text x="130" y="90" font-size="13.5" font-weight="700" fill="#6d28d9" text-anchor="middle">教材D&amp;D登録</text>
+                    <text x="130" y="112" font-size="12" fill="#7c3aed" text-anchor="middle">PDF・動画・YouTube</text>
+                    <path d="M248 99 L278 99" stroke="#c4b5fd" stroke-width="1.5" marker-end="url(#arrowtr2)"/>
+
+                    <rect x="281" y="55" width="230" height="88" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+                    <text x="396" y="90" font-size="13.5" font-weight="700" fill="#6d28d9" text-anchor="middle">AIが学習</text>
+                    <text x="396" y="112" font-size="12" fill="#7c3aed" text-anchor="middle">ナレッジ化</text>
+                    <path d="M514 99 L544 99" stroke="#c4b5fd" stroke-width="1.5" marker-end="url(#arrowtr2)"/>
+
+                    <rect x="547" y="55" width="250" height="88" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+                    <text x="672" y="82" font-size="13.5" font-weight="700" fill="#6d28d9" text-anchor="middle">対象者・難易度を指定</text>
+                    <text x="672" y="103" font-size="12" fill="#7c3aed" text-anchor="middle">店長/営業/新人/管理職</text>
+                    <text x="672" y="122" font-size="12" fill="#7c3aed" text-anchor="middle">初級/中級/上級</text>
+                    <path d="M800 99 L830 99" stroke="#c4b5fd" stroke-width="1.5" marker-end="url(#arrowtr2)"/>
+
+                    <rect x="833" y="55" width="215" height="88" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+                    <text x="940" y="82" font-size="13.5" font-weight="700" fill="#4c1d95" text-anchor="middle">テスト自動生成</text>
+                    <text x="940" y="103" font-size="12" fill="#7c3aed" text-anchor="middle">丸バツ/記述/複数選択</text>
+                    <text x="940" y="122" font-size="12" fill="#7c3aed" text-anchor="middle">→受講管理・人的評価へ</text>
+
+                    <defs><marker id="arrowtr2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a78bfa"/></marker></defs>
+                </svg>
+            </div>
+        </section>
+
+        <!-- 7 ユースケース：法改正・個人AI -->
+        <section id="s24" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title gray">24. ユースケース：法改正自動対応・個人AI統合</h2>
+            </div>
+
+            <div class="card gray-card">
+                <p class="sub-heading">法改正への自動対応モデル</p>
+                <p style="color:#4b5563;">特定のサイトなどを1日1回巡回させ、例えば労働法などの法改正があった場合に、「就業規則のこの部分の変更が必要です」というアラートを通知し、改訂案を作成するようなモデルを組むことも可能。</p>
+            </div>
+
+            <div class="card gray-card">
+                <p class="sub-heading">個人用AIツールの統合</p>
+                <p style="color:#4b5563;">会社全体のナレッジとは別に、個人が契約しているAI（GeminiやChatGPTなど）をプラットフォーム上で連携させ、他者には共有されないプライベートな環境で自身の資料作成や画像生成に役立てることもできる。</p>
+            </div>
+        </section>
+
+        <!-- 8 導入アプローチ -->
+        <section id="s25" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-purple"></div>
+                <h2 class="section-title purple">25. 導入アプローチ</h2>
+            </div>
+            <p class="section-lead">一般のクライアントは「AIで何ができるか」を具体的にイメージできない。そのため、システム全体をいきなり設計・開発する手法は取らず、以下のような段階的なステップが推奨されている。</p>
+
+            <div class="card purple-card">
+                <ul class="dot-list">
+                    <li><strong>① ヒアリング：</strong>現状の業務で何に困っているか、どのような課題があるかを丁寧に聞き取る。</li>
+                    <li><strong>② 核心部分のモックアップ作成：</strong>課題の最も「肝（ボトルネック）」になっている部分を、まずモック（デモ画面）として作成して見せ、AIでどのように解決できるかを視覚的に理解してもらう。</li>
+                    <li><strong>③ 段階的な機能追加：</strong>理解を得られた後に、GoogleやLINE WORKSなどの社内システムと連携させ、エージェントを徐々に拡張していく。</li>
+                </ul>
+            </div>
+
+            <div class="box-gray">
+                <p class="box-label">【コンサルティングでの武器として】</p>
+                <p style="color:#4b5563;">最初は事業部ごとに「カード（エージェント）」を増やし、それぞれに必要な指示（プロンプト）や個別のナレッジをセットして「AI社員」を1人ずつ配属していくような感覚で拡張できる。特定の業界（例：パチンコ、飲食、印刷など）で一度ナレッジ構築と自動化のパターン（ひな形）を作ってしまえば、それがプラットフォーム全体の知見となり、他社へパッケージ化して横展開しやすくなる。</p>
+            </div>
+        </section>
+
+        <p class="divider-label">ここから8/18 TKW議事録より（営業戦略・事業への示唆）</p>
+
+        <!-- 9 営業戦略 -->
+        <section id="s26" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">26. 営業戦略・事業への示唆</h2>
+            </div>
+
+            <div class="card">
+                <p class="sub-heading">システム（デモ画面）自体を「最強の営業ツール」にする戦略</p>
+                <ul class="dot-list green-markers">
+                    <li>CODATIのトレーニングセンターや自動化システムのヒアリング・ビルダー機能を、そのまま営業活動（商談）用のツールとして移植する。</li>
+                    <li>顧客との打ち合わせの席で、営業担当者が顧客に「どのような業務を行っているか」「どんなことに困っているか」を質問し、その場で顧客が使っている実際のエクセルシートを取り込んだり、課題を入力したりする。すると、その場でAIが「このシステムを使えば、あなたの業務はこれだけ自動化できます」という具体的な解決策を瞬時に回答・提示する実演型デモを行う。</li>
+                    <li>多くの企業が導入している「AIナレッジセンター」は、データを検索するだけの「静的なナレッジセンター」に過ぎず、業務自体は何も変わっていないという不満を抱えている。当社のシステムは「裏側で実際にメールやデータが自動で動きを伴ってタスクを完結させる」点で競合とは全く異なる。</li>
+                    <li>中小企業の社長（決済者）は「AIを会社にどう還元すればいいか」「プロンプトを学ばせないといけないのか」と悩んでいる。そこへ「従業員は誰一人プロンプトを打てなくていい（AIを使えなくていい）。裏側でAIが勝手に動いて業務が完結する」というAI活用の真の本質を社長に説明する。その上で、現場の担当者にデモを触らせる。現場が「嘘でしょう、こんなに楽になるのか」と体感すれば、その担当者が社内の熱心なプレゼンター（味方）となり、売り込まなくても勝手に社内決済を通して売り上げが上がっていく仕組みを作る。</li>
+                    <li>他社のナレッジセンターを既に導入している企業に対して、この仕組みをぶつけて「乗り換え（リプレイス）戦略」を積極的に仕掛ける。</li>
+                </ul>
+            </div>
+
+            <div class="box-gray">
+                <p class="box-label">【kintone発注システムの不要化（驚きの予見）】</p>
+                <p style="color:#4b5563;">この自動化システムが本格導入され、外部とのコミュニケーション（メールのやり取りや差分確認など）がすべてAIの裏側で処理されるようになれば、現在導入しようとしている発注用kintoneシステム自体がそもそも不要になる（メールとAIだけで手配が完結するため）という予言が示された。すでに発注用システム開発としてkintoneの導入費用を一部もらっているため、まずは一度稼働させて本番運用を行うが、将来的には「これ、AI自動化にすればkintone自体が不要になってさらに安く運用できますよ」と顧客側に気づかせる形で、当社の自動化システムへの切り替えを促していく。</p>
+            </div>
+        </section>
+
+    <footer>
+        <p>&copy; 2026 TKW Project Team. All Rights Reserved.</p>
+    </footer>
+</div>
+    </div>
+    </div>
+
+<script>
+    const colorMap = {'s1':'purple', 's2':'purple', 's3':'purple', 's4':'purple', 's5':'purple', 's6':'purple', 's7':'blue', 's8':'purple', 's9':'purple', 's10':'gray', 's11':'gray', 's12':'gray', 's13':'gray', 's14':'blue', 's15':'red', 's16':'red', 's17':'gray', 's18':'purple', 's19':'purple', 's20':'blue', 's21':'blue', 's22':'green', 's23':'purple', 's24':'gray', 's25':'purple', 's26':'green'};
+    const links = document.querySelectorAll('.sidebar-link');
+    const sections = document.querySelectorAll('section[id]');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                const color = colorMap[id] || 'purple';
+                links.forEach(link => {
+                    link.classList.remove('active', 'active-blue', 'active-gray', 'active-red', 'active-green');
+                    if (link.getAttribute('href') === '#' + id) {
+                        if (color === 'blue') link.classList.add('active-blue');
+                        else if (color === 'gray') link.classList.add('active-gray');
+                        else if (color === 'red') link.classList.add('active-red');
+                        else if (color === 'green') link.classList.add('active-green');
+                        else link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.15 });
+    sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
