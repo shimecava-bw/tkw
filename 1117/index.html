@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKW会議：2026年11月17日</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif; background-color: #ffffff; color: #1f2937; line-height: 1.8; font-size: 16.5px; }
+        .layout { display: flex; min-height: 100vh; }
+        .sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; background-color: #f9fafb; border-right: 1px solid #e5e7eb; display: flex; flex-direction: column; padding: 2rem 0 3rem 0; }
+        .sidebar-label { font-size: 0.7rem; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; padding: 0 1.5rem; margin-bottom: 1rem; }
+        .sidebar-links { display: flex; flex-direction: column; }
+        .sidebar-link { display: block; padding: 0.42rem 1.5rem; font-size: 0.78rem; color: #6b7280; text-decoration: none; border-radius: 0.5rem; margin: 0.1rem 0.5rem; transition: background 0.18s, color 0.18s; }
+        .sidebar-link:hover { background-color: #e5e7eb; color: #111827; }
+        .sidebar-link.active { background-color: #ecfdf5; color: #065f46; font-weight: 700; }
+        .sidebar-link.active-purple { background-color: #f5f3ff; color: #6d28d9; font-weight: 700; }
+        .sidebar-card { margin: 1.5rem 1rem 0 1rem; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.25rem; font-size: 0.75rem; color: #6b7280; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .sidebar-card-title { font-weight: 700; color: #1f2937; font-size: 0.85rem; margin-bottom: 0.6rem; }
+        .sidebar-card-row { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
+        .sidebar-card-row span:last-child { font-weight: 700; color: #1f2937; }
+        .main { flex: 1; padding: 0 4rem 4rem 4rem; background: #ffffff; min-width: 0; }
+        .page-header { padding: 3.5rem 0 2.5rem 0; margin-bottom: 2.5rem; border-bottom: 1px solid #e5e7eb; }
+        .badge { display: inline-block; padding: 0.2rem 0.75rem; border-radius: 9999px; font-size: 0.78rem; font-weight: 600; background: #f3f4f6; color: #4b5563; margin-bottom: 1rem; letter-spacing: 0.04em; }
+        .page-title { font-size: 2.2rem; font-weight: 800; color: #111827; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.75rem; }
+        .page-subtitle { color: #6b7280; font-size: 1rem; font-weight: 500; }
+        .section-card { background: #ffffff; border-radius: 1rem; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 2rem; padding: 2.5rem; }
+        .section-card.purple-card { background-color: #f5f3ff; border: 2px solid #7c3aed; }
+        .section-head { display: flex; align-items: center; margin-bottom: 1.75rem; }
+        .section-bar { width: 6px; height: 2rem; border-radius: 9999px; margin-right: 1rem; flex-shrink: 0; }
+        .bar-green { background: #059669; }
+        .bar-gray { background: #6b7280; }
+        .bar-purple { background: #7c3aed; }
+        .section-title { font-size: 1.35rem; font-weight: 700; color: #111827; }
+        .section-title.green { color: #065f46; }
+        .section-title.purple { color: #6d28d9; }
+        .section-intro { color: #6b7280; margin-bottom: 1.5rem; line-height: 1.8; }
+        .sub-heading { font-size: 1rem; font-weight: 700; color: #1f2937; margin: 1.75rem 0 0.75rem 0; }
+        ul.dot-list { list-style: disc; padding-left: 1.5rem; color: #4b5563; }
+        ul.dot-list li { margin-bottom: 0.6rem; line-height: 1.75; }
+        ul.dot-list li::marker { color: #10b981; }
+        ul.dot-list.purple-markers li::marker { color: #7c3aed; }
+        ul.dot-list.gray-markers li::marker { color: #6b7280; }
+        ul.dot-list li strong { color: #111827; }
+        .box-green { border-left: 4px solid #10b981; background: #f0fdf4; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-green .box-label { font-size: 0.8rem; font-weight: 700; color: #065f46; margin-bottom: 0.5rem; }
+        .box-blue { border-left: 4px solid #2563eb; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-blue .box-label { font-size: 0.8rem; font-weight: 700; color: #1d4ed8; margin-bottom: 0.5rem; }
+        .box-red { border-left: 4px solid #ef4444; background: #fef2f2; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-red .box-label { font-size: 0.8rem; font-weight: 700; color: #991b1b; margin-bottom: 0.5rem; }
+        .box-purple { border-left: 4px solid #7c3aed; background: #f5f3ff; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-purple .box-label { font-size: 0.8rem; font-weight: 700; color: #6d28d9; margin-bottom: 0.5rem; }
+        .box-gray { border-left: 4px solid #9ca3af; background: #f9fafb; padding: 1rem 1.25rem; margin: 1.25rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+        .box-gray .box-label { font-size: 0.8rem; font-weight: 700; color: #374151; margin-bottom: 0.5rem; }
+        .reporter-badge { display: inline-block; font-size: 0.66rem; font-weight: 700; padding: 0.14rem 0.55rem; border-radius: 9999px; margin-right: 0.4rem; vertical-align: middle; }
+        .reporter-badge.nigo { background: #ecfdf5; color: #065f46; }
+        .reporter-badge.takada { background: #eff6ff; color: #1d4ed8; }
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; margin: 1rem 0; }
+        .data-table thead th { background: #f9fafb; padding: 0.55rem 0.9rem; text-align: left; font-weight: 700; color: #374151; border-bottom: 2px solid #e5e7eb; font-size: 0.73rem; letter-spacing: 0.03em; }
+        .data-table tbody td { padding: 0.55rem 0.9rem; border-bottom: 1px solid #f3f4f6; color: #4b5563; vertical-align: top; }
+        .note { font-size: 0.8rem; color: #6b7280; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 0.5rem; padding: 0.6rem 1rem; margin-top: 0.5rem; }
+        .diagram-wrap { margin: 1.5rem 0; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1.1rem; overflow-x: auto; }
+        .diagram-title { font-size: 0.85rem; font-weight: 700; color: #374151; margin-bottom: 0.9rem; }
+        .flow-row { display: flex; align-items: stretch; gap: 0.5rem; flex-wrap: wrap; }
+        .flow-box { flex: 1 1 140px; border: 1.5px solid #2563eb; background: #eff6ff; border-radius: 0.6rem; padding: 0.7rem 0.85rem; }
+        .flow-box.red { border-color: #ef4444; background: #fef2f2; }
+        .flow-box.green { border-color: #059669; background: #f0fdf4; }
+        .flow-box.gray { border-color: #9ca3af; background: #f9fafb; }
+        .flow-box.purple { border-color: #7c3aed; background: #faf5ff; }
+        .flow-box h4 { font-size: 0.83rem; font-weight: 700; margin-bottom: 0.3rem; color: #1f2937; }
+        .flow-box p { font-size: 0.74rem; color: #4b5563; line-height: 1.5; margin: 0; }
+        .flow-arrow { display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 1.15rem; flex: 0 0 auto; padding: 0 0.15rem; }
+        .flow-plus { display: flex; align-items: center; justify-content: center; color: #6b7280; font-size: 1.1rem; font-weight: 700; flex: 0 0 auto; padding: 0 0.15rem; }
+        .compare-wrap { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin: 1rem 0; }
+        .compare-box { flex: 1 1 150px; border-radius: 0.6rem; padding: 0.9rem 1rem; text-align: center; }
+        .compare-box.low { border: 1.5px solid #9ca3af; background: #f9fafb; }
+        .compare-box.high { border: 1.5px solid #10b981; background: #f0fdf4; }
+        .compare-box .compare-label { font-size: 0.72rem; color: #6b7280; margin-bottom: 0.4rem; }
+        .compare-box .compare-value { font-size: 1.15rem; font-weight: 800; color: #111827; }
+        .compare-arrow { font-size: 1.3rem; color: #9ca3af; flex: 0 0 auto; }
+        .facility-row { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+        .facility-box { flex: 1 1 150px; border: 1.5px solid #e5e7eb; border-radius: 0.6rem; padding: 0.75rem 0.9rem; }
+        .facility-box.done { border-color: #10b981; background: #f0fdf4; }
+        .facility-box.pending { border-color: #b45309; background: #fffbeb; }
+        .facility-box.wait { border-color: #9ca3af; background: #f9fafb; }
+        .facility-box h4 { font-size: 0.82rem; font-weight: 700; color: #1f2937; margin-bottom: 0.3rem; }
+        .facility-box p { font-size: 0.72rem; color: #4b5563; margin: 0; line-height: 1.5; }
+        .page-footer { margin-top: 4rem; padding: 2.5rem 0; border-top: 1px solid #e5e7eb; text-align: center; font-size: 0.75rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; }
+        @media (max-width: 720px) {
+            .flow-row { flex-direction: column; }
+            .flow-arrow, .flow-plus { transform: rotate(90deg); padding: 0.2rem 0; }
+            .compare-wrap { flex-direction: column; }
+            .compare-arrow { transform: rotate(90deg); }
+        }
+        @media (max-width: 768px) {
+            .layout { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid #e5e7eb; padding: 1.25rem 0 1rem 0; }
+            .sidebar-card { display: none; }
+            .main { padding: 0 1.25rem 3rem 1.25rem; }
+            .page-header { padding: 2rem 0 1.5rem 0; }
+            .page-title { font-size: 1.5rem; }
+            .section-card { padding: 1.5rem; }
+            .sidebar-links { flex-direction: row; flex-wrap: wrap; padding: 0 0.75rem; gap: 0.25rem; }
+            .sidebar-link { margin: 0; padding: 0.3rem 0.7rem; font-size: 0.7rem; }
+            .sidebar-label { padding: 0 1rem; }
+        }
+
+        .src-voice { font-size: 0.74rem; color: #6b7280; font-weight: 600; margin-left: 0.3rem; white-space: nowrap; }
+        .bar-row { display: flex; align-items: center; gap: 0.75rem; margin: 0.5rem 0; }
+        .bar-label { flex: 0 0 190px; font-size: 0.78rem; color: #374151; }
+        .bar-track { flex: 1; background: #f3f4f6; border-radius: 0.4rem; height: 1.6rem; }
+        .bar-fill { height: 100%; border-radius: 0.4rem; background: #2563eb; }
+        .bar-fill.green { background: #10b981; }
+        .bar-fill.red { background: #ef4444; }
+        .bar-fill.gray { background: #9ca3af; }
+        .bar-val { flex: 0 0 170px; font-size: 0.78rem; font-weight: 700; color: #111827; }
+        .tl { border-left: 3px solid #d1d5db; margin: 1rem 0 1rem 0.5rem; padding-left: 1.4rem; }
+        .tl-item { position: relative; margin-bottom: 0.95rem; }
+        .tl-item::before { content: ""; position: absolute; left: -1.95rem; top: 0.5rem; width: 0.75rem; height: 0.75rem; border-radius: 50%; background: #10b981; }
+        .tl-item.red::before { background: #ef4444; }
+        .tl-item.gray::before { background: #9ca3af; }
+        .tl-date { font-weight: 700; font-size: 0.86rem; color: #111827; }
+        .tl-text { font-size: 0.8rem; color: #4b5563; line-height: 1.6; }
+        @media (max-width: 720px) { .bar-row { flex-wrap: wrap; } .bar-label, .bar-val { flex: 1 1 100%; } }
+
+        .sidebar-sublink { display: block; padding: 0.3rem 1.5rem 0.3rem 2.6rem; font-size: 0.72rem; color: #6b7280; text-decoration: none; border-radius: 0.5rem; margin: 0.05rem 0.5rem; transition: background 0.18s, color 0.18s; }
+        .sidebar-sublink:hover { background-color: #f5f3ff; color: #6d28d9; }
+        .jump-link { display: inline-block; font-size: 0.74rem; font-weight: 700; color: #6d28d9; background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 9999px; padding: 0.12rem 0.7rem; text-decoration: none; margin-left: 0.4rem; white-space: nowrap; }
+        .jump-link:hover { background: #7c3aed; color: #ffffff; }
+        .change-line { font-size: 0.82rem; font-weight: 700; color: #374151; background: #ffffff; border: 1px solid #ddd6fe; border-radius: 0.5rem; padding: 0.45rem 0.9rem; margin: 0.5rem 0 0.9rem 0; }
+        .client-block { background: #ffffff; border: 1px solid #ddd6fe; border-radius: 0.75rem; padding: 0.4rem 1.25rem 0.9rem 1.25rem; margin: 1rem 0; }
+        .client-block .sub-heading { margin-top: 0.9rem; }
+        .step-label { font-size: 0.8rem; font-weight: 700; color: #6d28d9; margin: 0.9rem 0 0.3rem 0; }
+        @media (max-width: 768px) { .sidebar-sublink { margin: 0; padding: 0.3rem 0.7rem; font-size: 0.7rem; } }
+    </style>
+</head>
+<body>
+<div class="layout">
+    <aside class="sidebar">
+        <div style="margin:0 0 1.2rem 1rem;"><a href="../" style="display:inline-block; padding:0.2rem 0.75rem; border:1.5px solid #059669; border-radius:9999px; background:#ecfdf5; color:#047857; font-size:0.78rem; font-weight:600; letter-spacing:0.04em; text-decoration:none;">← トップページへ戻る</a></div>
+        <p class="sidebar-label">INDEX / 目次</p>
+        <div class="sidebar-links">
+            <a href="#s1" class="sidebar-link">1. MID</a>
+            <a href="#s2" class="sidebar-link">2. Mooovi</a>
+            <a href="#s3" class="sidebar-link">3. ボーネルンド</a>
+            <a href="#s4" class="sidebar-link">4. 瑞鳳ABP</a>
+            <a href="#s5" class="sidebar-link">5. LINE広告</a>
+            <a href="#s6" class="sidebar-link">6. 広告商品</a>
+            <a href="#s7" class="sidebar-link">7. 新規案件</a>
+            <a href="#s8" class="sidebar-link">8. 来季戦略・全体総括</a>
+            <a href="#s9" class="sidebar-link">9. その他・組織・運営</a>
+            <a href="#s10" class="sidebar-link">10. CODATI</a>
+            <a href="#s10-1" class="sidebar-sublink">10-1 CODATI概要（AI社員）</a>
+            <a href="#s10-2" class="sidebar-sublink">10-2 費用と収益のメモ</a>
+            <a href="#s11" class="sidebar-link">11. アクションアイテム</a>
+            <a href="#s12" class="sidebar-link">12. 参考情報</a>
+        </div>
+        <div class="sidebar-card">
+            <p class="sidebar-card-title">会議情報</p>
+            <div class="sidebar-card-row"><span>会議名:</span><span>TKW社内定例MTG</span></div>
+            <div class="sidebar-card-row"><span>日時:</span><span>2026年11月17日 15:00〜</span></div>
+            <div class="sidebar-card-row"><span>形式:</span><span>原文保存版</span></div>
+        </div>
+    </aside>
+
+    <div class="main">
+        <header class="page-header">
+            <span class="badge">MEETING MINUTES</span>
+            <h1 class="page-title">TKW会議：2026年11月17日</h1>
+            <p class="page-subtitle">報告書なし・新後休みのため進捗なし / LINE広告 営業戦略と業務改善 / 売上目標200万円・500万円の根拠 / 手離れ3倍構想と営業行動 / 未実施店舗の開拓 / 他媒体とのセット提案 / ダイナムWi-Fiプラン / ボートレースのファン投票 / CODATI原価と収益の整理　詳細記録</p>
+        </header>
+
+        <div style="display:flex; gap:0.5rem; margin-bottom:2rem; flex-wrap:wrap; align-items:center;">
+            <span style="font-size:0.78rem; color:#6b7280;">今回は、新後・高田の報告書の提出がありません。新後は休みのため、進捗はありません。補足のメモの提出があります。音声データにだけある内容は「（音声データより）」、メモにだけある内容は「（メモより）」と示します。注記のない項目は、音声データとメモの両方にある内容です。</span>
+        </div>
+
+        <!-- 1 MID -->
+        <section id="s1" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title">1. MID</h2>
+            </div>
+            <p class="section-intro"><strong style="color:#111827;">状況：新後が休みのため、進捗なし。</strong></p>
+            <ul class="dot-list gray-markers">
+                <li>音声データ・メモのいずれにも、MIDの進捗の記載はない。</li>
+                <li>前回（11月10日）は、11月後半に、店長・運用担当者が実際に使った機能と、つまずいた点を確認する予定だった。今回の資料に、その結果の記載はない。</li>
+            </ul>
+        </section>
+
+        <!-- 2 Mooovi -->
+        <section id="s2" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">2. Mooovi</h2>
+            </div>
+            <p class="section-intro"><strong style="color:#111827;">状況：新後が休みのため、進捗なし。</strong></p>
+            <ul class="dot-list">
+                <li>音声データ・メモのいずれにも、Mooovi の進捗の記載はない。</li>
+                <li>前回（11月10日）は、10倍データ・通常負荷の試験に合格し、段階負荷テストと監視機能の実装を、11月11日（水）に完了する予定だった。今回の資料に、その結果の記載はない。</li>
+            </ul>
+        </section>
+
+        <!-- 3 ボーネルンド -->
+        <section id="s3" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">3. ボーネルンド</h2>
+            </div>
+            <p class="section-intro"><strong style="color:#111827;">状況：新後が休みのため、進捗なし。</strong></p>
+            <ul class="dot-list">
+                <li>音声データ・メモのいずれにも、ボーネルンドの進捗の記載はない。</li>
+                <li>前回（11月10日）は、スマレジ売上連携が先行発注済みで製作中（12月11日にリリース予定）、カレンダー改修は見積送付済みで発注待ち、クーポン・割引機能は会議週内（11月13日まで）の提案を目指す、としていた。今回の資料に、その結果の記載はない。</li>
+            </ul>
+        </section>
+
+        <!-- 4 瑞鳳ABP -->
+        <section id="s4" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">4. 瑞鳳ABP</h2>
+            </div>
+            <p class="section-intro"><strong style="color:#111827;">状況：新後が休みのため、進捗なし。</strong></p>
+            <ul class="dot-list">
+                <li>音声データ・メモのいずれにも、瑞鳳ABPの進捗の記載はない。</li>
+                <li>前回（11月10日）は、11月10日夜からミニPCでの本番取得に切り替え、11月11日の朝に、新経路での取込結果を照合する予定だった。今回の資料に、その結果の記載はない。</li>
+            </ul>
+        </section>
+
+        <!-- 5 LINE広告 -->
+        <section id="s5" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">5. LINE広告</h2>
+            </div>
+            <p class="section-intro"><strong style="color:#111827;">状況：報告書の提出はなし。メモの数字と、音声データの議論をもとに記録する。議論の中心は、営業の評価指標、売上目標の根拠、営業の動き方。</strong></p>
+
+            <p class="sub-heading">(1) メモに記載のあった数字と状況 <span class="src-voice">（メモより）</span></p>
+            <ul class="dot-list">
+                <li>38件。</li>
+                <li>ビジネスマネージャー。</li>
+                <li>マルハン西日本が、100件超え。</li>
+                <li>9店舗のキャンペーンで、月40万円のアップ。</li>
+                <li>ビーコン、GPSの需要が高まっている。</li>
+                <li>「キントーンが一斉にできるように３０件以上」。</li>
+                <li>レポート管理・売上管理は、できている。</li>
+            </ul>
+            <div class="diagram-wrap">
+                <p class="diagram-title">メモの数字</p>
+                <div class="compare-wrap">
+                    <div class="compare-box low"><div class="compare-label">件数（メモの記載）</div><div class="compare-value">38件</div></div>
+                    <div class="compare-box high"><div class="compare-label">マルハン西日本</div><div class="compare-value">100件超え</div></div>
+                    <div class="compare-box high"><div class="compare-label">9店舗のキャンペーン</div><div class="compare-value">月40万円のアップ</div></div>
+                </div>
+            </div>
+            <div class="box-red">
+                <p class="box-label">要確認：メモの数字の対象と期間</p>
+                <ul class="dot-list" style="margin-bottom:0;">
+                    <li>「38件」は、メモに「３８件」とだけ記載があり、何の件数か、どの期間の件数かが書かれていない。前回（11月10日）の記録の累計（11月10日現在88件）とは並べず、メモの記載のまま載せている。</li>
+                    <li>「マルハン西日本 １００件超え」も、期間と対象がメモにない。</li>
+                    <li>「キントーンが一斉にできるように３０件以上」は、意味が取れないため、メモの原文のまま載せている。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">(2) 運用・発注システムと、メールアラート</p>
+            <ul class="dot-list">
+                <li>先月の数値や直近の進捗は、まだ完全には読み切れていない部分があるが、先週の報告内容を踏まえて、状況を確認した。<span class="src-voice">（音声データより）</span></li>
+                <li>先週からの取り組みとして、発注システムの運用が進められている。動画運用や進捗管理に関連するフローを構築して、一定の進展が見られている。<span class="src-voice">（音声データより）</span></li>
+                <li>一部残っている課題として、Wi-Fi関連の調整や、スキャンでの情報取得・視点での確認作業が挙げられた。<span class="src-voice">（音声データより）</span></li>
+                <li>メールアラートやフローについては、引き続き課題がある。細かな工程の見直し・調整が実施されている。</li>
+                <li>レポート管理・売上管理は、できている。<span class="src-voice">（メモより）</span></li>
+            </ul>
+            <div class="box-red">
+                <p class="box-label">要確認：音声データの意味が取れない語</p>
+                <p style="margin:0; color:#374151;">音声データには、「大阪から九州101」に関する案件や権限の委譲に伴う対応、「9ペランプで3ページ、月40くらい」とされる件の早急な対応、発注システムの運用（「そこでもう30」）と記録されている。いずれも意味が取れないため、原文のまま載せている。</p>
+            </div>
+
+            <p class="sub-heading">(3) 売上目標（200万円・500万円）の根拠</p>
+            <ul class="dot-list">
+                <li>「ベースの200万円」や目標の数字について、「なぜその金額まで上がるのか、その根拠が全く分からない」という疑問が出た。<span class="src-voice">（音声データより）</span></li>
+                <li>1人あたりの持ちアカウント数や運用のペース、1人が10%伸ばすことで、5人の合計でどれだけの売上増になるか、という試算の考え方はある。ただし、具体的な仕様や実行計画として共有されていない。<span class="src-voice">（音声データより）</span></li>
+                <li>「500万円」の目標についても、根拠を持った戦略が必要だと強調された。<span class="src-voice">（音声データより）</span></li>
+                <li>メモには、「200-300万」とだけ記載がある。<span class="src-voice">（メモより）</span></li>
+                <li>高田が「200万円」の目標を設定する背景には、営業担当者の能力だけでなく、各店舗が持つポテンシャルやキャパシティ（もっと伸ばせる可能性）への評価がある。<span class="src-voice">（音声データより）</span></li>
+            </ul>
+            <div class="diagram-wrap">
+                <p class="diagram-title">会議で出た売上目標と試算の数字</p>
+                <div class="compare-wrap">
+                    <div class="compare-box high"><div class="compare-label">ベースの目標</div><div class="compare-value">月200万円</div></div>
+                    <div class="compare-box low"><div class="compare-label">もう一つの目標</div><div class="compare-value">500万円（期間の記載なし）</div></div>
+                    <div class="compare-box low"><div class="compare-label">5人合計の試算（音声データ）</div><div class="compare-value">2,300万円 または 230〜300万円</div></div>
+                    <div class="compare-box low"><div class="compare-label">メモの記載</div><div class="compare-value">200-300万</div></div>
+                </div>
+            </div>
+            <div class="box-red">
+                <p class="box-label">要確認：目標・試算の数字</p>
+                <ul class="dot-list" style="margin-bottom:0;">
+                    <li>5人の合計の試算が、音声データの中で「2,300万円」と「230〜300万円」の2通りで記録されている。メモの「200-300万」は、何の金額か書かれていない。どれが正しいかは、資料から判断できないため、並べて載せている。</li>
+                    <li>目標は、「ベースの200万円」「月200万円」と記録されている。「500万円」は、期間（月か、ほかの期間か）が資料に書かれていない。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">(4) 営業の評価指標と報告区分がない点</p>
+            <ul class="dot-list">
+                <li>営業担当者（例：一広の吉澤氏ら）は、LINE広告以外の売上も同時に追っていて、会社の中で売上報告を行っている。<span class="src-voice">（音声データより）</span></li>
+                <li>社内の売上報告会議では、「何による売上か」の区分に、LINE広告単体の評価指標・報告項目が、明確に存在しない（または確認されていない）。指標や報告区分がないことが、営業担当者がLINE広告の販売に注力できない原因ではないか、という分析が示された。<span class="src-voice">（音声データより）</span></li>
+                <li>「一広側の広告が頭打ちではないか？」<span class="src-voice">（メモより）</span></li>
+                <li>「全員のフローが俗人化していて営業に集中できてない」<span class="src-voice">（メモより）</span></li>
+            </ul>
+
+            <p class="sub-heading">(5) 利益率の高い商品の優先と、「手離れ3倍」の構想</p>
+            <ul class="dot-list">
+                <li>会社全体では、LINE広告より利益率の高い商品が他にある。全体の売上が上がっていれば、上層部や社長にとっても問題とされにくい構造になっている。<span class="src-voice">（音声データより）</span></li>
+                <li>そのため、LINE広告の運用を効率化（手離れ）させても、営業担当者は、空いた時間で利益率の高い他の商品を優先して売る結果になっている。<span class="src-voice">（音声データより）</span></li>
+                <li>当初は、「手離れによって営業が動けるようになり、LINE広告の売上が3倍程度になる」ことを期待していた。この構想と、現実の営業の行動に、差が出ている。<span class="src-voice">（音声データより）</span></li>
+            </ul>
+            <div class="diagram-wrap">
+                <p class="diagram-title">「手離れ3倍」の構想と、現実の流れ</p>
+                <div class="flow-row">
+                    <div class="flow-box green"><h4>kintoneなどで手離れ</h4><p>運用・オペレーションの効率化</p></div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box"><h4>営業に空き時間ができる</h4><p>当初の期待：LINE広告の売上が3倍程度に</p></div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box red"><h4>現実：他の商品を優先</h4><p>空いた時間で、利益率の高い他の商品を販売</p></div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box gray"><h4>3倍にならない</h4><p>LINE広告の売上に結びついていない</p></div>
+                </div>
+            </div>
+
+            <p class="sub-heading">(6) 営業サポート（文言・店舗のキャパシティ）とkintone <span class="src-voice">（音声データより）</span></p>
+            <ul class="dot-list">
+                <li>営業担当者は、LINE広告が良い商品であることは理解している。ただ、自分から行動に移せていない。</li>
+                <li>「売れていない」と指摘するのではなく、落ち込む時期などの分析をしたうえで、店舗の強みやアプローチの文言（コピーして使えるレベルのフレーズ）を、事前に用意して渡す案が出た。進め方は、<a class="jump-link" href="#s8">第8章の「先回り型の営業サポート」</a>に載せている。</li>
+                <li>導入しているkintoneのワークフローとオペレーションで、店舗の潜在需要を取り込み、営業の背中を押す取り組みが必要とまとめられた。</li>
+            </ul>
+
+            <p class="sub-heading">(7) 顧客の広告費の構成 <span class="src-voice">（音声データより）</span></p>
+            <ul class="dot-list">
+                <li>顧客（例として挙がった店舗など）の月間の広告予算のうち、LINE広告が占める割合について、質疑があった。</li>
+                <li>LINE広告を実施している期間は、他の広告を出稿せず、LINE広告に予算を集中させているケースがある、と共有された。</li>
+            </ul>
+
+            <p class="sub-heading">(8) 未実施店舗の開拓による売上の積み上げ <span class="src-voice">（音声データより）</span></p>
+            <ul class="dot-list">
+                <li>既存の出稿店舗の単価（15万円、17万5千円、20万円など）を、40万円に大きく上げるのは現実的ではない。</li>
+                <li>まだLINE広告を導入していない「未実施店舗」に、他媒体などからのリプレイスや新規出稿を促すことで、目標の月200万円を積み上げる考え方が示された。</li>
+            </ul>
+            <div class="diagram-wrap">
+                <p class="diagram-title">既存店舗の単価と、40万円の比較</p>
+                <div class="bar-row"><div class="bar-label">既存店舗の単価</div><div class="bar-track"><div class="bar-fill" style="width:37.5%;"></div></div><div class="bar-val">15万円</div></div>
+                <div class="bar-row"><div class="bar-label">既存店舗の単価</div><div class="bar-track"><div class="bar-fill" style="width:43.75%;"></div></div><div class="bar-val">17万5千円</div></div>
+                <div class="bar-row"><div class="bar-label">既存店舗の単価</div><div class="bar-track"><div class="bar-fill" style="width:50%;"></div></div><div class="bar-val">20万円</div></div>
+                <div class="bar-row"><div class="bar-label">引き上げの想定</div><div class="bar-track"><div class="bar-fill gray" style="width:100%;"></div></div><div class="bar-val">40万円（現実的ではない）</div></div>
+            </div>
+            <div class="diagram-wrap">
+                <p class="diagram-title">売上の積み上げ方の比較</p>
+                <div class="compare-wrap">
+                    <div class="compare-box low"><div class="compare-label">単価アップ</div><div class="compare-value" style="font-size:0.95rem;">既存店舗の単価を40万円に上げる（現実的ではない）</div></div>
+                    <div class="compare-arrow">→</div>
+                    <div class="compare-box high"><div class="compare-label">未実施店舗の開拓</div><div class="compare-value" style="font-size:0.95rem;">他媒体からのリプレイス・新規出稿で、月200万円を積み上げる</div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6 広告商品 -->
+        <section id="s6" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">6. 広告商品</h2>
+            </div>
+            <p class="section-intro"><strong style="color:#111827;">状況：今週は報告なし（進捗なし）。</strong></p>
+            <ul class="dot-list">
+                <li>報告書の提出はなく、音声データ・メモのいずれにも、広告商品の進捗の記載はない。</li>
+            </ul>
+        </section>
+
+        <!-- 7 新規案件 -->
+        <section id="s7" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">7. 新規案件</h2>
+            </div>
+            <p class="section-intro"><strong style="color:#111827;">状況：高田の報告書はなし。メモと音声データに、ダイナムのWi-Fiプランとボートレースの記載がある。</strong></p>
+
+            <p class="sub-heading">(1) ダイナムのWi-Fiプラン <span class="src-voice">（メモより）</span></p>
+            <ul class="dot-list">
+                <li>情報の取得ができていなかった。</li>
+                <li>今後、モデルを組んでいく。</li>
+                <li>前回（11月10日）は、Wi-Fiデータ取得のテストと結果の報告を、12月中を目途に行う予定としていた。SSIDの調査が難航していた。</li>
+            </ul>
+
+            <p class="sub-heading">(2) 補助金サービス</p>
+            <ul class="dot-list">
+                <li>音声データ・メモのいずれにも、補助金サービスの記載はない。</li>
+                <li>前回（11月10日）は、専門家のメンバーとして、吉田氏へのコンタクトを依頼中だった。今回の資料に、その結果の記載はない。</li>
+            </ul>
+
+            <p class="sub-heading">(3) ボートレースのファン投票キャンペーン</p>
+            <ul class="dot-list">
+                <li>ファン投票は、山口と福岡。<span class="src-voice">（メモより）</span></li>
+                <li>1月からキャンペーンを行い、2月も行う。<span class="src-voice">（メモより）</span></li>
+                <li>6媒体でキャンペーンを行う。<span class="src-voice">（メモより）</span></li>
+                <li>音声データでは、「半東票」に関連して、山口でのレース実施（ビースト）における「1月11日間」の要件が報告された。別人が担当する期間中の配信体制と、12月の進行管理を確認し、3週目での前倒し進行など、早期対応が進められている、と共有された。<span class="src-voice">（音声データより）</span></li>
+            </ul>
+            <div class="diagram-wrap">
+                <p class="diagram-title">ボートレースのファン投票キャンペーンの流れ</p>
+                <div class="flow-row">
+                    <div class="flow-box"><h4>12月</h4><p>進行管理を確認。3週目での前倒し進行など、早期対応（音声データ）</p></div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box green"><h4>1月から</h4><p>キャンペーンを実施。ファン投票は山口と福岡（メモ）</p></div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box purple"><h4>2月も</h4><p>キャンペーンを継続。6媒体で実施（メモ）</p></div>
+                </div>
+            </div>
+            <div class="box-red">
+                <p class="box-label">要確認：日程の表記と、意味が取れない語</p>
+                <ul class="dot-list" style="margin-bottom:0;">
+                    <li>日程は、メモが「１月からキャンペーン ２月も」、音声データが「1月11日間」と記録している。本文はメモの表記にしている。</li>
+                    <li>音声データの「半東票」と「山口でのレース実施（ビースト）」は、意味が取れないため、原文のまま載せている。メモの「ファン投票　山口と福岡」と近い内容のためあわせて載せているが、同じ件かどうかは、資料から判断できない。</li>
+                    <li>前回（11月10日）の記録では、ファン投票の期間は2027年1月23日〜2月20日（予定）、受注額は400万円としていた。今回の資料に、期間と金額の記載はない。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 8 来季戦略・全体総括 -->
+        <section id="s8" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title green">8. 来季戦略・全体総括</h2>
+            </div>
+
+            <p class="sub-heading">(1) 会議の全体方針 <span class="src-voice">（音声データより）</span></p>
+            <ul class="dot-list">
+                <li><strong>会議の内容：</strong>音声データでは、「LINE広告の営業戦略と業務改善会議」として記録されている。運用・発注システムの現状、売上目標の根拠、営業の評価指標、営業の動き方、他の媒体とのセット提案が、話し合われた。</li>
+                <li><strong>主な方針：</strong>後から成果を問うのではなく、本部側が先回りして、営業を支える体制に変えること。LINE広告だけでなく、営業が売りやすい他の商品と組み合わせて、営業が取り組む動機をつくること。</li>
+            </ul>
+
+            <p class="sub-heading">(2) 先回り型の営業サポート <span class="src-voice">（音声データより）</span></p>
+            <ul class="dot-list">
+                <li>後から成果を問うやり方では、属人化した現場の行動は変わらない、と指摘された。</li>
+                <li>前年同月比や前月比、四半期ごとの売上の落ち込み時期を、事前に把握・分析する。そのうえで、本部側から営業に先回りで声をかけ、具体的な提案のフレーズや戦略を示して、後押しする体制に変える必要がある、と合意された。</li>
+                <li>営業担当者に、店舗の強みや、コピーして使えるレベルの文言を、事前に用意して渡す。</li>
+                <li>「500万円」という目標の数字についても、根拠を持った戦略が必要だと強調された。</li>
+            </ul>
+            <div class="diagram-wrap">
+                <p class="diagram-title">先回り型のサポートの流れ</p>
+                <div class="flow-row">
+                    <div class="flow-box"><h4>データを分析</h4><p>前年同月比・前月比・四半期ごとの落ち込み時期</p></div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box green"><h4>本部が先回りで声かけ</h4><p>営業に向けて、先に連絡して後押し</p></div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box"><h4>提案の材料を用意</h4><p>提案のフレーズ・店舗の強みを事前に準備</p></div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box purple"><h4>営業が提案</h4><p>行動に移しやすい状態をつくる</p></div>
+                </div>
+            </div>
+            <div class="diagram-wrap">
+                <p class="diagram-title">後から成果を問うやり方と、先回り型の比較</p>
+                <div class="compare-wrap">
+                    <div class="compare-box low"><div class="compare-label">後から成果を問うやり方</div><div class="compare-value" style="font-size:0.95rem;">属人化した現場の行動は変わらない</div></div>
+                    <div class="compare-arrow">→</div>
+                    <div class="compare-box high"><div class="compare-label">先回り型のサポート</div><div class="compare-value" style="font-size:0.95rem;">分析と提案の材料を、本部が先に用意する</div></div>
+                </div>
+            </div>
+            <div class="box-red">
+                <p class="box-label">要確認：音声データの意味が取れない語</p>
+                <p style="margin:0; color:#374151;">音声データには、「前年同月比（作体）」と記録されている。「作体」は意味が取れないため、原文のまま載せている。</p>
+            </div>
+
+            <p class="sub-heading">(3) 他の商品とのセット提案 <span class="src-voice">（音声データより）</span></p>
+            <ul class="dot-list">
+                <li>営業組織全体の売上の規模は、年間20億〜30億円規模。これに対して、LINE広告の売上は「一部の一部」にとどまる。利益の構造の面からも、営業が優先しにくい構造になっている、と再確認された。</li>
+                <li>高田が毎週、how-toや報告を行うだけでは、営業のモチベーションは変わらない。営業が真剣に取り組む仕組みが必要。</li>
+                <li>営業担当者が売りやすいメインの商品（ラジオ広告、サンケイスポーツ（サンスポ）と実施するイベント、記事広告など）と、LINE広告を組み合わせて、セットで提案・販売できるパッケージや仕組みをつくる。これにより、営業の現場がLINE広告に取り組む動機をつくる方針が示された。</li>
+            </ul>
+            <div class="diagram-wrap">
+                <p class="diagram-title">セット提案の仕組み</p>
+                <div class="flow-row">
+                    <div class="flow-box"><h4>営業が売りやすい商品</h4><p>ラジオ広告／サンスポと実施するイベント／記事広告</p></div>
+                    <div class="flow-plus">＋</div>
+                    <div class="flow-box green"><h4>LINE広告</h4><p>組み合わせて、セットで提案</p></div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-box purple"><h4>パッケージ・仕組みにする</h4><p>営業がLINE広告に取り組む動機をつくる</p></div>
+                </div>
+            </div>
+            <div class="box-red">
+                <p class="box-label">要確認：音声データの意味が取れない語</p>
+                <p style="margin:0; color:#374151;">音声データの資料は、文字起こしの表記の疑いがある語として、「サンスポ」「クソまピア」を挙げている。「クソまピア」は、利益の構造から営業が優先しにくい実態を表す語として出てくるが、意味が取れないため、原文のまま載せている。「サンスポ」は、資料が表記の疑いとして挙げているため、原文のまま載せている。</p>
+            </div>
+
+            <p class="sub-heading">(4) サービス提供者としての姿勢 <span class="src-voice">（音声データより）</span></p>
+            <ul class="dot-list">
+                <li>自分たちは、単なる下請けや子会社（「古代査」）ではなく、サービスを提供する主体（「勉強者・提供者」）である。そのため、自社だけで売るのではなく、他社や他ゲーム、外部のプラットフォームとの連携を、積極的に持ちかけるべきだ、というスタンスが示された。</li>
+            </ul>
+            <div class="box-red">
+                <p class="box-label">要確認：音声データの意味が取れない語と、立場の表記</p>
+                <ul class="dot-list" style="margin-bottom:0;">
+                    <li>「古代査」「勉強者・提供者」「他ゲーム」は、意味が取れないため、原文のまま載せている。</li>
+                    <li>同じ立場を、音声データの本文は「子会社」、後半の整理は「親会社」と書き分けている。どちらが正しいかは、資料から判断できない。</li>
+                </ul>
+            </div>
+
+            <p class="sub-heading">(5) BW（ブログウォッチャー）会議について <span class="src-voice">（メモより）</span></p>
+            <ul class="dot-list">
+                <li>ダイナムから、広告で依頼を受ける戦略を立てる。</li>
+                <li>何を店内で通知するのか。</li>
+            </ul>
+
+            <p class="sub-heading">(6) メモに見出しだけ記載があった項目 <span class="src-voice">（メモより）</span></p>
+            <ul class="dot-list">
+                <li>「LINE広告以外の戦略」</li>
+                <li>「足で稼ぐ 営業スタイル一広」</li>
+            </ul>
+            <p class="note">この2つは、メモに見出しだけがあり、内容の記載はない。</p>
+        </section>
+
+        <!-- 9 その他・組織・運営 -->
+        <section id="s9" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title">9. その他・組織・運営</h2>
+            </div>
+
+            <p class="sub-heading">(1) 担当者の入れ替わりと、新人のフォロー体制 <span class="src-voice">（音声データより）</span></p>
+            <ul class="dot-list gray-markers">
+                <li>現場の体制について、何度か会議や現場で取り上げられてきた。ただ、担当者の入れ替わりが頻繁で、作業のやり直しが発生している、と指摘された。</li>
+                <li>新人の担当者が増えるなか、適切にフォローする上位の役職者・上司の側で、時間や体制が取れていない実態が共有された（「膝のもの」「神経をして実行に時間がかかる」）。</li>
+                <li>過去の紹介案件や商流の整理について、やり取りがあり、最初に関与した経緯などが振り返られた。</li>
+                <li>具体的な期間（「半年間」など）についての高田の提案に対して、会社として、社長として、その方針に承認を出せるのか、話をしっかり聞いたうえで判断すべきではないか、という、マネジメントと経営の視点からの問い直しがあった。</li>
+            </ul>
+            <div class="box-red">
+                <p class="box-label">要確認：音声データの意味が取れない語</p>
+                <p style="margin:0; color:#374151;">「膝のもの」「神経をして実行に時間がかかる」は、意味が取れないため、原文のまま載せている。</p>
+            </div>
+
+            <p class="sub-heading">(2) 構想を、組織全体で議論する方針 <span class="src-voice">（音声データより）</span></p>
+            <ul class="dot-list gray-markers">
+                <li>構想が高田個人の頭の中にあり、報告だけで終わると、組織としては前に進まない、という危機意識が示された。</li>
+                <li>「順調に行っているように見えても、目指す場所はここではない」という課題意識を、全員で共有する。現状を打開する手を、組織全体で議論する必要がある。</li>
+                <li>最悪の選択肢として「取り扱いを減らす」という判断も含めて、本気で売上を伸ばすための議論が必要、と述べられた。</li>
+            </ul>
+        </section>
+
+        <!-- 10 CODATI -->
+        <section id="s10" class="section-card purple-card">
+            <div class="section-head">
+                <div class="section-bar bar-purple"></div>
+                <h2 class="section-title purple">10. CODATI</h2>
+            </div>
+
+            <h3 id="s10-1" class="sub-heading" style="font-size:1.05rem; color:#6d28d9; margin-top:0.4rem;">10-1 CODATI概要（AI社員）</h3>
+            <p class="note" style="margin-bottom:0.8rem;">AI社員は、CODATIの仕組みの一つ。AI社員に関する内容は、今後もこの項に集約する。</p>
+            <ul class="dot-list purple-markers">
+                <li>AI社員の新しい内容と、日次の取込・監視の状況は、今回の資料に記載がない。</li>
+                <li>前回（11月10日）は、日次の取込と監視が正常に稼働していて、入会日データの反映を11月10日夜から実施する予定としていた。今回の資料に、その結果の記載はない。</li>
+                <li>前回まで載せていた、池田紙工・プロシアITマネジメント（川島氏）の進捗は、今回の資料に記載がない。</li>
+            </ul>
+
+            <h3 id="s10-2" class="sub-heading" style="font-size:1.05rem; color:#6d28d9; margin-top:1.8rem;">10-2 費用と収益のメモ <span class="src-voice">（メモより）</span></h3>
+            <p class="note" style="margin-bottom:0.8rem;">メモは短い走り書きのため、書いてある内容だけを載せている。意味や対象が取れない記載は、メモの原文のまま載せ、赤い箱で示している。</p>
+            <ul class="dot-list purple-markers">
+                <li>「瑞鳳の2017年」</li>
+                <li>データベースに、138,000円かかっている。</li>
+                <li>イエローフィン：30万円。解約する前までのシステム利用料。</li>
+                <li>「10月から3.6万 4.4万 40万瑞鳳からもらってる」</li>
+                <li>GPTボッツが、毎月8万円かかる。メモには、続けて「トータル」とだけ記載がある。</li>
+                <li>「35万貰えば原価25万 7割粗利」</li>
+                <li>2か月分は、Auroraが持ってくれる。</li>
+                <li>パッケージ化したら、GPTボッツは「Auroraモバイル作業にしてもらう」。</li>
+                <li>永井：30万、受発注システム。</li>
+            </ul>
+            <div class="diagram-wrap">
+                <p class="diagram-title">メモの数字</p>
+                <div class="compare-wrap">
+                    <div class="compare-box low"><div class="compare-label">データベース</div><div class="compare-value">138,000円</div></div>
+                    <div class="compare-box low"><div class="compare-label">イエローフィン（解約前までのシステム利用料）</div><div class="compare-value">30万円</div></div>
+                    <div class="compare-box low"><div class="compare-label">GPTボッツ</div><div class="compare-value">毎月8万円</div></div>
+                    <div class="compare-box high"><div class="compare-label">35万円もらった場合</div><div class="compare-value">原価25万円</div></div>
+                </div>
+            </div>
+            <div class="box-red">
+                <p class="box-label">要確認：粗利の数字</p>
+                <p style="margin:0; color:#374151;">メモは「35万貰えば原価25万 7割粗利」と記載している。35万円から原価25万円を引くと10万円で、粗利は約3割になる。25万円は35万円の約7割にあたるため、「7割」が原価の割合を指すのか、粗利を指すのかは、資料から判断できない。原文のまま載せている。</p>
+            </div>
+            <div class="box-red">
+                <p class="box-label">要確認：メモの意味・期間・対象が取れない記載</p>
+                <ul class="dot-list" style="margin-bottom:0;">
+                    <li>「瑞鳳の2017年」は、何の2017年かが、メモにない。</li>
+                    <li>「10月から3.6万 4.4万 40万瑞鳳からもらってる」は、3.6万・4.4万・40万の区切りと、何の金額か、期間が、メモにない。</li>
+                    <li>「GPTボッツが毎月８万円かかる トータル」の「トータル」は、何の合計かが、メモにない。</li>
+                    <li>「２か月分は Auroraが持ってくれる」は、何の2か月分かが、メモにない。</li>
+                    <li>「Auroraモバイル作業にしてもらう」は、作業の内容が、メモにない。</li>
+                    <li>「永井 30万 受発注システム」は、30万円が何の金額（見積・受注・費用）かが、メモにない。</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 11 アクションアイテム -->
+        <section id="s11" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-green"></div>
+                <h2 class="section-title">11. アクションアイテム（TODO）</h2>
+            </div>
+            <p class="note" style="margin-bottom:0.8rem;">音声データには、作業の指示の表がない。「必要」「提案された」とされた方針を、作業として並べている。担当と期限は、資料に記載がないため、「要確認」としている。前回（11月10日）のTODOは、<a class="jump-link" href="../1110/">11月10日の議事録</a>を参照。今回の資料で、前回のTODOの結果を確認できた項目はない。</p>
+
+            <div class="diagram-wrap">
+                <p class="diagram-title">今後の日程（資料にある範囲）</p>
+                <div class="tl">
+                    <div class="tl-item gray"><div class="tl-date">12月</div><div class="tl-text">ボートレースのファン投票キャンペーン：進行管理を確認。3週目での前倒し進行など、早期対応（音声データ）／ダイナム：Wi-Fiデータ取得のテストと結果の報告（前回の目途）</div></div>
+                    <div class="tl-item gray"><div class="tl-date">1月から</div><div class="tl-text">ボートレースのファン投票キャンペーン：山口と福岡で実施（メモ）</div></div>
+                    <div class="tl-item gray"><div class="tl-date">2月</div><div class="tl-text">ボートレースのファン投票キャンペーン：継続して実施。6媒体で実施（メモ）</div></div>
+                </div>
+            </div>
+
+            <p class="sub-heading">TODO一覧</p>
+            <div style="overflow-x:auto;">
+                <table class="data-table">
+                    <thead><tr><th>案件</th><th>タスク内容</th><th>担当</th><th>期限</th></tr></thead>
+                    <tbody>
+                        <tr><td>LINE広告</td><td>営業の評価指標と報告区分を整理する。社内の売上報告会議に、LINE広告単体の区分があるかを確認する。</td><td>要確認</td><td>要確認</td></tr>
+                        <tr><td>LINE広告</td><td>目標（月200万円・500万円）の計算根拠を示す。</td><td>要確認</td><td>要確認</td></tr>
+                        <tr><td>LINE広告</td><td>前年同月比・前月比・四半期ごとの落ち込み時期を分析し、提案の文言と店舗の強みを用意する。</td><td>要確認</td><td>要確認</td></tr>
+                        <tr><td>LINE広告</td><td>未実施店舗の開拓を進める（他媒体などからのリプレイス・新規出稿）。</td><td>要確認</td><td>要確認</td></tr>
+                        <tr><td>LINE広告</td><td>ラジオ広告・サンスポと実施するイベント・記事広告との、セット提案の仕組みをつくる。</td><td>要確認</td><td>要確認</td></tr>
+                        <tr><td>新規案件</td><td>ダイナムのWi-Fiプランのモデルを組む（情報の取得）。</td><td>要確認</td><td>要確認（前回は12月中を目途）</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 12 参考情報 -->
+        <section id="s12" class="section-card">
+            <div class="section-head">
+                <div class="section-bar bar-gray"></div>
+                <h2 class="section-title">12. 参考情報</h2>
+            </div>
+            <ul class="dot-list gray-markers">
+                <li>新後・高田の報告書：今回は提出なし。新後は休みのため、進捗なし。</li>
+                <li>音声データ：「TKW会議：11月17日」（AI要約）。録音ファイルは「20261117_152224.mp3」。</li>
+                <li>メモ：11月17日分のテキストのメモ。</li>
+            </ul>
+        </section>
+
+        <footer class="page-footer">
+            <p>&copy; 2026 TKW Project Team. All Rights Reserved.</p>
+        </footer>
+    </div>
+</div>
+<script>
+    const links = document.querySelectorAll('.sidebar-link');
+    const sections = document.querySelectorAll('section[id]');
+    const purpleSections = ['s10'];
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                links.forEach(link => {
+                    link.classList.remove('active', 'active-purple');
+                    if (link.getAttribute('href') === '#' + id) {
+                        if (purpleSections.includes(id)) link.classList.add('active-purple');
+                        else link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.2 });
+    sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
